@@ -3,6 +3,9 @@ import os
 import random
 import time
 
+from adain.preprocess_image import load_image, prepare_image
+from adain.util import extract_image_names_recursive
+
 def prepare_dataset(input_dir, output_dir, size, images_per_file, file_prefix):
     assert os.path.exists(input_dir), 'Input directory does not exist'
     assert os.path.isdir(input_dir), '%s is not a directory' % input_dir
