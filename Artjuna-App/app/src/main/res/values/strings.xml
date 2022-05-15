@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Artjuna-App</string>
+    <string name="email">Email</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="doesn_t_have_an_account">Doesn\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="full_name">Full Name</string>
+    <string name="username">Username</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>
