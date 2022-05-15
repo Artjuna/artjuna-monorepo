@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.giftech.artjuna_app"
+        applicationId "com.artjuna.artjuna_app"
         minSdkVersion 21
         targetSdkVersion 32
         versionCode 1
@@ -35,7 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.giftech.artjuna_app'
+    namespace 'com.artjuna.artjuna_app'
 }
 
 dependencies {

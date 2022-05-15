@@ -1,4 +1,4 @@
-package com.giftech.artjuna_app
+package com.artjuna.artjuna_app
 
 import org.junit.Test
 

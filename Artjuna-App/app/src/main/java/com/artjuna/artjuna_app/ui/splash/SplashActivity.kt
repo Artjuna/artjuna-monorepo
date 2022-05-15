@@ -1,9 +1,9 @@
-package com.giftech.artjuna_app.ui.splash
+package com.artjuna.artjuna_app.ui.splash
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.giftech.artjuna_app.databinding.ActivitySplashBinding
+import com.artjuna.artjuna_app.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
 

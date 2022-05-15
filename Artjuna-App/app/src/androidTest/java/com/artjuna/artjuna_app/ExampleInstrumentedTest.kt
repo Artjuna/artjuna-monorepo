@@ -1,4 +1,4 @@
-package com.giftech.artjuna_app
+package com.artjuna.artjuna_app
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
