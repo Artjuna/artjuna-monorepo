@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  description: |
+    This is API Documentation of Artjuna App.
+  version: "1.0.0"
+  title: Swagger Artjuna
+servers:
+  # Added by API Auto Mocking Plugin
+  - url: http://localhost:5000   
+tags:
+  - name: Product
+    description: Everything about Products
+  - name: Account
+    description: Access to user Account
+paths:
+  /api/addProduct:
+    post:
+      tags:
+        - Product
+      summary: Add new product
+      operationId: addProduct
+      respones:
+        '200':
+          description: Success.     
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+  /api/getProduct:
+      get:
+        tags:
+          - Product
+        summary: Get all product
+        operationId: getProduct
+        respones:
+          '200':
+            description: Success.     
+        requestBody:
+          $ref: '#/components/requestBodies/Product'
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        ProdukID:
+          type: string
+        UserID:
+          type: string
+        NamaProduk:
+          type: string
+        Kategori:
+          type: string
+        Provinsi:
+          type: string
+          # enum:
+          #   - placed
+          #   - approved
+          #   - delivered
+        Kota:
+          type: string
+          # default: false
+        Caption:
+          type: string
+        Harga:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+      xml:
+        name: Product
+  requestBodies:
+    Product:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Product'
+      description: Product object that needs to be added
+      required: true
+    ProductList:
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Product'
+      description: Product object list
+      required: true
