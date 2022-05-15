@@ -1,56 +1,39 @@
 const express = require('express');
+const { path } = require('express/lib/application');
 const app = express();
-const db = require('./config/db');
-const Produk = require('./model/Product')
+const { sequelize } = require('./model');
+require('dotenv').config();
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
 
-db.authenticate().then(() => console.log("respon nodejs berhasil"));
+const options = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            title: "Library API",
+            version: "1.0.0",
+            description: "Artjuna API"
+        },
+        servers: [
+            {
+                url: "http://localhost:5000"
+            }
+        ]
+    },
+    apis: ["./routes/Artjuna.js"]
+}
+
+const specs = swaggerJsDoc(options);
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs))
+
+sequelize.authenticate().then(() => console.log("respon nodejs berhasil"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json())
 
-app.post("/produk", async (req, res) => {
-    try{
-        const { NamaProduk, Kategori, Provinsi, Kota, Caption, Harga } = req.body;      
-        const getAllProduk = await Produk.findAll({raw: true});     
-        const json = Object.keys(getAllProduk).length;        
-        const ProdukID = `P${json}`;
-        console.log(ProdukID);
-        const UserID = `U${json}`;
-        const createdAt = Date.now();
-        // initialize models database
-        const newProduk = new Produk({
-            ProdukID,
-            UserID,
-            NamaProduk,
-            Kategori,
-            Provinsi,
-            Kota,
-            Caption,
-            Harga,
-            createdAt
-        });
-
-            await newProduk.save();
-            res.json(newProduk);
-    }
-    catch (err)
-    {
-        console.error(err.message);
-        res.status(500).send("server error");
-    }
-})
-
-app.get("/produk", async (req, res) => {
-    try{
-        const getAllProduk = await Produk.findAll({});
-
-        res.json(getAllProduk);
-    }
-    catch (err)
-    {
-        console.error(err.message);
-        res.status(500).send("server error");
-    }
-})
+//routers
+const router = require('./routes/Artjuna')
+app.use('/api', router)
 
 app.get("/", (req, res) => res.send("respoin nodeJS berhasil"));
 
