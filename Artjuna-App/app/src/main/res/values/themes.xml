@@ -17,7 +17,7 @@
     <style name="ButtonPrimary" parent="TextAppearance.AppCompat.Button">
         <item name="android:textColor">?colorOnPrimary</item>
         <item name="background">?colorSecondary</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:paddingVertical" tools:targetApi="o">16dp</item>
         <item name="android:textSize">14sp</item>
         <item name="textAllCaps">false</item>
     </style>
