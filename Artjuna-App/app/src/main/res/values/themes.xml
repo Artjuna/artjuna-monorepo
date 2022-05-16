@@ -62,12 +62,12 @@
 
     <style name="Body1Regular" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">@font/roboto</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="lineHeight">16sp</item>
     </style>
     <style name="Body1Medium" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="lineHeight">16sp</item>
     </style>
 
