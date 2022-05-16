@@ -6,13 +6,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/bg_search.xml" value="0.132" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/box_only_top_radius.xml" value="0.132" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/box_white_only_top_radius.xml" value="0.132" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_bg_circle.xml" value="0.132" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.132" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.132" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_keranjang.xml" value="0.132" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_splash.xml" value="0.2" />
-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_home.xml" value="0.176" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_small.xml" value="0.6" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
