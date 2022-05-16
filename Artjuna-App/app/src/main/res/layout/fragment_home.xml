@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
@@ -22,6 +22,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <!-- Section Header -->
         <LinearLayout
             android:id="@+id/section_header"
             android:layout_width="match_parent"
@@ -64,12 +66,12 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <!-- Section Recom -->
+        <RelativeLayout
+            android:id="@+id/header_recom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/section_header">
@@ -78,31 +80,29 @@
                 style="@style/Subtitle2Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:text="@string/recommendation"
                 android:textColor="@color/white" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
 
             <TextView
                 style="@style/Body1Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:text="@string/see_all"
                 android:textAlignment="textEnd"
                 android:textColor="@color/white" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <HorizontalScrollView
+            android:id="@+id/sv_rv_recom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
             android:scrollbars="none"
             android:visibility="visible"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toBottomOf="@+id/header_recom">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -120,6 +120,64 @@
             </RelativeLayout>
 
         </HorizontalScrollView>
+
+        <!-- Section Category -->
+        <RelativeLayout
+            android:id="@+id/header_cat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sv_rv_recom">
+
+            <TextView
+                style="@style/Subtitle2Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/categories"
+                android:textColor="@color/black" />
+
+            <TextView
+                style="@style/Subtitle2Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/see_all"
+                android:textAlignment="textEnd"
+                android:textColor="?colorPrimary" />
+
+        </RelativeLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/sv_rv_cat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:scrollbars="none"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/header_cat">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_cat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_category" />
+
+            </RelativeLayout>
+
+        </HorizontalScrollView>
+
+        <!-- Best Seller -->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

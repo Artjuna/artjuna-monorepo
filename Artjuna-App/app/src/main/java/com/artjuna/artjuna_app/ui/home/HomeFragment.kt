@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.artjuna.artjuna_app.databinding.FragmentHomeBinding
+import com.artjuna.artjuna_app.ui.home.adapter.CatAdapter
 import com.artjuna.artjuna_app.ui.home.adapter.RecomAdapter
 import com.artjuna.artjuna_app.utils.DummyData
 
@@ -19,6 +20,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val recomAdapter = RecomAdapter()
+    private val catAdapter = CatAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,12 +39,14 @@ class HomeFragment : Fragment() {
         return root
     }
 
-    private fun setData() {
-        recomAdapter.submitList(DummyData.listProduct())
-    }
-
     private fun setupAdapter() {
         binding.rvRecom.adapter = recomAdapter
+        binding.rvCat.adapter = catAdapter
+    }
+
+    private fun setData() {
+        recomAdapter.submitList(DummyData.listProduct())
+        catAdapter.submitList(DummyData.listCategory())
     }
 
     override fun onDestroyView() {
