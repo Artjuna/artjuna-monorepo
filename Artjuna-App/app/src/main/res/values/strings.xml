@@ -8,4 +8,8 @@
     <string name="full_name">Full Name</string>
     <string name="username">Username</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_feeds">Feeds</string>
+    <string name="title_profile">Profile</string>
 </resources>

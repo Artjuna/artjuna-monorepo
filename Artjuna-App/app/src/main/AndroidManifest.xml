@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArtjunaApp">
         <activity
+            android:name=".ui.navigation.NavigationActivity"/>
+        <activity
             android:name=".ui.auth.SignInActivity"
             android:exported="false" />
         <activity
