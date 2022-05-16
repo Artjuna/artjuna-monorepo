@@ -12,4 +12,7 @@
     <string name="title_home">Home</string>
     <string name="title_feeds">Feeds</string>
     <string name="title_profile">Profile</string>
+    <string name="see_all">See All</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="search">Search</string>
 </resources>
