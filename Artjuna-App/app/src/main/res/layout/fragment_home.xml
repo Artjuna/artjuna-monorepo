@@ -1,185 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
+    android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
+        layout="@layout/layout_home_toolbar"/>
+    
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/bg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_bg_circle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <!-- Section Header -->
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/section_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_search"
+            <!-- Section Recom -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_bg_circle"/>
+
+                <RelativeLayout
+                    android:id="@+id/header_recom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <TextView
+                        style="@style/Subtitle2Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="@string/recommendation"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        style="@style/Body1Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/see_all"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
+
+                <HorizontalScrollView
+                    android:id="@+id/sv_rv_recom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/header_recom"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="10dp"
+                    android:scrollbars="none"
+                    android:visibility="visible">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_recom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_product_small" />
+
+                    </RelativeLayout>
+
+                </HorizontalScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Section Category -->
+            <RelativeLayout
+                android:id="@+id/header_cat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.4"
-                android:background="@drawable/box_white_8dp"
-                android:text="@string/search"
-                android:drawableLeft="@drawable/ic_search"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/grey_700"
-                app:backgroundTint="@null" />
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_16sdp">
 
-            <ImageView
-                android:id="@+id/btn_notif"
+                <TextView
+                    style="@style/Subtitle2Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/categories"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    style="@style/Subtitle2Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/see_all"
+                    android:textAlignment="textEnd"
+                    android:textColor="?colorPrimary" />
+
+            </RelativeLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/sv_rv_cat"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingVertical="8dp"
-                android:src="@drawable/ic_notification"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:scrollbars="none"
+                android:visibility="visible">
 
-            <ImageView
-                android:id="@+id/btn_keranjang"
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_cat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_category" />
+
+                </RelativeLayout>
+
+            </HorizontalScrollView>
+
+            <!-- Best Seller -->
+            <RelativeLayout
+                android:id="@+id/header_best"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingVertical="8dp"
-                android:src="@drawable/ic_keranjang"/>
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_16sdp">
 
+                <TextView
+                    style="@style/Subtitle2Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Best Seller"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    style="@style/Subtitle2Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/see_all"
+                    android:textAlignment="textEnd"
+                    android:textColor="?colorPrimary" />
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_best"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="2"
+                tools:itemCount="6"
+                tools:listitem="@layout/item_product" />
+            
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-        <!-- Section Recom -->
-        <RelativeLayout
-            android:id="@+id/header_recom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/section_header">
-
-            <TextView
-                style="@style/Subtitle2Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="@string/recommendation"
-                android:textColor="@color/white" />
-
-            <TextView
-                style="@style/Body1Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="@string/see_all"
-                android:textAlignment="textEnd"
-                android:textColor="@color/white" />
-
-        </RelativeLayout>
-
-        <HorizontalScrollView
-            android:id="@+id/sv_rv_recom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:scrollbars="none"
-            android:visibility="visible"
-            app:layout_constraintTop_toBottomOf="@+id/header_recom">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_recom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_product_small" />
-
-            </RelativeLayout>
-
-        </HorizontalScrollView>
-
-        <!-- Section Category -->
-        <RelativeLayout
-            android:id="@+id/header_cat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sv_rv_recom">
-
-            <TextView
-                style="@style/Subtitle2Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="@string/categories"
-                android:textColor="@color/black" />
-
-            <TextView
-                style="@style/Subtitle2Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="@string/see_all"
-                android:textAlignment="textEnd"
-                android:textColor="?colorPrimary" />
-
-        </RelativeLayout>
-
-        <HorizontalScrollView
-            android:id="@+id/sv_rv_cat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:scrollbars="none"
-            android:visibility="visible"
-            app:layout_constraintTop_toBottomOf="@+id/header_cat">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_cat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_category" />
-
-            </RelativeLayout>
-
-        </HorizontalScrollView>
-
-        <!-- Best Seller -->
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+</LinearLayout>
