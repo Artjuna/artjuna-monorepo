@@ -1,4 +1,4 @@
 package com.artjuna.artjuna_app.core.data.repositories
 
-class AuthRepository {
+class MainRepository {
 }
