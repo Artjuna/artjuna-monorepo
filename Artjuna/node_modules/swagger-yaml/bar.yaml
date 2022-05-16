@@ -1,0 +1,6 @@
+definitions:
+  bar:
+    type: object
+    properties:
+      barValue:
+        type: string
