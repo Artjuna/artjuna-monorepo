@@ -1,0 +1,51 @@
+<com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="0dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_16sdp"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <RelativeLayout
+            android:id="@+id/header_cat"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/Subtitle2Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="User Reviews"
+                android:textColor="@color/black" />
+
+            <TextView
+                style="@style/Subtitle2Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/see_all"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black_200" />
+
+        </RelativeLayout>
+
+        <!-- Summary Reviews -->
+        <TextView
+            android:id="@+id/tv_rating_sold"
+            style="@style/Body2Regular"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4.5 | 832 Reviews"
+            android:drawablePadding="@dimen/_4sdp"
+            app:drawableLeftCompat="@drawable/ic_star_24" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
