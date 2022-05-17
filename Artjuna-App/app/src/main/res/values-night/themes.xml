@@ -2,16 +2,31 @@
     <!-- Base application theme. -->
     <style name="Theme.ArtjunaApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_500</item>
-        <item name="colorPrimaryVariant">@color/green_700</item>
+        <item name="colorPrimary">@color/black_500</item>
+        <item name="colorPrimaryVariant">@color/black_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green_200</item>
+        <item name="colorSecondary">@color/black_200</item>
         <item name="colorSecondaryVariant">?attr/colorPrimaryVariant</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle</item>
+    </style>
+
+    <style name="BottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="android:background">?android:attr/windowBackground</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+    </style>
+
+    <style name="ButtonPrimary" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">?colorOnPrimary</item>
+        <item name="background">?colorSecondary</item>
+        <item name="android:paddingVertical" tools:targetApi="o">16dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="textAllCaps">false</item>
     </style>
 
     <style name="TextH5" parent="TextAppearance.MaterialComponents.Headline5">
@@ -38,28 +53,28 @@
 
     <style name="Subtitle2Regular" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="fontFamily">@font/roboto</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="lineHeight">16sp</item>
     </style>
     <style name="Subtitle2Medium" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="lineHeight">16sp</item>
     </style>
     <style name="Subtitle2Bold" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="lineHeight">16sp</item>
     </style>
 
     <style name="Body1Regular" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">@font/roboto</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="lineHeight">16sp</item>
     </style>
     <style name="Body1Medium" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="lineHeight">16sp</item>
     </style>
 
@@ -81,6 +96,5 @@
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">8sp</item>
     </style>
-
 
 </resources>
