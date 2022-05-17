@@ -21,7 +21,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-
         <!-- Reviews -->
         <include
             android:id="@+id/reviews"
@@ -29,6 +28,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_4sdp"/>
+
+        <!-- Store -->
+        <include
+            android:id="@+id/store"
+            layout="@layout/layout_product_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_4sdp"/>
+
 
     </LinearLayout>
 </ScrollView>

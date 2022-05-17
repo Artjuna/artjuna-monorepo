@@ -1,0 +1,42 @@
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_16sdp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_store_image"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:src="@drawable/sample_photo"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_store_name"
+                style="@style/Subtitle2Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eren Yeager"/>
+            <TextView
+                android:id="@+id/tv_store_city"
+                style="@style/Body1Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey_700"
+                android:text="Kota Paradis"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/btn_visitstore"
+            style="@style/buttonVisitStore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visit Store"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

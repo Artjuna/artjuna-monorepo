@@ -10,5 +10,9 @@ class DetailProductActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.store.btnVisitstore.setOnClickListener {
+
+        }
     }
 }
