@@ -1,5 +1,6 @@
 package com.artjuna.artjuna_app.ui.home.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.databinding.ItemProductSmallBinding
+import com.artjuna.artjuna_app.ui.detailproduct.DetailProductActivity
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 
 class RecomAdapter:ListAdapter<Product, RecomAdapter.RecomViewHolder>(DIFF_CALLBACK) {
@@ -19,6 +21,11 @@ class RecomAdapter:ListAdapter<Product, RecomAdapter.RecomViewHolder>(DIFF_CALLB
                 tvPrice.text = "Rp ${product.price}"
                 tvCity.text = product.city
                 tvRatingSold.text = "${product.rating} | ${product.sold} sold"
+
+                itemView.setOnClickListener {
+                    val intent = Intent(itemView.context, DetailProductActivity::class.java)
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }
