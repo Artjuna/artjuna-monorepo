@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_5sdp"
-            android:src="@drawable/ic_keranjang"
+            android:src="@drawable/ic_cart"
             app:tint="@color/white" />
 
     </LinearLayout>

@@ -1,22 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.profile.ProfileFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <!-- Header -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:gravity="center_vertical"
+        android:padding="@dimen/_16sdp"
+        android:elevation="@dimen/_4sdp"
+        android:background="?attr/colorOnPrimary"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_image"
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            android:src="@drawable/sample_photo"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_fullname"
+                style="@style/Subtitle1Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eren Yeager"/>
+            <TextView
+                android:id="@+id/tv_username"
+                style="@style/Body1Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="erenmikasa13"/>
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/btn_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_setting"/>
+    </LinearLayout>
+
+    <!-- Menu -->
+    <LinearLayout
+        android:id="@+id/btn_mycart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="@dimen/_16sdp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:src="@drawable/ic_cart_black"/>
+        <TextView
+            style="@style/Body1Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Cart"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:background="@color/grey_200"/>
+
+    <LinearLayout
+        android:id="@+id/btn_myorder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="@dimen/_16sdp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:src="@drawable/ic_order"/>
+        <TextView
+            style="@style/Body1Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Order"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:background="@color/grey_200"/>
+
+    <LinearLayout
+        android:id="@+id/btn_likedpost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="@dimen/_16sdp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:src="@drawable/ic_like_black"/>
+        <TextView
+            style="@style/Body1Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Liked Posts"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:background="@color/grey_200"/>
+
+    <LinearLayout
+        android:id="@+id/btn_storefollow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="@dimen/_16sdp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:src="@drawable/ic_store"/>
+        <TextView
+            style="@style/Body1Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Store Followed"/>
+    </LinearLayout>
+
+</LinearLayout>
