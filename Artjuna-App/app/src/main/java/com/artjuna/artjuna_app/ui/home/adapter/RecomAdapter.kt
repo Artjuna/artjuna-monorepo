@@ -19,7 +19,7 @@ class RecomAdapter:ListAdapter<Product, RecomAdapter.RecomViewHolder>(DIFF_CALLB
                 ivImage.loadImage(product.image)
                 tvName.text = product.name
                 tvPrice.text = "Rp ${product.price}"
-                tvCity.text = product.city
+                tvCity.text = product.storeCity
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailProductActivity::class.java)
