@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
+    android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <com.google.android.material.card.MaterialCardView
+
+
+    <!-- <com.google.android.material.card.MaterialCardView
         android:layout_marginTop="@dimen/_2sdp"
         android:layout_marginStart="@dimen/_2sdp"
         android:layout_marginBottom="@dimen/_4sdp"
@@ -48,8 +51,42 @@
 
 
         </LinearLayout>
+ -->
 
-    </com.google.android.material.card.MaterialCardView>
 
+    <ImageView
+        android:id="@+id/painting_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14sp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        app:srcCompat="@drawable/category_painting" />
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/batik_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginEnd="@dimen/_14sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        app:srcCompat="@drawable/batik_category" />
+
+    <ImageView
+        android:id="@+id/ornaments_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginEnd="@dimen/_14sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        app:srcCompat="@drawable/ornaments_category" />
+
+    <ImageView
+        android:id="@+id/others_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginEnd="@dimen/_14sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        app:srcCompat="@drawable/others_category" />
+
+</LinearLayout>
