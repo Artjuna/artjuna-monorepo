@@ -4,8 +4,13 @@ data class Product(
     var id:String="",
     var name:String="",
     var image:String="",
+    var detail:String="",
     var price:Int=0,
-    var city:String="",
     var rating:Double=0.0,
-    var sold:Int=0
+    var ratingAmount:Double=0.0,
+    var sold:Int=0,
+    var storeId:String="",
+    var storeCity:String="",
+    var storeName:String="",
+    var storeImage:String="",
 )

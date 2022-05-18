@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">?attr/colorPrimaryVariant</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle</item>
     </style>
@@ -57,12 +57,12 @@
 
     <style name="Subtitle1Regular" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="fontFamily">@font/roboto</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
         <item name="lineHeight">24sp</item>
     </style>
     <style name="Subtitle1Medium" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
         <item name="lineHeight">24sp</item>
     </style>
     <style name="Subtitle1Bold" parent="TextAppearance.MaterialComponents.Subtitle1">

@@ -19,8 +19,7 @@ class BestAdapter:ListAdapter<Product, BestAdapter.BestViewHolder>(DIFF_CALLBACK
                 ivImage.loadImage(product.image)
                 tvName.text = product.name
                 tvPrice.text = "Rp ${product.price}"
-                tvCity.text = product.city
-                tvRatingSold.text = "${product.rating} | ${product.sold} sold"
+                tvCity.text = product.storeCity
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailProductActivity::class.java)

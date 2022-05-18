@@ -9,7 +9,6 @@
     android:layout_marginStart="@dimen/_4sdp"
     android:layout_marginEnd="@dimen/_8sdp"
     android:layout_marginBottom="@dimen/_8sdp"
-    android:elevation="0dp"
     android:orientation="vertical"
     app:cardCornerRadius="@dimen/_2sdp"
     app:cardElevation="0dp">
