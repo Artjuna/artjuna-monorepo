@@ -1,0 +1,762 @@
+Index: app/src/main/res/layout/item_product_small.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"wrap_content\"\r\n    android:layout_height=\"wrap_content\">\r\n\r\n    <com.google.android.material.card.MaterialCardView\r\n        android:layout_marginTop=\"@dimen/_2sdp\"\r\n        android:layout_marginStart=\"@dimen/_2sdp\"\r\n        android:layout_marginBottom=\"@dimen/_4sdp\"\r\n        android:layout_marginEnd=\"@dimen/_4sdp\"\r\n        android:orientation=\"vertical\"\r\n        app:cardCornerRadius=\"@dimen/_8sdp\"\r\n        app:cardElevation=\"@dimen/_2sdp\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginBottom=\"@dimen/_5sdp\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <ImageView\r\n                android:id=\"@+id/iv_image\"\r\n                android:layout_width=\"@dimen/_96sdp\"\r\n                android:layout_height=\"@dimen/_64sdp\"\r\n                android:scaleType=\"centerCrop\"\r\n                tools:srcCompat=\"@tools:sample/avatars\"/>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\"\r\n                android:paddingVertical=\"@dimen/_8sdp\"\r\n                android:paddingHorizontal=\"@dimen/_4sdp\">\r\n\r\n                <TextView\r\n                    android:id=\"@+id/tv_name\"\r\n                    style=\"@style/Body2Regular\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginBottom=\"@dimen/_2sdp\"\r\n                    android:ellipsize=\"end\"\r\n                    android:maxLines=\"2\"\r\n                    android:text=\"Talenan Kayu Keren Banget\"/>\r\n\r\n                <TextView\r\n                    android:id=\"@+id/tv_price\"\r\n                    style=\"@style/Body2Medium\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginBottom=\"@dimen/_2sdp\"\r\n                    android:text=\"Rp 80.000\"/>\r\n\r\n                <TextView\r\n                    android:id=\"@+id/tv_city\"\r\n                    style=\"@style/Body3Regular\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginBottom=\"@dimen/_2sdp\"\r\n                    android:text=\"Kota Bandung\"/>\r\n\r\n                <TextView\r\n                    android:id=\"@+id/tv_rating_sold\"\r\n                    style=\"@style/Body3Regular\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:drawablePadding=\"@dimen/_2sdp\"\r\n                    android:text=\"4.5 | 832 Sold\"\r\n                    app:drawableLeftCompat=\"@drawable/ic_star_card_small\" />\r\n\r\n\r\n            </LinearLayout>\r\n\r\n\r\n        </LinearLayout>\r\n\r\n    </com.google.android.material.card.MaterialCardView>\r\n\r\n\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_product_small.xml b/app/src/main/res/layout/item_product_small.xml
+--- a/app/src/main/res/layout/item_product_small.xml	(revision ad9fcf0fc7048fcc90d4fda6edc76fb45bc2d291)
++++ b/app/src/main/res/layout/item_product_small.xml	(date 1652848287135)
+@@ -1,83 +1,79 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++<com.google.android.material.card.MaterialCardView
++    xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="wrap_content"
+-    android:layout_height="wrap_content">
+-
+-    <com.google.android.material.card.MaterialCardView
+-        android:layout_marginTop="@dimen/_2sdp"
+-        android:layout_marginStart="@dimen/_2sdp"
+-        android:layout_marginBottom="@dimen/_4sdp"
+-        android:layout_marginEnd="@dimen/_4sdp"
+-        android:orientation="vertical"
+-        app:cardCornerRadius="@dimen/_8sdp"
+-        app:cardElevation="@dimen/_2sdp"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content">
++    android:layout_height="wrap_content"
++    android:layout_marginTop="@dimen/_8sdp"
++    android:layout_marginHorizontal="@dimen/_4sdp"
++    android:orientation="vertical"
++    app:cardElevation="@dimen/_2sdp">
+ 
+-        <LinearLayout
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginBottom="@dimen/_5sdp"
+-            android:orientation="vertical">
++    <LinearLayout
++        android:layout_width="130dp"
++        android:layout_height="wrap_content"
++        android:layout_marginBottom="@dimen/_5sdp"
++        android:orientation="vertical">
+ 
+-            <ImageView
+-                android:id="@+id/iv_image"
+-                android:layout_width="@dimen/_96sdp"
+-                android:layout_height="@dimen/_64sdp"
+-                android:scaleType="centerCrop"
+-                tools:srcCompat="@tools:sample/avatars"/>
++        <ImageView
++            android:id="@+id/iv_image"
++            android:layout_width="match_parent"
++            android:layout_height="@dimen/_120sdp"
++            android:scaleType="centerCrop"
++            tools:srcCompat="@drawable/img_recom"/>
+ 
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:orientation="vertical"
+-                android:paddingVertical="@dimen/_8sdp"
+-                android:paddingHorizontal="@dimen/_4sdp">
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="vertical"
++            android:paddingVertical="@dimen/_8sdp"
++            android:paddingHorizontal="@dimen/_4sdp">
+ 
+-                <TextView
+-                    android:id="@+id/tv_name"
+-                    style="@style/Body2Regular"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:layout_marginBottom="@dimen/_2sdp"
+-                    android:ellipsize="end"
+-                    android:maxLines="2"
+-                    android:text="Talenan Kayu Keren Banget"/>
++            <TextView
++                android:id="@+id/tv_name"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginBottom="@dimen/_2sdp"
++                android:ellipsize="end"
++                android:maxLines="2"
++                android:textColor="@color/black_500"
++                android:textSize="@dimen/_9ssp"
++                android:fontFamily="@font/roboto_medium"
++                android:text="Talenan Kayu Keren Banget"/>
+ 
+-                <TextView
+-                    android:id="@+id/tv_price"
+-                    style="@style/Body2Medium"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:layout_marginBottom="@dimen/_2sdp"
+-                    android:text="Rp 80.000"/>
++            <TextView
++                android:id="@+id/tv_price"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginBottom="@dimen/_2sdp"
++                android:textSize="@dimen/_8ssp"
++                android:textColor="@color/black_500"
++                android:fontFamily="@font/roboto_bold"
++                android:text="Rp 80.000"/>
+ 
+-                <TextView
+-                    android:id="@+id/tv_city"
+-                    style="@style/Body3Regular"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:layout_marginBottom="@dimen/_2sdp"
+-                    android:text="Kota Bandung"/>
++            <TextView
++                android:id="@+id/tv_city"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginBottom="@dimen/_2sdp"
++                android:textSize="@dimen/_8ssp"
++                android:fontFamily="@font/roboto"
++                android:text="Kota Bandung"/>
+ 
+-                <TextView
+-                    android:id="@+id/tv_rating_sold"
+-                    style="@style/Body3Regular"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:drawablePadding="@dimen/_2sdp"
+-                    android:text="4.5 | 832 Sold"
+-                    app:drawableLeftCompat="@drawable/ic_star_card_small" />
++            <!-- <TextView
++                android:id="@+id/tv_rating_sold"
++                style="@style/Body2Regular"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:drawablePadding="@dimen/_2sdp"
++                android:text="4.5 | 832 Sold"
++                app:drawableLeftCompat="@drawable/ic_star_card_small" /> -->
+ 
+ 
+-            </LinearLayout>
++        </LinearLayout>
+ 
+ 
+-        </LinearLayout>
++    </LinearLayout>
+ 
+-    </com.google.android.material.card.MaterialCardView>
+-
+-
+-</RelativeLayout>
+\ No newline at end of file
++</com.google.android.material.card.MaterialCardView>
+Index: app/src/main/res/layout/item_category.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"wrap_content\"\r\n    android:layout_height=\"wrap_content\">\r\n\r\n    <com.google.android.material.card.MaterialCardView\r\n        android:layout_marginTop=\"@dimen/_2sdp\"\r\n        android:layout_marginStart=\"@dimen/_2sdp\"\r\n        android:layout_marginBottom=\"@dimen/_4sdp\"\r\n        android:layout_marginEnd=\"@dimen/_4sdp\"\r\n        android:orientation=\"vertical\"\r\n        app:cardCornerRadius=\"@dimen/_8sdp\"\r\n        app:cardElevation=\"@dimen/_2sdp\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <ImageView\r\n                android:id=\"@+id/iv_image\"\r\n                android:layout_width=\"@dimen/_90sdp\"\r\n                android:layout_height=\"@dimen/_56sdp\"\r\n                android:scaleType=\"centerCrop\"\r\n                tools:srcCompat=\"@tools:sample/avatars\"/>\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:orientation=\"vertical\"\r\n                android:layout_gravity=\"center\"\r\n                android:paddingVertical=\"@dimen/_8sdp\">\r\n\r\n                <TextView\r\n                    android:id=\"@+id/tv_name\"\r\n                    style=\"@style/Body1Medium\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:gravity=\"center\"\r\n                    android:text=\"Lukisan\"/>\r\n\r\n\r\n            </LinearLayout>\r\n\r\n\r\n        </LinearLayout>\r\n\r\n    </com.google.android.material.card.MaterialCardView>\r\n\r\n\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_category.xml b/app/src/main/res/layout/item_category.xml
+--- a/app/src/main/res/layout/item_category.xml	(revision ad9fcf0fc7048fcc90d4fda6edc76fb45bc2d291)
++++ b/app/src/main/res/layout/item_category.xml	(date 1652846103916)
+@@ -1,11 +1,14 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="wrap_content"
++    android:orientation="vertical"
+     android:layout_height="wrap_content">
+ 
+-    <com.google.android.material.card.MaterialCardView
++
++
++    <!-- <com.google.android.material.card.MaterialCardView
+         android:layout_marginTop="@dimen/_2sdp"
+         android:layout_marginStart="@dimen/_2sdp"
+         android:layout_marginBottom="@dimen/_4sdp"
+@@ -48,8 +51,42 @@
+ 
+ 
+         </LinearLayout>
++ -->
++
+ 
+-    </com.google.android.material.card.MaterialCardView>
++    <ImageView
++        android:id="@+id/painting_category"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="14sp"
++        android:layout_marginBottom="@dimen/_8sdp"
++        app:srcCompat="@drawable/category_painting" />
+ 
++    <ImageView
++        android:id="@+id/batik_category"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="@dimen/_14sdp"
++        android:layout_marginEnd="@dimen/_14sdp"
++        android:layout_marginBottom="@dimen/_8sdp"
++        app:srcCompat="@drawable/batik_category" />
++
++    <ImageView
++        android:id="@+id/ornaments_category"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="@dimen/_14sdp"
++        android:layout_marginEnd="@dimen/_14sdp"
++        android:layout_marginBottom="@dimen/_8sdp"
++        app:srcCompat="@drawable/ornaments_category" />
++
++    <ImageView
++        android:id="@+id/others_category"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="@dimen/_14sdp"
++        android:layout_marginEnd="@dimen/_14sdp"
++        android:layout_marginBottom="@dimen/_8sdp"
++        app:srcCompat="@drawable/others_category" />
+ 
+-</RelativeLayout>
+\ No newline at end of file
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\"\r\n    tools:context=\".ui.home.HomeFragment\">\r\n\r\n    <include\r\n        layout=\"@layout/layout_home_toolbar\"/>\r\n    \r\n    <androidx.core.widget.NestedScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\">\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <!-- Section Recom -->\r\n            <androidx.constraintlayout.widget.ConstraintLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\">\r\n\r\n                <ImageView\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    app:layout_constraintTop_toTopOf=\"parent\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintEnd_toEndOf=\"parent\"\r\n                    android:scaleType=\"centerCrop\"\r\n                    android:src=\"@drawable/ic_bg_circle\"/>\r\n\r\n                <RelativeLayout\r\n                    android:id=\"@+id/header_recom\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginHorizontal=\"@dimen/_10sdp\"\r\n                    app:layout_constraintTop_toTopOf=\"parent\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintEnd_toEndOf=\"parent\">\r\n\r\n                    <TextView\r\n                        style=\"@style/Subtitle2Medium\"\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_alignParentStart=\"true\"\r\n                        android:text=\"@string/recommendation\"\r\n                        android:textColor=\"@color/white\" />\r\n\r\n                    <TextView\r\n                        style=\"@style/Body1Medium\"\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_alignParentEnd=\"true\"\r\n                        android:text=\"@string/see_all\"\r\n                        android:textAlignment=\"textEnd\"\r\n                        android:textColor=\"@color/white\" />\r\n\r\n                </RelativeLayout>\r\n\r\n                <HorizontalScrollView\r\n                    android:id=\"@+id/sv_rv_recom\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    app:layout_constraintTop_toBottomOf=\"@id/header_recom\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintEnd_toEndOf=\"parent\"\r\n                    android:layout_marginTop=\"10dp\"\r\n                    android:scrollbars=\"none\"\r\n                    android:visibility=\"visible\">\r\n\r\n                    <RelativeLayout\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginStart=\"@dimen/_8sdp\">\r\n\r\n                        <androidx.recyclerview.widget.RecyclerView\r\n                            android:id=\"@+id/rv_recom\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:orientation=\"horizontal\"\r\n                            app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\"\r\n                            tools:listitem=\"@layout/item_product_small\" />\r\n\r\n                    </RelativeLayout>\r\n\r\n                </HorizontalScrollView>\r\n\r\n            </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n            <!-- Section Category -->\r\n            <RelativeLayout\r\n                android:id=\"@+id/header_cat\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginHorizontal=\"@dimen/_10sdp\"\r\n                android:layout_marginTop=\"@dimen/_16sdp\">\r\n\r\n                <TextView\r\n                    style=\"@style/Subtitle2Medium\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_alignParentStart=\"true\"\r\n                    android:text=\"@string/categories\"\r\n                    android:textColor=\"@color/black\" />\r\n\r\n                <TextView\r\n                    style=\"@style/Subtitle2Medium\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_alignParentEnd=\"true\"\r\n                    android:text=\"@string/see_all\"\r\n                    android:textAlignment=\"textEnd\"\r\n                    android:textColor=\"?colorPrimary\" />\r\n\r\n            </RelativeLayout>\r\n\r\n            <HorizontalScrollView\r\n                android:id=\"@+id/sv_rv_cat\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"@dimen/_8sdp\"\r\n                android:scrollbars=\"none\"\r\n                android:visibility=\"visible\">\r\n\r\n                <RelativeLayout\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginStart=\"@dimen/_8sdp\">\r\n\r\n                    <androidx.recyclerview.widget.RecyclerView\r\n                        android:id=\"@+id/rv_cat\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:orientation=\"horizontal\"\r\n                        app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\"\r\n                        tools:listitem=\"@layout/item_category\" />\r\n\r\n                </RelativeLayout>\r\n\r\n            </HorizontalScrollView>\r\n\r\n            <!-- Best Seller -->\r\n            <RelativeLayout\r\n                android:id=\"@+id/header_best\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginHorizontal=\"@dimen/_10sdp\"\r\n                android:layout_marginTop=\"@dimen/_16sdp\">\r\n\r\n                <TextView\r\n                    style=\"@style/Subtitle2Medium\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_alignParentStart=\"true\"\r\n                    android:text=\"Best Seller\"\r\n                    android:textColor=\"@color/black\" />\r\n\r\n                <TextView\r\n                    style=\"@style/Subtitle2Medium\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_alignParentEnd=\"true\"\r\n                    android:text=\"@string/see_all\"\r\n                    android:textAlignment=\"textEnd\"\r\n                    android:textColor=\"?colorPrimary\" />\r\n\r\n            </RelativeLayout>\r\n\r\n            <androidx.recyclerview.widget.RecyclerView\r\n                android:id=\"@+id/rv_best\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginHorizontal=\"@dimen/_8sdp\"\r\n                android:orientation=\"vertical\"\r\n                app:layoutManager=\"androidx.recyclerview.widget.StaggeredGridLayoutManager\"\r\n                app:spanCount=\"2\"\r\n                tools:itemCount=\"6\"\r\n                tools:listitem=\"@layout/item_product\" />\r\n            \r\n        </LinearLayout>\r\n    </androidx.core.widget.NestedScrollView>\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_home.xml b/app/src/main/res/layout/fragment_home.xml
+--- a/app/src/main/res/layout/fragment_home.xml	(revision ad9fcf0fc7048fcc90d4fda6edc76fb45bc2d291)
++++ b/app/src/main/res/layout/fragment_home.xml	(date 1652846974240)
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<LinearLayout
++<androidx.core.widget.NestedScrollView
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+@@ -8,180 +8,133 @@
+     android:orientation="vertical"
+     tools:context=".ui.home.HomeFragment">
+ 
+-    <include
+-        layout="@layout/layout_home_toolbar"/>
+-    
+-    <androidx.core.widget.NestedScrollView
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content">
+-        <LinearLayout
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:orientation="vertical">
+-
+-            <!-- Section Recom -->
+-            <androidx.constraintlayout.widget.ConstraintLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content">
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent">
+ 
+-                <ImageView
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    app:layout_constraintTop_toTopOf="parent"
+-                    app:layout_constraintStart_toStartOf="parent"
+-                    app:layout_constraintEnd_toEndOf="parent"
+-                    android:scaleType="centerCrop"
+-                    android:src="@drawable/ic_bg_circle"/>
+-
+-                <RelativeLayout
+-                    android:id="@+id/header_recom"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:layout_marginHorizontal="@dimen/_10sdp"
+-                    app:layout_constraintTop_toTopOf="parent"
+-                    app:layout_constraintStart_toStartOf="parent"
+-                    app:layout_constraintEnd_toEndOf="parent">
++        <ImageView
++            android:id="@+id/iv_bg_home"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:src="@drawable/bg_home"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent" />
++
++        <include
++            android:id="@+id/include"
++            layout="@layout/layout_home_toolbar" />
++
++        <androidx.cardview.widget.CardView
++            android:id="@+id/iv_take"
++            android:layout_width="380dp"
++            android:layout_height="30dp"
++            android:background="@drawable/bg_take"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            android:backgroundTint="@color/black_500"
++            app:layout_constraintTop_toBottomOf="@id/iv_bg_home">
+ 
+-                    <TextView
+-                        style="@style/Subtitle2Medium"
+-                        android:layout_width="wrap_content"
+-                        android:layout_height="wrap_content"
+-                        android:layout_alignParentStart="true"
+-                        android:text="@string/recommendation"
+-                        android:textColor="@color/white" />
+-
+-                    <TextView
+-                        style="@style/Body1Medium"
+-                        android:layout_width="wrap_content"
+-                        android:layout_height="wrap_content"
+-                        android:layout_alignParentEnd="true"
+-                        android:text="@string/see_all"
+-                        android:textAlignment="textEnd"
+-                        android:textColor="@color/white" />
+-
+-                </RelativeLayout>
+-
+-                <HorizontalScrollView
+-                    android:id="@+id/sv_rv_recom"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    app:layout_constraintTop_toBottomOf="@id/header_recom"
+-                    app:layout_constraintStart_toStartOf="parent"
+-                    app:layout_constraintEnd_toEndOf="parent"
+-                    android:layout_marginTop="10dp"
+-                    android:scrollbars="none"
+-                    android:visibility="visible">
+-
+-                    <RelativeLayout
+-                        android:layout_width="wrap_content"
+-                        android:layout_height="wrap_content"
+-                        android:layout_marginStart="@dimen/_8sdp">
+-
+-                        <androidx.recyclerview.widget.RecyclerView
+-                            android:id="@+id/rv_recom"
+-                            android:layout_width="match_parent"
+-                            android:layout_height="wrap_content"
+-                            android:orientation="horizontal"
+-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+-                            tools:listitem="@layout/item_product_small" />
+-
+-                    </RelativeLayout>
++            <TextView
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:textColor="@color/white"
++                android:textAllCaps="true"
++                android:textSize="12sp"
++                android:fontFamily="@font/roboto_medium"
++                android:layout_gravity="center"
++                android:text="@string/take_your_art_in_your_home"/>
+ 
+-                </HorizontalScrollView>
++        </androidx.cardview.widget.CardView>
+ 
+-            </androidx.constraintlayout.widget.ConstraintLayout>
+-
+-            <!-- Section Category -->
+-            <RelativeLayout
+-                android:id="@+id/header_cat"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:layout_marginHorizontal="@dimen/_10sdp"
+-                android:layout_marginTop="@dimen/_16sdp">
++        <RelativeLayout
++            android:id="@+id/header_best"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginHorizontal="@dimen/_10sdp"
++            android:layout_marginTop="@dimen/_16sdp"
++            android:layout_marginStart="@dimen/_14sdp"
++            android:layout_marginEnd="@dimen/_14sdp"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toBottomOf="@id/iv_take">
+ 
+-                <TextView
+-                    style="@style/Subtitle2Medium"
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:layout_alignParentStart="true"
+-                    android:text="@string/categories"
+-                    android:textColor="@color/black" />
++            <TextView
++                style="@style/Subtitle2Medium"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_alignParentStart="true"
++                android:text="@string/recommendation"
++                android:textAllCaps="true"
++                android:textColor="@color/black" />
+ 
+-                <TextView
+-                    style="@style/Subtitle2Medium"
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:layout_alignParentEnd="true"
+-                    android:text="@string/see_all"
+-                    android:textAlignment="textEnd"
+-                    android:textColor="?colorPrimary" />
++            <TextView
++                style="@style/Subtitle2Medium"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_alignParentEnd="true"
++                android:text="@string/see_all"
++                android:textAlignment="textEnd"
++                android:textColor="?colorPrimary" />
+ 
+-            </RelativeLayout>
++        </RelativeLayout>
+ 
+-            <HorizontalScrollView
+-                android:id="@+id/sv_rv_cat"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:layout_marginTop="@dimen/_8sdp"
+-                android:scrollbars="none"
+-                android:visibility="visible">
+-
+-                <RelativeLayout
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:layout_marginStart="@dimen/_8sdp">
+-
+-                    <androidx.recyclerview.widget.RecyclerView
+-                        android:id="@+id/rv_cat"
+-                        android:layout_width="match_parent"
+-                        android:layout_height="wrap_content"
+-                        android:orientation="horizontal"
+-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+-                        tools:listitem="@layout/item_category" />
+-
+-                </RelativeLayout>
++        <androidx.recyclerview.widget.RecyclerView
++            android:id="@+id/rv_best"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            app:layout_constraintTop_toBottomOf="@+id/header_best"
++            android:layout_marginHorizontal="@dimen/_8sdp"
++            android:orientation="horizontal"
++            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
++            app:spanCount="4"
++            tools:itemCount="9"
++            tools:listitem="@layout/item_product_small" />
+ 
+-            </HorizontalScrollView>
+-
+-            <!-- Best Seller -->
+-            <RelativeLayout
+-                android:id="@+id/header_best"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:layout_marginHorizontal="@dimen/_10sdp"
+-                android:layout_marginTop="@dimen/_16sdp">
++        <RelativeLayout
++            android:id="@+id/header_category"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginHorizontal="@dimen/_10sdp"
++            android:layout_marginTop="@dimen/_16sdp"
++            android:layout_marginStart="@dimen/_14sdp"
++            android:layout_marginEnd="@dimen/_14sdp"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toBottomOf="@id/rv_best">
+ 
+-                <TextView
+-                    style="@style/Subtitle2Medium"
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:layout_alignParentStart="true"
+-                    android:text="Best Seller"
+-                    android:textColor="@color/black" />
++            <TextView
++                style="@style/Subtitle2Medium"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_alignParentStart="true"
++                android:text="@string/categories"
++                android:textAllCaps="true"
++                android:textColor="@color/black" />
+ 
+-                <TextView
+-                    style="@style/Subtitle2Medium"
+-                    android:layout_width="wrap_content"
+-                    android:layout_height="wrap_content"
+-                    android:layout_alignParentEnd="true"
+-                    android:text="@string/see_all"
+-                    android:textAlignment="textEnd"
+-                    android:textColor="?colorPrimary" />
++            <TextView
++                style="@style/Subtitle2Medium"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_alignParentEnd="true"
++                android:text="@string/see_all"
++                android:textAlignment="textEnd"
++                android:textColor="?colorPrimary" />
+ 
+-            </RelativeLayout>
++        </RelativeLayout>
+ 
+-            <androidx.recyclerview.widget.RecyclerView
+-                android:id="@+id/rv_best"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:layout_marginHorizontal="@dimen/_8sdp"
+-                android:orientation="vertical"
+-                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+-                app:spanCount="2"
+-                tools:itemCount="6"
+-                tools:listitem="@layout/item_product" />
+-            
+-        </LinearLayout>
+-    </androidx.core.widget.NestedScrollView>
++        <androidx.recyclerview.widget.RecyclerView
++            android:id="@+id/rv_categories"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            app:layout_constraintTop_toBottomOf="@+id/header_category"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            android:layout_marginHorizontal="@dimen/_8sdp"
++            android:orientation="horizontal"
++            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
++            tools:listitem="@layout/item_category" />
++
++    </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+-</LinearLayout>
+\ No newline at end of file
++</androidx.core.widget.NestedScrollView>
+\ No newline at end of file
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision ad9fcf0fc7048fcc90d4fda6edc76fb45bc2d291)
++++ /dev/null	(revision ad9fcf0fc7048fcc90d4fda6edc76fb45bc2d291)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <bytecodeTargetLevel target=\"15\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision ad9fcf0fc7048fcc90d4fda6edc76fb45bc2d291)
++++ b/.idea/compiler.xml	(date 1652802293328)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="CompilerConfiguration">
+-    <bytecodeTargetLevel target="15" />
++    <bytecodeTargetLevel target="11" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/res/drawable/bg_take.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/bg_take.xml b/app/src/main/res/drawable/bg_take.xml
+new file mode 100644
+--- /dev/null	(date 1652838336574)
++++ b/app/src/main/res/drawable/bg_take.xml	(date 1652838336574)
+@@ -0,0 +1,12 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="331dp"
++    android:height="30dp"
++    android:viewportWidth="331"
++    android:viewportHeight="30">
++  <path
++      android:pathData="M0,0h331v30h-331z"
++      android:fillColor="#2E2E2E"/>
++  <path
++      android:pathData="M85.58,11.86H87.88V18H89.14V11.86H91.43V10.89H85.58V11.86ZM91.52,18H92.71L94.55,12.83C94.6,12.72 94.63,12.6 94.66,12.5C94.69,12.39 94.72,12.28 94.74,12.16H94.79C94.82,12.28 94.85,12.39 94.88,12.5C94.91,12.6 94.95,12.72 94.99,12.83L96.83,18H98.18L95.5,10.85H94.18L91.52,18ZM92.79,16.3L96.82,16.3L96.48,15.34L93.13,15.33L92.79,16.3ZM99.36,18H100.63V15.67L105.03,10.89H103.61L100.63,14.21V10.89H99.36V18ZM103.71,18H105.29L101.92,13.56L101.1,14.46L103.71,18ZM106.37,18H111.27V17.03H107.64V14.82H110.76V13.85H107.64V11.86H111.22V10.89H106.37V18ZM117.37,18H118.64V15.42L121.1,10.89H119.84L118.35,13.7C118.29,13.8 118.25,13.9 118.21,13.99C118.16,14.09 118.12,14.18 118.09,14.27H118.04C118.01,14.18 117.97,14.09 117.92,13.99C117.88,13.9 117.83,13.8 117.78,13.7L116.31,10.89H114.88L117.37,15.45V18ZM122.01,14.66C122.01,15.76 122.31,16.62 122.91,17.23C123.52,17.84 124.29,18.15 125.25,18.15C126.2,18.15 126.97,17.84 127.58,17.23C128.18,16.62 128.49,15.76 128.49,14.66V14.24C128.49,13.13 128.18,12.27 127.58,11.66C126.97,11.05 126.2,10.74 125.25,10.74C124.29,10.74 123.52,11.05 122.91,11.66C122.31,12.27 122.01,13.13 122.01,14.24V14.66ZM123.3,14.68V14.21C123.3,13.43 123.48,12.82 123.83,12.39C124.18,11.96 124.66,11.75 125.25,11.75C125.84,11.75 126.31,11.96 126.67,12.39C127.02,12.82 127.2,13.43 127.2,14.21V14.68C127.2,15.46 127.02,16.07 126.67,16.5C126.31,16.93 125.84,17.15 125.25,17.15C124.66,17.15 124.18,16.93 123.83,16.5C123.48,16.07 123.3,15.46 123.3,14.68ZM130.17,15.49C130.17,16.38 130.44,17.05 130.98,17.49C131.52,17.93 132.19,18.15 132.98,18.15C133.76,18.15 134.42,17.93 134.96,17.49C135.51,17.05 135.78,16.38 135.78,15.49V10.89H134.55V15.51C134.55,16.07 134.4,16.49 134.12,16.75C133.83,17.02 133.46,17.15 132.99,17.15C132.52,17.15 132.15,17.02 131.86,16.75C131.58,16.49 131.44,16.07 131.44,15.51V10.89H130.17V15.49ZM137.73,18H138.99V15.28H140.28C141.13,15.28 141.78,15.08 142.24,14.68C142.7,14.28 142.93,13.74 142.93,13.07C142.93,12.4 142.7,11.87 142.24,11.48C141.78,11.09 141.13,10.89 140.28,10.89H137.73V18ZM138.99,14.33V11.85H140.27C140.79,11.85 141.15,11.96 141.36,12.19C141.56,12.43 141.67,12.72 141.67,13.07C141.67,13.43 141.56,13.73 141.36,13.97C141.15,14.21 140.79,14.33 140.27,14.33H138.99ZM141.81,18H143.24L141.43,14.63L140.09,14.72L141.81,18ZM146.64,18H147.82L149.67,12.83C149.71,12.72 149.75,12.6 149.77,12.5C149.81,12.39 149.84,12.28 149.86,12.16H149.91C149.93,12.28 149.96,12.39 149.99,12.5C150.02,12.6 150.06,12.72 150.1,12.83L151.94,18H153.29L150.62,10.85H149.3L146.64,18ZM147.9,16.3L151.94,16.3L151.6,15.34L148.25,15.33L147.9,16.3ZM154.47,18H155.74V15.28H157.03C157.87,15.28 158.53,15.08 158.99,14.68C159.45,14.28 159.68,13.74 159.68,13.07C159.68,12.4 159.45,11.87 158.99,11.48C158.53,11.09 157.87,10.89 157.03,10.89H154.47V18ZM155.74,14.33V11.85H157.02C157.54,11.85 157.9,11.96 158.1,12.19C158.31,12.43 158.41,12.72 158.41,13.07C158.41,13.43 158.31,13.73 158.1,13.97C157.9,14.21 157.54,14.33 157.02,14.33H155.74ZM158.55,18H159.99L158.18,14.63L156.84,14.72L158.55,18ZM160.3,11.86H162.6V18H163.86V11.86H166.16V10.89H160.3V11.86ZM170.14,18H171.4V10.89H170.14V18ZM173.45,18H174.57V13.39C174.57,13.28 174.57,13.17 174.56,13.05C174.55,12.93 174.55,12.82 174.54,12.71H174.59C174.62,12.8 174.67,12.9 174.71,13C174.76,13.09 174.82,13.19 174.88,13.29L177.82,18H179.2V10.89H178.07V15.47C178.07,15.57 178.08,15.7 178.08,15.85C178.09,16 178.09,16.12 178.1,16.23H178.05C178.02,16.14 177.97,16.04 177.91,15.92C177.86,15.81 177.81,15.7 177.75,15.6L174.82,10.89H173.45V18ZM185.77,18H187.04V15.42L189.5,10.89H188.24L186.75,13.7C186.7,13.8 186.65,13.9 186.61,13.99C186.57,14.09 186.53,14.18 186.49,14.27H186.45C186.41,14.18 186.37,14.09 186.32,13.99C186.28,13.9 186.24,13.8 186.18,13.7L184.71,10.89H183.28L185.77,15.45V18ZM190.41,14.66C190.41,15.76 190.71,16.62 191.32,17.23C191.92,17.84 192.7,18.15 193.65,18.15C194.6,18.15 195.38,17.84 195.98,17.23C196.59,16.62 196.89,15.76 196.89,14.66V14.24C196.89,13.13 196.59,12.27 195.98,11.66C195.38,11.05 194.6,10.74 193.65,10.74C192.7,10.74 191.92,11.05 191.32,11.66C190.71,12.27 190.41,13.13 190.41,14.24V14.66ZM191.71,14.68V14.21C191.71,13.43 191.88,12.82 192.23,12.39C192.59,11.96 193.06,11.75 193.65,11.75C194.24,11.75 194.71,11.96 195.07,12.39C195.43,12.82 195.6,13.43 195.6,14.21V14.68C195.6,15.46 195.43,16.07 195.07,16.5C194.71,16.93 194.24,17.15 193.65,17.15C193.06,17.15 192.59,16.93 192.23,16.5C191.88,16.07 191.71,15.46 191.71,14.68ZM198.57,15.49C198.57,16.38 198.84,17.05 199.38,17.49C199.93,17.93 200.59,18.15 201.38,18.15C202.16,18.15 202.82,17.93 203.37,17.49C203.91,17.05 204.18,16.38 204.18,15.49V10.89H202.95V15.51C202.95,16.07 202.81,16.49 202.52,16.75C202.24,17.02 201.86,17.15 201.39,17.15C200.92,17.15 200.55,17.02 200.26,16.75C199.98,16.49 199.84,16.07 199.84,15.51V10.89H198.57V15.49ZM206.13,18H207.4V15.28H208.69C209.53,15.28 210.18,15.08 210.65,14.68C211.11,14.28 211.34,13.74 211.34,13.07C211.34,12.4 211.11,11.87 210.65,11.48C210.18,11.09 209.53,10.89 208.69,10.89H206.13V18ZM207.4,14.33V11.85H208.68C209.2,11.85 209.56,11.96 209.76,12.19C209.97,12.43 210.07,12.72 210.07,13.07C210.07,13.43 209.97,13.73 209.76,13.97C209.56,14.21 209.2,14.33 208.68,14.33H207.4ZM210.21,18H211.65L209.84,14.63L208.49,14.72L210.21,18ZM215.88,18H217.15V14.82H220.55V18H221.82V10.89H220.55V13.85H217.15V10.89H215.88V18ZM223.57,14.66C223.57,15.76 223.88,16.62 224.48,17.23C225.08,17.84 225.86,18.15 226.81,18.15C227.76,18.15 228.54,17.84 229.15,17.23C229.75,16.62 230.05,15.76 230.05,14.66V14.24C230.05,13.13 229.75,12.27 229.15,11.66C228.54,11.05 227.76,10.74 226.81,10.74C225.86,10.74 225.08,11.05 224.48,11.66C223.88,12.27 223.57,13.13 223.57,14.24V14.66ZM224.87,14.68V14.21C224.87,13.43 225.04,12.82 225.4,12.39C225.75,11.96 226.22,11.75 226.81,11.75C227.4,11.75 227.88,11.96 228.23,12.39C228.59,12.82 228.76,13.43 228.76,14.21V14.68C228.76,15.46 228.59,16.07 228.23,16.5C227.88,16.93 227.4,17.15 226.81,17.15C226.22,17.15 225.75,16.93 225.4,16.5C225.04,16.07 224.87,15.46 224.87,14.68ZM231.81,18H232.88V13.12C232.88,13.02 232.87,12.9 232.86,12.78C232.85,12.65 232.85,12.53 232.84,12.42H232.88C232.9,12.53 232.93,12.65 232.97,12.78C233,12.9 233.04,13.02 233.08,13.12L234.93,18H235.98L237.8,13.13C237.84,13.02 237.88,12.91 237.92,12.78C237.96,12.65 237.99,12.53 238.02,12.43H238.07C238.05,12.53 238.04,12.65 238.04,12.78C238.03,12.91 238.03,13.02 238.03,13.13V18H239.28V10.89H237.58L235.77,15.75C235.73,15.85 235.69,15.96 235.65,16.07C235.62,16.17 235.59,16.28 235.56,16.38H235.52C235.49,16.28 235.46,16.17 235.42,16.07C235.38,15.96 235.35,15.85 235.31,15.75L233.46,10.89H231.81V18ZM241.3,18H246.21V17.03H242.57V14.82H245.69V13.85H242.57V11.86H246.15V10.89H241.3V18Z"
++      android:fillColor="#ffffff"/>
++</vector>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CodeInsightWorkspaceSettings\">\r\n    <option name=\"optimizeImportsOnTheFly\" value=\"true\" />\r\n  </component>\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/bg_search.xml\" value=\"0.132\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/bottom_nav_icon_color_selector.xml\" value=\"0.1705\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/box_black_transparent_12dp.xml\" value=\"0.1705\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/box_only_top_radius.xml\" value=\"0.132\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/box_white_only_top_radius.xml\" value=\"0.132\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_bg_circle.xml\" value=\"0.132\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_cart_black.xml\" value=\"0.1705\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_dashboard_black_24dp.xml\" value=\"0.132\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_home_black_24dp.xml\" value=\"0.132\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_keranjang.xml\" value=\"0.132\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/line_divider.xml\" value=\"0.1705\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/post_divider.xml\" value=\"0.1705\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_detail_product.xml\" value=\"0.264\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_navigation.xml\" value=\"0.25416666666666665\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_in.xml\" value=\"0.264\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_up.xml\" value=\"0.264\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_splash.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_feeds.xml\" value=\"0.22592592592592592\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_home.xml\" value=\"0.264\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_profile.xml\" value=\"0.264\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_category.xml\" value=\"0.4\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_post.xml\" value=\"0.264\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product.xml\" value=\"0.25416666666666665\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_small.xml\" value=\"0.6\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_home_toolbar.xml\" value=\"0.25416666666666665\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_overview.xml\" value=\"0.22592592592592592\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_reviews.xml\" value=\"0.22592592592592592\" />\r\n        <entry key=\"..\\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/menu/bottom_nav_menu.xml\" value=\"0.25416666666666665\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_15_PREVIEW\" project-jdk-name=\"15\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision ad9fcf0fc7048fcc90d4fda6edc76fb45bc2d291)
++++ b/.idea/misc.xml	(date 1652848631585)
+@@ -1,43 +1,33 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="CodeInsightWorkspaceSettings">
+-    <option name="optimizeImportsOnTheFly" value="true" />
+-  </component>
+   <component name="DesignSurface">
+     <option name="filePathToZoomLevelMap">
+       <map>
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/bg_search.xml" value="0.132" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.1705" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/box_black_transparent_12dp.xml" value="0.1705" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/box_only_top_radius.xml" value="0.132" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/box_white_only_top_radius.xml" value="0.132" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_bg_circle.xml" value="0.132" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_cart_black.xml" value="0.1705" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.132" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.132" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_keranjang.xml" value="0.132" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/line_divider.xml" value="0.1705" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/post_divider.xml" value="0.1705" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_detail_product.xml" value="0.264" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_navigation.xml" value="0.25416666666666665" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_splash.xml" value="0.2" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_feeds.xml" value="0.22592592592592592" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_category.xml" value="0.4" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_post.xml" value="0.264" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product.xml" value="0.25416666666666665" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_small.xml" value="0.6" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_home_toolbar.xml" value="0.25416666666666665" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_overview.xml" value="0.22592592592592592" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_reviews.xml" value="0.22592592592592592" />
+-        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/bg_take.xml" value="0.1945" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/box_black_transparent_12dp.xml" value="0.1945" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/box_white_8dp.xml" value="0.1945" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_back_square.xml" value="0.1945" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_banner.xml" value="0.1945" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_profile.xml" value="0.1945" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_detail_product.xml" value="0.17074275362318841" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_navigation.xml" value="0.17074275362318841" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_in.xml" value="0.17074275362318841" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_up.xml" value="0.17074275362318841" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_splash.xml" value="0.17074275362318841" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_feeds.xml" value="0.17074275362318841" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_home.xml" value="0.25" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_category.xml" value="0.21" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_post.xml" value="0.17074275362318841" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product.xml" value="0.33" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_small.xml" value="0.1" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_home_toolbar.xml" value="0.25" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_overview.xml" value="0.17074275362318841" />
++        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_reviews.xml" value="0.17074275362318841" />
+       </map>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="15" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"GRADLE\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleHome\" value=\"$PROJECT_DIR$/../../../../../../Gradle/gradle-7.3.3\" />\r\n        <option name=\"gradleJvm\" value=\"15\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision ad9fcf0fc7048fcc90d4fda6edc76fb45bc2d291)
++++ b/.idea/gradle.xml	(date 1652833130267)
+@@ -7,8 +7,7 @@
+         <option name="testRunner" value="GRADLE" />
+         <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../../../Gradle/gradle-7.3.3" />
+-        <option name="gradleJvm" value="15" />
++        <option name="gradleHome" value="$PROJECT_DIR$/../../../../../Program Files/Gradle/gradle-6.6.1" />
+         <option name="modules">
+           <set>
+             <option value="$PROJECT_DIR$" />
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">Artjuna-App</string>\r\n    <string name=\"email\">Email</string>\r\n    <string name=\"sign_in\">Sign In</string>\r\n    <string name=\"password\">Password</string>\r\n    <string name=\"doesn_t_have_an_account\">Doesn\\'t have an account?</string>\r\n    <string name=\"sign_up\">Sign Up</string>\r\n    <string name=\"full_name\">Full Name</string>\r\n    <string name=\"username\">Username</string>\r\n    <string name=\"already_have_an_account\">Already have an account?</string>\r\n    <string name=\"title_activity_navigation\">NavigationActivity</string>\r\n    <string name=\"title_home\">Home</string>\r\n    <string name=\"title_feeds\">Feeds</string>\r\n    <string name=\"title_profile\">Profile</string>\r\n    <string name=\"see_all\">See All</string>\r\n    <string name=\"recommendation\">Recommendation</string>\r\n    <string name=\"search\">Search</string>\r\n    <string name=\"categories\">Categories</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision ad9fcf0fc7048fcc90d4fda6edc76fb45bc2d291)
++++ b/app/src/main/res/values/strings.xml	(date 1652839856887)
+@@ -16,4 +16,6 @@
+     <string name="recommendation">Recommendation</string>
+     <string name="search">Search</string>
+     <string name="categories">Categories</string>
++    <string name="best_seller">Best Seller</string>
++    <string name="take_your_art_in_your_home">Take Your Art in Your Home</string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/layout/layout_home_toolbar.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"wrap_content\"\r\n    android:background=\"?colorPrimary\"\r\n    android:orientation=\"vertical\"\r\n    android:paddingHorizontal=\"@dimen/_10sdp\"\r\n    android:paddingVertical=\"@dimen/_8sdp\">\r\n\r\n    <Button\r\n        android:id=\"@+id/btn_search\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_toStartOf=\"@id/ly_icon\"\r\n        android:background=\"@drawable/box_white_8dp\"\r\n        android:drawableLeft=\"@drawable/ic_search\"\r\n        android:text=\"@string/search\"\r\n        android:textAlignment=\"textStart\"\r\n        android:textAllCaps=\"false\"\r\n        android:textColor=\"@color/grey_700\"\r\n        app:backgroundTint=\"@null\" />\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/ly_icon\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_alignParentEnd=\"true\"\r\n        android:layout_centerVertical=\"true\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <androidx.appcompat.widget.AppCompatImageView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginHorizontal=\"@dimen/_5sdp\"\r\n            android:src=\"@drawable/ic_notification\"\r\n            app:tint=\"@color/white\" />\r\n\r\n        <androidx.appcompat.widget.AppCompatImageView\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginHorizontal=\"@dimen/_5sdp\"\r\n            android:src=\"@drawable/ic_cart\"\r\n            app:tint=\"@color/white\" />\r\n\r\n    </LinearLayout>\r\n\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/layout_home_toolbar.xml b/app/src/main/res/layout/layout_home_toolbar.xml
+--- a/app/src/main/res/layout/layout_home_toolbar.xml	(revision ad9fcf0fc7048fcc90d4fda6edc76fb45bc2d291)
++++ b/app/src/main/res/layout/layout_home_toolbar.xml	(date 1652835884055)
+@@ -4,7 +4,6 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+-    android:background="?colorPrimary"
+     android:orientation="vertical"
+     android:paddingHorizontal="@dimen/_10sdp"
+     android:paddingVertical="@dimen/_8sdp">
+@@ -12,11 +11,12 @@
+     <Button
+         android:id="@+id/btn_search"
+         android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
++        android:layout_height="37dp"
+         android:layout_toStartOf="@id/ly_icon"
+         android:background="@drawable/box_white_8dp"
+         android:drawableLeft="@drawable/ic_search"
+         android:text="@string/search"
++        android:textSize="@dimen/_8ssp"
+         android:textAlignment="textStart"
+         android:textAllCaps="false"
+         android:textColor="@color/grey_700"
+@@ -35,14 +35,14 @@
+             android:layout_height="wrap_content"
+             android:layout_marginHorizontal="@dimen/_5sdp"
+             android:src="@drawable/ic_notification"
+-            app:tint="@color/white" />
++            app:tint="@color/black_700" />
+ 
+         <androidx.appcompat.widget.AppCompatImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginHorizontal="@dimen/_5sdp"
+             android:src="@drawable/ic_cart"
+-            app:tint="@color/white" />
++            app:tint="@color/black_700" />
+ 
+     </LinearLayout>
+ 
