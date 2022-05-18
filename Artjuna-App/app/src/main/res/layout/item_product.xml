@@ -8,8 +8,8 @@
     android:layout_marginTop="@dimen/_8sdp"
     android:layout_marginHorizontal="@dimen/_4sdp"
     android:orientation="vertical"
-    app:cardCornerRadius="@dimen/_8sdp"
-    app:cardElevation="@dimen/_2sdp">
+    app:cardCornerRadius="@dimen/_2sdp"
+    app:cardElevation="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/iv_image"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_108sdp"
+            android:layout_height="@dimen/_160sdp"
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars"/>
 
@@ -33,7 +33,7 @@
 
             <TextView
                 android:id="@+id/tv_name"
-                style="@style/Body1Regular"
+                style="@style/Subtitle1Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_2sdp"
@@ -56,16 +56,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_2sdp"
                 android:text="Kota Bandung"/>
-
-            <TextView
-                android:id="@+id/tv_rating_sold"
-                style="@style/Body2Regular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/_2sdp"
-                android:text="4.5 | 832 Sold"
-                app:drawableLeftCompat="@drawable/ic_star_card_small" />
-
 
         </LinearLayout>
 
