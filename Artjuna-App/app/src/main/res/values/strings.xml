@@ -16,4 +16,6 @@
     <string name="recommendation">Recommendation</string>
     <string name="search">Search</string>
     <string name="categories">Categories</string>
+    <string name="customize">Customize</string>
+    <string name="checkout">Checkout</string>
 </resources>
