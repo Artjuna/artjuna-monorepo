@@ -20,7 +20,6 @@ class RecomAdapter:ListAdapter<Product, RecomAdapter.RecomViewHolder>(DIFF_CALLB
                 tvName.text = product.name
                 tvPrice.text = "Rp ${product.price}"
                 tvCity.text = product.city
-                tvRatingSold.text = "${product.rating} | ${product.sold} sold"
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailProductActivity::class.java)
