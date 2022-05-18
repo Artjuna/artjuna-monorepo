@@ -7,4 +7,6 @@ class HomeViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     fun getRegister() = mainRepository.getRegister()
 
+    fun getRecommended() = mainRepository.getRecommended()
+
 }

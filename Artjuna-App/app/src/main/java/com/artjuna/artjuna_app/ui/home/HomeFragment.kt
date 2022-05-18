@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentHomeBinding
 import com.artjuna.artjuna_app.ui.home.adapter.RecomAdapter
-import com.artjuna.artjuna_app.utils.AppUtils
-import com.artjuna.artjuna_app.utils.DummyData
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -32,13 +30,6 @@ class HomeFragment : Fragment() {
 
         setupAdapter()
         setData()
-
-        homeViewModel.getRegister().observe(viewLifecycleOwner){
-            when(it){
-                is Result.Success -> AppUtils.showToast(requireContext(), it.data.toString())
-            }
-        }
-
         return root
     }
 
@@ -47,7 +38,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun setData() {
-        recomAdapter.submitList(DummyData.listProduct())
+        homeViewModel.getRecommended().observe(viewLifecycleOwner){
+            when(it){
+                is Result.Success -> {
+                    recomAdapter.submitList(it.data)
+                }
+
+            }
+        }
     }
 
     override fun onDestroyView() {
