@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentHomeBinding
 import com.artjuna.artjuna_app.ui.home.adapter.RecomAdapter
+import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.DummyData
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
@@ -17,7 +19,7 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
+    private val homeViewModel:HomeViewModel by viewModel()
     private val recomAdapter = RecomAdapter()
 
     override fun onCreateView(
@@ -25,14 +27,17 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         setupAdapter()
         setData()
+
+        homeViewModel.getRegister().observe(viewLifecycleOwner){
+            when(it){
+                is Result.Success -> AppUtils.showToast(requireContext(), it.data.toString())
+            }
+        }
 
         return root
     }

@@ -1,4 +1,7 @@
 package com.artjuna.artjuna_app.core.data.source.remote
 
-class RemoteDataSource {
+import com.artjuna.artjuna_app.core.data.source.remote.network.ApiService
+
+class RemoteDataSource(private val api:ApiService) {
+    suspend fun getRegister() = api.getRegister()
 }
