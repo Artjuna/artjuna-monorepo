@@ -5,15 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_8sdp"
-    android:layout_marginHorizontal="@dimen/_4sdp"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_marginStart="@dimen/_4sdp"
+    android:layout_marginEnd="@dimen/_8sdp"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:elevation="0dp"
     android:orientation="vertical"
-    app:cardElevation="@dimen/_2sdp">
+    app:cardCornerRadius="@dimen/_2sdp"
+    app:cardElevation="0dp">
 
     <LinearLayout
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_5sdp"
         android:orientation="vertical">
 
         <ImageView
@@ -35,11 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_2sdp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:textColor="@color/black_500"
-                android:textSize="@dimen/_9ssp"
-                android:fontFamily="@font/roboto_medium"
+                style="@style/Body2Medium"
                 android:text="Talenan Kayu Keren Banget"/>
 
             <TextView
@@ -47,9 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_2sdp"
-                android:textSize="@dimen/_8ssp"
-                android:textColor="@color/black_500"
-                android:fontFamily="@font/roboto_bold"
+                style="@style/Body3Medium"
                 android:text="Rp 80.000"/>
 
             <TextView
@@ -57,19 +54,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_2sdp"
-                android:textSize="@dimen/_8ssp"
-                android:fontFamily="@font/roboto"
+                style="@style/Body3Regular"
+                android:textColor="@color/grey_700"
                 android:text="Kota Bandung"/>
-
-            <!-- <TextView
-                android:id="@+id/tv_rating_sold"
-                style="@style/Body2Regular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/_2sdp"
-                android:text="4.5 | 832 Sold"
-                app:drawableLeftCompat="@drawable/ic_star_card_small" /> -->
-
 
         </LinearLayout>
 

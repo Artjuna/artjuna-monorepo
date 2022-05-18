@@ -100,21 +100,21 @@
 
     <style name="Body2Regular" parent="TextAppearance.MaterialComponents.Body2">
         <item name="fontFamily">@font/roboto</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
     </style>
     <style name="Body2Medium" parent="TextAppearance.MaterialComponents.Body2">
         <item name="fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
     </style>
 
     <style name="Body3Regular" parent="TextAppearance.MaterialComponents.Body2">
         <item name="fontFamily">@font/roboto</item>
-        <item name="android:textSize">8sp</item>
+        <item name="android:textSize">@dimen/_8ssp</item>
         <item name="lineHeight">16sp</item>
     </style>
     <style name="Body3Medium" parent="TextAppearance.MaterialComponents.Body2">
         <item name="fontFamily">@font/roboto_medium</item>
-        <item name="android:textSize">8sp</item>
+        <item name="android:textSize">@dimen/_8ssp</item>
     </style>
 
 </resources>
