@@ -156,7 +156,7 @@
 
     <include
         android:id="@+id/bottom_bar"
-        layout="@layout/layout_bottom_custom"
+        layout="@layout/bottombar_custom"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_56sdp"
         android:layout_alignParentBottom="true" />
