@@ -1,0 +1,15 @@
+Index: app/src/main/res/values-night/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-night/strings.xml b/app/src/main/res/values-night/strings.xml
+new file mode 100644
+--- /dev/null	(date 1652859042174)
++++ b/app/src/main/res/values-night/strings.xml	(date 1652859042174)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <string name="take_your_art_in_your_home">Take Your Art in Your Home</string>
++</resources>
+\ No newline at end of file
