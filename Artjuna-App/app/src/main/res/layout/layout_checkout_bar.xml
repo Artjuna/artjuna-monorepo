@@ -1,0 +1,40 @@
+<LinearLayout android:id="@+id/footer"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/_56sdp"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:gravity="center_vertical"
+    android:padding="@dimen/_8sdp"
+    android:background="@color/white"
+    android:elevation="@dimen/_8sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            style="@style/Body1Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Pay"/>
+        <TextView
+            style="@style/Subtitle2Medium"
+            android:textColor="@color/black_700"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 80.000"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_checkout"
+        style="@style/ButtonPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Make Order" />
+
+</LinearLayout>

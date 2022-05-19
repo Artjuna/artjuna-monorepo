@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_200"
+    android:orientation="vertical"
+    tools:context=".ui.checkout.CheckoutActivity">
+
+    <!-- header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_56sdp"
+        android:padding="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:gravity="center_vertical"
+        android:background="?attr/colorOnPrimary">
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_line"/>
+        <TextView
+            android:id="@+id/title"
+            style="@style/Subtitle1Medium"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Checkout"/>
+    </LinearLayout>
+
+    <!-- content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- Address -->
+            <include
+                android:id="@+id/address"
+                layout="@layout/layout_checkout_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4sdp"/>
+
+            <!-- Summary Product -->
+            <include
+                android:id="@+id/product"
+                layout="@layout/layout_checkout_product_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4sdp"/>
+
+            <!-- Summary Price -->
+            <include
+                android:id="@+id/price"
+                layout="@layout/layout_checkout_price_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4sdp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <include
+        android:id="@+id/bottom_bar"
+        layout="@layout/layout_checkout_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_56sdp"/>
+
+
+</LinearLayout>

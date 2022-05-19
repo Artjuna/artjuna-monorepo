@@ -1,0 +1,52 @@
+<com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_16sdp"
+        android:orientation="vertical">
+        <!-- Header -->
+        <RelativeLayout
+            android:id="@+id/header_cat"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/Subtitle2Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/delivery_address"
+                android:textColor="@color/black" />
+
+            <TextView
+                style="@style/Subtitle2Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Change Address"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black_200" />
+
+        </RelativeLayout>
+
+        <!-- Name and address -->
+        <TextView
+            android:id="@+id/tv_name_number"
+            style="@style/Body1Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temp_name_number"/>
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/Body1Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey_700"
+            android:text="@string/temp_address"/>
+
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

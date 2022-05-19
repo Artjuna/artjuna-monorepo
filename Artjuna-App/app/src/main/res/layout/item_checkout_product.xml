@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_4sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="@dimen/_64sdp"
+        android:layout_height="@dimen/_64sdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sample_product"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/Subtitle2Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Talenan Kayu Keren Banget"/>
+
+        <TextView
+            android:id="@+id/tv_price"
+            style="@style/Subtitle2Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:text="Rp 80.000"/>
+
+        <TextView
+            android:id="@+id/tv_city"
+            style="@style/Subtitle2Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:text="1 Item"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
