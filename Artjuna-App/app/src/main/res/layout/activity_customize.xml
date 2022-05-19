@@ -31,6 +31,18 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/img_cust" />
 
+                    <ImageButton
+                        android:id="@+id/btn_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:elevation="@dimen/_48sdp"
+                        android:src="@drawable/ic_back_square"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.044"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/tv_product_name"
                         android:layout_width="match_parent"
