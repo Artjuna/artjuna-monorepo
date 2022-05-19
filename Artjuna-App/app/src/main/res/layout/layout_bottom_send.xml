@@ -1,0 +1,20 @@
+<LinearLayout android:id="@+id/footer"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/_56sdp"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:layout_alignParentBottom="true"
+    android:gravity="center_vertical"
+    android:padding="@dimen/_8sdp"
+    android:elevation="@dimen/_8sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Button
+        android:id="@+id/btn_customize"
+        style="@style/ButtonPrimary"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="@string/send" />
+
+</LinearLayout>
