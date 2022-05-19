@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.order.OrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.cart.CartActivity"
             android:exported="false" />
         <activity
