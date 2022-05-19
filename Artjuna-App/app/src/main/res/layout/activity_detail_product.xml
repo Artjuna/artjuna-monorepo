@@ -59,7 +59,7 @@
 
     <include
         android:id="@+id/bottom_bar"
-        layout="@layout/layout_bottom_button"
+        layout="@layout/layout_detailproduct_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_56sdp"
         android:layout_alignParentBottom="true" />
