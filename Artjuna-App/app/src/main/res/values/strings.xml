@@ -19,4 +19,7 @@
     <string name="take_your_art_in_your_home">Take Your Art in Your Home</string>
     <string name="customize">Customize</string>
     <string name="checkout">Checkout</string>
+    <string name="temp_name_number">Eren Yeager (0823828382)</string>
+    <string name="temp_address">Jl. Erwin Smith No. 4, Shiganshina, Paradis, ID 23823</string>
+    <string name="delivery_address">Delivery Address</string>
 </resources>
