@@ -72,6 +72,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_8sdp">
+        <TextView
+            android:id="@+id/tv_liked"
+            style="@style/Body1Regular"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Liked by 239 People"/>
         <ImageView
             android:id="@+id/btn_like"
             android:layout_width="wrap_content"
@@ -87,14 +94,6 @@
     </LinearLayout>
 
     <!-- Liked By -->
-    <TextView
-        android:id="@+id/tv_liked"
-        style="@style/Body1Regular"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:text="Liked by 239 People"/>
 
     <!-- Name & Caption -->
     <TextView
