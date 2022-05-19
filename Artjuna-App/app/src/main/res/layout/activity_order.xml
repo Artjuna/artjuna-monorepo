@@ -28,14 +28,14 @@
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="My Cart"/>
+            android:text="My Order"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_product"
+        android:id="@+id/rv_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_product_cart"
+        tools:listitem="@layout/item_product_order"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 

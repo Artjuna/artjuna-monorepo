@@ -117,4 +117,35 @@
         <item name="android:textSize">@dimen/_8ssp</item>
     </style>
 
+
+    <style name="BadgeDiskusi" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/_8ssp</item>
+        <item name="android:text">Dalam Diskusi</item>
+        <item name="android:textColor">@color/dd_text</item>
+        <item name="android:background">@drawable/bg_dd</item>
+    </style>
+    <style name="BadgeDikirim" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/_8ssp</item>
+        <item name="android:text">Dalam Pengiriman</item>
+        <item name="android:textColor">@color/dp_text</item>
+        <item name="android:background">@drawable/bg_dp</item>
+    </style>
+    <style name="BadgeSelesai" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/_8ssp</item>
+        <item name="android:text">Selesai</item>
+        <item name="android:textColor">@color/sel_text</item>
+        <item name="android:background">@drawable/bg_sel</item>
+    </style>
+    <style name="BadgeBatal" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">@dimen/_8ssp</item>
+        <item name="android:text">Selesai</item>
+        <item name="android:textColor">@color/bat_text</item>
+        <item name="android:background">@drawable/bg_bat</item>
+    </style>
+
+
 </resources>

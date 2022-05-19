@@ -8,4 +8,13 @@
     <color name="grey_700">#727272</color>
     <color name="grey_500">#C4C4C4</color>
     <color name="grey_200">#EBEBEB</color>
+
+    <color name="dd_text">#656565</color>
+    <color name="dd_bg">#DCDCDC</color>
+    <color name="dp_text">#070054</color>
+    <color name="dp_bg">#D1E6FF</color>
+    <color name="sel_text">#158E29</color>
+    <color name="sel_bg">#B5FFC1</color>
+    <color name="bat_text">#C20101</color>
+    <color name="bat_bg">#FFD1D1</color>
 </resources>
