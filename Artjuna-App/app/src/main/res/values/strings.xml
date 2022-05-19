@@ -21,4 +21,7 @@
     <string name="checkout">Checkout</string>
     <string name="send">Send</string>
     <string name="add_product">Add Product</string>
+    <string name="add_detail_product">Add detail product</string>
+    <string name="product_name">Product Name</string>
+    <string name="input_your_product_name">Input your product name</string>
 </resources>
