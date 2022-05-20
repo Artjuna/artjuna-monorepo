@@ -1,5 +1,9 @@
 package com.artjuna.artjuna_app.core.data.source.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Product(
     var id:String="",
     var name:String="",
@@ -13,4 +17,4 @@ data class Product(
     var storeCity:String="",
     var storeName:String="",
     var storeImage:String="",
-)
+):Parcelable
