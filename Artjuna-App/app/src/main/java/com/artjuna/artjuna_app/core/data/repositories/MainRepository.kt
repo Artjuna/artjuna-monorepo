@@ -16,22 +16,6 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
         emit(Result.Success(DummyData.listProduct()))
     }
 
-    fun getRegister():LiveData<Result<Int>> = liveData{
-        emit(Result.Loading)
-        try {
-            remote.getRegister().let {
-                if(it.isSuccessful){
-                    val body = it.body()
-                    emit(Result.Success(body?.size!!))
-                }else {
-                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
-                }
-            }
-        } catch (e: Exception) {
-            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
-        }
-    }
-
     fun getProduct():LiveData<Result<List<Product>>> = liveData {
         emit(Result.Loading)
         try {
