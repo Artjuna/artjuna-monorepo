@@ -36,7 +36,7 @@
             android:id="@+id/rv_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/item_checkout_product"
+            tools:listitem="@layout/item_product_checkout"
             tools:itemCount="1"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     </LinearLayout>
