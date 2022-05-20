@@ -20,11 +20,8 @@ class ProductListActivity : AppCompatActivity() {
         populateView()
     }
 
-    private fun populateView() {
-        if(intent.extras != null){
-            val title = this.intent.extras?.getString(EXTRA_PAGE_TITLE)
-            binding.tvTitle.text = title
-        }
+    private fun setAdapter() {
+        binding.rvProduct.adapter = productAdapter
     }
 
     private fun setData() {
@@ -34,10 +31,13 @@ class ProductListActivity : AppCompatActivity() {
         }
     }
 
-    private fun setAdapter() {
-        binding.rvProduct.adapter = productAdapter
+    private fun populateView() {
+        if(intent.extras != null){
+            val title = this.intent.extras?.getString(EXTRA_PAGE_TITLE)
+            binding.tvTitle.text = title
+        }
+        binding.btnBack.setOnClickListener { onBackPressed() }
     }
-
     companion object{
         const val EXTRA_PAGE_TITLE = "EXTRA_PAGE_TITLE"
         const val EXTRA_PRODUCT_LIST = "EXTRA_PRODUCT_LIST"

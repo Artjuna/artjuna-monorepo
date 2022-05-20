@@ -23,6 +23,7 @@ class RecomAdapter:ListAdapter<Product, RecomAdapter.RecomViewHolder>(DIFF_CALLB
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailProductActivity::class.java)
+                    intent.putExtra(DetailProductActivity.EXTRA_PRODUCT, product)
                     itemView.context.startActivity(intent)
                 }
             }
