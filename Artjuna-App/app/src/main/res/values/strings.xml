@@ -24,4 +24,8 @@
     <string name="add_detail_product">Add detail product</string>
     <string name="product_name">Product Name</string>
     <string name="input_your_product_name">Input your product name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="temp_name_number">Eren Yeager (08237283829)</string>
+    <string name="temp_address">Jl. Erwin Smith No. 4, Shiganshina, Paradis, ID 23823</string>
 </resources>
