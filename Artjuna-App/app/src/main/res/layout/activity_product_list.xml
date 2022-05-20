@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back_line"/>
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/tv_title"
             style="@style/Subtitle1Medium"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_width="match_parent"
