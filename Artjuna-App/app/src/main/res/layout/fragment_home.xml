@@ -84,6 +84,7 @@
                 android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/btn_recom_seeall"
                 style="@style/Subtitle2Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
