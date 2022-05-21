@@ -31,4 +31,5 @@
     <string name="product_price">Product Price</string>
     <string name="stock">Stock</string>
     <string name="select_category">Select category</string>
+    <string name="notification">Notification</string>
 </resources>
