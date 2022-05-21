@@ -1,13 +1,9 @@
 package com.artjuna.artjuna_app.ui.feeds
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.artjuna.artjuna_app.core.data.repositories.MainRepository
 
-class FeedsViewModel : ViewModel() {
+class FeedsViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is Feeds Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getPost() = mainRepository.getPost()
 }

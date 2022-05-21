@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentFeedsBinding
 import com.artjuna.artjuna_app.ui.feeds.adapter.PostAdapter
-import com.artjuna.artjuna_app.utils.DummyData
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FeedsFragment : Fragment() {
 
     private var _binding: FragmentFeedsBinding? = null
+    private val feedsViewModel:FeedsViewModel by viewModel()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,16 +26,16 @@ class FeedsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val feedsViewModel =
-            ViewModelProvider(this).get(FeedsViewModel::class.java)
 
         _binding = FragmentFeedsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        return root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupAdapter()
         setData()
-
-        return root
     }
 
     private fun setupAdapter() {
@@ -42,7 +43,11 @@ class FeedsFragment : Fragment() {
     }
 
     private fun setData(){
-        postAdapter.submitList(DummyData.listPost())
+        feedsViewModel.getPost().observe(viewLifecycleOwner){
+            when(it){
+                is Result.Success -> postAdapter.submitList(it.data)
+            }
+        }
     }
 
     override fun onDestroyView() {
