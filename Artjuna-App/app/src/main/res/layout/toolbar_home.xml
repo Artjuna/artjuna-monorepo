@@ -16,10 +16,10 @@
         android:background="@drawable/box_white_8dp"
         android:drawableLeft="@drawable/ic_search"
         android:text="@string/search"
-        android:textSize="@dimen/_8ssp"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/grey_700"
+        android:textSize="@dimen/_8ssp"
         app:backgroundTint="@null" />
 
     <LinearLayout
