@@ -41,12 +41,13 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/iv_take"
-            android:layout_width="match_parent"
+            android:layout_width="376dp"
             android:layout_height="@dimen/_32sdp"
             android:background="@drawable/bg_take"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:backgroundTint="@color/black_500"
+            android:layout_gravity="center"
             app:layout_constraintTop_toBottomOf="@id/iv_bg_home">
 
             <TextView
