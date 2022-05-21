@@ -1,0 +1,51 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_16sdp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        style="@style/Body1Regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category"/>
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_marginTop="@dimen/_8sdp"
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@color/cat_chip_color_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cat 1"/>
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@color/cat_chip_color_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cat 1"/>
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@color/cat_chip_color_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cat 1"/>
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@color/cat_chip_color_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cat 1"/>
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            app:chipBackgroundColor="@color/cat_chip_color_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cat 1"/>
+
+    </com.google.android.material.chip.ChipGroup>
+</LinearLayout>
