@@ -5,19 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.artjuna.artjuna_app.databinding.FragmentPostBinding
+import com.artjuna.artjuna_app.databinding.FragmentMyPostBinding
 
-class PostFragment : Fragment() {
+class MyPostFragment : Fragment() {
 
 
-    private lateinit var binding: FragmentPostBinding
+    private lateinit var binding: FragmentMyPostBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentPostBinding.inflate(inflater, container, false)
+        binding = FragmentMyPostBinding.inflate(inflater, container, false)
         return binding.root
     }
 
