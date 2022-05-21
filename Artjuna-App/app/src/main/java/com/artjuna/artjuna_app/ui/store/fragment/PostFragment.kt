@@ -1,4 +1,4 @@
-package com.artjuna.artjuna_app.ui.mystore.fragment
+package com.artjuna.artjuna_app.ui.store.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
