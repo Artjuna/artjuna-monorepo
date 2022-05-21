@@ -7,13 +7,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.mystore.fragment.ProductFragment">
 
-    <Button
-        android:id="@+id/btn_add_product"
-        style="@style/ButtonSecondary"
-        android:layout_margin="@dimen/_16sdp"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Product"/>
+        style="@style/Subtitle1Medium"
+        android:text="Coba"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_product"

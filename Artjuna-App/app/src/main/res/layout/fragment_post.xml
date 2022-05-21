@@ -5,14 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.mystore.fragment.PostFragment">
-    <Button
-        android:id="@+id/btn_add_post"
-        style="@style/ButtonSecondary"
-        android:layout_margin="@dimen/_16sdp"
+    tools:context=".ui.mystore.fragment.MyPostFragment">
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Post"/>
+        style="@style/Subtitle1Medium"
+        android:text="Coba"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_post"

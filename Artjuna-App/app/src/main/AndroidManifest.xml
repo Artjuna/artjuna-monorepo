@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.store.StoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.addpost.AddPostActivity"
             android:exported="false" />
         <activity
