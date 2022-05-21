@@ -27,6 +27,7 @@
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_keranjang.xml" value="0.132" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/line_divider.xml" value="0.1705" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/post_divider.xml" value="0.1705" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_add_post.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_add_product.xml" value="0.264" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_cart.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_checkout.xml" value="0.22592592592592592" />
@@ -40,7 +41,9 @@
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_splash.xml" value="0.2" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/bottombar_addpost.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/bottombar_checkout.xml" value="0.22592592592592592" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/bottombar_custom.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_feeds.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_postk.xml" value="0.21342592592592594" />

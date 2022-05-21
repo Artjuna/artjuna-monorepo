@@ -3,7 +3,7 @@ package com.artjuna.artjuna_app.ui.mystore.adapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.artjuna.artjuna_app.ui.mystore.fragment.PostkFragment
+import com.artjuna.artjuna_app.ui.mystore.fragment.PostFragment
 import com.artjuna.artjuna_app.ui.mystore.fragment.ProductFragment
 
 class SectionsPagerAdapter(activity: AppCompatActivity):FragmentStateAdapter(activity) {
@@ -24,7 +24,7 @@ class SectionsPagerAdapter(activity: AppCompatActivity):FragmentStateAdapter(act
 //                }
             }
             1 -> {
-                fragment = PostkFragment()
+                fragment = PostFragment()
 //                fragment.arguments = Bundle().apply {
 //                    putString(PostkFragment.USERNAME, username)
 //                }

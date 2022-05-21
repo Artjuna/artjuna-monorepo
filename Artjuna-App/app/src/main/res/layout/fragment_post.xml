@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.mystore.fragment.PostkFragment">
+    tools:context=".ui.mystore.fragment.PostFragment">
     <Button
         android:id="@+id/btn_add_post"
         style="@style/ButtonSecondary"
