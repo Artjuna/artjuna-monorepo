@@ -47,6 +47,16 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="buttonFollow" parent="TextAppearance.AppCompat">
+        <item name="android:background">@drawable/box_white_8dp</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">@dimen/_8sdp</item>
+        <item name="android:paddingVertical" tools:targetApi="o">@dimen/_4sdp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
 
 
     <style name="TextH5" parent="TextAppearance.MaterialComponents.Headline5">

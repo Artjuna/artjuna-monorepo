@@ -1,4 +1,4 @@
-package com.artjuna.artjuna_app.ui.feeds.adapter
+package com.artjuna.artjuna_app.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

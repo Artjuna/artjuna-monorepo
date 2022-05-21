@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.databinding.ActivityProductListBinding
-import com.artjuna.artjuna_app.ui.productlist.adapter.ProductAdapter
+import com.artjuna.artjuna_app.ui.adapter.ProductAdapter
 
 class ProductListActivity : AppCompatActivity() {
 

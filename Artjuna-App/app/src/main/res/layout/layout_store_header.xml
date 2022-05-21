@@ -1,0 +1,43 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary"
+    android:padding="@dimen/_16sdp"
+    android:gravity="center_vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/_64sdp"
+        android:layout_height="@dimen/_64sdp"
+        android:src="@drawable/sample_photo"/>
+    <View
+        android:layout_width="@dimen/_8sdp"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+        <TextView
+            style="@style/Subtitle2Medium"
+            android:textColor="@color/white"
+            android:text="Eren Yeager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            style="@style/Body2Regular"
+            android:textColor="@color/white"
+            android:text="Kota Cirebon | 129 Pengikut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_visitstore"
+        style="@style/buttonFollow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Follow"/>
+
+</LinearLayout>

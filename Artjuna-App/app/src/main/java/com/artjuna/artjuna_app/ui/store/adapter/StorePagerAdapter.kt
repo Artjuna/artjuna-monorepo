@@ -1,12 +1,12 @@
-package com.artjuna.artjuna_app.ui.mystore.adapter
+package com.artjuna.artjuna_app.ui.store.adapter
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.artjuna.artjuna_app.ui.mystore.fragment.PostFragment
-import com.artjuna.artjuna_app.ui.mystore.fragment.ProductFragment
+import com.artjuna.artjuna_app.ui.store.fragment.PostFragment
+import com.artjuna.artjuna_app.ui.store.fragment.ProductFragment
 
-class SectionsPagerAdapter(activity: AppCompatActivity):FragmentStateAdapter(activity) {
+class StorePagerAdapter(activity: AppCompatActivity):FragmentStateAdapter(activity) {
 
     var username:String? = null
 

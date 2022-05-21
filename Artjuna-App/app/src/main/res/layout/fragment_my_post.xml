@@ -6,11 +6,17 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.mystore.fragment.MyPostFragment">
+    <Button
+        android:id="@+id/btn_add_post"
+        style="@style/ButtonSecondary"
+        android:layout_margin="@dimen/_16sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Post"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_post"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 </LinearLayout>

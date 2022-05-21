@@ -11,6 +11,7 @@ import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentHomeBinding
 import com.artjuna.artjuna_app.ui.home.adapter.RecomAdapter
 import com.artjuna.artjuna_app.ui.productlist.ProductListActivity
+import com.artjuna.artjuna_app.ui.search.SearchActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -31,16 +32,19 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        setButtonClick()
-        setupAdapter()
-        setData()
-        return root
+        return binding.root
     }
 
-    private fun setButtonClick() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        populateView()
+        setupAdapter()
+        setData()
+    }
+
+    private fun populateView() {
         with(binding){
+            header.btnSearch.setOnClickListener { startActivity(Intent(requireContext(), SearchActivity::class.java)) }
             btnRecomSeeall.setOnClickListener {
                 val intent = Intent(requireContext(), ProductListActivity::class.java)
                 intent.putParcelableArrayListExtra(ProductListActivity.EXTRA_PRODUCT_LIST, recomList)
