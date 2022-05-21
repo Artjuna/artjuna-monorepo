@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentFeedsBinding
-import com.artjuna.artjuna_app.ui.feeds.adapter.PostAdapter
+import com.artjuna.artjuna_app.ui.adapter.PostAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FeedsFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.artjuna.artjuna_app.ui.productlist.adapter
+package com.artjuna.artjuna_app.ui.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
