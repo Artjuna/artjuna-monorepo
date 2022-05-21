@@ -1,9 +1,11 @@
 package com.artjuna.artjuna_app.ui.detailproduct
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.databinding.ActivityDetailProductBinding
+import com.artjuna.artjuna_app.ui.store.StoreActivity
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 
 class DetailProductActivity : AppCompatActivity() {
@@ -31,7 +33,9 @@ class DetailProductActivity : AppCompatActivity() {
             store.ivStoreImage.loadImage(product.storeImage)
             store.tvStoreName.text = product.storeName
             store.tvStoreCity.text = product.storeCity
-            store.btnVisitstore.setOnClickListener {  }
+            store.btnVisitstore.setOnClickListener {
+                startActivity(Intent(this@DetailProductActivity, StoreActivity::class.java))
+            }
         }
     }
 
