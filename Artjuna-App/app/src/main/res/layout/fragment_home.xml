@@ -63,6 +63,11 @@
         </androidx.cardview.widget.CardView>
 
         <!-- Recommendation -->
+        <include
+            android:id="@+id/recom"
+            android:visibility="gone"
+            layout="@layout/layout_home_recom"/>
+
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/recom_load"
             android:layout_width="wrap_content"
@@ -70,10 +75,7 @@
             <include
                 layout="@layout/layout_home_recom_load"/>
         </com.facebook.shimmer.ShimmerFrameLayout>
-        <include
-            android:id="@+id/recom"
-            android:visibility="gone"
-            layout="@layout/layout_home_recom"/>
+
 
 
         <!-- Categories -->
