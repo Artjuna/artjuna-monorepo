@@ -7,13 +7,16 @@ import com.artjuna.artjuna_app.core.data.source.model.Address
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.databinding.ActivityCheckoutBinding
 import com.artjuna.artjuna_app.ui.address.AddressActivity
+import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class CheckoutActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityCheckoutBinding
     private val checkoutViewModel:CheckoutViewModel by viewModel()
+    private var product = Product()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckoutBinding.inflate(layoutInflater)
@@ -29,6 +32,9 @@ class CheckoutActivity : AppCompatActivity() {
             btnBack.setOnClickListener { onBackPressed() }
             address.btnChangeAddress.setOnClickListener {
                 startActivity(Intent(this@CheckoutActivity,AddressActivity::class.java))
+            }
+            bottomBar.btnOrder.setOnClickListener {
+                AppUtils.sendOrderToWA(this@CheckoutActivity, "6285210938775", this@CheckoutActivity.product)
             }
         }
     }
@@ -53,8 +59,16 @@ class CheckoutActivity : AppCompatActivity() {
         val extras = intent.extras
         if(extras!=null){
             val product = extras.getParcelable<Product>(EXTRA_PRODUCT)
-            populateViewProduct(product!!)
+            this.product = product!!
+            populateViewProduct(product)
+            populatePrice(product.price)
         }
+    }
+
+    private fun populatePrice(price: Int) {
+        val mPrice = "Rp $price"
+        binding.price.tvPrice.text = mPrice
+        binding.bottomBar.tvPrice.text = mPrice
     }
 
     private fun populateViewProduct(product: Product) {
