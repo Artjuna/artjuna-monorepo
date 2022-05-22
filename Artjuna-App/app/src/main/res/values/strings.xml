@@ -32,4 +32,6 @@
     <string name="stock">Stock</string>
     <string name="select_category">Select category</string>
     <string name="notification">Notification</string>
+    <string name="temp_desc_notif">Your payment has been confirmed. Please wait for the seller to pack your items</string>
+    <string name="temp_title_notif">Confirmed payment</string>
 </resources>
