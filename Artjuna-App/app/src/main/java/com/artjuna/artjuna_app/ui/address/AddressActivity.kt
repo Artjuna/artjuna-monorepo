@@ -19,6 +19,7 @@ class AddressActivity : AppCompatActivity() {
     }
 
     private fun setButtonClick() {
+        binding.btnBack.setOnClickListener { onBackPressed() }
         binding.btnSave.setOnClickListener {
             if(formNotEmpty()){
                 saveAddress()

@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/action_bar"
-        layout="@layout/layout_actionbar_change_adress"
+    <!-- top bar -->
+    <LinearLayout android:id="@+id/action_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_56sdp"
-        android:layout_alignParentTop="true"/>
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_8sdp"
+        android:elevation="@dimen/_8sdp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            app:srcCompat="@drawable/ic_back_line"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/Body1Medium"
+            android:textStyle="bold"
+            android:textSize="@dimen/_16ssp"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:text="@string/change_address" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
