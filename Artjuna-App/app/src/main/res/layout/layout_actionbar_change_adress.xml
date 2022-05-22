@@ -26,5 +26,5 @@
         android:textStyle="bold"
         android:textSize="@dimen/_16ssp"
         android:layout_marginStart="@dimen/_14sdp"
-        android:text="@string/add_product" />
+        android:text="Change Address" />
 </LinearLayout>

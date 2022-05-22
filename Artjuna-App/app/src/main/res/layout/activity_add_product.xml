@@ -6,8 +6,7 @@
     android:orientation="vertical"
     android:background="@color/grey_200"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.addproduct.AddProductActivity">
+    android:layout_height="match_parent">
 
 
     <include
@@ -126,9 +125,9 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_marginTop="@dimen/_24sdp"
                     android:layout_marginEnd="@dimen/_8sdp">
