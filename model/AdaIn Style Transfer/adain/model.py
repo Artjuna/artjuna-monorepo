@@ -184,3 +184,30 @@ class NeuralStyleTransfer(tf.keras.Model):
             self.content_loss_tracker,
             self.total_loss_tracker,
         ]
+
+
+class PlotCallback(tf.keras.callbacks.Callback):
+    '''Plot content, style, and NST image from test set each epoch'''
+    
+    def on_epoch_end(self, epoch, logs=None):
+        test_style_encoded = self.model.encoder(test_style)
+        test_content_encoded = self.model.encoder(test_content)
+
+        adain = adain(style=test_style_encoded, content=test_content_encoded)
+        test_reconstructed_image = self.model.decoder(adain)
+
+        fig, ax = plt.subplots(nrows=1, ncols=3, figsize=(20, 5))
+        
+        ax[0].imshow(tf.keras.preprocessing.image.array_to_img(test_content[0]))
+        ax[0].set_title(f"Content: {epoch:03d}")
+        
+        ax[1].imshow(tf.keras.preprocessing.image.array_to_img(test_style[0]))
+        ax[1].set_title(f"Style: {epoch:03d}")
+
+        ax[2].imshow(
+            tf.keras.preprocessing.image.array_to_img(test_reconstructed_image[0])
+        )
+        ax[2].set_title(f"NST: {epoch:03d}")
+
+        plt.show()
+        plt.close()
