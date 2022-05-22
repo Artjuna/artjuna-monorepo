@@ -45,7 +45,23 @@ class FeedsFragment : Fragment() {
     private fun setData(){
         feedsViewModel.getPost().observe(viewLifecycleOwner){
             when(it){
-                is Result.Success -> postAdapter.submitList(it.data)
+                is Result.Success -> {
+                    showLoading(false)
+                    postAdapter.submitList(it.data)
+                }
+                is Result.Loading -> showLoading(true)
+            }
+        }
+    }
+
+    private fun showLoading(isLoading:Boolean){
+        with(binding){
+            if(isLoading){
+                postLoading.visibility = View.VISIBLE
+                rvPost.visibility = View.GONE
+            }else{
+                postLoading.visibility = View.GONE
+                rvPost.visibility = View.VISIBLE
             }
         }
     }

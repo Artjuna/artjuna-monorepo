@@ -27,14 +27,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:text="Confirmed payment"
+                android:text="@string/temp_title_notif"
                 style="@style/Subtitle2Medium"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:text="Your payment has been confirmed. Please wait for the seller to pack your items"
+                android:textColor="@color/grey_700"
+                android:text="@string/temp_desc_notif"
                 style="@style/Subtitle2Regular"/>
 
 

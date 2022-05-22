@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
     private fun populateView() {
         with(binding){
             header.btnSearch.setOnClickListener { startActivity(Intent(requireContext(), SearchActivity::class.java)) }
-            btnRecomSeeall.setOnClickListener {
+            recom.btnSeeAll.setOnClickListener {
                 val intent = Intent(requireContext(), ProductListActivity::class.java)
                 intent.putParcelableArrayListExtra(ProductListActivity.EXTRA_PRODUCT_LIST, recomList)
                 intent.putExtra(ProductListActivity.EXTRA_PAGE_TITLE, "Recommendation")
@@ -55,17 +55,32 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        binding.rvRecom.adapter = recomAdapter
+        binding.recom.rvRecom.adapter = recomAdapter
     }
 
     private fun setData() {
         homeViewModel.getRecommended().observe(viewLifecycleOwner){
             when(it){
                 is Result.Success -> {
+                    showLoading(false)
                     recomList.addAll(it.data)
                     recomAdapter.submitList(it.data)
                 }
+                is Result.Loading -> showLoading(true)
+            }
+        }
+    }
 
+    private fun showLoading(isLoading:Boolean){
+        if(isLoading){
+            with(binding){
+                recomLoad.visibility = View.VISIBLE
+                recom.root.visibility = View.GONE
+            }
+        } else{
+            with(binding){
+                recomLoad.visibility = View.GONE
+                recom.root.visibility = View.VISIBLE
             }
         }
     }

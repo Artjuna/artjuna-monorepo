@@ -17,8 +17,8 @@
 
     <style name="BottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
         <item name="android:background">?android:attr/windowBackground</item>
-        <item name="itemTextColor">@color/bottom_nav_item_color</item>
-        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color_state</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color_state</item>
     </style>
 
     <style name="ButtonPrimary" parent="TextAppearance.AppCompat.Button">

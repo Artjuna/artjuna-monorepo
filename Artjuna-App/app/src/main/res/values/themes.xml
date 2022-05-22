@@ -17,8 +17,8 @@
 
     <style name="BottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
         <item name="android:background">?android:attr/windowBackground</item>
-        <item name="itemTextColor">@color/bottom_nav_item_color</item>
-        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color_state</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color_state</item>
     </style>
 
     <style name="ButtonPrimary" parent="Widget.AppCompat.Button">
@@ -56,8 +56,6 @@
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="textAllCaps">false</item>
     </style>
-
-
 
     <style name="TextH5" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="fontFamily">@font/roboto_medium</item>
