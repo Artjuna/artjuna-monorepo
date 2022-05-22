@@ -88,8 +88,6 @@
 
     </LinearLayout>
 
-
-
     <include
         android:id="@+id/bottom_bar"
         layout="@layout/bottombar_customresult"
