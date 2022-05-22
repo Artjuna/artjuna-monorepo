@@ -41,15 +41,19 @@ class AddressActivity : AppCompatActivity() {
     private fun formNotEmpty(): Boolean {
         with(binding){
             if(etFullName.text.isNullOrEmpty()){
+                etFullName.error = "Must be filled"
                 return false
             }
             if(etNumber.text.isNullOrEmpty()){
+                etNumber.error = "Must be filled"
                 return false
             }
             if(etAddress.text.isNullOrEmpty()){
+                etAddress.error = "Must be filled"
                 return false
             }
             if(etPostalCode.text.isNullOrEmpty()){
+                etPostalCode.error = "Must be filled"
                 return false
             }
             return true
