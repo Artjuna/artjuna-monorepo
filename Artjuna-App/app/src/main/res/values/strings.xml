@@ -36,4 +36,6 @@
     <string name="address">Address</string>
     <string name="postal_code">Postal Code</string>
     <string name="save">Save</string>
+    <string name="temp_title_notif">Title</string>
+    <string name="temp_desc_notif">Desc</string>
 </resources>
