@@ -1,6 +1,6 @@
 # Neural Style Transfer Image Example
 
-### This is example of AdaIn image style transfer model that trained for 100 epochs (50 steps each, batch size = 6) on Pascal VOC dataset as content, and Best Artworks of All Time dataset
+### This is example of AdaIn image style transfer model that trained for 100 epochs (50 steps each, batch size = 6) on Pascal VOC dataset as content, and Best Artworks of All Time dataset (Image size is 224x224)
 
 ![messageImage_1653235885023](https://user-images.githubusercontent.com/92104520/169866447-da62f876-f78b-431f-a773-ec78a86a5f9a.jpg)
 ![messageImage_1653235854722](https://user-images.githubusercontent.com/92104520/169866548-2ec2259e-20d5-4ba0-94c6-63d83714e45e.jpg)
