@@ -1,10 +1,5 @@
 import os
-import glob
-import numpy as np
 import tensorflow as tf
-import matplotlib.pyplot as plt
-import tensorflow_datasets as tfds
-from tensorflow.keras import layers
 
 def full_path_list(folder):
     '''Return full path of file that have .tfrecords extension'''
@@ -18,6 +13,7 @@ def full_path_list(folder):
                 full_path_list.append(os.path.join(dir_path, file_name))
                 
     return full_path_list
+    
     
 def parse_tfrecord(example):
     '''Parsing, decode, convert data type,
@@ -36,7 +32,7 @@ def parse_tfrecord(example):
     
     return example['image']
   
-  
+    
 def convert_to_tfrecords(input_folder_path, output_folder_path, num_samples):
     '''Convert images from input folder to certain amount of .tfrecords file
     based on num_shards value and write it at output folder path'''
@@ -54,5 +50,3 @@ def convert_to_tfrecords(input_folder_path, output_folder_path, num_samples):
                 feature = {"image": image_feature(image)}
                 example = tf.train.Example(features=tf.train.Features(feature=feature))
                 writer.write(example.SerializeToString())
-                
-    
