@@ -37,7 +37,7 @@ def parse_tfrecord(example):
     return example['image']
   
   
- def convert_to_tfrecords(input_folder_path, output_folder_path, num_samples):
+def convert_to_tfrecords(input_folder_path, output_folder_path, num_samples):
     '''Convert images from input folder to certain amount of .tfrecords file
     based on num_shards value and write it at output folder path'''
     
