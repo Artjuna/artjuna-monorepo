@@ -15,7 +15,7 @@ def full_path_list(folder):
     for dir_path, _ , file_names in os.walk(folder, topdown = True):
         for file_name in file_names:
             if os.path.splitext(file_name)[1] in extension:
-                full_path.append(os.path.join(dir_path, file_name))
+                full_path_list.append(os.path.join(dir_path, file_name))
                 
     return full_path_list
     
