@@ -76,10 +76,10 @@ def adain(style, content):
     '''Computes the AdaIn feature map'''
     
     content_mean, content_std = mean_std(content)
-    style_mean, style_std = get_mean_std(style)
-    t = style_std * (content - content_mean) / content_std + style_mean
+    style_mean, style_std = mean_std(style)
+    adain_map = style_std * (content - content_mean) / content_std + style_mean
     
-    return adain
+    return adain_map
 
 class NeuralStyleTransfer(tf.keras.Model):
     '''Combine encoder decoder and loss model and calculate total loss'''
@@ -109,13 +109,13 @@ class NeuralStyleTransfer(tf.keras.Model):
         with tf.GradientTape() as tape:
             style_encoded = self.encoder(style)
             content_encoded = self.encoder(content)
-            adain = adain(style=style_encoded, content=content_encoded)
-            reconstructed_image = self.decoder(adain)
+            adain_map = adain(style=style_encoded, content=content_encoded)
+            reconstructed_image = self.decoder(adain_map)
 
             # Compute losses.
             reconstructed_vgg_features = self.loss_net(reconstructed_image)
             style_vgg_features = self.loss_net(style)
-            loss_content = self.loss_fn(t, reconstructed_vgg_features[-1])
+            loss_content = self.loss_fn(adain_map, reconstructed_vgg_features[-1])
             
             for inp, out in zip(style_vgg_features, reconstructed_vgg_features):
                 mean_inp, std_inp = mean_std(inp)
@@ -150,13 +150,13 @@ class NeuralStyleTransfer(tf.keras.Model):
 
         style_encoded = self.encoder(style)
         content_encoded = self.encoder(content)
-        adain = adain(style=style_encoded, content=content_encoded)
-        reconstructed_image = self.decoder(adain)
+        adain_map = adain(style=style_encoded, content=content_encoded)
+        reconstructed_image = self.decoder(adain_map)
 
         # Compute losses.
         recons_vgg_features = self.loss_net(reconstructed_image)
         style_vgg_features = self.loss_net(style)
-        loss_content = self.loss_fn(t, recons_vgg_features[-1])
+        loss_content = self.loss_fn(adain_map, recons_vgg_features[-1])
         
         for inp, out in zip(style_vgg_features, recons_vgg_features):
             mean_inp, std_inp = mean_std(inp)
@@ -184,8 +184,7 @@ class NeuralStyleTransfer(tf.keras.Model):
             self.content_loss_tracker,
             self.total_loss_tracker,
         ]
-
-
+    
 class PlotCallback(tf.keras.callbacks.Callback):
     '''Plot content, style, and NST image from test set each epoch'''
     
@@ -193,8 +192,8 @@ class PlotCallback(tf.keras.callbacks.Callback):
         test_style_encoded = self.model.encoder(test_style)
         test_content_encoded = self.model.encoder(test_content)
 
-        adain = adain(style=test_style_encoded, content=test_content_encoded)
-        test_reconstructed_image = self.model.decoder(adain)
+        adain_map = adain(style=test_style_encoded, content=test_content_encoded)
+        test_reconstructed_image = self.model.decoder(adain_map)
 
         fig, ax = plt.subplots(nrows=1, ncols=3, figsize=(20, 5))
         
