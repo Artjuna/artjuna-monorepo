@@ -13,7 +13,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="@dimen/_64sdp"
         android:layout_height="@dimen/_64sdp"
-        android:src="@drawable/sample_photo"/>
+        android:src="@drawable/ic_placeholder_profile"/>
     <View
         android:layout_width="@dimen/_8sdp"
         android:layout_height="match_parent"/>

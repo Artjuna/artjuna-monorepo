@@ -11,7 +11,7 @@
             android:id="@+id/iv_store_image"
             android:layout_width="@dimen/_48sdp"
             android:layout_height="@dimen/_48sdp"
-            android:src="@drawable/sample_photo"/>
+            android:src="@drawable/ic_placeholder_profile"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

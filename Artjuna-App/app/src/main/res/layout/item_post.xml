@@ -17,7 +17,7 @@
             android:id="@+id/iv_user_image"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
-            android:src="@drawable/sample_photo"/>
+            android:src="@drawable/ic_placeholder_profile"/>
 
         <TextView
             android:id="@+id/tv_username"
