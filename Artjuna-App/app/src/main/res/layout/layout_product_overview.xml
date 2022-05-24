@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:src="@drawable/sample_product" />
+                android:src="@drawable/ic_temp_image" />
 
             <ImageView
                 android:id="@+id/btn_back"
