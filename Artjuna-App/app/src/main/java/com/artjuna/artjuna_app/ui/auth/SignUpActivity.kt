@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.databinding.ActivitySignUpBinding
 import com.artjuna.artjuna_app.ui.navigation.NavigationActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -88,6 +89,37 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun userRegister(fullName: String, username: String, email: String, password: String) {
+
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this){task ->
+                if (task.isSuccessful){
+                    Log.d(TAG, "createUserWithEmail:success")
+                    val user = auth.currentUser
+                    val profileUpdates = UserProfileChangeRequest.Builder()
+                        .setDisplayName(fullName)
+                        .build()
+
+                    user?.updateProfile(profileUpdates)
+
+                    val userData = hashMapOf(
+                        "fullName" to fullName,
+                        "username" to username,
+                        "email" to email
+                    )
+
+                    db.collection("users").add(userData)
+
+                    val intent = Intent(this@SignUpActivity, NavigationActivity::class.java)
+                    startActivity(intent)
+                    finish()
+
+                }
+                else{
+                    Log.w(TAG, "signUpWithEmail: failure", task.exception)
+                    binding.btnSignUp.visibility = View.VISIBLE
+                    Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
+                }
+            }
 
 
     }
