@@ -59,12 +59,12 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Product ID"
+                android:hint="Product Name"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginHorizontal="@dimen/_16sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_product_id"
+                    android:id="@+id/et_product_name"
                     android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

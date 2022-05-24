@@ -54,11 +54,8 @@ class AddPostActivity : AppCompatActivity() {
             val myFile = AppUtils.uriToFile(selectedImg, this)
 
             photoFile = myFile
-//            val imageBase = AppUtils.convertImageToBase64(myFile)
-//            val imageByte = AppUtils.convertBase64toByteArray(imageBase)
-//            val imageBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.size)
 
-            binding.ivImage.loadImage(selectedImg)
+            binding.ivImage.loadImage("selectedImg")
         }
     }
 }
