@@ -46,7 +46,7 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginBottom="@dimen/_8sdp"
                 android:layout_marginHorizontal="@dimen/_16sdp"
-                android:src="@drawable/ic_temp_image"/>
+                android:src="@drawable/ic_placeholder_image"/>
             <Button
                 android:id="@+id/btn_add_photo"
                 android:text="Add Photo"

@@ -12,6 +12,7 @@ import android.text.Spanned
 import android.util.Base64
 import android.widget.ImageView
 import android.widget.Toast
+import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.bumptech.glide.Glide
 import java.io.*
@@ -34,23 +35,31 @@ object AppUtils{
     fun ImageView.loadImage(imageSource : String?) {
         Glide.with(context)
             .load(imageSource)
+            .placeholder(R.drawable.ic_placeholder_image)
+            .error(R.drawable.ic_placeholder_error)
             .into(this)
     }
     fun ImageView.loadImage(imageSource : ByteArray?) {
         Glide.with(context)
             .load(imageSource)
+            .placeholder(R.drawable.ic_placeholder_image)
+            .error(R.drawable.ic_placeholder_error)
             .into(this)
     }
 
     fun ImageView.loadImage(imageSource : Uri?) {
         Glide.with(context)
             .load(imageSource)
+            .placeholder(R.drawable.ic_placeholder_image)
+            .error(R.drawable.ic_placeholder_error)
             .into(this)
     }
 
     fun ImageView.loadImage(imageSource : Bitmap?) {
         Glide.with(context)
             .load(imageSource)
+            .placeholder(R.drawable.ic_placeholder_image)
+            .error(R.drawable.ic_placeholder_error)
             .into(this)
     }
 

@@ -55,7 +55,7 @@ class AddPostActivity : AppCompatActivity() {
 
             photoFile = myFile
 
-            binding.ivImage.loadImage("selectedImg")
+            binding.ivImage.loadImage(selectedImg)
         }
     }
 }
