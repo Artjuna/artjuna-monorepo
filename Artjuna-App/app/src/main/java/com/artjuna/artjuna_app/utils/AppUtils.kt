@@ -3,18 +3,18 @@ package com.artjuna.artjuna_app.utils
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Environment
 import android.text.Html
 import android.text.Spanned
+import android.util.Base64
 import android.widget.ImageView
 import android.widget.Toast
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.bumptech.glide.Glide
-import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.OutputStream
+import java.io.*
 import java.net.URLEncoder
 import java.text.SimpleDateFormat
 import java.util.*
@@ -36,6 +36,24 @@ object AppUtils{
             .load(imageSource)
             .into(this)
     }
+    fun ImageView.loadImage(imageSource : ByteArray?) {
+        Glide.with(context)
+            .load(imageSource)
+            .into(this)
+    }
+
+    fun ImageView.loadImage(imageSource : Uri?) {
+        Glide.with(context)
+            .load(imageSource)
+            .into(this)
+    }
+
+    fun ImageView.loadImage(imageSource : Bitmap?) {
+        Glide.with(context)
+            .load(imageSource)
+            .into(this)
+    }
+
 
     fun getUserandCaption(username:String, caption:String): Spanned {
         return Html.fromHtml("<b>$username</b> $caption")
@@ -49,6 +67,19 @@ object AppUtils{
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
+    fun convertImageToBase64(file: File): String {
+        val bm = BitmapFactory.decodeFile(file.path)
+        val baos = ByteArrayOutputStream()
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos) // bm is the bitmap object
+        val b: ByteArray = baos.toByteArray()
+        return Base64.encodeToString(b, Base64.DEFAULT)
+    }
+
+    fun convertBase64toByteArray(base64: String): ByteArray {
+        return Base64.decode(base64, Base64.DEFAULT)
+    }
+
+    //Get Image from Gallery
     private const val FILENAME_FORMAT = "dd-MMM-yyyy"
 
     val timeStamp: String = SimpleDateFormat(
@@ -60,7 +91,6 @@ object AppUtils{
         val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(timeStamp, ".jpg", storageDir)
     }
-
 
     fun uriToFile(selectedImg: Uri, context: Context): File {
         val contentResolver: ContentResolver = context.contentResolver

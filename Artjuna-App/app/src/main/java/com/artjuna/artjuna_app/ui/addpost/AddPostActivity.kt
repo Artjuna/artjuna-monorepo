@@ -5,9 +5,12 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.artjuna.artjuna_app.core.data.source.model.Post
 import com.artjuna.artjuna_app.databinding.ActivityAddPostBinding
 import com.artjuna.artjuna_app.utils.AppUtils
+import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 import java.io.File
+
 
 class AddPostActivity : AppCompatActivity() {
 
@@ -18,6 +21,21 @@ class AddPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setButtonClick()
+    }
+
+    private fun setButtonClick() {
+        with(binding){
+            btnAddPhoto.setOnClickListener { openGallery() }
+            bottombar.btnUpload.setOnClickListener { uploadPost() }
+        }
+    }
+
+    private fun uploadPost() {
+        val post = Post()
+        post.image = AppUtils.convertImageToBase64(photoFile!!)
+        post.caption = binding.etCaption.text.toString()
     }
 
     private fun openGallery() {
@@ -36,8 +54,11 @@ class AddPostActivity : AppCompatActivity() {
             val myFile = AppUtils.uriToFile(selectedImg, this)
 
             photoFile = myFile
+//            val imageBase = AppUtils.convertImageToBase64(myFile)
+//            val imageByte = AppUtils.convertBase64toByteArray(imageBase)
+//            val imageBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.size)
 
-            binding.ivImage.setImageURI(selectedImg)
+            binding.ivImage.loadImage(selectedImg)
         }
     }
 }
