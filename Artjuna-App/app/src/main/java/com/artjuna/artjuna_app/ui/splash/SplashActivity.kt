@@ -7,11 +7,13 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import com.artjuna.artjuna_app.databinding.ActivitySplashBinding
 import com.artjuna.artjuna_app.ui.auth.SignUpActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
+
 
     private lateinit var binding:ActivitySplashBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,4 +37,5 @@ class SplashActivity : AppCompatActivity() {
     private fun disableNightMode(){
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
+
 }

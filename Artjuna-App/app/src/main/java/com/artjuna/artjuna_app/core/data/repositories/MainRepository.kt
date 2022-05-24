@@ -6,6 +6,7 @@ import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
 import com.artjuna.artjuna_app.core.data.source.model.Address
 import com.artjuna.artjuna_app.core.data.source.model.Post
 import com.artjuna.artjuna_app.core.data.source.model.Product
+import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.response.toPost
@@ -16,6 +17,9 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
 
     fun setAddress(address: Address) = local.setAddress(address)
     fun getAddress():Address = local.getAddress()
+    fun saveUser(user: User) = local.saveUser(user)
+    fun getUser(): User =local.getUser()
+
 
     fun getProduct():LiveData<Result<List<Product>>> = liveData {
         emit(Result.Loading)
