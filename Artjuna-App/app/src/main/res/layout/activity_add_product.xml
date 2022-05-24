@@ -42,13 +42,14 @@
 
             <!-- Image -->
             <ImageView
+                android:id="@+id/iv_image"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_240sdp"
-                android:scaleType="centerCrop"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginBottom="@dimen/_8sdp"
                 android:layout_marginHorizontal="@dimen/_16sdp"
-                android:src="@drawable/sample_product"/>
+                android:src="@drawable/ic_temp_image"/>
             <Button
                 android:id="@+id/btn_add_photo"
                 android:text="Add Photo"
