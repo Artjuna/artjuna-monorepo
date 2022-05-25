@@ -33,7 +33,7 @@ def parse_tfrecord(example):
     return example['image']
   
     
-def convert_to_tfrecords(input_folder_path, output_folder_path, num_samples):
+def convert_to_tfrecords(input_folder_path, output_folder_path, num_samples, dataset_name):
     '''Convert images from input folder to certain amount of .tfrecords file
     based on num_shards value and write it at output folder path'''
     
@@ -44,7 +44,7 @@ def convert_to_tfrecords(input_folder_path, output_folder_path, num_samples):
     for tfrecords_n in range(num_tfrecords):
         samples = input_folder_path[(tfrecords_n * num_samples) : ((tfrecords_n + 1) * num_samples)]
         
-        with tf.io.TFRecordWriter(output_folder_path + "/file_%.2i-%i.tfrecords" % (tfrecords_n, len(samples))) as writer:
+        with tf.io.TFRecordWriter(output_folder_path + "/" + dataset_name + "_%.2i-%i.tfrecords" % (tfrecords_n, len(samples))) as writer:
             for sample in samples:
                 image = tf.io.decode_jpeg(tf.io.read_file(sample))
                 feature = {"image": image_feature(image)}
