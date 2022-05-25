@@ -7,41 +7,52 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.ViewModelProvider
 import com.artjuna.artjuna_app.databinding.ActivitySplashBinding
 import com.artjuna.artjuna_app.ui.auth.SignUpActivity
 import com.artjuna.artjuna_app.ui.navigation.NavigationActivity
-import com.google.firebase.auth.FirebaseAuth
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding:ActivitySplashBinding
-    private lateinit var auth: FirebaseAuth
+    private val viewModel:SplashViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        auth = FirebaseAuth.getInstance()
-
         disableNightMode()
-        moveNextPage()
+        setDelay()
     }
 
-    private fun moveNextPage() {
+    private fun setDelay() {
         val delayTime = 2000L
-        val currentUser =auth.currentUser
 
         Handler(Looper.getMainLooper()).postDelayed({
-            if (currentUser == null){
-                startActivity(Intent(this, SignUpActivity::class.java))
-                finish()
-            } else {
-                startActivity(Intent(this, NavigationActivity::class.java))
-                finish()
-            }
+            checkLoginStatus()
         }, delayTime)
     }
+
+    private fun checkLoginStatus() {
+        viewModel.getUser().observe(this){logged ->
+            if(logged){
+                moveToHome()
+            }else{
+                moveToSignUp()
+            }
+        }
+    }
+
+    private fun moveToSignUp() {
+        startActivity(Intent(this, SignUpActivity::class.java))
+        finish()
+    }
+
+    private fun moveToHome() {
+        startActivity(Intent(this, NavigationActivity::class.java))
+        finish()
+    }
+
 
     private fun disableNightMode(){
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
