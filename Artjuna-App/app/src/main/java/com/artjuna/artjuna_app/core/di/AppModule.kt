@@ -5,6 +5,7 @@ import com.artjuna.artjuna_app.ui.auth.AuthViewModel
 import com.artjuna.artjuna_app.ui.checkout.CheckoutViewModel
 import com.artjuna.artjuna_app.ui.feeds.FeedsViewModel
 import com.artjuna.artjuna_app.ui.home.HomeViewModel
+import com.artjuna.artjuna_app.ui.profile.ProfileViewModel
 import com.artjuna.artjuna_app.ui.profilesettings.ProfileSettingsViewModel
 import com.artjuna.artjuna_app.ui.search.SearchViewModel
 import com.artjuna.artjuna_app.ui.splash.SplashViewModel
@@ -22,4 +23,5 @@ val viewModelModule = module {
     viewModel { AuthViewModel(get()) }
     viewModel { SplashViewModel(get()) }
     viewModel { ProfileSettingsViewModel(get()) }
+    viewModel { ProfileViewModel(get()) }
 }

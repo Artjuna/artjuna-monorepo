@@ -34,7 +34,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun checkLoginStatus() {
-        viewModel.getUser().observe(this){logged ->
+        viewModel.getLoginStatus().observe(this){ logged ->
             if(logged){
                 moveToHome()
             }else{

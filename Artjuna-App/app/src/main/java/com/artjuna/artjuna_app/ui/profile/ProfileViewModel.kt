@@ -1,13 +1,11 @@
 package com.artjuna.artjuna_app.ui.profile
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.artjuna.artjuna_app.core.data.repositories.MainRepository
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel(
+    private val mainRepository: MainRepository
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is Profile Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getUser() = mainRepository.getUser()
 }

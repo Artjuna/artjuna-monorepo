@@ -6,29 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.databinding.FragmentProfileBinding
 import com.artjuna.artjuna_app.ui.cart.CartActivity
 import com.artjuna.artjuna_app.ui.mystore.MyStoreActivity
 import com.artjuna.artjuna_app.ui.order.OrderActivity
 import com.artjuna.artjuna_app.ui.profilesettings.ProfileSettingsActivity
 import com.artjuna.artjuna_app.utils.AppUtils
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private val viewModel:ProfileViewModel by viewModel()
+    private var user = User()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val profileViewModel =
-            ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -40,7 +38,20 @@ class ProfileFragment : Fragment() {
 
         showMenu(true)
         setButtonClick()
+        getData()
 
+    }
+
+    private fun getData() {
+        user = viewModel.getUser()
+        populateUserView()
+    }
+
+    private fun populateUserView() {
+        with(binding){
+            tvFullname.text = user.fullName
+            tvUsername.text = user.userName
+        }
     }
 
     private fun setButtonClick() {

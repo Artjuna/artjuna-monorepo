@@ -5,5 +5,5 @@ import com.artjuna.artjuna_app.core.data.repositories.AuthRepository
 
 class SplashViewModel(private val authRepository: AuthRepository): ViewModel() {
 
-    fun getUser() = authRepository.getUser()
+    fun getLoginStatus() = authRepository.getLoginStatus()
 }
