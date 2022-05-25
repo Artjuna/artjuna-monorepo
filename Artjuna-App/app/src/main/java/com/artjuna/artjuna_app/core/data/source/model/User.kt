@@ -10,5 +10,5 @@ data class User(
     var followers:Int=0,
     var numberWA:String="",
     var city:String="",
-    var token:String=""
+    var isLogged:Boolean=false,
 )

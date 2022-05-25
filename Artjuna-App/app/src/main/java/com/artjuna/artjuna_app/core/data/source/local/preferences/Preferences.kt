@@ -16,7 +16,7 @@ class Preferences(private val context: Context){
         private const val FOLLOWERS = "FOLLOWERS"
         private const val NUMBERWA = "NUMBERWA"
         private const val CITY = "CITY"
-        private const val TOKEN = "TOKEN"
+        private const val IS_LOGGED = "IS_LOGGED"
 
         private const val ADR_NAME="ADR_NAME"
         private const val ADR_NUMBER="ADR_NUMBER"
@@ -37,7 +37,7 @@ class Preferences(private val context: Context){
             putInt(FOLLOWERS,user.followers)
             putString(NUMBERWA,user.numberWA)
             putString(CITY,user.city)
-            putString(TOKEN,user.token)
+            putBoolean(IS_LOGGED,user.isLogged)
         }.apply()
     }
 
@@ -51,7 +51,7 @@ class Preferences(private val context: Context){
             followers = preferences.getInt(ID,0),
             numberWA = preferences.getString(ID,"")!!,
             city = preferences.getString(ID,"")!!,
-            token = preferences.getString(ID,"")!!,
+            isLogged = preferences.getBoolean(IS_LOGGED,false),
         )
     }
 
