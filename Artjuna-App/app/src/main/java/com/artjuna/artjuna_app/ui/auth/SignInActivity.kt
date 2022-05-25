@@ -27,7 +27,7 @@ class SignInActivity : AppCompatActivity() {
         viewModel.isLogged.observe(this){
             if(it){
                 startActivity(Intent(this, NavigationActivity::class.java))
-                finish()
+                finishAffinity()
             }
         }
         viewModel.message.observe(this){

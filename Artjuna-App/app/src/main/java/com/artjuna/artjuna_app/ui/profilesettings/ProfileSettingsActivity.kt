@@ -22,13 +22,12 @@ class ProfileSettingsActivity : AppCompatActivity() {
             btnBack.setOnClickListener { onBackPressed() }
             btnSignOut.setOnClickListener {
                 viewModel.signOut()
-                moveToSignIn()
+                startActivity(Intent(this@ProfileSettingsActivity, SignInActivity::class.java))
+                finishAffinity()
             }
         }
     }
 
     private fun moveToSignIn() {
-        startActivity(Intent(this, SignInActivity::class.java))
-        finish()
     }
 }

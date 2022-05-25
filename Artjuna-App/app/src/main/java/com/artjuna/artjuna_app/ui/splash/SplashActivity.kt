@@ -45,12 +45,12 @@ class SplashActivity : AppCompatActivity() {
 
     private fun moveToSignUp() {
         startActivity(Intent(this, SignUpActivity::class.java))
-        finish()
+        finishAffinity()
     }
 
     private fun moveToHome() {
         startActivity(Intent(this, NavigationActivity::class.java))
-        finish()
+        finishAffinity()
     }
 
 
