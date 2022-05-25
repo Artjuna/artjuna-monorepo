@@ -1,6 +1,7 @@
 package com.artjuna.artjuna_app.core.di
 
 import com.artjuna.artjuna_app.ui.address.AddressViewModel
+import com.artjuna.artjuna_app.ui.auth.AuthViewModel
 import com.artjuna.artjuna_app.ui.checkout.CheckoutViewModel
 import com.artjuna.artjuna_app.ui.feeds.FeedsViewModel
 import com.artjuna.artjuna_app.ui.home.HomeViewModel
@@ -16,4 +17,5 @@ val viewModelModule = module {
     viewModel { SearchViewModel(get()) }
     viewModel { CheckoutViewModel(get()) }
     viewModel { AddressViewModel(get()) }
+    viewModel { AuthViewModel(get()) }
 }
