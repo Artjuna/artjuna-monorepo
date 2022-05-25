@@ -37,8 +37,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.btnSignUp.setOnClickListener {
-            startActivity(Intent(this, NavigationActivity::class.java))
-            finish()
+            signUp()
         }
     }
 
