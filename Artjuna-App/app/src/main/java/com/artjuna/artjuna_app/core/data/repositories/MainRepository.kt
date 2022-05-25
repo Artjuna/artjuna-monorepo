@@ -17,8 +17,8 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
 
     fun setAddress(address: Address) = local.setAddress(address)
     fun getAddress():Address = local.getAddress()
-    fun saveUser(user: User) = local.saveUser(user)
-    fun getUser(): User =local.getUser()
+
+    fun getUser(): User = local.getUser()
 
 
     fun getProduct():LiveData<Result<List<Product>>> = liveData {

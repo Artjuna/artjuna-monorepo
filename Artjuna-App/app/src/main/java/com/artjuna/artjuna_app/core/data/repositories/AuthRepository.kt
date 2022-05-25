@@ -36,7 +36,7 @@ class AuthRepository(
         }
     }
 
-    fun getUser():LiveData<Boolean>{
+    fun getLoginStatus():LiveData<Boolean>{
         val logged = MutableLiveData<Boolean>()
         if(auth.currentUser!=null){
             logged.postValue(true)
@@ -52,19 +52,27 @@ class AuthRepository(
                 if (it.isSuccessful){
                     val fUser = auth.currentUser
                     if(fUser!=null){
-                        val user = User(
-                            id = fUser.uid,
-                            fullName = fUser.displayName!!,
-                            email = fUser.email!!,
-                            isLogged = true
-                        )
-                        local.saveUser(user)
+                        saveUserFromDBToLocalById(fUser.uid)
                         showLoading(false)
                         showSuccess("Sign In Successful")
                     }
                 }else{
                     showLoading(false)
                     showError(it.exception.toString())
+                }
+            }
+    }
+
+    private fun saveUserFromDBToLocalById(id:String){
+       db.collection("users").document(id)
+       .get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                    val user = document.toObject(User::class.java)
+                    saveUserToLocal(user!!)
+                } else {
+                    Log.d(TAG, "No such document")
                 }
             }
     }
@@ -102,22 +110,14 @@ class AuthRepository(
                             .build()
                         fUser.updateProfile(profileUpdates)
 
-                        val userData = hashMapOf(
-                            "id" to fUser.uid,
-                            "fullName" to user.fullName,
-                            "username" to user.userName,
-                            "email" to user.email
-                        )
-                        db.collection("users").document(fUser.uid).set(userData)
-
-                        val pUser = User(
+                        val sUser = User(
                             id = fUser.uid,
-                            fullName = fUser.displayName!!,
+                            fullName = user.fullName,
                             userName = user.userName,
-                            email = fUser.email!!,
-                            isLogged = true
+                            email = user.email
                         )
-                        local.saveUser(pUser)
+                        saveUserToDB(sUser)
+                        saveUserToLocal(sUser)
 
                         showLoading(false)
                         showSuccess("Success Register User")
@@ -130,6 +130,20 @@ class AuthRepository(
                     showError(task.exception.toString())
                 }
             }
+    }
+
+    private fun saveUserToLocal(user: User) {
+        local.saveUser(user)
+    }
+
+    private fun saveUserToDB(user: User) {
+        val userData = hashMapOf(
+            "id" to user.id,
+            "fullName" to user.fullName,
+            "userName" to user.userName,
+            "email" to user.email
+        )
+        db.collection("users").document(user.id).set(userData)
     }
 
     private fun showLoading(loading:Boolean){
