@@ -1,2 +1,4 @@
-# Download Wikiart dataset from this link:
-## https://drive.google.com/file/d/182-pFiKvXPB25DbTfAYjJ6gDE-ZCRXz0/view
+# Download Small Wikiart dataset containing 5000 images from this link:
+https://www.kaggle.com/datasets/shaorrran/cocowikiart-nst-dataset-small?select=style
+
+### Small Wikiart dataset is used as additional dataset to main style dataset.
