@@ -16,7 +16,6 @@ class Preferences(private val context: Context){
         private const val FOLLOWERS = "FOLLOWERS"
         private const val NUMBERWA = "NUMBERWA"
         private const val CITY = "CITY"
-        private const val IS_LOGGED = "IS_LOGGED"
 
         private const val ADR_NAME="ADR_NAME"
         private const val ADR_NUMBER="ADR_NUMBER"
@@ -37,21 +36,19 @@ class Preferences(private val context: Context){
             putInt(FOLLOWERS,user.followers)
             putString(NUMBERWA,user.numberWA)
             putString(CITY,user.city)
-            putBoolean(IS_LOGGED,user.isLogged)
         }.apply()
     }
 
     fun getUser():User{
         return User(
             id = preferences.getString(ID,"")!!,
-            fullName = preferences.getString(ID,"")!!,
-            userName = preferences.getString(ID,"")!!,
-            email = preferences.getString(ID,"")!!,
-            isStore = preferences.getBoolean(ID,false),
-            followers = preferences.getInt(ID,0),
-            numberWA = preferences.getString(ID,"")!!,
-            city = preferences.getString(ID,"")!!,
-            isLogged = preferences.getBoolean(IS_LOGGED,false),
+            fullName = preferences.getString(FULLNAME,"")!!,
+            userName = preferences.getString(USERNAME,"")!!,
+            email = preferences.getString(EMAIL,"")!!,
+            isStore = preferences.getBoolean(ISSTORE,false),
+            followers = preferences.getInt(FOLLOWERS,0),
+            numberWA = preferences.getString(NUMBERWA,"")!!,
+            city = preferences.getString(CITY,"")!!,
         )
     }
 
