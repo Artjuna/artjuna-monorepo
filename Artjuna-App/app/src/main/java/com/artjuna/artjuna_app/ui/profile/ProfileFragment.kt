@@ -11,6 +11,7 @@ import com.artjuna.artjuna_app.databinding.FragmentProfileBinding
 import com.artjuna.artjuna_app.ui.cart.CartActivity
 import com.artjuna.artjuna_app.ui.mystore.MyStoreActivity
 import com.artjuna.artjuna_app.ui.order.OrderActivity
+import com.artjuna.artjuna_app.ui.profilesettings.ProfileSettingsActivity
 import com.artjuna.artjuna_app.utils.AppUtils
 
 class ProfileFragment : Fragment() {
@@ -44,6 +45,9 @@ class ProfileFragment : Fragment() {
 
     private fun setButtonClick() {
         with(binding){
+            btnSetting.setOnClickListener {
+                startActivity(Intent(requireContext(), ProfileSettingsActivity::class.java))
+            }
             btnMycart.setOnClickListener {
                 startActivity(Intent(requireContext(),CartActivity::class.java))
             }
