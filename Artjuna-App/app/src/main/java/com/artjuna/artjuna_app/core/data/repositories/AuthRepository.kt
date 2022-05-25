@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
+import com.artjuna.artjuna_app.core.data.source.model.Address
 import com.artjuna.artjuna_app.core.data.source.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -33,6 +34,8 @@ class AuthRepository(
         if(auth.currentUser!= null){
             auth.signOut()
             _isLogged.postValue(false)
+            local.saveUser(User())
+            local.setAddress(Address())
         }
     }
 
