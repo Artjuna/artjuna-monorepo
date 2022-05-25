@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.profilesettings.ProfileSettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.address.AddressActivity"
             android:exported="false" />
         <activity

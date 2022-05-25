@@ -29,7 +29,22 @@ class AuthRepository(
 
     private val TAG = AuthRepository::class.java.simpleName
 
+    fun signOut(){
+        if(auth.currentUser!= null){
+            auth.signOut()
+            _isLogged.postValue(false)
+        }
+    }
 
+    fun getUser():LiveData<Boolean>{
+        val logged = MutableLiveData<Boolean>()
+        if(auth.currentUser!=null){
+            logged.postValue(true)
+        }else{
+            logged.postValue(false)
+        }
+        return logged
+    }
     fun signIn(email:String,password:String) {
         showLoading(true)
         auth.signInWithEmailAndPassword(email,password)
