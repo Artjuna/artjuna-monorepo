@@ -146,9 +146,10 @@
     <!-- if user not store is gone -->
     <LinearLayout
         android:id="@+id/btn_mystore"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center_vertical"
         android:layout_marginHorizontal="@dimen/_16sdp">
         <ImageView
