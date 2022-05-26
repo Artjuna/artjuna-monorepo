@@ -21,6 +21,7 @@ const addAccount = async (req, res) => {
             FullName,
             OriginProvince,
             OriginCity,
+            Followers,
             Telephone,
             createdAt
         });
