@@ -1,0 +1,6 @@
+definitions:
+  foo:
+    type: object
+    properties:
+      fooValue:
+        type: string
