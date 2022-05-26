@@ -6,23 +6,23 @@ const Account = db.Accounts;
 
 const addAccount = async (req, res) => {
     try{
-        const { Email, UserName, NamaLengkap, ProvinsiAsal, KotaAsal, Telepon } = req.body;      
+        const { Email, UserName, FullName, OriginProvince, OriginCity, Telephone } = req.body;      
         let getAllAccount = await Account.findAll({raw: true});     
         const json = Object.keys(getAllAccount).length;    
         const ts = new Date();
         const UserID = `${ts.getFullYear()}U${json}`;
-        const Pengikut = 0;
+        const Followers = 0;
         const createdAt = ts;
         // initialize models database
         const newAccount = new Account({
             UserID,
             Email,
             UserName,
-            NamaLengkap,
-            ProvinsiAsal,
-            KotaAsal,
+            FullName,
+            OriginProvince,
+            OriginCity,
             Telepon,
-            Pengikut,
+            Telephone,
             createdAt
         });
 

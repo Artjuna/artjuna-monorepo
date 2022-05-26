@@ -5,22 +5,21 @@ const Product = db.products;
 
 const addProduct = async (req, res) => {
     try{
-        const { UserID, NamaProduk, Kategori, Provinsi, Kota, Caption, Harga } = req.body;      
+        const { UserID, ProductName, Category, Province, City, Caption, Price } = req.body;      
         let getAllProduk = await Product.findAll({raw: true});     
         const json = Object.keys(getAllProduk).length;        
-        const ProdukID = `P${json}`;
-        console.log(ProdukID);
+        const ProductID = `P${json}`;
         const createdAt = Date.now();
         // initialize models database
         const newProduk = new Product({
-            ProdukID,
+            ProductID,
             UserID,
-            NamaProduk,
-            Kategori,
-            Provinsi,
-            Kota,
+            ProductName,
+            Category,
+            Province,
+            City,
             Caption,
-            Harga,
+            Price,
             createdAt
         });
 
@@ -36,7 +35,7 @@ const addProduct = async (req, res) => {
 
 const getProduct = async (req, res) => {
     try{
-        const getAllProduk = await Produk.findAll({});
+        const getAllProduk = await Product.findAll({});
 
         res.json(getAllProduk);
     }

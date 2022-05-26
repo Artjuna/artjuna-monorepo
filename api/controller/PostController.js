@@ -6,7 +6,7 @@ const Like = db.Like;
 
 const addPost = async (req, res) => {
     try{
-        const { UserID, NamaPost, Kategori, Caption, Image } = req.body;      
+        const { UserID, PostName, Category, Caption, Image } = req.body;      
         let getAllPosting = await Post.findAll({raw: true});     
         const json = Object.keys(getAllPosting).length;      
         const ts = new Date();  
@@ -17,8 +17,8 @@ const addPost = async (req, res) => {
         const newPost = new Post({
             PostID,
             UserID,
-            NamaPost,
-            Kategori,
+            PostName,
+            Category,
             Caption,
             Image,   
             Like,
