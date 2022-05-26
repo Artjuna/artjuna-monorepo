@@ -1,7 +1,8 @@
+require('dotenv').config();
 module.exports = {
-    HOST: 'localhost',
-    USER: 'root',
-    PASSWORD: '',
+    HOST: process.env.HOST,
+    USER: process.env.USER,
+    PASSWORD: process.env.PASSWORD,
     DB: 'Artjuna',
     dialect: 'mysql',
     dialectOptions: {
