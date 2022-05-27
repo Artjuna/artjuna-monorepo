@@ -1,5 +1,6 @@
 package com.artjuna.artjuna_app.core.data.source.remote.network
 
+import com.artjuna.artjuna_app.core.data.source.remote.response.GetAllPostResponse
 import com.artjuna.artjuna_app.core.data.source.remote.response.GetPostResponse
 import com.artjuna.artjuna_app.core.data.source.remote.response.GetProductResponse
 import com.artjuna.artjuna_app.core.data.source.remote.response.RegisterResponse
@@ -16,6 +17,9 @@ interface ApiService {
 
     @GET("post")
     suspend fun getPost():Response<List<GetPostResponse>>
+
+    @GET("Post/addPost")
+    suspend fun getAllPost():Response<List<GetAllPostResponse>>
 
 
 }
