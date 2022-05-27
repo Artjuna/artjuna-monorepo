@@ -11,7 +11,7 @@ const Product = sequelize.define(
             primaryKey: true
         },
         UserID: {type: Sequelize.STRING, primaryKey: true},
-        ProdukName: {type: Sequelize.STRING, allowNull: false},
+        ProductName: {type: Sequelize.STRING, allowNull: false},
         Category: {type: Sequelize.STRING, allowNull: false},
         Province: {type: Sequelize.STRING, allowNull: false},
         City: {type: Sequelize.STRING, allowNull: false},
