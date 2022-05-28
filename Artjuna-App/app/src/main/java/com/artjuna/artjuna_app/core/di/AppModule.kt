@@ -1,5 +1,6 @@
 package com.artjuna.artjuna_app.core.di
 
+import com.artjuna.artjuna_app.ui.addpost.AddPostViewModel
 import com.artjuna.artjuna_app.ui.address.AddressViewModel
 import com.artjuna.artjuna_app.ui.auth.AuthViewModel
 import com.artjuna.artjuna_app.ui.checkout.CheckoutViewModel
@@ -24,4 +25,5 @@ val viewModelModule = module {
     viewModel { SplashViewModel(get()) }
     viewModel { ProfileSettingsViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
+    viewModel { AddPostViewModel(get()) }
 }
