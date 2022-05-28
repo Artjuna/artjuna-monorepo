@@ -18,6 +18,7 @@ const Product = sequelize.define(
         Caption: {type: Sequelize.STRING, allowNull: false},
         Price: {type: Sequelize.INTEGER, allowNull: false},
         Image: {type: Sequelize.STRING, allowNull: true},
+        HasSeen: {type: Sequelize.INTEGER, allowNull: true},
         createdAt: {type: Sequelize.DATE, allowNull: true}
     },
     {
