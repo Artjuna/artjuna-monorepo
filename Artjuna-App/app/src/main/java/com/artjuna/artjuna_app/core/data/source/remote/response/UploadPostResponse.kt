@@ -1,8 +1,9 @@
 package com.artjuna.artjuna_app.core.data.source.remote.response
 
+import com.artjuna.artjuna_app.core.data.source.model.Post
 import com.google.gson.annotations.SerializedName
 
-data class GetAllPostResponse(
+data class UploadPostResponse(
 
 	@field:SerializedName("createdAt")
 	val createdAt: String,
@@ -28,3 +29,14 @@ data class GetAllPostResponse(
 	@field:SerializedName("Caption")
 	val caption: String
 )
+
+fun UploadPostResponse.toPost():Post{
+	return Post(
+		id = postID,
+		userId = userID,
+		image = image,
+		caption = caption,
+		productName = postName,
+		like = like
+	)
+}

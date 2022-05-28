@@ -5,40 +5,38 @@ import com.google.gson.annotations.SerializedName
 
 data class GetPostResponse(
 
-	@field:SerializedName("storeImage")
-	val storeImage: String,
+	@field:SerializedName("createdAt")
+	val createdAt: String,
 
-	@field:SerializedName("image")
+	@field:SerializedName("Category")
+	val category: String,
+
+	@field:SerializedName("Like")
+	val like: Int,
+
+	@field:SerializedName("UserID")
+	val userID: String,
+
+	@field:SerializedName("Image")
 	val image: String,
 
-	@field:SerializedName("productId")
-	val productId: String,
+	@field:SerializedName("PostName")
+	val postName: String,
 
-	@field:SerializedName("caption")
-	val caption: String,
+	@field:SerializedName("PostID")
+	val postID: String,
 
-	@field:SerializedName("storeName")
-	val storeName: String,
-
-	@field:SerializedName("id")
-	val id: String,
-
-	@field:SerializedName("productName")
-	val productName: String,
-
-	@field:SerializedName("likes")
-	val likes: Int
+	@field:SerializedName("Caption")
+	val caption: String
 )
 
 fun GetPostResponse.toPost(): Post {
 	return Post(
-		id = id,
-		userName = storeName,
-		userImage = storeImage,
+		id = postID,
+		userId = userID,
 		image = image,
-		productName = productName,
-		productId = productId,
-		like = likes,
+		productName = postName,
+		like = like,
 		caption = caption,
 	)
 }
