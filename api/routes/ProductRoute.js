@@ -5,7 +5,9 @@ const router = require('express').Router();
 
 //use routers
 router.post('/addProduct', ProductController.addProduct);
-router.get('/getProduct', ProductController.getProduct);
+router.get('/getAllProduct', ProductController.getAllProduct);
+router.get('/getProductByUserID', ProductController.getProductByUserID);
+router.post('/seen', ProductController.hasSeen);
 
 module.exports = router;
 
