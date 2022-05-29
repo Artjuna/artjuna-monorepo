@@ -36,7 +36,7 @@ const addAccount = async (req, res) => {
     }
 }
 
-const getAccount = async (req, res) => {
+const getAllAccount = async (req, res) => {
     try{
         const getAllAccount = await Account.findAll({});
 
@@ -49,9 +49,27 @@ const getAccount = async (req, res) => {
     }
 }
 
+const getAccountByUserID = async (req, res) => {
+    try{
+        const UserID = req.params.UserID;
+        const getMyAccount = await Account.findAll({    
+            where: {
+                UserID: UserID
+            }
+        });
 
+        res.json(getMyAccount);
+
+    }
+    catch (err)
+    {
+        console.error(err.message);
+        res.status(500).send(err.message);
+    }
+}
 
 module.exports = {
     addAccount,
-    getAccount
+    getAllAccount,
+    getAccountByUserID
 }

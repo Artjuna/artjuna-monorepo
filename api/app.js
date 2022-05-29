@@ -3,30 +3,15 @@ const app = express();
 const { sequelize } = require('./model');
 require('dotenv').config();
 const swaggerUI = require('swagger-ui-express');
-// const options = {
-//     definition: {
-//         openapi: "3.0.0",
-//         info: {
-//             title: "Library API",
-//             version: "1.0.0",
-//             description: "Artjuna API"
-//         },
-//         servers: [
-//             {
-//                 url: "http://localhost:5000"
-//             }
-//         ]
-//     },
-//     apis: ["./routes/Artjuna.js"]
-// }
+const bodyParser = require('body-parser')
+// const specs = require('./swagger.json')
+// app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs))
 
-// const specs = swaggerJsDoc(options);
-const specs = require('./swagger.json')
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs))
-
-sequelize.authenticate().then(() => console.log("respon nodejs berhasil"));
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
+// sequelize.authenticate().then(() => console.log("respon nodejs berhasil"));
+var jsonParser = bodyParser.json({limit:1024*1024*10, type:'application/json'}); 
+var urlencodedParser = bodyParser.urlencoded({ extended:true,limit:1024*1024*10,type:'application/x-www-form-urlencoded' });
+app.use(urlencodedParser);
+app.use(jsonParser);
 
 //routers
 const ProductRoute = require('./routes/ProductRoute');
