@@ -18,7 +18,7 @@ object ApiConfig {
             .build()
         val retrofit by lazy{
                 Retrofit.Builder()
-                    .baseUrl(BASE_URL_MOCK)
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .build()
