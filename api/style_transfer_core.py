@@ -1,3 +1,5 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 import tensorflow as tf
 import base64
 
@@ -11,8 +13,11 @@ class StyleTransferModel:
         return image
 
     def image_preprocessing(self,image):
+        # Casting image to float32
         image = tf.cast(image,tf.float32)
+        # Normalizing image to [0,1]
         image = image/255.0
+        # Resizing image to 224x224
         image = tf.image.resize(image,(224,224))
         return image
 
