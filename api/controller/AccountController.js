@@ -51,8 +51,8 @@ const getAllAccount = async (req, res) => {
 
 const getAccountByUserID = async (req, res) => {
     try{
-        const {UserID} = req.body;
-        const getMyAccount = await Account.findAll({
+        const UserID = req.params.UserID;
+        const getMyAccount = await Account.findAll({    
             where: {
                 UserID: UserID
             }
