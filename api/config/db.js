@@ -1,7 +1,17 @@
+require('dotenv').config();
+// const fs = require('fs');
+// const path = require('path');
+// const key = fs.readFileSync(path.join(__dirname, '../cert', 'client-key.pem'));
+// const cert = fs.readFileSync(path.join(__dirname, '../cert', 'client-cert.pem'));
+// const ca = fs.readFileSync(path.join(__dirname, '../cert', 'server-ca.pem'));
+// import cKey from 'raw-loader!../client-key.pem';
+// import cCert from 'raw-loader!../client-cert.pem';
+// import cCa from 'raw-loader!../server-ca.pem';
+
 module.exports = {
-    HOST: 'localhost',
-    USER: 'root',
-    PASSWORD: '',
+    HOST: process.env.HOST,
+    USER: process.env.USER,
+    PASSWORD: process.env.PASSWORD,
     DB: 'Artjuna',
     dialect: 'mysql',
     dialectOptions: {

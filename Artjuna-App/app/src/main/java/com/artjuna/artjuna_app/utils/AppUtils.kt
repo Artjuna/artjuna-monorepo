@@ -81,7 +81,8 @@ object AppUtils{
         val baos = ByteArrayOutputStream()
         bm.compress(Bitmap.CompressFormat.JPEG, 100, baos) // bm is the bitmap object
         val b: ByteArray = baos.toByteArray()
-        return Base64.encodeToString(b, Base64.DEFAULT)
+        val base64 = "data:image/jpeg;base64,${Base64.encodeToString(b, Base64.DEFAULT)}"
+        return base64
     }
 
     fun convertBase64toByteArray(base64: String): ByteArray {

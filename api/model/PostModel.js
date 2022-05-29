@@ -11,8 +11,8 @@ const Posting = sequelize.define(
             primaryKey: true
         },
         UserID: {type: Sequelize.STRING, primaryKey: true},
-        NamaPost: {type: Sequelize.STRING, allowNull: false},
-        Kategori: {type: Sequelize.STRING, allowNull: false},
+        PostName: {type: Sequelize.STRING, allowNull: false},
+        Category: {type: Sequelize.STRING, allowNull: false},
         Caption: {type: Sequelize.STRING, allowNull: false},
         Image: {type: Sequelize.STRING, allowNull: true},
         Like: {type: Sequelize.INTEGER},

@@ -4,7 +4,8 @@ const router = require('express').Router();
 
 //use routers
 router.post('/addAccount', AccountController.addAccount);
-router.get('/getAccount', AccountController.getAccount);
+router.get('/getAllAccount', AccountController.getAllAccount);
+router.get('/getAccountByUserID', AccountController.getAccountByUserID);
 
 module.exports = router;
 

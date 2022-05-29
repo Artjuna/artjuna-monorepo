@@ -9,6 +9,7 @@ import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
+import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.toPost
 import com.artjuna.artjuna_app.core.data.source.remote.response.toProduct
 
@@ -31,6 +32,30 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
                     emit(Result.Success(res!!))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+    fun uploadPost(post: Post):LiveData<Result<Post>> = liveData {
+        emit(Result.Loading)
+        try {
+            val user = local.getUser()
+            val request = UploadPostRequest(
+                UserID = user.id,
+                PostName = post.productName,
+                Caption = post.caption,
+                Image = post.image
+            )
+            remote.uploadPost(request).let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.toPost()
+                    emit(Result.Success(res!!))
+                }else {
+                    emit(Result.Error(it.errorBody().toString()))
                 }
             }
         }catch (e: Exception) {
