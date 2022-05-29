@@ -6,7 +6,7 @@ const productSeen = db.productSeen;
 
 const addProduct = async (req, res) => {
     try{
-        const { UserID, ProductName, Category, Province, City, Caption, Price } = req.body;      
+        const { UserID, ProductName, Category, Province, City, Caption, Price, Image } = req.body;      
         let getAllProduk = await Product.findAll({raw: true});     
         const json = Object.keys(getAllProduk).length;    
         const ts = new Date();    
@@ -22,6 +22,7 @@ const addProduct = async (req, res) => {
             City,
             Caption,
             Price,
+            Image,
             createdAt
         });
 
