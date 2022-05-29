@@ -3,6 +3,7 @@ require('dotenv').config();
 
 //create main model
 const Account = db.Accounts;
+const Follow = db.Follow;
 
 const addAccount = async (req, res) => {
     try{
@@ -57,6 +58,10 @@ const getAccountByUserID = async (req, res) => {
                 UserID: UserID
             }
         });
+        const getFollowers = await Follow.findAll({raw: true, where: {
+            UserIDFollowed: UserID
+        }});
+        
 
         res.json(getMyAccount);
 
