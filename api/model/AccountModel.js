@@ -12,11 +12,11 @@ const Account = sequelize.define(
         },        
         Email: {type: Sequelize.STRING, allowNull: false},
         UserName: {type: Sequelize.STRING, allowNull: false},
-        NamaLengkap: {type: Sequelize.STRING, allowNull: false},
-        ProvinsiAsal: {type: Sequelize.STRING, allowNull: false},
-        KotaAsal: {type: Sequelize.STRING, allowNull: false},
-        Telepon: {type: Sequelize.INTEGER, allowNull: false},
-        Pengikut: {type: Sequelize.INTEGER, allowNull: false},
+        FullName: {type: Sequelize.STRING, allowNull: false},
+        OriginProvince: {type: Sequelize.STRING, allowNull: false},
+        OriginCity: {type: Sequelize.STRING, allowNull: false},
+        Telephone: {type: Sequelize.INTEGER, allowNull: false},
+        Followers: {type: Sequelize.INTEGER, allowNull: false},
         createdAt: {type: Sequelize.DATE, allowNull: true, }
     },
     {

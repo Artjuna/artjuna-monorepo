@@ -4,6 +4,7 @@ data class Post(
     var id:String="",
     var userName:String="",
     var userImage:String="",
+    var userId:String="",
     var image:String="",
     var productName:String="",
     var productId:String="",

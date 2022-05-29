@@ -1,5 +1,4 @@
 const express = require('express');
-const { path } = require('express/lib/application');
 const app = express();
 const { sequelize } = require('./model');
 require('dotenv').config();
@@ -42,4 +41,4 @@ app.use('/Like', LikeRoute);
 const PostRoute = require('./routes/PostRoute');
 app.use('/Post', PostRoute);
 
-app.listen(5000, () => console.log("port berjalan di 5000"));
+app.listen(process.env.PORT, () => console.log("port berjalan di " + `${process.env.PORT}`));

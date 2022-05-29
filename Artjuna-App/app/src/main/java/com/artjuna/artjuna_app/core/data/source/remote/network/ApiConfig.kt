@@ -7,7 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
 
-    private val BASE_URL = "https://61126d5c89c6d00017ac0314.mockapi.io/"
+    private val BASE_URL = "http://34.101.203.109:8080/"
+    private val BASE_URL_MOCK = "https://61126d5c89c6d00017ac0314.mockapi.io/"
 
     fun getApiService():ApiService{
         val loggingInterceptor = HttpLoggingInterceptor()
@@ -17,7 +18,7 @@ object ApiConfig {
             .build()
         val retrofit by lazy{
                 Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(BASE_URL_MOCK)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(client)
                     .build()

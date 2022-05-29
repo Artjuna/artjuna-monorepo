@@ -37,13 +37,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        populateView()
+        setButtonClick()
         setupAdapter()
-        setData()
+        getData()
     }
 
-    private fun populateView() {
+    private fun setButtonClick() {
         with(binding){
+            header
             header.btnSearch.setOnClickListener { startActivity(Intent(requireContext(), SearchActivity::class.java)) }
             recom.btnSeeAll.setOnClickListener {
                 val intent = Intent(requireContext(), ProductListActivity::class.java)
@@ -58,7 +59,7 @@ class HomeFragment : Fragment() {
         binding.recom.rvRecom.adapter = recomAdapter
     }
 
-    private fun setData() {
+    private fun getData() {
         homeViewModel.getRecommended().observe(viewLifecycleOwner){
             when(it){
                 is Result.Success -> {

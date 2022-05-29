@@ -6,23 +6,23 @@ const Account = db.Accounts;
 
 const addAccount = async (req, res) => {
     try{
-        const { Email, UserName, NamaLengkap, ProvinsiAsal, KotaAsal, Telepon } = req.body;      
+        const { Email, UserName, FullName, OriginProvince, OriginCity, Telephone } = req.body;      
         let getAllAccount = await Account.findAll({raw: true});     
         const json = Object.keys(getAllAccount).length;    
         const ts = new Date();
         const UserID = `${ts.getFullYear()}U${json}`;
-        const Pengikut = 0;
+        const Followers = 0;
         const createdAt = ts;
         // initialize models database
         const newAccount = new Account({
             UserID,
             Email,
             UserName,
-            NamaLengkap,
-            ProvinsiAsal,
-            KotaAsal,
-            Telepon,
-            Pengikut,
+            FullName,
+            OriginProvince,
+            OriginCity,
+            Followers,
+            Telephone,
             createdAt
         });
 
@@ -36,7 +36,7 @@ const addAccount = async (req, res) => {
     }
 }
 
-const getAccount = async (req, res) => {
+const getAllAccount = async (req, res) => {
     try{
         const getAllAccount = await Account.findAll({});
 
@@ -49,9 +49,27 @@ const getAccount = async (req, res) => {
     }
 }
 
+const getAccountByUserID = async (req, res) => {
+    try{
+        const {UserID} = req.body;
+        const getMyAccount = await Account.findAll({
+            where: {
+                UserID: UserID
+            }
+        });
 
+        res.json(getMyAccount);
+
+    }
+    catch (err)
+    {
+        console.error(err.message);
+        res.status(500).send(err.message);
+    }
+}
 
 module.exports = {
     addAccount,
-    getAccount
+    getAllAccount,
+    getAccountByUserID
 }
