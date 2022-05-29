@@ -10,11 +10,13 @@
 <li> epochs = 300
 <li> content dataset : (VOC Pascal(main) + COCO Validation Set)
 <li> style dataset : (Best Artworks of All Time (main) + 5000 Wikiart images)
-  
-### Then, place this folder to "saved_model" folder
-  
-### To get style transfered image, first, put content images on 'eval_images/content' and style images on 'eval_images/content'
-### Next, run eval.py and transfered image will be saved on 'style_transfer_images' folder
+ 
+  -----
+# Testing
+
+### Place downloaded saved_model folder to "saved_model" folder 
+### First, put content images on 'eval_images/content' and style images on 'eval_images/content'
+### Run eval.py and transfered image will be saved on 'style_transfer_images' folder
   
   -----
   
