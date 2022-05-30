@@ -15,7 +15,7 @@ data class AccountResponse(
 	val userName: String,
 
 	@field:SerializedName("Telephone")
-	val telephone: Int,
+	val telephone: String,
 
 	@field:SerializedName("UserID")
 	val userID: String,

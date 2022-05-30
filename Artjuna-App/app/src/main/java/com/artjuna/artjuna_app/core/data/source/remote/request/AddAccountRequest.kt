@@ -6,5 +6,5 @@ data class AddAccountRequest (
     var FullName:String="",
     var OriginProvince:String="",
     var OriginCity:String="",
-    var Telephone:Int=0
+    var Telephone:String=""
 )
