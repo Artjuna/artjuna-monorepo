@@ -42,17 +42,16 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
     fun uploadPost(post: Post):LiveData<Result<Post>> = liveData {
         emit(Result.Loading)
         try {
-            val user = local.getUser()
+            val userId = local.getUser().id
             val request = UploadPostRequest(
-                UserID = user.id,
+                UserID = userId,
                 PostName = post.productName,
                 Caption = post.caption,
                 Image = post.image
             )
             remote.uploadPost(request).let {
                 if(it.isSuccessful){
-                    val body = it.body()
-                    val res = body?.toPost()
+                    val res = it.body()?.toPost()
                     emit(Result.Success(res!!))
                 }else {
                     emit(Result.Error(it.errorBody().toString()))

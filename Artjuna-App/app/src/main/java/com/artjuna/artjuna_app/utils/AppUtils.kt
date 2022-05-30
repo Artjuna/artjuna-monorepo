@@ -63,6 +63,10 @@ object AppUtils{
             .into(this)
     }
 
+    fun getImageSizeInKB(image:File):Int{
+        return (image.length()/1024).toInt()
+    }
+
 
     fun getUserandCaption(username:String, caption:String): Spanned {
         return Html.fromHtml("<b>$username</b> $caption")
@@ -79,7 +83,7 @@ object AppUtils{
     fun convertImageToBase64(file: File): String {
         val bm = BitmapFactory.decodeFile(file.path)
         val baos = ByteArrayOutputStream()
-        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos) // bm is the bitmap object
+        bm.compress(Bitmap.CompressFormat.JPEG, 75, baos) // bm is the bitmap object
         val b: ByteArray = baos.toByteArray()
         val base64 = "data:image/jpeg;base64,${Base64.encodeToString(b, Base64.DEFAULT)}"
         return base64
