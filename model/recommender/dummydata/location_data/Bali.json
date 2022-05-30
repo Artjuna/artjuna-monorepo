@@ -1,0 +1,74 @@
+{
+  "Bali": {
+    "Badung": {
+      "Abiansemal": 200,
+      "Kuta": 200,
+      "Kuta Selatan": 200,
+      "Kuta Utara": 200,
+      "Mengwi": 200,
+      "Petang": 200
+    },
+    "Bangli": { "Bangli": 200, "Kintamani": 200, "Susut": 200, "Tembuku": 200 },
+    "Buleleng": {
+      "Banjar": 200,
+      "Buleleng": 200,
+      "Busung Biu": 200,
+      "Gerokgak": 200,
+      "Kubutambahan": 200,
+      "Sawan": 200,
+      "Seririt": 200,
+      "Sukasada": 200,
+      "Tejakula": 200
+    },
+    "Denpasar": {
+      "Denpasar Barat": 200,
+      "Denpasar Selatan": 200,
+      "Denpasar Timur": 200,
+      "Denpasar Utara": 200
+    },
+    "Gianyar": {
+      "Belah Batuh": 200,
+      "Gianyar": 200,
+      "Payangan": 200,
+      "Sukawati": 200,
+      "Tampak Siring": 200,
+      "Tegallalang": 200,
+      "Ubud": 200
+    },
+    "Jembrana": {
+      "Jembrana": 200,
+      "Melaya": 200,
+      "Mendoyo": 200,
+      "Negara": 200,
+      "Pekutatan": 200
+    },
+    "Karangasem": {
+      "Abang": 200,
+      "Bebandem": 200,
+      "Karang Asem": 200,
+      "Kubu": 200,
+      "Manggis": 200,
+      "Rendang": 200,
+      "Selat": 200,
+      "Sidemen": 200
+    },
+    "Klungkung": {
+      "Banjarangkan": 200,
+      "Dawan": 200,
+      "Klungkung": 200,
+      "Nusapedina": 200
+    },
+    "Tabanan": {
+      "Baturiti": 200,
+      "Kediri": 200,
+      "Kerambitan": 200,
+      "Marga": 200,
+      "Penebel": 200,
+      "Pupuan": 200,
+      "Selemadeg": 200,
+      "Selemadeg Barat": 200,
+      "Selemadeg Timur": 200,
+      "Tabanan": 200
+    }
+  }
+}
