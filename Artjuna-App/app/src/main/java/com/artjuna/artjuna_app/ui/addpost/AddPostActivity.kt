@@ -43,6 +43,7 @@ class AddPostActivity : AppCompatActivity() {
         post.caption = binding.etCaption.text.toString()
         post.productName = binding.etProductName.text.toString()
 
+
         viewModel.uploadPost(post).observe(this){
             when(it){
                 is Result.Loading -> loadingDialog.show()
@@ -74,10 +75,15 @@ class AddPostActivity : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
             val selectedImg: Uri = result.data?.data as Uri
             val myFile = AppUtils.uriToFile(selectedImg, this)
-
             photoFile = myFile
 
-            binding.ivImage.loadImage(selectedImg)
+            val size = AppUtils.getImageSizeInKB(myFile)
+            if(size > 1024){
+                AppUtils.showToast(this, "Image size too large")
+                photoFile = null
+            }else{
+                binding.ivImage.loadImage(selectedImg)
+            }
         }
     }
 
