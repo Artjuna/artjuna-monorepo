@@ -1,0 +1,65 @@
+{
+  "Bangka Belitung": {
+    "Bangka": {
+      "Bakam": 200,
+      "Belinyu": 200,
+      "Mendo Barat": 200,
+      "Merawang": 200,
+      "Pemali": 200,
+      "Puding Besar": 200,
+      "Riau Silip": 200,
+      "Sungai Liat": 200
+    },
+    "Bangka Barat": {
+      "Jebus": 200,
+      "Kelapa": 200,
+      "Muntok": 200,
+      "Paritiga": 200,
+      "Simpang Teritip": 200,
+      "Tempilang": 200
+    },
+    "Bangka Selatan": {
+      "Air Gegas": 200,
+      "Kepulauan Pongok": 200,
+      "Lepar Pongok": 200,
+      "Payung": 200,
+      "Pulau Besar": 200,
+      "Simpang Rimba": 200,
+      "Toboali": 200,
+      "Tukak Sadai": 200
+    },
+    "Bangka Tengah": {
+      "Koba": 200,
+      "Lubuk Besar": 200,
+      "Namang": 200,
+      "Pangkalan Baru": 200,
+      "Simpang Katis": 200,
+      "Sungai Selan": 200
+    },
+    "Belitung": {
+      "Badau": 200,
+      "Membalong": 200,
+      "Selat Nasik": 200,
+      "Sijuk": 200,
+      "Tanjung Pandan": 200
+    },
+    "Belitung Timur": {
+      "Damar": 200,
+      "Dendang": 200,
+      "Gantung": 200,
+      "Kelapa Kampit": 200,
+      "Manggar": 200,
+      "Simpang Pesak": 200,
+      "Simpang Renggiang": 200
+    },
+    "Pangkal Pinang": {
+      "Bukit Intan": 200,
+      "Gabek": 200,
+      "Gerunggang": 200,
+      "Girimaya": 200,
+      "Pangkal Balam": 200,
+      "Rangkui": 200,
+      "Taman Sari": 200
+    }
+  }
+}
