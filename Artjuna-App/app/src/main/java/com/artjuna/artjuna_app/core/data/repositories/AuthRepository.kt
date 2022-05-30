@@ -40,30 +40,23 @@ class AuthRepository(
 
     fun checkUsernameAvail(user:User) {
         showLoading(true)
-        Log.d(TAG, "checkUsernameAvail")
         db.collection("users").get()
             .addOnSuccessListener { result ->
                 for (document in result){
                     if (document.data["UserName"] == user.userName){
-                        showLoading(false)
-                        Log.d(TAG, "addOnSuccessListener ${document.data["UserName"]}")
-                        showError("Username already exist")
+                        showError("Username ${document.data["UserName"]} already exist")
                         return@addOnSuccessListener
                     }
                 }
                 signUp(user)
-
             }
             .addOnFailureListener { e ->
-                showLoading(false)
                 showError(e.message.toString())
-                Log.d(TAG, "addOnFailureListener ${e.message.toString()}")
             }
     }
 
     private fun signUp(user: User) {
         showLoading(true)
-        Log.d(TAG, "signUp")
         auth.createUserWithEmailAndPassword(user.email, user.password)
             .addOnCompleteListener{task ->
                 if (task.isSuccessful){
@@ -76,19 +69,15 @@ class AuthRepository(
 
                         addAccountToAPI(user)
                     }
-
                 }
                 else{
-                    showLoading(false)
                     showError(task.exception.toString())
-                    Log.w(TAG, "signUpWithEmail: failure", task.exception)
                 }
             }
     }
 
     private fun addAccountToAPI(user: User){
         showLoading(true)
-        Log.d(TAG, "addAccountToAPI")
         val request = AddAccountRequest(
             Email = user.email,
             UserName = user.userName,
@@ -103,16 +92,15 @@ class AuthRepository(
                     val res = response.body()?.toUser()
                     saveUserToFirebase(res!!)
                     saveUserToLocal(res)
-                    showLoading(false)
                     showSuccess("Sign Up Success")
+                }else{
+                    showError(response.errorBody()!!.string())
                 }
             }
 
             override fun onFailure(call: Call<AccountResponse>, t: Throwable) {
-                showLoading(false)
                 showError(t.message.toString())
             }
-
         })
     }
 
@@ -141,7 +129,6 @@ class AuthRepository(
                         getUserFromFirebaseByEmail(fUser.email!!)
                     }
                 }else{
-                    showLoading(false)
                     showError(it.exception.toString())
                 }
             }
@@ -153,44 +140,40 @@ class AuthRepository(
             .get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    val user = document.toObject(User::class.java)
-                    getAccountByIdFromAPI(user!!.id)
-
+                    val userId = document["UserID"].toString()
+                    getAccountByIdFromAPI(userId)
                 } else {
                     signOut()
-                    showLoading(false)
-                    showError("Error Happened")
-                    Log.d(TAG, "No such document")
+                    showError("Try Again")
                 }
+            }
+            .addOnFailureListener{e ->
+                signOut()
+                showError(e.message.toString())
             }
     }
 
     private fun getAccountByIdFromAPI(id:String){
         showLoading(true)
-        remote.getAccountById(id).enqueue(object :Callback<AccountResponse>{
+        remote.getAccountById(id).enqueue(object :retrofit2.Callback<List<AccountResponse>>{
             override fun onResponse(
-                call: Call<AccountResponse>,
-                response: Response<AccountResponse>
+                call: Call<List<AccountResponse>>,
+                response: Response<List<AccountResponse>>
             ) {
                 if(response.isSuccessful){
-                    val res = response.body()?.toUser()
-                    saveUserToLocal(res!!)
-                    showLoading(false)
-                    showSuccess("Sign In Success")
+                    val res = response.body()!![0].toUser()
+                    saveUserToLocal(res)
+                    showSuccess("Success Sign In")
                 }else{
                     signOut()
-                    showLoading(false)
                     showError(response.errorBody()!!.string())
                 }
             }
 
-            override fun onFailure(call: Call<AccountResponse>, t: Throwable) {
+            override fun onFailure(call: Call<List<AccountResponse>>, t: Throwable) {
                 signOut()
-                showLoading(false)
                 showError(t.message.toString())
             }
-
         })
     }
 
@@ -218,11 +201,14 @@ class AuthRepository(
     }
 
     private fun showError(msg: String) {
+        _isLoading.postValue(false)
         _isLogged.postValue(false)
         _message.postValue(msg)
+        Log.d(TAG, msg)
     }
 
     private fun showSuccess(msg: String) {
+        _isLoading.postValue(false)
         _isLogged.postValue(true)
         _message.postValue(msg)
     }
