@@ -44,23 +44,19 @@ class AuthRepository(
             .addOnSuccessListener { result ->
                 for (document in result){
                     if (document.data["UserName"] == user.userName){
-                        Log.d(TAG, "addOnSuccessListener ${document.data["UserName"]}")
-                        showError("Username already exist")
+                        showError("Username ${document.data["UserName"]} already exist")
                         return@addOnSuccessListener
                     }
                 }
                 signUp(user)
-
             }
             .addOnFailureListener { e ->
-                val errorMsg = e.message.toString()
-                showError(errorMsg)
+                showError(e.message.toString())
             }
     }
 
     private fun signUp(user: User) {
         showLoading(true)
-        Log.d(TAG, "signUp")
         auth.createUserWithEmailAndPassword(user.email, user.password)
             .addOnCompleteListener{task ->
                 if (task.isSuccessful){
@@ -73,18 +69,15 @@ class AuthRepository(
 
                         addAccountToAPI(user)
                     }
-
                 }
                 else{
-                    val errorMsg = task.exception.toString()
-                    showError(errorMsg)
+                    showError(task.exception.toString())
                 }
             }
     }
 
     private fun addAccountToAPI(user: User){
         showLoading(true)
-        Log.d(TAG, "addAccountToAPI")
         val request = AddAccountRequest(
             Email = user.email,
             UserName = user.userName,
@@ -101,14 +94,12 @@ class AuthRepository(
                     saveUserToLocal(res)
                     showSuccess("Sign Up Success")
                 }else{
-                    val errorMsg = response.errorBody()!!.string()
-                    showError(errorMsg)
+                    showError(response.errorBody()!!.string())
                 }
             }
 
             override fun onFailure(call: Call<AccountResponse>, t: Throwable) {
-                val errorMsg = t.message.toString()
-                showError(errorMsg)
+                showError(t.message.toString())
             }
         })
     }
@@ -138,8 +129,7 @@ class AuthRepository(
                         getUserFromFirebaseByEmail(fUser.email!!)
                     }
                 }else{
-                    val errorMsg = it.exception.toString()
-                    showError(errorMsg)
+                    showError(it.exception.toString())
                 }
             }
     }
@@ -150,15 +140,16 @@ class AuthRepository(
             .get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                     val userId = document["UserID"].toString()
                     getAccountByIdFromAPI(userId)
-
                 } else {
                     signOut()
-                    val errorMsg = "Try Again"
-                    showError(errorMsg)
+                    showError("Try Again")
                 }
+            }
+            .addOnFailureListener{e ->
+                signOut()
+                showError(e.message.toString())
             }
     }
 
@@ -171,12 +162,11 @@ class AuthRepository(
             ) {
                 if(response.isSuccessful){
                     val res = response.body()!![0].toUser()
-                    showSuccess("Success Sign In")
                     saveUserToLocal(res)
+                    showSuccess("Success Sign In")
                 }else{
                     signOut()
-                    val errorMsg = "Try Again"
-                    showError(errorMsg)
+                    showError(response.errorBody()!!.string())
                 }
             }
 
@@ -184,7 +174,6 @@ class AuthRepository(
                 signOut()
                 showError(t.message.toString())
             }
-
         })
     }
 
