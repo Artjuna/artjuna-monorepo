@@ -114,11 +114,13 @@
 
             <!-- Detail -->
             <include
+                android:id="@+id/categories"
                 layout="@layout/layout_addproduct_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/custom"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="@dimen/_16sdp"
@@ -128,6 +130,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <include
+        android:id="@+id/bottombar"
         layout="@layout/bottombar_addpost"/>
 
 </LinearLayout>
