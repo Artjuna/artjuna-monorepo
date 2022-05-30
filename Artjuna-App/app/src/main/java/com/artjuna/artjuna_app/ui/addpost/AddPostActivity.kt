@@ -33,8 +33,28 @@ class AddPostActivity : AppCompatActivity() {
     private fun setButtonClick() {
         with(binding) {
             btnAddPhoto.setOnClickListener { openGallery() }
-            bottombar.btnUpload.setOnClickListener { uploadPost() }
+            bottombar.btnUpload.setOnClickListener {
+                if (formNotEmpty()){
+                    uploadPost()
+                }
+            }
         }
+    }
+
+    private fun formNotEmpty(): Boolean {
+        if(photoFile == null){
+            AppUtils.showToast(this, "You haven't choose a photo")
+            return false
+        }
+        if(binding.etCaption.text.isNullOrEmpty()){
+            binding.etCaption.error = "Isi Dulu Bang"
+            return false
+        }
+        if(binding.etProductName.text.isNullOrEmpty()){
+            binding.etProductName.error = "Isi Dulu Bang"
+            return false
+        }
+        return true
     }
 
     private fun uploadPost() {
@@ -81,6 +101,7 @@ class AddPostActivity : AppCompatActivity() {
             if(size > 1024){
                 AppUtils.showToast(this, "Image size too large")
                 photoFile = null
+                binding.ivImage.loadImage("")
             }else{
                 binding.ivImage.loadImage(selectedImg)
             }
