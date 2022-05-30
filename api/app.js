@@ -26,4 +26,7 @@ app.use('/Like', LikeRoute);
 const PostRoute = require('./routes/PostRoute');
 app.use('/Post', PostRoute);
 
+const FollowRoute = require('./routes/FollowRoute');
+app.use('/Follow', FollowRoute);
+
 app.listen(process.env.PORT, () => console.log("port berjalan di " + `${process.env.PORT}`));

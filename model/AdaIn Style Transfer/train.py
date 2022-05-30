@@ -88,3 +88,6 @@ history = model.fit(train_ds,
                     validation_data= val_ds,
                     validation_steps= STEPS_PER_EPOCH,
                     callbacks = [cp_callback])
+
+export_dir = '/saved_model'
+tf.saved_model.save(model,export_dir)
