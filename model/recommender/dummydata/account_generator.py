@@ -6,6 +6,7 @@ import os
 from faker import Faker
 import json
 import random
+from tqdm import tqdm,trange
 
 
 def create_fake_num(fake):
@@ -34,12 +35,12 @@ def create_random_city_province_pair(data_json):
     return random_province, random_city
 
 
-def main(dry_run=True):
+def main(dry_run=True,debug=True):
     base_url = os.getenv("base_url")
     fake = Faker("id_ID")
     data_json = os.listdir("location_data")
 
-    for i in range(1000):
+    for i in trange(1000):
 
         # Name Gen
         fake_name = create_fake_name(fake)
@@ -55,6 +56,9 @@ def main(dry_run=True):
         # Username Gen
         fake_username = fake.user_name()
 
+        # Store Randomizer
+        is_store = random.choice([True, False])
+
         payload = {
             "Email": fake_email,
             "UserName": fake_username,
@@ -62,12 +66,17 @@ def main(dry_run=True):
             "OriginProvince": random_province,
             "OriginCity": random_city,
             "Telephone": fake_telephone,
+            "IsStore": is_store,
         }
-        print(payload)
+        if debug:
+            tqdm.write(str(payload))
         if not dry_run:
-            a = r.post(base_url + "/Account/addAccount", json=payload)
-            print(a)
+            resp = r.post(base_url + "/Account/addAccount", json=payload)
+            if debug:
+                tqdm.write(resp)
 
 
 if __name__ == "__main__":
-    main(False)
+    dry_run = False
+    debug = False
+    main(dry_run,debug)
