@@ -11,7 +11,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -39,10 +39,15 @@ interface ApiService {
 //        @Path("UserID") id:String
 //    ):Call<AccountResponse>
 
-    @GET("Account/getAccountByUserID")
+//    @GET("Account/getAccountByUserID")
+//    fun getAccountById(
+//        @Query("UserID") userId:String
+//    ):Call<AccountResponse>
+
+    @GET("Account/getAccountByUserID/{UserID}")
     fun getAccountById(
-        @Query("UserID") userId:String
-    ):Call<AccountResponse>
+        @Path("UserID") id:String
+    ):Call<List<AccountResponse>>
 
 
 
