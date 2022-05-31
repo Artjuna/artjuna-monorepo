@@ -27,7 +27,7 @@ fun Product.toProductRequest():UploadProductRequest{
         ProductName = name,
         Image = image,
         Category = category,
-        City = category,
+        City = storeCity,
         Caption = detail,
         Price = price
     )

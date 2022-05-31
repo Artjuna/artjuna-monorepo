@@ -18,7 +18,7 @@ interface ApiService {
         @Body body: UploadProductRequest
     ) : Response<ProductResponse>
 
-    @GET("product")
+    @GET("Product/getAllProduct")
     suspend fun getProduct():Response<List<GetProductResponse>>
 
     @GET("Post/getPost")
