@@ -3,7 +3,7 @@ package com.artjuna.artjuna_app.core.data.source.remote.response
 import com.artjuna.artjuna_app.core.data.source.model.Post
 import com.google.gson.annotations.SerializedName
 
-data class UploadPostResponse(
+data class PostResponse(
 
 	@field:SerializedName("createdAt")
 	val createdAt: String,
@@ -30,7 +30,7 @@ data class UploadPostResponse(
 	val caption: String
 )
 
-fun UploadPostResponse.toPost():Post{
+fun PostResponse.toPost():Post{
 	return Post(
 		id = postID,
 		userId = userID,

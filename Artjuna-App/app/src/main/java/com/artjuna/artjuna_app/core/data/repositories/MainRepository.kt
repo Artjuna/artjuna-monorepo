@@ -3,10 +3,7 @@ package com.artjuna.artjuna_app.core.data.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
-import com.artjuna.artjuna_app.core.data.source.model.Address
-import com.artjuna.artjuna_app.core.data.source.model.Post
-import com.artjuna.artjuna_app.core.data.source.model.Product
-import com.artjuna.artjuna_app.core.data.source.model.User
+import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
@@ -32,6 +29,24 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
                     emit(Result.Success(res!!))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+    fun uploadProduct(product: Product):LiveData<Result<Product>> = liveData {
+        emit(Result.Loading)
+        try {
+            val request = product.toProductRequest()
+            request.UserID = local.getUser().id
+            remote.uploadProduct(request).let {
+                if (it.isSuccessful){
+                    val res = it.body()?.toProduct()
+                    emit(Result.Success(res!!))
+                }else{
+                    emit(Result.Error(it.errorBody().toString()))
                 }
             }
         }catch (e: Exception) {

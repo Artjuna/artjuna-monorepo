@@ -5,27 +5,107 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.artjuna.artjuna_app.core.data.source.model.Product
+import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.ActivityAddProductBinding
+import com.artjuna.artjuna_app.ui.loading.LoadingDialog
+import com.artjuna.artjuna_app.utils.AppUtils
+import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 import com.artjuna.artjuna_app.utils.AppUtils.uriToFile
+import com.google.android.material.chip.Chip
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
 class AddProductActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityAddProductBinding
-
+    private val viewModel:AddProductViewModel by viewModel()
+    private lateinit var loadingDialog: LoadingDialog
     private var photoFile: File? = null
+    private var category:String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setupLoading()
         setButtonClick()
+        setCategoryListener()
+    }
+
+    private fun setCategoryListener() {
+        binding.categories.catGroup.setOnCheckedChangeListener {chipGroup,i ->
+            val checkedChip = findViewById<Chip>(i)
+            category = checkedChip.text.toString()
+        }
     }
 
     private fun setButtonClick() {
         with(binding){
             btnAddPhoto.setOnClickListener { openGallery() }
+            bottombar.btnUpload.setOnClickListener {
+                if(formNotEmpty()){
+                    uploadProduct()
+                }
+            }
         }
+    }
+
+    private fun uploadProduct() {
+        val product = collectProductFromForm()
+        viewModel.uploadProduct(product).observe(this){
+            when(it){
+                is Result.Loading -> loadingDialog.show()
+                is Result.Error -> {
+                    loadingDialog.dismiss()
+                    AppUtils.showToast(this, it.error)
+                }
+                is Result.Success -> {
+                    loadingDialog.dismiss()
+                    AppUtils.showToast(this, "Product Uploaded")
+                    finish()
+                }
+            }
+        }
+    }
+
+    private fun collectProductFromForm(): Product {
+        val product = Product()
+        product.image = AppUtils.convertImageToBase64(photoFile!!)
+        product.name = binding.etProductName.text.toString()
+        product.price = binding.etProductPrice.text.toString().toInt()
+        product.detail = binding.etDetail.text.toString()
+        product.category = category!!
+        product.isCustomizable = binding.custom.isActivated
+        return product
+    }
+
+    private fun formNotEmpty(): Boolean {
+        if(photoFile == null){
+            AppUtils.showToast(this, "You haven't choose a photo")
+            return false
+        }
+        if(binding.etProductName.text.isNullOrEmpty()){
+            binding.etProductName.error = "Must be filled"
+            return false
+        }
+        if(binding.etProductPrice.text.isNullOrEmpty()){
+            binding.etProductPrice.error = "Must be filled"
+            return false
+        }
+        if(binding.etDetail.text.isNullOrEmpty()){
+            binding.etDetail.error = "Must be filled"
+            return false
+        }
+        if(category.isNullOrEmpty()){
+            AppUtils.showToast(this, "You haven't choose a category")
+            return false
+        }
+
+        return true
+    }
+
+    private fun setupLoading() {
+        loadingDialog = LoadingDialog(this,false)
     }
 
     private fun openGallery() {
@@ -45,7 +125,14 @@ class AddProductActivity : AppCompatActivity() {
 
             photoFile = myFile
 
-            binding.ivImage.setImageURI(selectedImg)
+            val size = AppUtils.getImageSizeInKB(myFile)
+            if(size > 1024){
+                AppUtils.showToast(this, "Image size too large")
+                photoFile = null
+                binding.ivImage.loadImage("")
+            }else{
+                binding.ivImage.loadImage(selectedImg)
+            }
         }
     }
 
