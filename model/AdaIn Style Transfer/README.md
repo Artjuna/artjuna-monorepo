@@ -11,6 +11,12 @@
 <li> content dataset : (VOC Pascal(main) + COCO Validation Set)
 <li> style dataset : (Best Artworks of All Time (main) + 5000 Wikiart images)
  
+## Styled image example from test dataset: 
+ ![adain1](https://user-images.githubusercontent.com/92104520/171184421-273fd9af-5b63-44e1-b58c-a55e084ee4a6.JPG)
+ ![adain2](https://user-images.githubusercontent.com/92104520/171184430-14d84d01-8422-4697-8f27-696980780d3d.JPG)
+ ![adain3](https://user-images.githubusercontent.com/92104520/171184448-5943f618-2a11-459d-b96d-1fba2bdc9a45.JPG)
+ ![adain4](https://user-images.githubusercontent.com/92104520/171184384-c69cf1c6-3171-483d-9186-e2a3118383c8.JPG)
+
   -----
 # Testing
 
