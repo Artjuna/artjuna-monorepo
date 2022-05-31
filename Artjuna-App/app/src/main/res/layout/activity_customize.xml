@@ -23,7 +23,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/iv_before_customize"
+                        android:id="@+id/iv_product"
                         android:layout_width="wrap_content"
                         android:layout_height="265dp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Cellero Caberro Painting"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_before_customize"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_product"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         style="@style/Subtitle1Bold"
@@ -74,16 +74,25 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="180dp"
                 android:layout_marginTop="8dp">
-
 
                 <ImageView
                     android:id="@+id/iv_add_photo"
                     android:layout_margin="@dimen/_14sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/box_photo" />
+                    app:srcCompat="@drawable/bg_box_add_photo" />
+
+                <Button
+                    android:id="@+id/btn_add_photo"
+                    android:layout_width="113dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/_100sdp"
+                    android:text="Add Photo"
+                    android:textAllCaps="false"/>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
