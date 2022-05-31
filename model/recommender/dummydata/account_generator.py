@@ -6,6 +6,9 @@ import os
 from faker import Faker
 import json
 import random
+from tqdm import tqdm, trange
+import asyncio
+import aiohttp
 
 
 def create_fake_num(fake):
@@ -13,7 +16,7 @@ def create_fake_num(fake):
     for character in "()- +":
         fake_telephone = fake_telephone.replace(character, "")
     if fake_telephone[0] == "0":
-        fake_telephone = "62"+fake_telephone[1:]
+        fake_telephone = "62" + fake_telephone[1:]
     return fake_telephone
 
 
@@ -34,40 +37,53 @@ def create_random_city_province_pair(data_json):
     return random_province, random_city
 
 
-def main(dry_run=True):
+async def main(dry_run=True, debug=True):
     base_url = os.getenv("base_url")
     fake = Faker("id_ID")
     data_json = os.listdir("location_data")
 
-    for i in range(1000):
+    async with aiohttp.ClientSession() as session:
 
-        # Name Gen
-        fake_name = create_fake_name(fake)
+        for i in trange(1000):
 
-        # Telephone Gen
-        fake_telephone = create_fake_num(fake)
+            # Name Gen
+            fake_name = create_fake_name(fake)
 
-        # City Province Pair Gen
-        random_province, random_city = create_random_city_province_pair(data_json)
-        # Email Gen
-        fake_email = fake.ascii_safe_email()
+            # Telephone Gen
+            fake_telephone = create_fake_num(fake)
 
-        # Username Gen
-        fake_username = fake.user_name()
+            # City Province Pair Gen
+            random_province, random_city = create_random_city_province_pair(data_json)
+            # Email Gen
+            fake_email = fake.ascii_safe_email()
 
-        payload = {
-            "Email": fake_email,
-            "UserName": fake_username,
-            "FullName": fake_name,
-            "OriginProvince": random_province,
-            "OriginCity": random_city,
-            "Telephone": fake_telephone,
-        }
-        print(payload)
-        if not dry_run:
-            a = r.post(base_url + "/Account/addAccount", json=payload)
-            print(a)
+            # Username Gen
+            fake_username = fake.user_name()
+
+            # Store Randomizer
+            is_store = random.choice([True, False])
+
+            payload = {
+                "Email": fake_email,
+                "UserName": fake_username,
+                "FullName": fake_name,
+                "OriginProvince": random_province,
+                "OriginCity": random_city,
+                "Telephone": fake_telephone,
+                "IsStore": is_store,
+            }
+            if debug:
+                tqdm.write(str(payload))
+            if not dry_run:
+                async with session.post(
+                    base_url + "/Account/addAccount", json=payload
+                ) as resp:
+                    response = resp
+                    if debug:
+                        tqdm.write(response)
 
 
 if __name__ == "__main__":
-    main(False)
+    dry_run = False
+    debug = False
+    asyncio.run(main(dry_run, debug))
