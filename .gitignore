@@ -1,3 +1,4 @@
 .cenv
 __pycache__
 .env
+.vscode
