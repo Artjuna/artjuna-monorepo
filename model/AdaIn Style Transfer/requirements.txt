@@ -1,0 +1,5 @@
+tensorflow==2.8.0
+tensorflow-datasets==4.5.2
+fiftyone==0.15.1
+numpy==1.22.3
+Pillow==9.1.0
