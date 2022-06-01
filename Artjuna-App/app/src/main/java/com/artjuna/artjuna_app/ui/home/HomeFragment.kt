@@ -10,7 +10,9 @@ import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentHomeBinding
 import com.artjuna.artjuna_app.ui.home.adapter.RecomAdapter
+import com.artjuna.artjuna_app.ui.productlist.ProductListActivity
 import com.artjuna.artjuna_app.ui.search.SearchActivity
+import com.artjuna.artjuna_app.utils.Constant
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -45,12 +47,11 @@ class HomeFragment : Fragment() {
         with(binding){
             header
             header.btnSearch.setOnClickListener { startActivity(Intent(requireContext(), SearchActivity::class.java)) }
-//            recom.btnSeeAll.setOnClickListener {
-//                val intent = Intent(requireContext(), ProductListActivity::class.java)
-//                intent.putParcelableArrayListExtra(ProductListActivity.EXTRA_PRODUCT_LIST, recomList)
-//                intent.putExtra(ProductListActivity.EXTRA_PAGE_TITLE, "Recommendation")
-//                startActivity(intent)
-//            }
+            recom.btnSeeAll.setOnClickListener {
+                val intent = Intent(requireContext(), ProductListActivity::class.java)
+                intent.putExtra(ProductListActivity.EXTRA_PAGE_TITLE, Constant.Recommendation)
+                startActivity(intent)
+            }
         }
     }
 

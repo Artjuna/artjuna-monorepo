@@ -74,6 +74,7 @@
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_cart.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_checkout.xml" value="0.20854700854700856" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_load.xml" value="0.2059071729957806" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_order.xml" value="0.264" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_small.xml" value="0.4" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_small_load.xml" value="0.20854700854700856" />
@@ -93,6 +94,7 @@
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_home_toolbar.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_mystore_header.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_mystore_mysales.xml" value="0.22592592592592592" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_list_load.xml" value="0.20854700854700856" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_overview.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_reviews.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_similar.xml" value="0.22592592592592592" />
@@ -100,15 +102,6 @@
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_store_header.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/toolbar_home.xml" value="0.176" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_add_post.xml" value="0.1" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_add_product.xml" value="0.10916919959473151" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_checkout.xml" value="0.25" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_customize.xml" value="0.25" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_detail_product.xml" value="0.18206521739130435" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_product_list.xml" value="0.14" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_checkout_product_summary.xml" value="0.33" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_overview.xml" value="0.22447916666666667" />
       </map>
     </option>
   </component>
