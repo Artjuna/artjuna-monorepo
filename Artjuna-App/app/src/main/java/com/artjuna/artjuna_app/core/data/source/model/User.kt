@@ -1,5 +1,10 @@
 package com.artjuna.artjuna_app.core.data.source.model
 
+import android.os.Parcelable
+import com.artjuna.artjuna_app.core.data.source.remote.request.UpdateAccountRequest
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class User(
     var id:String="",
     var fullName:String="",
@@ -10,4 +15,16 @@ data class User(
     var followers:Int=0,
     var numberWA:String="",
     var city:String="",
-)
+):Parcelable
+
+fun User.toUpdateRequest():UpdateAccountRequest{
+    return UpdateAccountRequest(
+        UserID = id,
+        FullName = fullName,
+        UserName = userName,
+        Email = email,
+        OriginCity = city,
+        Telephone = numberWA,
+        IsStore = isStore
+    )
+}

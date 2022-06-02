@@ -2,6 +2,7 @@ package com.artjuna.artjuna_app.core.data.source.remote
 
 import com.artjuna.artjuna_app.core.data.source.remote.network.ApiService
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddAccountRequest
+import com.artjuna.artjuna_app.core.data.source.remote.request.UpdateAccountRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadProductRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.AccountResponse
@@ -17,5 +18,6 @@ class RemoteDataSource(private val api:ApiService) {
 
     fun addAccount(request:AddAccountRequest) = api.addAccount(request)
     fun getAccountById(userId:String): Call<List<AccountResponse>> = api.getAccountById(userId)
+    fun updateAccount(request: UpdateAccountRequest):Call<Void> = api.updateAccount(request)
 
 }

@@ -1,15 +1,13 @@
 package com.artjuna.artjuna_app.core.data.source.remote.network
 
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddAccountRequest
+import com.artjuna.artjuna_app.core.data.source.remote.request.UpdateAccountRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadProductRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.*
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -39,6 +37,10 @@ interface ApiService {
         @Path("UserID") id:String
     ):Call<List<AccountResponse>>
 
+    @PUT("Account/updateAccount")
+    fun updateAccount(
+        @Body body:UpdateAccountRequest
+    ):Call<Void>
 
 
 

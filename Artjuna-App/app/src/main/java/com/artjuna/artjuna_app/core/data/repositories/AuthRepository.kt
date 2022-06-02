@@ -6,7 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
 import com.artjuna.artjuna_app.core.data.source.model.Address
 import com.artjuna.artjuna_app.core.data.source.model.User
+import com.artjuna.artjuna_app.core.data.source.model.toUpdateRequest
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
+import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddAccountRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.AccountResponse
 import com.artjuna.artjuna_app.core.data.source.remote.response.toUser
@@ -195,6 +197,28 @@ class AuthRepository(
         }
         return logged
     }
+
+    fun updateAccount(user:User):LiveData<Result<String>>{
+        val result = MutableLiveData<Result<String>>()
+        result.postValue(Result.Loading)
+        remote.updateAccount(user.toUpdateRequest()).enqueue(object : Callback<Void>{
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if(response.isSuccessful){
+                    result.postValue(Result.Success("Success"))
+                    local.saveUser(user)
+                }else{
+                    result.postValue(Result.Error("Error"))
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                result.postValue(Result.Error("Error"))
+            }
+
+        })
+        return result
+    }
+
 
     private fun showLoading(loading:Boolean){
         _isLoading.postValue(loading)
