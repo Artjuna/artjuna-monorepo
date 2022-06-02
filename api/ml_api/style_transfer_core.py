@@ -1,7 +1,10 @@
 import os
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
-import tensorflow as tf
 import base64
+
+import tensorflow as tf
+
 
 class StyleTransferModel:
     
@@ -25,3 +28,7 @@ class StyleTransferModel:
         image = self.image_decoder(image_b64)
         image = self.image_preprocessing(image)
         return image
+
+    # def load_model(self,model_path):
+        
+    
