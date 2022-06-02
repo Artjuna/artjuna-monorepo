@@ -27,7 +27,7 @@ async def main(dry_run=True, debug=True):
 
     async with aiohttp.ClientSession() as session:
 
-        for i in trange(10000):
+        for i in trange(100000):
             random_pair = random.sample(full_data, 2)
             payload = {
                 "UserIDFollowing": random_pair[0][0],
@@ -46,4 +46,4 @@ async def main(dry_run=True, debug=True):
 if __name__ == "__main__":
     dry_run = False
     debug = False
-    asyncio.run(main(dry_run,debug))
+    asyncio.run(main(dry_run, debug))
