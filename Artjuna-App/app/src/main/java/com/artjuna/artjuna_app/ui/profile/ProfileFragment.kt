@@ -57,7 +57,10 @@ class ProfileFragment : Fragment() {
     private fun setButtonClick() {
         with(binding){
             btnSetting.setOnClickListener {
-                startActivity(Intent(requireContext(), ProfileSettingsActivity::class.java))
+                val intent = Intent(requireContext(), ProfileSettingsActivity::class.java)
+                intent.putExtra(ProfileSettingsActivity.EXTRA_USER, user)
+                startActivity(intent)
+
             }
             btnMycart.setOnClickListener {
                 startActivity(Intent(requireContext(),CartActivity::class.java))
@@ -85,6 +88,11 @@ class ProfileFragment : Fragment() {
             binding.btnStorefollow.visibility = View.VISIBLE
             binding.btnMystore.visibility = View.GONE
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getData()
     }
 
     override fun onDestroyView() {
