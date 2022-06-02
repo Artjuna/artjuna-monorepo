@@ -35,8 +35,6 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        showMenu(true)
         setButtonClick()
         getData()
 
@@ -44,6 +42,7 @@ class ProfileFragment : Fragment() {
 
     private fun getData() {
         user = viewModel.getUser()
+        showMenu(user.isStore)
         populateUserView()
     }
 
@@ -57,10 +56,7 @@ class ProfileFragment : Fragment() {
     private fun setButtonClick() {
         with(binding){
             btnSetting.setOnClickListener {
-                val intent = Intent(requireContext(), ProfileSettingsActivity::class.java)
-                intent.putExtra(ProfileSettingsActivity.EXTRA_USER, user)
-                startActivity(intent)
-
+                moveToSetting()
             }
             btnMycart.setOnClickListener {
                 startActivity(Intent(requireContext(),CartActivity::class.java))
@@ -75,9 +71,26 @@ class ProfileFragment : Fragment() {
                 AppUtils.showToast(requireContext(),"Coming Soon")
             }
             btnMystore.setOnClickListener {
-                startActivity(Intent(requireContext(),MyStoreActivity::class.java))
+                if(user.numberWA.isEmpty() || user.city.isEmpty()){
+                    AppUtils.showToast(requireContext(), "You have to fill your phone number and city first")
+                    moveToSetting()
+                }else{
+                    moveToMyStore()
+                }
             }
         }
+    }
+
+    private fun moveToMyStore() {
+        val intent = Intent(requireContext(), MyStoreActivity::class.java)
+        intent.putExtra(MyStoreActivity.EXTRA_USER, user)
+        startActivity(intent)
+    }
+
+    private fun moveToSetting(){
+        val intent = Intent(requireContext(), ProfileSettingsActivity::class.java)
+        intent.putExtra(ProfileSettingsActivity.EXTRA_USER, user)
+        startActivity(intent)
     }
 
     private fun showMenu(isStore:Boolean){
