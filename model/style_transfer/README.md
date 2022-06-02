@@ -1,6 +1,6 @@
 # AdaIn saved model can be downloaded from this link: 
 
- #### https://drive.google.com/drive/folders/1HvqzHQcjTnKz-NA9-7h-7j3i2Cl8AYdJ?usp=sharing
+ #### https://drive.google.com/file/d/1Px3MNJGztfhDM6NyZUEUkOtRn9V2J0hi/view?usp=sharing
 
 ## This link containing trained model using configurations:
 <li> batch_size = 6
