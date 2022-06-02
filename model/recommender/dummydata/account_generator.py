@@ -1,14 +1,15 @@
 from dotenv import load_dotenv
 
 load_dotenv()
-import requests as r
-import os
-from faker import Faker
-import json
-import random
-from tqdm import tqdm, trange
 import asyncio
+import json
+import os
+import random
+
 import aiohttp
+import requests as r
+from faker import Faker
+from tqdm import tqdm, trange
 
 
 def create_fake_num(fake):
@@ -44,7 +45,7 @@ async def main(dry_run=True, debug=True):
 
     async with aiohttp.ClientSession() as session:
 
-        for i in trange(1000):
+        for i in trange(3000):
 
             # Name Gen
             fake_name = create_fake_name(fake)
