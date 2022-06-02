@@ -30,7 +30,12 @@ data class AccountResponse(
 	val originCity: String,
 
 	@field:SerializedName("Followers")
-	val followers: Int
+	val followers: Int,
+
+	@field:SerializedName("IsStore")
+	val isStore: Boolean
+
+
 )
 
 fun AccountResponse.toUser():User{
@@ -41,6 +46,7 @@ fun AccountResponse.toUser():User{
 		email = email,
 		followers = followers,
 		numberWA = telephone.toString(),
-		city = originCity
+		city = originCity,
+		isStore = isStore
 	)
 }
