@@ -5,6 +5,6 @@ import com.artjuna.artjuna_app.core.data.repositories.MainRepository
 
 class HomeViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
-    fun getRecommended() = mainRepository.getProduct()
+    fun getRecommended(size:Int) = mainRepository.getProduct(size)
 
 }
