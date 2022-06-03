@@ -35,4 +35,4 @@ jobs:
             cp .env artjuna-monorepo  
             cd artjuna-monorepo
             git pull origin main
-            pm2 restart artjuna
+            pm2 restart api-node
