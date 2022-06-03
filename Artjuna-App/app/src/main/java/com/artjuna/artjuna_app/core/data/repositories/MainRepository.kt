@@ -34,7 +34,7 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
                 if(it.isSuccessful){
                     val body = it.body()
                     val res = body?.map { it.category }
-                    emit(Result.Success(res!!))
+                    emit(Result.Success(res!!.toSet().toList()))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
                 }
