@@ -59,5 +59,6 @@ const unliked = async (req, res) => {
     }
 }
 module.exports = {
-    hasLiked
+    hasLiked,
+    unliked
 }
