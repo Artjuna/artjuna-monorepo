@@ -12,12 +12,6 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
-
-//    @POST("Product/addProduct")
-//    suspend fun uploadProduct(
-//        @Body body: UploadProductRequest
-//    ) : Response<ProductResponse>
-//
     @Multipart
     @POST("Product/addProduct")
     suspend fun uploadProduct(

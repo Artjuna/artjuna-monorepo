@@ -1,6 +1,7 @@
 package com.artjuna.artjuna_app.core.data.source.remote.response
 
 import com.artjuna.artjuna_app.core.data.source.model.Product
+import com.artjuna.artjuna_app.utils.AppUtils
 import com.google.gson.annotations.SerializedName
 
 
@@ -11,6 +12,9 @@ data class GetProductResponse(
 
 	@field:SerializedName("Category")
 	val category: String,
+
+	@field:SerializedName("Description")
+	val description: String,
 
 	@field:SerializedName("ProductName")
 	val productName: String,
@@ -31,21 +35,18 @@ data class GetProductResponse(
 	val city: String,
 
 	@field:SerializedName("Image")
-	val image: String?,
+	val image: String,
 
 	@field:SerializedName("Province")
-	val province: String,
-
-	@field:SerializedName("Caption")
-	val caption: String
+	val province: String
 )
 
 fun GetProductResponse.toProduct(): Product {
 	return Product(
 		id = productID,
 		name=productName,
-		image = image.toString(),
-		detail = caption,
+		image = AppUtils.getApiImageURL(image),
+		detail = description,
 		category = category,
 		storeId = userID,
 		storeCity = city
