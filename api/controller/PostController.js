@@ -1,12 +1,15 @@
 const db = require('../model');
 require('dotenv').config();
+const {unlink} = require('node:fs/promises') 
 //create main model
 const Post = db.Post;
 const Like = db.Like;
 
 const addPost = async (req, res) => {
     try{
-        const { UserID, PostName, Category, Caption, Image } = req.body;      
+        const { UserID, PostName, Caption} = req.body;    
+        let fileUrl = req.file.path.replace(/\\/g, "/").substring("PostImages".length);
+        let Image = fileUrl;  
         let getAllPosting = await Post.findAll({raw: true});     
         const json = Object.keys(getAllPosting).length;      
         const ts = new Date();  
@@ -18,7 +21,6 @@ const addPost = async (req, res) => {
             PostID,
             UserID,
             PostName,
-            Category,
             Caption,
             Image,   
             Like,
@@ -56,13 +58,89 @@ const getPost = async (req, res) => {
     }
 }
 
-const hasLiked = async (req) => {
+const updatePost = async (req, res) => {
+    try{
+        const t = await sequelize.transaction();
 
+        let { PostID, PostName, Caption} = req.body;
+        let fileUrl = req.file.path.replace(/\\/g, "/").substring("PostImages".length);
+        let Image = fileUrl; 
+        const getMyPost = await Post.findOne({
+            where: {    
+                PostID: PostID
+            },
+            raw: true            
+        });       
+
+        let imagePath = getMyPost.Image;
+        var List = {                       
+            PostName: PostName,
+            Caption: Caption,
+            Image: Image,
+        }
+
+        for (var key of Object.keys(List))
+        {
+            if (List[key] == undefined)
+            {
+                delete List[key]; 
+            }
+        }
+
+        await Post.update(List, {where:{
+          PostID: PostID
+        }});
+
+        await unlink('PostImages'+imagePath);
+        console.log('successfully deleted' + 'PostImages' + imagePath);  
+        res.status(200).send("Update data success");
+        await t.commit();
+    }
+    catch (err)
+    {
+        console.error(err.message);
+        res.status(500).send(err.message);
+        await t.rollback();
+    }
+    
 }
 
+// const updatePost = async (req, res) => {
+//     try{
+//         let { PostID, UserID, PostName, Category, Caption, Image} = req.body;
+//         var List = {
+//             PostID: PostID,
+//             UserID: UserID,
+//             PostName: PostName,
+//             Category: Category,
+//             Caption: Caption,
+//             Image: Image
+//         }
 
+//         for (var key of Object.keys(List))
+//         {
+//             if (List[key] == undefined)
+//             {
+//                 delete List[key]; 
+//             }
+//         }
+
+//         await Product.update(List, {where:{
+//           ProductID: ProductID
+//         }})
+
+//         res.status(200).send("Update data success");
+//     }
+//     catch (err)
+//     {
+//         console.error(err.message);
+//         res.status(500).send(err.message);
+//     }
+    
+// }
 
 module.exports = {
     addPost,
-    getPost
+    getPost,
+    updatePost
 }

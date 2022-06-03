@@ -2,21 +2,20 @@ const ProductController = require('../controller/ProductController');
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
-const DateTime = require('node-datetime/src/datetime');
 //router
 const router = require('express').Router();
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'images')
+        cb(null, 'ProductImages')
     },
     filename: (req, file, cb) => {
-        cb(null,  file.fieldname + '-' + Date.now())
+        cb(null,  Date.now() + '-' + file.originalname)
     }
 });
 const upload = multer({storage: storage,
     fileFilter: (req, file, cb) => {
-        const fileTypes = /jpeg|jpg|png|gif/
+        const fileTypes = /jpeg|jpg|png/
         const mimeType = fileTypes.test(file.mimetype)  ;
         const extname = fileTypes.test(path.extname(file.originalname));
         if(mimeType && extname) {
