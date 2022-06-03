@@ -11,6 +11,7 @@ import ast
 import base64
 import json
 import os
+import pickle
 import random
 import re
 import urllib
@@ -18,6 +19,8 @@ import urllib.request
 
 import mysql.connector
 import requests as r
+from faker import Faker
+from requests_toolbelt.multipart.encoder import MultipartEncoder
 from tqdm import trange
 
 
@@ -43,8 +46,13 @@ def get_data():
 def main(dry_run=True, debug=True):
     base_url = os.getenv("base_url")
     full_data = get_data()
+    fake = Faker("id_ID")
 
-    seen = set()
+    try:
+        with open("seen.pickle", "rb") as f:
+            seen = pickle.load(f)
+    except FileNotFoundError:
+        seen = set()
 
     headers = {
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) "
@@ -57,9 +65,19 @@ def main(dry_run=True, debug=True):
         "Connection": "keep-alive",
     }
 
-    category_list = ["batik", "ukiran kayu"]
+    category_list = [
+        "kain batik",
+        "baju batik",
+        "ukiran kayu",
+        "perabotan kayu",
+        "patung batu",
+        "lukisan tradisional",
+        "mainan tradisional",
+    ]
+    category_list_proper = [category.title() for category in category_list]
+    page_counter = {category:0 for category in category_list_proper}
 
-    for i in trange(1):
+    for i in trange(2000):
         # Random UserID with IsStore=1
         random_userid = random.choice(full_data)[0]
 
@@ -69,53 +87,78 @@ def main(dry_run=True, debug=True):
         )
 
         # Random Category Gen
-        random_category = random.choice(category_list)
-        random_image = scrape_bing_image(seen, headers, random_category)
-        random_image_base64 = base64.b64encode(random_image).decode("utf-8")
+        random_category = random.choice(category_list_proper)
 
-        payload = {
-            "UserID": random_userid,
-            "ProductName": "HAAA",
-            "Category": "HUH",
-            "Province": random_province,
-            "City": random_city,
-            "Caption": "yukk bisa yukk",
-            "Price": 15000,
-            "Image": random_image_base64,
-        }
+        # Random Image (Scraped) from Category
+        random_image = scrape_bing_image(seen, headers, random_category,page_counter)
+
+        # Random description
+        random_description = fake.text(max_nb_chars=200)
+
+        # Random Price
+        random_price = str(fake.pyint(min_value=10000, max_value=3000000, step=1000))
+        
+        # Random Product
+        random_product = random_category+" "+fake.last_name()
+        payload = MultipartEncoder(
+            fields={
+                "UserID": random_userid,
+                "ProductName": random_product,
+                "Category": random_category,
+                "Province": random_province,
+                "City": random_city,
+                "Description": random_description,
+                "Price": random_price,
+                "Image": ("random_image.png", random_image, "image/png"),
+            }
+        )
+
         if debug:
             print(payload)
         if not dry_run:
-            r.post(f"{base_url}/Product/addProduct", json=payload)
+            resp = r.post(
+                f"{base_url}/Product/addProduct",
+                data=payload,
+                headers={"Content-Type": payload.content_type},
+            )
 
-def scrape_bing_image(seen, headers, random_category):
+
+def scrape_bing_image(seen, headers, random_category,page_counter):
     loop = True
-    page_counter = 0
     while loop:
-        request_url = (
+        try:
+            request_url = (
                 "https://www.bing.com/images/async?q="
                 + urllib.parse.quote_plus(random_category)
                 + "&first="
-                + str(page_counter)
-                + "&count=1000"
+                + str(page_counter[random_category])
+                + "&count=10000"
                 + "&adlt="
                 + str(False)
-                + "&qft=+filterui:license-L2_L3_L4_L5_L6_L7"
-            )
-        request = urllib.request.Request(request_url, None, headers=headers)
-        response = urllib.request.urlopen(request)
-        html = response.read().decode("utf8")
-        links = re.findall("murl&quot;:&quot;(.*?)&quot;", html)
+                # + "&qft=+filterui:license-L2_L3_L4_L5_L6_L7"
+                # + "&qft=+filterui:license-L2_L3_L4"
 
-        for link in links:
-            if link not in seen:
-                seen.add(link)
-                request = urllib.request.Request(link, None, headers)
-                image = urllib.request.urlopen(request, timeout=60).read()
-                if image != None:
-                    break
-        if image != None:
-            loop = False
+            )
+            request = urllib.request.Request(request_url, None, headers=headers)
+            response = urllib.request.urlopen(request)
+            html = response.read().decode("utf8")
+            links = re.findall("murl&quot;:&quot;(.*?)&quot;", html)
+
+            for link in links:
+                if link not in seen:
+                    request = urllib.request.Request(link, None, headers)
+                    image = urllib.request.urlopen(request, timeout=60).read()
+                    if image != None:
+                        seen.add(link)
+                        with open("seen.pickle", "wb") as f:
+                            pickle.dump(seen, f)
+                        break
+            if image != None:
+                loop = False
+            page_counter[random_category]+=1
+        except:
+            page_counter[random_category]+=1
+            continue
 
     random_image = image
     return random_image
@@ -125,3 +168,4 @@ if __name__ == "__main__":
     dry_run = False
     debug = False
     main(dry_run, debug)
+    # main()
