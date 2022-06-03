@@ -7,7 +7,7 @@ const productSeen = db.productSeen;
 
 const addProduct = async (req, res) => {
     try{
-        const t = await sequelize.transaction();
+        
         let { UserID, ProductName, Category, Province, City, Description, Price} = req.body;  
         let fileUrl = req.file.path.replace(/\\/g, "/").substring("ProductImages".length);
         let Image = fileUrl;
@@ -35,13 +35,13 @@ const addProduct = async (req, res) => {
             await newProduk.save();
             // newProduk.Image = buff.toString('base64')
             res.status(200).send("Insert Data Success");
-            await t.commit();
+            
     }
     catch (err)
     {
         console.error(err.message);
         res.status(500).send("err.message");
-        await t.rollback();
+        
     }
 }
 
