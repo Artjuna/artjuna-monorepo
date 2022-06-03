@@ -13,6 +13,7 @@ app.use(urlencodedParser);
 app.use(jsonParser);
 
 app.use('/Images', express.static('images'));
+app.use('/PostImage', express.static('PostImage'));
 
 //routers
 const ProductRoute = require('./routes/ProductRoute');
