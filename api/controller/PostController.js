@@ -1,6 +1,7 @@
 const db = require('../model');
 require('dotenv').config();
 const {unlink} = require('node:fs/promises') 
+
 //create main model
 const Post = db.Post;
 const Like = db.Like;
@@ -60,7 +61,7 @@ const getPost = async (req, res) => {
 
 const updatePost = async (req, res) => {
     try{
-        const t = await sequelize.transaction();
+        
 
         let { PostID, PostName, Caption} = req.body;
         let fileUrl = req.file.path.replace(/\\/g, "/").substring("PostImages".length);
@@ -94,13 +95,13 @@ const updatePost = async (req, res) => {
         await unlink('PostImages'+imagePath);
         console.log('successfully deleted' + 'PostImages' + imagePath);  
         res.status(200).send("Update data success");
-        await t.commit();
+        
     }
     catch (err)
     {
         console.error(err.message);
         res.status(500).send(err.message);
-        await t.rollback();
+        
     }
     
 }
