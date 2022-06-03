@@ -7,13 +7,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.artjuna.artjuna_app.core.data.source.model.Product
+import com.artjuna.artjuna_app.databinding.ItemProductBinding
 import com.artjuna.artjuna_app.databinding.ItemProductSmallBinding
 import com.artjuna.artjuna_app.ui.detailproduct.DetailProductActivity
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 
 class RecomAdapter:ListAdapter<Product, RecomAdapter.RecomViewHolder>(DIFF_CALLBACK) {
 
-    class RecomViewHolder(private val binding: ItemProductSmallBinding) : RecyclerView.ViewHolder(binding.root){
+    class RecomViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(product: Product){
             with(binding){
                 ivImage.loadImage(product.image)
@@ -32,7 +33,7 @@ class RecomAdapter:ListAdapter<Product, RecomAdapter.RecomViewHolder>(DIFF_CALLB
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecomViewHolder {
         val binding =
-            ItemProductSmallBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecomViewHolder(binding)
     }
 
