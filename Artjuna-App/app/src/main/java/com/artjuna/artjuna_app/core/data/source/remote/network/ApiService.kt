@@ -28,6 +28,9 @@ interface ApiService {
     @GET("Product/getAllProduct")
     suspend fun getProduct():Response<List<GetProductResponse>>
 
+    @GET("Product/getAllProductCategory")
+    suspend fun getCategory():Response<List<GetCategoryResponse>>
+
     @GET("Post/getPost")
     suspend fun getPost():Response<List<GetPostResponse>>
 

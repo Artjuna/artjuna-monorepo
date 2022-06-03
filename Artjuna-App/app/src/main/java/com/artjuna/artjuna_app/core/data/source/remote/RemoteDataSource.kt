@@ -30,6 +30,7 @@ class RemoteDataSource(private val api:ApiService) {
             product.price,
             image
         )
+    suspend fun getCategory() = api.getCategory()
     suspend fun getPost() = api.getPost()
     suspend fun uploadPost(request:UploadPostRequest) = api.uploadPost(request)
 
