@@ -49,7 +49,7 @@ def main(dry_run=True, debug=True):
     fake = Faker("id_ID")
 
     try:
-        with open("seen_images.pickle", "rb") as f:
+        with open("seen.pickle", "rb") as f:
             seen = pickle.load(f)
     except FileNotFoundError:
         seen = set()
@@ -75,8 +75,9 @@ def main(dry_run=True, debug=True):
         "mainan tradisional",
     ]
     category_list_proper = [category.title() for category in category_list]
+    page_counter = {category:0 for category in category_list_proper}
 
-    for i in trange(500):
+    for i in trange(2000):
         # Random UserID with IsStore=1
         random_userid = random.choice(full_data)[0]
 
@@ -89,7 +90,7 @@ def main(dry_run=True, debug=True):
         random_category = random.choice(category_list_proper)
 
         # Random Image (Scraped) from Category
-        random_image = scrape_bing_image(seen, headers, random_category)
+        random_image = scrape_bing_image(seen, headers, random_category,page_counter)
 
         # Random description
         random_description = fake.text(max_nb_chars=200)
@@ -120,24 +121,23 @@ def main(dry_run=True, debug=True):
                 data=payload,
                 headers={"Content-Type": payload.content_type},
             )
-        with open("seen.pickle", "wb") as f:
-            pickle.dump(seen, f)
 
 
-def scrape_bing_image(seen, headers, random_category):
+def scrape_bing_image(seen, headers, random_category,page_counter):
     loop = True
-    page_counter = 2
     while loop:
         try:
             request_url = (
                 "https://www.bing.com/images/async?q="
                 + urllib.parse.quote_plus(random_category)
                 + "&first="
-                + str(page_counter)
-                + "&count=1000"
+                + str(page_counter[random_category])
+                + "&count=10000"
                 + "&adlt="
                 + str(False)
-                + "&qft=+filterui:license-L2_L3_L4_L5_L6_L7"
+                # + "&qft=+filterui:license-L2_L3_L4_L5_L6_L7"
+                # + "&qft=+filterui:license-L2_L3_L4"
+
             )
             request = urllib.request.Request(request_url, None, headers=headers)
             response = urllib.request.urlopen(request)
@@ -146,16 +146,18 @@ def scrape_bing_image(seen, headers, random_category):
 
             for link in links:
                 if link not in seen:
-                    seen.add(link)
                     request = urllib.request.Request(link, None, headers)
                     image = urllib.request.urlopen(request, timeout=60).read()
                     if image != None:
+                        seen.add(link)
+                        with open("seen.pickle", "wb") as f:
+                            pickle.dump(seen, f)
                         break
             if image != None:
                 loop = False
-            page_counter+=1
+            page_counter[random_category]+=1
         except:
-            page_counter+=1
+            page_counter[random_category]+=1
             continue
 
     random_image = image
