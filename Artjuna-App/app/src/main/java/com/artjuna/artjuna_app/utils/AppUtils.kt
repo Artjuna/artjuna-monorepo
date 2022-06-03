@@ -67,6 +67,8 @@ object AppUtils{
         return (image.length()/1024).toInt()
     }
 
+    fun getApiImageURL(path:String):String = "***REMOVED***Images${path}"
+
 
     fun getUserandCaption(username:String, caption:String): Spanned {
         return Html.fromHtml("<b>$username</b> $caption")
