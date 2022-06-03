@@ -26,6 +26,24 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
 
     fun getUser(): User = local.getUser()
 
+    fun getCategory():LiveData<Result<List<String>>> = liveData {
+        emit(Result.Loading)
+        try {
+
+            remote.getCategory().let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.category }
+                    emit(Result.Success(res!!))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
 
     fun getProduct(size:Int):LiveData<Result<List<Product>>> = liveData {
         emit(Result.Loading)
@@ -35,7 +53,6 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
                     val body = it.body()
                     val res = body?.map { it.toProduct() }
                     val list = res!!.take(size)
-                    list.forEach{ Log.d("GALIH", it.name)}
                     emit(Result.Success(list))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
