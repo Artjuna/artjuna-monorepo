@@ -32,7 +32,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: executing remote ssh commands using password
+      - name: Git Pull and Restart API
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -44,4 +44,4 @@ jobs:
             cp .env artjuna-monorepo  
             cd artjuna-monorepo
             git pull origin main
-            pm2 restart api-node
+            pm2 restart node-api
