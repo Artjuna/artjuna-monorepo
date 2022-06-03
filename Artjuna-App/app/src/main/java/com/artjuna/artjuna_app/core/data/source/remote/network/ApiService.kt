@@ -5,16 +5,31 @@ import com.artjuna.artjuna_app.core.data.source.remote.request.UpdateAccountRequ
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadProductRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
 
+//    @POST("Product/addProduct")
+//    suspend fun uploadProduct(
+//        @Body body: UploadProductRequest
+//    ) : Response<ProductResponse>
+//
+    @Multipart
     @POST("Product/addProduct")
     suspend fun uploadProduct(
-        @Body body: UploadProductRequest
-    ) : Response<ProductResponse>
+    @Part("UserID") userId : RequestBody,
+    @Part("ProductName") productName : RequestBody,
+    @Part("Category") category : RequestBody,
+    @Part("Province") province : RequestBody,
+    @Part("City") city : RequestBody,
+    @Part("Description") caption : RequestBody,
+    @Part("Price") price : Int,
+    @Part image : MultipartBody.Part,
+    ) : Response<Void>
 
     @GET("Product/getAllProduct")
     suspend fun getProduct():Response<List<GetProductResponse>>

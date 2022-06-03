@@ -9,6 +9,13 @@ import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.toPost
 import com.artjuna.artjuna_app.core.data.source.remote.response.toProduct
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.parse
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 
 class MainRepository(private val local:LocalDataSource, private val remote:RemoteDataSource) {
 
@@ -36,19 +43,28 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
         }
     }
 
-    fun uploadProduct(product: Product):LiveData<Result<Product>> = liveData {
+    fun uploadProduct(product: Product, image: File):LiveData<Result<String>> = liveData {
         emit(Result.Loading)
         try {
-            val request = product.toProductRequest()
-            request.UserID = local.getUser().id
-            remote.uploadProduct(request).let {
+            val user = local.getUser()
+            product.storeId = user.id
+            product.storeCity = user.city
+
+            val requestImageFile = image.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "Image",
+                image.name,
+                requestImageFile
+            )
+
+            remote.uploadProduct(product,imageMultipart).let {
                 if (it.isSuccessful){
-                    val res = it.body()?.toProduct()
-                    emit(Result.Success(res!!))
+                    emit(Result.Success("Success"))
                 }else{
                     emit(Result.Error(it.errorBody().toString()))
                 }
             }
+
         }catch (e: Exception) {
             emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
         }
