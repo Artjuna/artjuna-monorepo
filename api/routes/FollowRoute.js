@@ -8,7 +8,8 @@ router.use(express.json({ limit: '50mb' }));
 router.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 //use routers
-router.post('/followers', FollowController.hasFollowed);
+router.post('/follow', FollowController.hasFollowed);
+router.post('/unfollow', FollowController.unFollowed);
 
 module.exports = router;
 

@@ -11,6 +11,8 @@ router.use(express.urlencoded({ limit: '50mb', extended: true }));
 router.post('/addAccount', AccountController.addAccount);
 router.get('/getAllAccount', AccountController.getAllAccount);
 router.get('/getAccountByUserID/:UserID', AccountController.getAccountByUserID);
+router.get('/getAccountFilter', AccountController.getAccountFilter);
+router.put('/updateAccount', AccountController.updateAccount)
 
 module.exports = router;
 
