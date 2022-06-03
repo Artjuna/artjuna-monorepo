@@ -67,6 +67,8 @@ object AppUtils{
         return (image.length()/1024).toInt()
     }
 
+    fun getApiImageURL(path:String):String = "http://34.101.203.109:8080/Images${path}"
+
 
     fun getUserandCaption(username:String, caption:String): Spanned {
         return Html.fromHtml("<b>$username</b> $caption")
