@@ -1,5 +1,6 @@
 package com.artjuna.artjuna_app.core.data.repositories
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
@@ -26,6 +27,24 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
     fun getUser(): User = local.getUser()
 
 
+    fun getProduct(size:Int):LiveData<Result<List<Product>>> = liveData {
+        emit(Result.Loading)
+        try {
+            remote.getProduct().let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.toProduct() }
+                    val list = res!!.take(size)
+                    list.forEach{ Log.d("GALIH", it.name)}
+                    emit(Result.Success(list))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
     fun getProduct():LiveData<Result<List<Product>>> = liveData {
         emit(Result.Loading)
         try {
