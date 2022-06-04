@@ -15,6 +15,7 @@ import com.artjuna.artjuna_app.utils.AppUtils.uriToFile
 import com.google.android.material.chip.Chip
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
+import java.util.ArrayList
 
 class AddProductActivity : AppCompatActivity() {
 
@@ -29,6 +30,27 @@ class AddProductActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupLoading()
         setButtonClick()
+        getCategoryList()
+        setCategoryListener()
+    }
+
+    private fun getCategoryList() {
+        viewModel.getCategories().observe(this){
+            when(it){
+                is Result.Success -> addCategoryFromList(it.data)
+            }
+        }
+
+    }
+
+    private fun addCategoryFromList(list: List<String>) {
+        list.map {
+            val chipCat = Chip(this)
+            chipCat.text = it
+            chipCat.isClickable = true
+            chipCat.isCheckable = true
+            binding.categories.catGroup.addView(chipCat)
+        }
         setCategoryListener()
     }
 
@@ -52,7 +74,7 @@ class AddProductActivity : AppCompatActivity() {
 
     private fun uploadProduct() {
         val product = collectProductFromForm()
-        viewModel.uploadProduct(product).observe(this){
+        viewModel.uploadProduct(product, photoFile!!).observe(this){
             when(it){
                 is Result.Loading -> loadingDialog.show()
                 is Result.Error -> {
@@ -70,7 +92,6 @@ class AddProductActivity : AppCompatActivity() {
 
     private fun collectProductFromForm(): Product {
         val product = Product()
-        product.image = AppUtils.convertImageToBase64(photoFile!!)
         product.name = binding.etProductName.text.toString()
         product.price = binding.etProductPrice.text.toString().toInt()
         product.detail = binding.etDetail.text.toString()

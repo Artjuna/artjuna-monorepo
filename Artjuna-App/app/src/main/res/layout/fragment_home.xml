@@ -1,186 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.home.HomeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:fillViewport="true"
-    tools:context=".ui.home.HomeFragment">
-
-    <LinearLayout
+    android:orientation="vertical">
+    
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- Header and Search -->
-        <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="280dp"
-            app:layoutDescription="@xml/fragment_home_xml_constraintlayout2_scene">
-
-            <ImageView
-                android:id="@+id/banner1"
-                android:layout_width="wrap_content"
-                android:layout_height="280dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/bg_home"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="TODO" />
-
-            <ImageView
-                android:id="@+id/banner2"
-                android:layout_width="wrap_content"
-                android:layout_height="280dp"
-                android:src="@drawable/bg_banner2"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/banner3"
-                android:layout_width="wrap_content"
-                android:layout_height="270dp"
-                android:src="@drawable/bg_banner3"
-                app:layout_constraintStart_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/menu1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="145dp"
-                android:layout_marginBottom="8dp"
-                app:altSrc="@drawable/ic_circle_full_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_circle_24"
-                app:tint="@color/black_500" />
-
-            <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/menu2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="20dp"
-                android:tint="@color/black_500"
-                app:altSrc="@drawable/ic_circle_full_24"
-                app:layout_constraintBottom_toBottomOf="@+id/menu1"
-                app:layout_constraintStart_toEndOf="@+id/menu1"
-                app:layout_constraintTop_toTopOf="@+id/menu1"
-                app:srcCompat="@drawable/ic_circle_24" />
-
-            <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/menu3"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="20dp"
-                android:tint="@color/black_500"
-                app:altSrc="@drawable/ic_circle_full_24"
-                app:layout_constraintBottom_toBottomOf="@+id/menu2"
-                app:layout_constraintStart_toEndOf="@+id/menu2"
-                app:layout_constraintTop_toTopOf="@+id/menu2"
-                app:srcCompat="@drawable/ic_circle_24" />
-
-
-            <include
-                android:id="@+id/header"
-                layout="@layout/toolbar_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true" />
-
-        </androidx.constraintlayout.motion.widget.MotionLayout>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/iv_take"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_32sdp"
-            android:layout_marginHorizontal="@dimen/_16sdp"
-            android:background="@drawable/bg_take"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="@color/black_500"
-            android:layout_gravity="center"
-            app:layout_constraintTop_toBottomOf="parent">
-
-          <!--  <Switch
-                android:id="@+id/switch1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Switch" /> -->
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textAllCaps="true"
-                android:textSize="12sp"
-                android:fontFamily="@font/roboto_medium"
-                android:layout_gravity="center"
-                android:text="@string/take_your_art_in_your_home"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Recommendation -->
-        <include
-            android:id="@+id/recom"
-            android:visibility="gone"
-            layout="@layout/layout_home_recom"/>
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/recom_load"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <include
-                layout="@layout/layout_home_recom_load"/>
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-
-
-        <!-- Categories -->
-        <RelativeLayout
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_recom">
+            android:orientation="vertical">
+            <!-- Header and Search -->
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                app:layoutDescription="@xml/fragment_home_xml_constraintlayout2_scene">
 
-            <TextView
-                style="@style/Subtitle2Medium"
+                <ImageView
+                    android:id="@+id/banner1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="280dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/bg_home"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="TODO" />
+
+                <ImageView
+                    android:id="@+id/banner2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="280dp"
+                    android:src="@drawable/bg_banner2"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/banner3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="270dp"
+                    android:src="@drawable/bg_banner3"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/menu1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="145dp"
+                    android:layout_marginBottom="8dp"
+                    app:altSrc="@drawable/ic_circle_full_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/ic_circle_24"
+                    app:tint="@color/black_500" />
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/menu2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:tint="@color/black_500"
+                    app:altSrc="@drawable/ic_circle_full_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/menu1"
+                    app:layout_constraintStart_toEndOf="@+id/menu1"
+                    app:layout_constraintTop_toTopOf="@+id/menu1"
+                    app:srcCompat="@drawable/ic_circle_24" />
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/menu3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:tint="@color/black_500"
+                    app:altSrc="@drawable/ic_circle_full_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/menu2"
+                    app:layout_constraintStart_toEndOf="@+id/menu2"
+                    app:layout_constraintTop_toTopOf="@+id/menu2"
+                    app:srcCompat="@drawable/ic_circle_24" />
+
+
+                <include
+                    android:id="@+id/header"
+                    layout="@layout/toolbar_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true" />
+
+            </androidx.constraintlayout.motion.widget.MotionLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/iv_take"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:background="@drawable/bg_take"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:backgroundTint="@color/black_500"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="parent">
+
+                <!--  <Switch
+                      android:id="@+id/switch1"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Switch" /> -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_gravity="center"
+                    android:text="@string/take_your_art_in_your_home"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Categories -->
+            <include
+                android:id="@+id/cat"
+                android:visibility="visible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="@string/categories"
-                android:textAllCaps="true"
-                android:textColor="@color/black" />
+                android:layout_marginTop="@dimen/_16sdp"
+                layout="@layout/layout_home_category"/>
 
-            <TextView
-                style="@style/Subtitle2Medium"
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/cat_load"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="@string/see_all"
-                android:textAlignment="textEnd"
-                android:textColor="?colorPrimary" />
+                android:layout_height="wrap_content">
+                <include
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    layout="@layout/layout_home_category_load"/>
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
-        </RelativeLayout>
+            <!-- Recommendation -->
+            <include
+                android:id="@+id/recom"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                layout="@layout/layout_home_recom"/>
 
-        <include
-            android:id="@+id/cat"
-            android:layout_marginTop="@dimen/_8sdp"
-            layout="@layout/layout_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/recom_load"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <include
+                    layout="@layout/layout_home_recom_load"/>
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
-    </LinearLayout>
-
-</ScrollView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

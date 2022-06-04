@@ -7,24 +7,24 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.artjuna.artjuna_app.core.data.source.model.Product
+import com.artjuna.artjuna_app.databinding.ItemCategoryBinding
 import com.artjuna.artjuna_app.databinding.ItemProductBinding
 import com.artjuna.artjuna_app.databinding.ItemProductSmallBinding
 import com.artjuna.artjuna_app.ui.detailproduct.DetailProductActivity
+import com.artjuna.artjuna_app.ui.productlist.ProductListActivity
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
+import com.artjuna.artjuna_app.utils.Constant
 
-class RecomAdapter:ListAdapter<Product, RecomAdapter.RecomViewHolder>(DIFF_CALLBACK) {
+class CatAdapter:ListAdapter<String, CatAdapter.RecomViewHolder>(DIFF_CALLBACK) {
 
-    class RecomViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(product: Product){
+    class RecomViewHolder(private val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root){
+        fun bind(category:String){
             with(binding){
-                ivImage.loadImage(product.image)
-                tvName.text = product.name
-                tvPrice.text = "Rp ${product.price}"
-                tvCity.text = product.storeCity
-
+                tvCategoryName.text = category
                 itemView.setOnClickListener {
-                    val intent = Intent(itemView.context, DetailProductActivity::class.java)
-                    intent.putExtra(DetailProductActivity.EXTRA_PRODUCT, product)
+                    val intent = Intent(itemView.context, ProductListActivity::class.java)
+                    intent.putExtra(ProductListActivity.EXTRA_PAGE_TYPE, Constant.Category)
+                    intent.putExtra(ProductListActivity.EXTRA_CATEGORY, category)
                     itemView.context.startActivity(intent)
                 }
             }
@@ -33,7 +33,7 @@ class RecomAdapter:ListAdapter<Product, RecomAdapter.RecomViewHolder>(DIFF_CALLB
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecomViewHolder {
         val binding =
-            ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecomViewHolder(binding)
     }
 
@@ -46,13 +46,13 @@ class RecomAdapter:ListAdapter<Product, RecomAdapter.RecomViewHolder>(DIFF_CALLB
 
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Product>() {
-            override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
+            override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
-                return oldItem.id == newItem.id
+            override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+                return oldItem == newItem
             }
         }
     }

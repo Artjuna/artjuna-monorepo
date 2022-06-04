@@ -35,11 +35,11 @@ class ProductFragment : Fragment() {
         binding.rvProduct.adapter = productAdapter
     }
     private fun setData(){
-        storeViewModel.getProduct().observe(viewLifecycleOwner){
-            when(it){
-                is Result.Success -> productAdapter.submitList(it.data)
-            }
-        }
+//        storeViewModel.getProduct().observe(viewLifecycleOwner){
+//            when(it){
+//                is Result.Success -> productAdapter.submitList(it.data)
+//            }
+//        }
     }
 
 }

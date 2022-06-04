@@ -3,6 +3,7 @@ package com.artjuna.artjuna_app.ui.productlist
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat.getCategory
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.ActivityProductListBinding
 import com.artjuna.artjuna_app.ui.adapter.ProductAdapter
@@ -21,7 +22,7 @@ class ProductListActivity : AppCompatActivity() {
         binding = ActivityProductListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setAdapter()
-        getData()
+        getType()
         setButtonClick()
     }
 
@@ -29,21 +30,44 @@ class ProductListActivity : AppCompatActivity() {
         binding.rvProduct.adapter = productAdapter
     }
 
-    private fun getData() {
+    private fun getType() {
         if(intent.extras != null){
-            val title = this.intent.extras?.getString(EXTRA_PAGE_TITLE)
-            binding.tvTitle.text = title
-            if(title == Constant.Recommendation){
+            val type = this.intent.extras?.getString(EXTRA_PAGE_TYPE)
+            if(type == Constant.Recommendation){
                 getRecommendation()
+            }
+            if(type == Constant.Category){
+                getCategory()
+            }
+        }
+    }
+
+    private  fun getCategory(){
+        val category = intent.extras?.getString(EXTRA_CATEGORY)
+        binding.tvTitle.text = category
+        viewModel.getProductByCategory(category!!).observe(this){
+            when(it){
+                is Result.Loading -> showLoading(true)
+                is Result.Success -> {
+                    productAdapter.currentList.clear()
+                    productAdapter.submitList(it.data)
+                    showLoading(false)
+                }
+                is Result.Error -> {
+                    AppUtils.showToast(this, it.error)
+                    showLoading(false)
+                }
             }
         }
     }
 
     private fun getRecommendation() {
+        binding.tvTitle.text = Constant.Recommendation
         viewModel.getRecommended().observe(this){
             when(it){
                 is Result.Loading -> showLoading(true)
                 is Result.Success -> {
+                    productAdapter.currentList.clear()
                     productAdapter.submitList(it.data)
                     showLoading(false)
                 }
@@ -71,6 +95,7 @@ class ProductListActivity : AppCompatActivity() {
         }
     }
     companion object{
-        const val EXTRA_PAGE_TITLE = "EXTRA_PAGE_TITLEn. "
+        const val EXTRA_PAGE_TYPE = "EXTRA_PAGE_TYPE"
+        const val EXTRA_CATEGORY = "EXTRA_CATEGORY"
     }
 }

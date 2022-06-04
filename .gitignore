@@ -1,7 +1,10 @@
 .cenv
 __pycache__
-.env
+.env**
 .vscode
 test.ipynb
 google-services.json
 adain_300**
+**.parquet
+**.pickle
+test**

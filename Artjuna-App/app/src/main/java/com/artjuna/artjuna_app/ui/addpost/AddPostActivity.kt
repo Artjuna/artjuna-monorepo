@@ -59,12 +59,11 @@ class AddPostActivity : AppCompatActivity() {
 
     private fun uploadPost() {
         val post = Post()
-        post.image = AppUtils.convertImageToBase64(photoFile!!)
         post.caption = binding.etCaption.text.toString()
         post.productName = binding.etProductName.text.toString()
 
 
-        viewModel.uploadPost(post).observe(this){
+        viewModel.uploadPost(post,photoFile!!).observe(this){
             when(it){
                 is Result.Loading -> loadingDialog.show()
                 is Result.Success -> {

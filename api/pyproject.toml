@@ -1,18 +1,22 @@
 [tool.poetry]
-name = "artjuna"
+name = "api"
 version = "0.1.0"
 description = ""
 authors = ["Aditya Wardianto <83759122+ditw11mhs@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
-python = ">3.9,<3.11"
+python = ">=3.9,<3.11"
 fastapi = "^0.78.0"
-tensorflow = "^2.9.0"
+pydantic = "^1.9.1"
+tensorflow = "^2.8.0"
 uvicorn = "^0.17.6"
+Pillow = "^9.1.1"
+mysql-connector-python = "^8.0.29"
+python-dotenv = "^0.20.0"
 
 [tool.poetry.dev-dependencies]
-jupyter = "^1.0.0"
-matplotlib = "^3.5.2"
+black = "^22.3.0"
+isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
