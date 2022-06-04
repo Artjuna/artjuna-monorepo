@@ -5,6 +5,7 @@ const {unlink} = require('node:fs/promises')
 //create main model
 const Post = db.Post;
 const Like = db.Like;
+const Account = db.Accounts;
 
 const addPost = async (req, res) => {
     try{
