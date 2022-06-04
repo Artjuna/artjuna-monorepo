@@ -1,5 +1,6 @@
 <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:elevation="0dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -35,7 +36,6 @@
         <!-- Content -->
         <LinearLayout
             android:id="@+id/content"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -63,55 +63,6 @@
             <TextView
                 android:id="@+id/tv_product_detail"
                 style="@style/Body1Regular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Product Detail Here"/>
-
-        </LinearLayout>
-<!-- Content -->
-        <LinearLayout
-            android:id="@+id/content_load"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/_16sdp">
-            <TextView
-                style="@style/Subtitle1Regular"
-                android:background="@drawable/bg_skeleton"
-                android:textColor="@color/grey_500"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:text="Patung Eren Gak Pakai Baju"/>
-            <TextView
-                style="@style/Subtitle1Medium"
-                android:background="@drawable/bg_skeleton"
-                android:textColor="@color/grey_500"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_16sdp"
-                android:text="Rp 2.800.000"/>
-            <TextView
-                style="@style/Body1Medium"
-                android:background="@drawable/bg_skeleton"
-                android:textColor="@color/grey_500"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:text="Product Detail"/>
-            <TextView
-                style="@style/Body1Regular"
-                android:background="@drawable/bg_skeleton"
-                android:textColor="@color/grey_500"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:text="Product Detail Here"/>
-
-            <TextView
-                style="@style/Body1Regular"
-                android:background="@drawable/bg_skeleton"
-                android:textColor="@color/grey_500"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Product Detail Here"/>
