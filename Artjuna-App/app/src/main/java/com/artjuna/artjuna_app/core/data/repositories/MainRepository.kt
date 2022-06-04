@@ -113,6 +113,24 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
         }
     }
 
+    fun getProductByName(name:String):LiveData<Result<List<Product>>> = liveData {
+        emit(Result.Loading)
+        try {
+            remote.getProductByName(name).let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.toProduct() }
+                    emit(Result.Success(res!!))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+
     fun uploadProduct(product: Product, image: File):LiveData<Result<String>> = liveData {
         emit(Result.Loading)
         try {

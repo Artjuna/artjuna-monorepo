@@ -43,8 +43,8 @@ interface ApiService {
     ): Response<List<GetProductResponse>>
 
     @GET("Product/getProductFilter")
-    suspend fun getProductByKeyword(
-        @Query("Category") category:String
+    suspend fun getProductByName(
+        @Query("ProductName") name:String
     ): Response<List<GetProductResponse>>
 
 

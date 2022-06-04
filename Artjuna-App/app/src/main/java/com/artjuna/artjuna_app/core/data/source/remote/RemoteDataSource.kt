@@ -19,6 +19,7 @@ class RemoteDataSource(private val api:ApiService) {
     //suspend fun getRegister() = api.getRegister()
     suspend fun getProduct() = api.getProduct()
     suspend fun getProductByCategory(category:String) = api.getProductByCategory(category)
+    suspend fun getProductByName(name:String) = api.getProductByName(name)
 
     suspend fun uploadProduct(product:Product, image:MultipartBody.Part) =
         api.uploadProduct(
