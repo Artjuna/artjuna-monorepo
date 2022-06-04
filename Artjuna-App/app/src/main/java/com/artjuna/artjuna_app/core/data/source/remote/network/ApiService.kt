@@ -12,6 +12,7 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
+
     @Multipart
     @POST("Product/addProduct")
     suspend fun uploadProduct(
@@ -24,6 +25,11 @@ interface ApiService {
     @Part("Price") price : Int,
     @Part image : MultipartBody.Part,
     ) : Response<Void>
+
+    @GET("Product/getProductFilter")
+    suspend fun getProductByCategory(
+        @Query("Category") category:String
+    ): Response<List<GetProductResponse>>
 
     @GET("Product/getAllProduct")
     suspend fun getProduct():Response<List<GetProductResponse>>

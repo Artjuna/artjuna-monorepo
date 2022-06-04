@@ -11,7 +11,9 @@ import com.artjuna.artjuna_app.databinding.ItemCategoryBinding
 import com.artjuna.artjuna_app.databinding.ItemProductBinding
 import com.artjuna.artjuna_app.databinding.ItemProductSmallBinding
 import com.artjuna.artjuna_app.ui.detailproduct.DetailProductActivity
+import com.artjuna.artjuna_app.ui.productlist.ProductListActivity
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
+import com.artjuna.artjuna_app.utils.Constant
 
 class CatAdapter:ListAdapter<String, CatAdapter.RecomViewHolder>(DIFF_CALLBACK) {
 
@@ -20,9 +22,10 @@ class CatAdapter:ListAdapter<String, CatAdapter.RecomViewHolder>(DIFF_CALLBACK) 
             with(binding){
                 tvCategoryName.text = category
                 itemView.setOnClickListener {
-//                    val intent = Intent(itemView.context, DetailProductActivity::class.java)
-//                    intent.putExtra(DetailProductActivity.EXTRA_PRODUCT, product)
-//                    itemView.context.startActivity(intent)
+                    val intent = Intent(itemView.context, ProductListActivity::class.java)
+                    intent.putExtra(ProductListActivity.EXTRA_PAGE_TYPE, Constant.Category)
+                    intent.putExtra(ProductListActivity.EXTRA_CATEGORY, category)
+                    itemView.context.startActivity(intent)
                 }
             }
         }
