@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
 
-    private val BASE_URL = "http://34.101.203.109:8080/"
+    private val BASE_URL = "***REMOVED***"
     private val BASE_URL_MOCK = "https://61126d5c89c6d00017ac0314.mockapi.io/"
 
     fun getApiService():ApiService{
