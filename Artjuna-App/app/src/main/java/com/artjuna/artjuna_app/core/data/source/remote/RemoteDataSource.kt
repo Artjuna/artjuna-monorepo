@@ -4,10 +4,7 @@ import com.artjuna.artjuna_app.core.data.source.model.Category
 import com.artjuna.artjuna_app.core.data.source.model.Post
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.core.data.source.remote.network.ApiService
-import com.artjuna.artjuna_app.core.data.source.remote.request.AddAccountRequest
-import com.artjuna.artjuna_app.core.data.source.remote.request.UpdateAccountRequest
-import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
-import com.artjuna.artjuna_app.core.data.source.remote.request.UploadProductRequest
+import com.artjuna.artjuna_app.core.data.source.remote.request.*
 import com.artjuna.artjuna_app.core.data.source.remote.response.AccountResponse
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -35,6 +32,7 @@ class RemoteDataSource(private val api:ApiService) {
             image
         )
     suspend fun getCategory() = api.getCategory()
+
     suspend fun getPost() = api.getPost()
 
     suspend fun uploadPost(post: Post,image: MultipartBody.Part) =
@@ -44,6 +42,8 @@ class RemoteDataSource(private val api:ApiService) {
             post.caption.toRequestBody("text/plain".toMediaType()),
             image
         )
+
+    suspend fun addHasSeen(request:AddHasSeenRequest) = api.addHasSeen(request)
 
 
     fun addAccount(request:AddAccountRequest) = api.addAccount(request)

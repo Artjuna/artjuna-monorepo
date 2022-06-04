@@ -10,9 +10,11 @@ import com.artjuna.artjuna_app.ui.checkout.CheckoutActivity
 import com.artjuna.artjuna_app.ui.customize.CustomizeActivity
 import com.artjuna.artjuna_app.ui.store.StoreActivity
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailProductActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDetailProductBinding
+    private val viewModel:DetailViewModel by viewModel()
     private var product = Product()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +22,12 @@ class DetailProductActivity : AppCompatActivity() {
         setContentView(binding.root)
         getProductData()
         setButtonClick()
+    }
+
+    private fun addHasSen() {
+        viewModel.addHasSeen(product.id).observe(this){
+            Log.d("Detail", "Has Seen Added")
+        }
     }
 
     private fun setButtonClick() {
@@ -47,6 +55,7 @@ class DetailProductActivity : AppCompatActivity() {
         if(extras!=null){
             product = extras.getParcelable<Product>(EXTRA_PRODUCT)!!
             populateView()
+            addHasSen()
         }
     }
 

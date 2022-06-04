@@ -7,6 +7,7 @@ import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
 import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
+import com.artjuna.artjuna_app.core.data.source.remote.request.AddHasSeenRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.toPost
 import com.artjuna.artjuna_app.core.data.source.remote.response.toProduct
@@ -25,6 +26,22 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
     fun getAddress():Address = local.getAddress()
 
     fun getUser(): User = local.getUser()
+
+    fun addHasSeen(productId:String):LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        try {
+            val userId = local.getUser().id
+            remote.addHasSeen(AddHasSeenRequest(userId,productId)).let {
+                if(it.isSuccessful){
+                    emit(Result.Success(""))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
 
     fun getCategory():LiveData<Result<List<String>>> = liveData {
         emit(Result.Loading)
