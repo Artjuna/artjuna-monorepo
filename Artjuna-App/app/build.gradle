@@ -5,6 +5,10 @@ plugins {
     id 'com.google.gms.google-services'
 }
 
+def apikeyPropertiesFile = rootProject.file("local.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 32
     buildToolsVersion "30.0.3"
@@ -15,7 +19,8 @@ android {
         targetSdkVersion 32
         versionCode 1
         versionName "1.0"
-        buildConfigField("String", "BASE_URL", BASE_URL)
+//        buildConfigField("String", "BASE_URL", BASE_URL)
+        buildConfigField("String", "BASE_URL", apikeyProperties['BASE_URL'])
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
