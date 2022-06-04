@@ -1,6 +1,7 @@
 package com.artjuna.artjuna_app.ui.store.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,17 +30,19 @@ class ProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapter()
-        setData()
+        getStoreId()
     }
+
+    private fun getStoreId() {
+        val storeId = arguments?.getString(STORE_ID)
+    }
+
     private fun setupAdapter(){
         binding.rvProduct.adapter = productAdapter
     }
-    private fun setData(){
-//        storeViewModel.getProduct().observe(viewLifecycleOwner){
-//            when(it){
-//                is Result.Success -> productAdapter.submitList(it.data)
-//            }
-//        }
+
+    companion object{
+        const val STORE_ID = "STORE_ID"
     }
 
 }

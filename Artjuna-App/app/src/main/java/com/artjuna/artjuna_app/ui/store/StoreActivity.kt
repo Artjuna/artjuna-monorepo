@@ -11,6 +11,7 @@ class StoreActivity : AppCompatActivity() {
 
     private val storeViewModel:StoreViewModel by viewModel()
     private lateinit var binding:ActivityStoreBinding
+    private var storeId = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStoreBinding.inflate(layoutInflater)
@@ -23,7 +24,7 @@ class StoreActivity : AppCompatActivity() {
 
     private fun getStoreData() {
         if(intent.extras != null){
-            val storeId = intent.extras!!.getString(EXTRA_STORE_ID)
+            storeId = intent.extras!!.getString(EXTRA_STORE_ID)!!
             val storeCity = intent.extras!!.getString(EXTRA_STORE_CITY)
             populateView(storeId,storeCity)
         }
@@ -42,6 +43,7 @@ class StoreActivity : AppCompatActivity() {
 
     private fun showTabLayout() {
         val storePagerAdapter = StorePagerAdapter(this)
+        storePagerAdapter.storeId = storeId
         with(binding){
             viewPager.adapter = storePagerAdapter
             TabLayoutMediator(tabs, viewPager){tab, position ->
