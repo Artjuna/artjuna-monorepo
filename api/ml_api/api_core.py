@@ -34,6 +34,7 @@ async def startup_routine():
     }
 
     database = mysql.connector.connect(**config)
+    
 
 
 @app.get("/")
