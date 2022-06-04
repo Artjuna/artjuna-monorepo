@@ -1,3 +1,4 @@
+import mysql.connector
 from fastapi import FastAPI, Response
 from pydantic import BaseModel
 
@@ -5,6 +6,7 @@ from .style_transfer_core import StyleTransferModel
 
 app = FastAPI()
 inference_model = None
+database = None
 
 
 class ImagePair(BaseModel):
@@ -17,6 +19,7 @@ async def startup_routine():
     global inference_model
     inference_model = StyleTransferModel()
     inference_model.load_model("adain_300")
+    
 
 
 @app.get("/")
@@ -25,7 +28,7 @@ async def root():
 
 
 @app.post(
-    "/stransfer",
+    "/styletransfer",
     responses={200: {"content": {"image/png": {}}}},
     response_class=Response,
 )
