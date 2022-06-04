@@ -70,8 +70,7 @@ class DetailProductActivity : AppCompatActivity() {
             overview.tvProductPrice.text = "Rp ${product.price}"
             overview.tvProductDetail.text = product.detail
 
-            store.ivStoreImage.loadImage(product.storeImage)
-            store.tvStoreName.text = product.storeName
+            store.tvStoreName.text = product.storeId
             store.tvStoreCity.text = product.storeCity
         }
     }
