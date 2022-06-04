@@ -132,11 +132,23 @@
             <!-- Categories -->
             <include
                 android:id="@+id/cat"
+                android:visibility="visible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
                 layout="@layout/layout_home_category"/>
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/cat_load"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <include
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    layout="@layout/layout_home_category_load"/>
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
             <!-- Recommendation -->
             <include

@@ -12,6 +12,7 @@ import com.artjuna.artjuna_app.ui.home.adapter.CatAdapter
 import com.artjuna.artjuna_app.ui.home.adapter.RecomAdapter
 import com.artjuna.artjuna_app.ui.productlist.ProductListActivity
 import com.artjuna.artjuna_app.ui.search.SearchActivity
+import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.Constant
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -66,10 +67,15 @@ class HomeFragment : Fragment() {
         homeViewModel.getCategories().observe(viewLifecycleOwner){
             when(it){
                 is Result.Success -> {
-                    categoriesList.clear()
+                    showLoadingCat(false)
                     categoriesList.addAll(it.data)
                     catAdapter.submitList(it.data)
                 }
+                is Result.Error -> {
+                    showLoadingCat(false)
+                    AppUtils.showToast(requireContext(), it.error)
+                }
+                is Result.Loading -> showLoadingCat(true)
             }
         }
     }
@@ -79,15 +85,19 @@ class HomeFragment : Fragment() {
         homeViewModel.getRecommended(10).observe(viewLifecycleOwner){
             when(it){
                 is Result.Success -> {
-                    showLoading(false)
+                    showLoadingRecom(false)
                     recomAdapter.submitList(it.data)
                 }
-                is Result.Loading -> showLoading(true)
+                is Result.Error -> {
+                    showLoadingRecom(false)
+                    AppUtils.showToast(requireContext(), it.error)
+                }
+                is Result.Loading -> showLoadingRecom(true)
             }
         }
     }
 
-    private fun showLoading(isLoading:Boolean){
+    private fun showLoadingRecom(isLoading:Boolean){
         if(isLoading){
             with(binding){
                 recomLoad.visibility = View.VISIBLE
@@ -100,6 +110,22 @@ class HomeFragment : Fragment() {
             }
         }
     }
+
+    private fun showLoadingCat(isLoading:Boolean){
+        if(isLoading){
+            with(binding){
+                catLoad.visibility = View.VISIBLE
+                cat.root.visibility = View.GONE
+            }
+        } else{
+            with(binding){
+                catLoad.visibility = View.GONE
+                cat.root.visibility = View.VISIBLE
+            }
+        }
+    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
