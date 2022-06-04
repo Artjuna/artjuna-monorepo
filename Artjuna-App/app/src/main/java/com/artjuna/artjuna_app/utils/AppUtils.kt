@@ -68,7 +68,9 @@ object AppUtils{
         return (image.length()/1024).toInt()
     }
 
-    fun getApiImageURL(path:String):String = "${BuildConfig.BASE_URL}ProductImages${path}"
+    fun getProductImageURL(path:String):String = "${BuildConfig.BASE_URL}ProductImages${path}"
+
+    fun getPostImageURL(path:String):String = "${BuildConfig.BASE_URL}PostImages${path}"
 
 
     fun getUserandCaption(username:String, caption:String): Spanned {

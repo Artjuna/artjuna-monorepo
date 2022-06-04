@@ -123,20 +123,22 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
         }
     }
 
-    fun uploadPost(post: Post):LiveData<Result<Post>> = liveData {
+    fun uploadPost(post: Post,image: File):LiveData<Result<String>> = liveData {
         emit(Result.Loading)
         try {
             val userId = local.getUser().id
-            val request = UploadPostRequest(
-                UserID = userId,
-                PostName = post.productName,
-                Caption = post.caption,
-                Image = post.image
+            post.userId = userId
+
+            val requestImageFile = image.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "Image",
+                image.name,
+                requestImageFile
             )
-            remote.uploadPost(request).let {
+
+            remote.uploadPost(post,imageMultipart).let {
                 if(it.isSuccessful){
-                    val res = it.body()?.toPost()
-                    emit(Result.Success(res!!))
+                    emit(Result.Success("Success"))
                 }else {
                     emit(Result.Error(it.errorBody().toString()))
                 }

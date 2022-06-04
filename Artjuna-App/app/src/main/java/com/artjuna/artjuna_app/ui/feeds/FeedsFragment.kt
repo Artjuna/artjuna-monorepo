@@ -1,6 +1,7 @@
 package com.artjuna.artjuna_app.ui.feeds
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +49,9 @@ class FeedsFragment : Fragment() {
                 is Result.Success -> {
                     showLoading(false)
                     postAdapter.submitList(it.data)
+                    it.data.map {
+                        Log.d("GALIH", it.image)
+                    }
                 }
                 is Result.Loading -> showLoading(true)
             }

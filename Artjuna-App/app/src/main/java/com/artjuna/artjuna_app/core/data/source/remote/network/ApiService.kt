@@ -26,10 +26,25 @@ interface ApiService {
     @Part image : MultipartBody.Part,
     ) : Response<Void>
 
+    @Multipart
+    @POST("Post/addPost")
+    suspend fun uploadPost(
+        @Part("UserID") userId : RequestBody,
+        @Part("PostName") postName : RequestBody,
+        @Part("Caption") caption : RequestBody,
+        @Part Image : MultipartBody.Part,
+    ) : Response<Void>
+
     @GET("Product/getProductFilter")
     suspend fun getProductByCategory(
         @Query("Category") category:String
     ): Response<List<GetProductResponse>>
+
+    @GET("Product/getProductFilter")
+    suspend fun getProductByKeyword(
+        @Query("Category") category:String
+    ): Response<List<GetProductResponse>>
+
 
     @GET("Product/getAllProduct")
     suspend fun getProduct():Response<List<GetProductResponse>>
@@ -40,10 +55,7 @@ interface ApiService {
     @GET("Post/getPost")
     suspend fun getPost():Response<List<GetPostResponse>>
 
-    @POST("Post/addPost")
-    suspend fun uploadPost(
-        @Body body: UploadPostRequest
-    ) : Response<PostResponse>
+
 
     @POST("Account/addAccount")
     fun addAccount(
