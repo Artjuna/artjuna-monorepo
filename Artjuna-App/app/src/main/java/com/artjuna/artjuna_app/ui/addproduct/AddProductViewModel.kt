@@ -8,5 +8,6 @@ import java.io.File
 class AddProductViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     fun uploadProduct(product: Product, image: File) = mainRepository.uploadProduct(product,image)
+    fun getCategories() = mainRepository.getCategory()
 
 }
