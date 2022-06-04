@@ -8,7 +8,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
 
+
+    private val BASE_URL = "***REMOVED***"
+    private val BASE_URL_MOCK = "https://61126d5c89c6d00017ac0314.mockapi.io/"
+
     private val BASE_URL = BuildConfig.BASE_URL
+
 
     fun getApiService():ApiService{
         val loggingInterceptor = HttpLoggingInterceptor()
