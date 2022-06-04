@@ -36,11 +36,11 @@ class PostFragment : Fragment() {
         binding.rvPost.adapter = postAdapter
     }
     private fun setData(){
-        storeViewModel.getPost().observe(viewLifecycleOwner){
-            when(it){
-                is Result.Success -> postAdapter.submitList(it.data)
-            }
-        }
+//        storeViewModel.getPost().observe(viewLifecycleOwner){
+//            when(it){
+//                is Result.Success -> postAdapter.submitList(it.data)
+//            }
+//        }
     }
 
 
