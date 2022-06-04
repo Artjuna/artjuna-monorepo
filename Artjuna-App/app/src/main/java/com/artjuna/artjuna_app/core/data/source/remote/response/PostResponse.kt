@@ -1,15 +1,13 @@
 package com.artjuna.artjuna_app.core.data.source.remote.response
 
 import com.artjuna.artjuna_app.core.data.source.model.Post
+import com.artjuna.artjuna_app.utils.AppUtils
 import com.google.gson.annotations.SerializedName
 
 data class PostResponse(
 
 	@field:SerializedName("createdAt")
 	val createdAt: String,
-
-	@field:SerializedName("Category")
-	val category: String,
 
 	@field:SerializedName("Like")
 	val like: Int,
@@ -34,7 +32,7 @@ fun PostResponse.toPost():Post{
 	return Post(
 		id = postID,
 		userId = userID,
-		image = image,
+		image = AppUtils.getPostImageURL(image),
 		caption = caption,
 		productName = postName,
 		like = like

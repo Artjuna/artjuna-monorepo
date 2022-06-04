@@ -19,12 +19,14 @@
         android:gravity="center_vertical"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/tv_store_name"
             style="@style/Subtitle2Medium"
             android:textColor="@color/white"
             android:text="Eren Yeager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/tv_store_city"
             style="@style/Body2Regular"
             android:textColor="@color/white"
             android:text="Kota Cirebon | 129 Pengikut"

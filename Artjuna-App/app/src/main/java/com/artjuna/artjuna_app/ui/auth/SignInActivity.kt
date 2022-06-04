@@ -2,11 +2,15 @@ package com.artjuna.artjuna_app.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.system.Os.accept
 import androidx.appcompat.app.AppCompatActivity
+import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.databinding.ActivitySignInBinding
 import com.artjuna.artjuna_app.ui.loading.LoadingDialog
 import com.artjuna.artjuna_app.ui.navigation.NavigationActivity
 import com.artjuna.artjuna_app.utils.AppUtils
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.NonCancellable.cancel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInActivity : AppCompatActivity() {
@@ -45,6 +49,18 @@ class SignInActivity : AppCompatActivity() {
         }
 
         binding.btnSignIn.setOnClickListener { signIn() }
+
+        binding.btnForgot.setOnClickListener { forgotPassword() }
+    }
+
+    private fun forgotPassword() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Forgot Password?")
+            .setMessage("Relax, try to remember your password!")
+            .setPositiveButton("Thanks") { dialog, which ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun signIn() {

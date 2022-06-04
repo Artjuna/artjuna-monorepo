@@ -1,6 +1,7 @@
 package com.artjuna.artjuna_app.core.data.source.remote.response
 
 import com.artjuna.artjuna_app.core.data.source.model.Post
+import com.artjuna.artjuna_app.utils.AppUtils
 import com.google.gson.annotations.SerializedName
 
 data class GetPostResponse(
@@ -34,7 +35,7 @@ fun GetPostResponse.toPost(): Post {
 	return Post(
 		id = postID,
 		userId = userID,
-		image = image,
+		image = AppUtils.getPostImageURL(image),
 		productName = postName,
 		like = like,
 		caption = caption,

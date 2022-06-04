@@ -12,8 +12,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended:true,limit:"10mb",type:'
 app.use(urlencodedParser);
 app.use(jsonParser);
 
-app.use('/Images', express.static('images'));
-app.use('/PostImage', express.static('PostImage'));
+app.use('/PostImages', express.static('PostImages'));
+app.use('/ProductImages', express.static('ProductImages'));
 
 //routers
 const ProductRoute = require('./routes/ProductRoute');

@@ -12,6 +12,7 @@ import android.text.Spanned
 import android.util.Base64
 import android.widget.ImageView
 import android.widget.Toast
+import com.artjuna.artjuna_app.BuildConfig
 import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.bumptech.glide.Glide
@@ -66,6 +67,10 @@ object AppUtils{
     fun getImageSizeInKB(image:File):Int{
         return (image.length()/1024).toInt()
     }
+
+    fun getProductImageURL(path:String):String = "${BuildConfig.BASE_URL}ProductImages${path}"
+
+    fun getPostImageURL(path:String):String = "${BuildConfig.BASE_URL}PostImages${path}"
 
 
     fun getUserandCaption(username:String, caption:String): Spanned {

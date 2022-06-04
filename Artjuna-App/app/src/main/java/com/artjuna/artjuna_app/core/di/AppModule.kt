@@ -5,6 +5,7 @@ import com.artjuna.artjuna_app.ui.addproduct.AddProductViewModel
 import com.artjuna.artjuna_app.ui.address.AddressViewModel
 import com.artjuna.artjuna_app.ui.auth.AuthViewModel
 import com.artjuna.artjuna_app.ui.checkout.CheckoutViewModel
+import com.artjuna.artjuna_app.ui.detailproduct.DetailViewModel
 import com.artjuna.artjuna_app.ui.feeds.FeedsViewModel
 import com.artjuna.artjuna_app.ui.home.HomeViewModel
 import com.artjuna.artjuna_app.ui.productlist.ProductListViewModel
@@ -30,4 +31,5 @@ val viewModelModule = module {
     viewModel { AddPostViewModel(get()) }
     viewModel { AddProductViewModel(get()) }
     viewModel { ProductListViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 }
