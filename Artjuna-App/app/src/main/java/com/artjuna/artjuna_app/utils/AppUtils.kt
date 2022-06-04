@@ -12,6 +12,7 @@ import android.text.Spanned
 import android.util.Base64
 import android.widget.ImageView
 import android.widget.Toast
+import com.artjuna.artjuna_app.BuildConfig
 import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.bumptech.glide.Glide
@@ -67,7 +68,7 @@ object AppUtils{
         return (image.length()/1024).toInt()
     }
 
-    fun getApiImageURL(path:String):String = "***REMOVED***Images${path}"
+    fun getApiImageURL(path:String):String = "${BuildConfig.BASE_URL}${path}"
 
 
     fun getUserandCaption(username:String, caption:String): Spanned {
