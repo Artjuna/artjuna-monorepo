@@ -33,7 +33,10 @@ class DetailProductActivity : AppCompatActivity() {
     private fun setButtonClick() {
         with(binding){
             store.btnVisitstore.setOnClickListener {
-                startActivity(Intent(this@DetailProductActivity, StoreActivity::class.java))
+                val intent = Intent(this@DetailProductActivity, StoreActivity::class.java)
+                intent.putExtra(StoreActivity.EXTRA_STORE_ID, product.storeId)
+                intent.putExtra(StoreActivity.EXTRA_STORE_CITY, product.storeCity)
+                startActivity(intent)
             }
 
             bottomBar.btnCheckout.setOnClickListener {

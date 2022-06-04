@@ -16,11 +16,25 @@ class StoreActivity : AppCompatActivity() {
         binding = ActivityStoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        populateView()
+        setButtonClick()
+        getStoreData()
         showTabLayout()
     }
 
-    private fun populateView() {
+    private fun getStoreData() {
+        if(intent.extras != null){
+            val storeId = intent.extras!!.getString(EXTRA_STORE_ID)
+            val storeCity = intent.extras!!.getString(EXTRA_STORE_CITY)
+            populateView(storeId,storeCity)
+        }
+    }
+
+    private fun populateView(storeId: String?, storeCity: String?) {
+        binding.store.tvStoreName.text = storeId.toString()
+        binding.store.tvStoreCity.text = "Kota $storeCity"
+    }
+
+    private fun setButtonClick() {
         with(binding){
             btnBack.setOnClickListener { onBackPressed() }
         }
@@ -41,5 +55,7 @@ class StoreActivity : AppCompatActivity() {
             "Product",
             "Post"
         )
+        const val EXTRA_STORE_ID = "EXTRA_STORE_ID"
+        const val EXTRA_STORE_CITY = "EXTRA_STORE_CITY"
     }
 }
