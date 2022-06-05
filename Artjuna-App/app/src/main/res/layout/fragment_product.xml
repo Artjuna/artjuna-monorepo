@@ -14,4 +14,12 @@
         app:spanCount="2"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"/>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/load"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            layout="@layout/layout_product_list_load"/>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 </LinearLayout>
