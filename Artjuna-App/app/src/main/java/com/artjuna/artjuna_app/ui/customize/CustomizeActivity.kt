@@ -48,9 +48,9 @@ class CustomizeActivity : AppCompatActivity() {
         with(binding){
             btnAddPhoto.setOnClickListener { openGallery() }
             btnBack.setOnClickListener { onBackPressed() }
-            bottomBar.btnCustomize.setOnClickListener {
-                startActivity(Intent(this@CustomizeActivity, ResultCustomizeActivity::class.java))
-            }
+//            bottomBar.btnCustomize.setOnClickListener {
+//                startActivity(Intent(this@CustomizeActivity, ResultCustomizeActivity::class.java))
+//            }
         }
     }
 

@@ -71,7 +71,7 @@ class ProfileFragment : Fragment() {
                 AppUtils.showToast(requireContext(),"Coming Soon")
             }
             btnMystore.setOnClickListener {
-                if(user.numberWA.isEmpty() || user.city.isEmpty()){
+                if(numberAndLocationEmpty()){
                     AppUtils.showToast(requireContext(), "You have to fill your phone number and city first")
                     moveToSetting()
                 }else{
@@ -79,6 +79,10 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun numberAndLocationEmpty():Boolean{
+        return user.numberWA.isEmpty() || user.city.isEmpty() || user.province.isEmpty()
     }
 
     private fun moveToMyStore() {

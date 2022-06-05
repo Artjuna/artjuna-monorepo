@@ -34,7 +34,7 @@ class MyStoreActivity : AppCompatActivity() {
     private fun populateView(user: User) {
         with(binding){
             header.tvName.text = user.fullName
-            header.tvCityFollowers.text = "Kota ${user.city} | ${user.followers} Followers"
+            header.tvCityFollowers.text = "${user.city}, ${user.province}"
         }
     }
 

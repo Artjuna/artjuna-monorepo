@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.model.Product
+import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.databinding.ActivityDetailProductBinding
 import com.artjuna.artjuna_app.ui.checkout.CheckoutActivity
 import com.artjuna.artjuna_app.ui.customize.CustomizeActivity
@@ -37,8 +38,12 @@ class DetailProductActivity : AppCompatActivity() {
         with(binding){
             store.btnVisitstore.setOnClickListener {
                 val intent = Intent(this@DetailProductActivity, StoreActivity::class.java)
-                intent.putExtra(StoreActivity.EXTRA_STORE_ID, product.storeId)
-                intent.putExtra(StoreActivity.EXTRA_STORE_CITY, product.storeCity)
+                val store = User()
+                store.id = product.storeId
+                store.fullName = product.storeId
+                store.city = product.storeCity
+                store.province = product.storeProvince
+                intent.putExtra(StoreActivity.EXTRA_STORE, store)
                 startActivity(intent)
             }
 
@@ -114,7 +119,7 @@ class DetailProductActivity : AppCompatActivity() {
             overview.tvProductDetail.text = product.detail
 
             store.tvStoreName.text = product.storeId
-            store.tvStoreCity.text = product.storeCity
+            store.tvStoreCity.text = "${product.storeCity}, ${product.storeProvince}"
         }
     }
 

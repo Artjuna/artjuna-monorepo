@@ -16,6 +16,7 @@ data class Product(
     var isCustomizable:Boolean=false,
     var storeId:String="",
     var storeCity:String="",
+    var storeProvince:String="",
     var storeName:String="",
 ):Parcelable
 
@@ -25,6 +26,7 @@ fun Product.toProductRequest():UploadProductRequest{
         Image = image,
         Category = category,
         City = storeCity,
+        Province = storeProvince,
         Caption = detail,
         Price = price
     )
@@ -40,6 +42,7 @@ fun Product.toProductEntity():ProductEntity{
         category=category,
         storeId=storeId,
         storeCity=storeCity,
+        storeProvince=storeProvince,
         storeName=storeName,
     )
 }

@@ -15,6 +15,7 @@ data class User(
     var followers:Int=0,
     var numberWA:String="",
     var city:String="",
+    var province:String="",
 ):Parcelable
 
 fun User.toUpdateRequest():UpdateAccountRequest{
@@ -24,6 +25,7 @@ fun User.toUpdateRequest():UpdateAccountRequest{
         UserName = userName,
         Email = email,
         OriginCity = city,
+        OriginProvince = province,
         Telephone = numberWA,
         IsStore = isStore
     )

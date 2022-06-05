@@ -12,6 +12,7 @@
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_cart_white_outline.xml" value="0.1615" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_add_product.xml" value="0.25025641025641027" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_cart.xml" value="0.25025641025641027" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_customize.xml" value="0.11302083333333333" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_detail_product.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_my_store.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_product_list.xml" value="0.25416666666666665" />
@@ -19,6 +20,7 @@
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_search.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_in.xml" value="0.25025641025641027" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_store.xml" value="0.25416666666666665" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/bottombar_custom.xml" value="0.264" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/bottombar_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_home.xml" value="0.25025641025641027" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_product.xml" value="0.25416666666666665" />
@@ -135,12 +137,6 @@
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_store_header.xml" value="0.22592592592592592" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/toolbar_home.xml" value="0.176" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_customize.xml" value="0.33" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_customize_with_you_design.xml" value="0.2234375" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/bottombar_custom.xml" value="0.33" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/bottombar_detail.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_home.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_loading_dialog.xml" value="0.22447916666666667" />
       </map>
     </option>
   </component>
