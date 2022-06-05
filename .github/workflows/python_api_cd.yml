@@ -39,7 +39,6 @@ jobs:
           port: 22
           script: |
             sudo su
-            conda init bash
             exec bash
             conda activate production
             export PATH="$HOME/.poetry/bin:$PATH"
