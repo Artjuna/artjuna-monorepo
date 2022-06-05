@@ -21,7 +21,6 @@ class CustomizeWithYourDesignActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         setButton()
-
     }
 
     private fun setButton(){
