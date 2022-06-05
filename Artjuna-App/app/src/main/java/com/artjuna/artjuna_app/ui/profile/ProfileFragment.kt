@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.databinding.FragmentProfileBinding
 import com.artjuna.artjuna_app.ui.cart.CartActivity
+import com.artjuna.artjuna_app.ui.likedpost.LikedPostActivity
 import com.artjuna.artjuna_app.ui.mystore.MyStoreActivity
 import com.artjuna.artjuna_app.ui.order.OrderActivity
 import com.artjuna.artjuna_app.ui.profilesettings.ProfileSettingsActivity
@@ -65,7 +66,7 @@ class ProfileFragment : Fragment() {
                 startActivity(Intent(requireContext(),OrderActivity::class.java))
             }
             btnLikedpost.setOnClickListener {
-                AppUtils.showToast(requireContext(),"Coming Soon")
+                startActivity(Intent(requireContext(), LikedPostActivity::class.java))
             }
             btnStorefollow.setOnClickListener {
                 AppUtils.showToast(requireContext(),"Coming Soon")

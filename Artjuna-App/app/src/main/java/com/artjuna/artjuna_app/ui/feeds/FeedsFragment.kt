@@ -1,11 +1,11 @@
 package com.artjuna.artjuna_app.ui.feeds
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.artjuna.artjuna_app.core.data.source.model.Post
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentFeedsBinding
 import com.artjuna.artjuna_app.ui.adapter.PostAdapter
@@ -36,26 +36,54 @@ class FeedsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapter()
-        setData()
+        getListPost()
+        setButtonLikeClicked()
+    }
+
+    private fun setButtonLikeClicked() {
+        postAdapter.onLikeClick = {post ->
+            if(post.isLiked){
+                addPostLiked(post)
+            }else{
+                deletePostLiked(post.id)
+            }
+        }
+    }
+
+    private fun deletePostLiked(id: String) {
+        feedsViewModel.deletePostLikedById(id)
+    }
+
+    private fun addPostLiked(post: Post) {
+        feedsViewModel.insertPostLiked(post)
     }
 
     private fun setupAdapter() {
         binding.rvPost.adapter = postAdapter
     }
 
-    private fun setData(){
+    private fun getListPost(){
         feedsViewModel.getPost().observe(viewLifecycleOwner){
             when(it){
                 is Result.Success -> {
                     showLoading(false)
-                    postAdapter.submitList(it.data)
-                    it.data.map {
-                        Log.d("GALIH", it.image)
-                    }
+                    checkPostLiked(it.data)
                 }
                 is Result.Loading -> showLoading(true)
             }
         }
+    }
+
+    private fun checkPostLiked(data: List<Post>) {
+        feedsViewModel.getAllPostLikedId().observe(viewLifecycleOwner){
+            val listId = it
+            data.map { it.isLiked = listId.contains(it.id) }
+            showListToAdapter(data)
+        }
+    }
+
+    private fun showListToAdapter(data:List<Post>) {
+        postAdapter.submitList(data)
     }
 
     private fun showLoading(isLoading:Boolean){

@@ -24,7 +24,7 @@
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Favorite"/>
+            android:text="Liked Post"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
