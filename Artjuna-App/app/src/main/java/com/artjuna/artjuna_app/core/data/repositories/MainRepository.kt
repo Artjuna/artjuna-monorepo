@@ -150,7 +150,8 @@ class MainRepository(
                 if(it.isSuccessful){
                     val body = it.body()
                     val res = body?.map { it.toProduct() }
-                    emit(Result.Success(res!!.take(10)))
+                    val list = res!!.filter { it.storeId == userId }
+                    emit(Result.Success(list))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ))
                 }

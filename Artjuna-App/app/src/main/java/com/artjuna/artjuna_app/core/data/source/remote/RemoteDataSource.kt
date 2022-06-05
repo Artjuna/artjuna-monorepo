@@ -23,7 +23,7 @@ class RemoteDataSource(private val api:ApiService) {
             product.storeId.toRequestBody("text/plain".toMediaType()),
             product.name.toRequestBody("text/plain".toMediaType()),
             product.category.toRequestBody("text/plain".toMediaType()),
-            "".toRequestBody("text/plain".toMediaType()),
+            product.storeProvince.toRequestBody("text/plain".toMediaType()),
             product.storeCity.toRequestBody("text/plain".toMediaType()),
             product.detail.toRequestBody("text/plain".toMediaType()),
             product.price,
