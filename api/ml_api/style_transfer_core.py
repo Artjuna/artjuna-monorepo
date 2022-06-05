@@ -50,13 +50,6 @@ class StyleTransferModel:
 
         return im_bytes
 
-    def image_decoder(self, image_b64):
-        # Turn base64 byte string to raw bytes
-        image_b64_raw = base64.b64decode(image_b64)
-        # Turn raw bytes to image
-        image = tf.image.decode_image(image_b64_raw, channels=3)
-        return image
-
     def image_preprocessing(self, image):
         image = np.asarray(image)
         image = central_crop(image)
@@ -66,7 +59,5 @@ class StyleTransferModel:
         image = tf.cast(image, tf.float32)
         return image
 
-    def image_converter(self, image_b64):
-        image = self.image_decoder(image_b64)
-        image = self.image_preprocessing(image)
-        return image
+    def get_image(self, path):
+        return Image.open(path)
