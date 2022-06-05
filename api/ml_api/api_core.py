@@ -2,7 +2,7 @@ import os
 
 import mysql.connector
 from dotenv import load_dotenv
-from fastapi import FastAPI, Response
+from fastapi import FastAPI, Response, UploadFile, Form, File
 from pydantic import BaseModel
 
 load_dotenv(os.path.join(".", ".env"))
@@ -10,22 +10,17 @@ load_dotenv(os.path.join(".", ".env"))
 from .style_transfer_core import StyleTransferModel
 
 app = FastAPI()
-inference_model = None
+style_transfer_model = None
 database = None
-
-
-class ImagePair(BaseModel):
-    image_style: str
-    image_content: str
 
 
 @app.on_event("startup")
 async def startup_routine():
-    global inference_model
+    global style_transfer_model
     global database
 
-    inference_model = StyleTransferModel()
-    inference_model.load_model("adain_300")
+    style_transfer_model = StyleTransferModel()
+    style_transfer_model.load_model("adain_300")
 
     config = {
         "user": os.getenv("USERNAME"),
@@ -34,7 +29,6 @@ async def startup_routine():
     }
 
     database = mysql.connector.connect(**config)
-    
 
 
 @app.get("/")
@@ -47,12 +41,25 @@ async def root():
     responses={200: {"content": {"image/png": {}}}},
     response_class=Response,
 )
-async def style_transfer(
-    image_pair: ImagePair,
-):
-    prepared_style = inference_model.image_converter(image_pair.image_style)
-    prepared_content = inference_model.image_converter(image_pair.image_content)
-    reconstructed_image = inference_model.style_transfer(
+async def style_transfer(ProductID: str = Form(), StyleImage: UploadFile = File()):
+    cursor = database.cursor()
+
+    # Get file URL from ProductID
+    cursor.execute(
+        "SELECT Image FROM Artjuna.produk WHERE ProductID = %(ProductID)s;",
+        {"ProductID": ProductID},
+    )
+    file_url = cursor.fetchone()[0].strip("/")
+
+    # Get file from local folder
+    style_image = style_transfer_model.get_image(
+        os.path.join("ProductImages", file_url)
+    )
+    content_image = style_transfer_model.get_image(StyleImage.file)
+
+    prepared_style = style_transfer_model.image_preprocessing(style_image)
+    prepared_content = style_transfer_model.image_preprocessing(content_image)
+    reconstructed_image = style_transfer_model.style_transfer(
         prepared_style, prepared_content
     )
 
