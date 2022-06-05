@@ -27,14 +27,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-      
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v22.2
+          fetch-depth: 2
 
       - name: Update Dependencies
-        if: contains(steps.changed-files.outputs.modified_files, 'pyproject.toml')
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
