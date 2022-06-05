@@ -28,7 +28,10 @@ data class GetPostResponse(
 	val postID: String,
 
 	@field:SerializedName("Caption")
-	val caption: String
+	val caption: String,
+
+	@field:SerializedName("FullName")
+	val fullName: String
 )
 
 fun GetPostResponse.toPost(): Post {
@@ -39,5 +42,6 @@ fun GetPostResponse.toPost(): Post {
 		productName = postName,
 		like = like,
 		caption = caption,
+		userName = fullName
 	)
 }
