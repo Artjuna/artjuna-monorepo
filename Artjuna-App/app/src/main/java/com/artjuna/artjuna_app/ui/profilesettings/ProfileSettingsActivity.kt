@@ -90,6 +90,7 @@ class ProfileSettingsActivity : AppCompatActivity() {
             etEmail.setText(user.email)
             etPhoneNumber.setText(user.numberWA)
             etCity.setText(user.city)
+            etProvince.setText(user.province)
         }
     }
 
