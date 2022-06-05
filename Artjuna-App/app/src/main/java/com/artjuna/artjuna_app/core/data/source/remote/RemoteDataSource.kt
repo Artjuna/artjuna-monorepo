@@ -51,5 +51,6 @@ class RemoteDataSource(private val api:ApiService) {
     fun addAccount(request:AddAccountRequest) = api.addAccount(request)
     fun getAccountById(userId:String): Call<List<AccountResponse>> = api.getAccountById(userId)
     fun updateAccount(request: UpdateAccountRequest):Call<Void> = api.updateAccount(request)
+    fun upgradeAccount(request: UpdateAccountRequest):Call<Void> = api.updateAccount(request)
 
 }

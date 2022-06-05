@@ -3,6 +3,7 @@ package com.artjuna.artjuna_app.ui.profilesettings
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
@@ -34,6 +35,7 @@ class ProfileSettingsActivity : AppCompatActivity() {
         populateView()
     }
 
+
     private fun updateAccount() {
         collectUserData()
         viewModel.updateAccount(this.user).observe(this){
@@ -52,6 +54,24 @@ class ProfileSettingsActivity : AppCompatActivity() {
         }
     }
 
+    private fun upgradeAccount() {
+        viewModel.upgradeAccount(this.user).observe(this){
+            when(it){
+                is Result.Loading -> loadingDialog.show()
+                is Result.Error -> {
+                    loadingDialog.dismiss()
+                    AppUtils.showToast(this, it.error)
+                }
+                is Result.Success -> {
+                    loadingDialog.dismiss()
+                    AppUtils.showToast(this,it.data)
+                    finish()
+                    onBackPressed()
+                }
+            }
+        }
+    }
+
     private fun collectUserData() {
         user.fullName = binding.etFullName.text.toString()
         user.city = binding.etCity.text.toString()
@@ -60,12 +80,27 @@ class ProfileSettingsActivity : AppCompatActivity() {
 
     private fun populateView() {
         with(binding){
+            setViewStore()
             etUserId.setText(user.id)
             etFullName.setText(user.fullName)
             etUsername.setText(user.userName)
             etEmail.setText(user.email)
             etPhoneNumber.setText(user.numberWA)
             etCity.setText(user.city)
+        }
+    }
+
+    private fun setViewStore() {
+        with(binding){
+            if(user.isStore){
+                etPhoneNumber.visibility = View.VISIBLE
+                etCity.visibility = View.VISIBLE
+                btnBeSeller.visibility = View.GONE
+            }else{
+                etPhoneNumber.visibility = View.GONE
+                etCity.visibility = View.GONE
+                btnBeSeller.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -77,8 +112,11 @@ class ProfileSettingsActivity : AppCompatActivity() {
                 moveToSignIn()
             }
             btnSave.setOnClickListener { updateAccount() }
+            btnBeSeller.setOnClickListener { upgradeAccount() }
         }
     }
+
+
 
     private fun moveToSignIn() {
         startActivity(Intent(this@ProfileSettingsActivity, SignInActivity::class.java))

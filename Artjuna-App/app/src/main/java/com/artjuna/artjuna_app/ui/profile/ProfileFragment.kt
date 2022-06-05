@@ -36,11 +36,11 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setButtonClick()
-        getData()
+        getUserData()
 
     }
 
-    private fun getData() {
+    private fun getUserData() {
         user = viewModel.getUser()
         showMenu(user.isStore)
         populateUserView()
@@ -95,17 +95,15 @@ class ProfileFragment : Fragment() {
 
     private fun showMenu(isStore:Boolean){
         if(isStore){
-            binding.btnStorefollow.visibility = View.GONE
             binding.btnMystore.visibility = View.VISIBLE
         }else{
-            binding.btnStorefollow.visibility = View.VISIBLE
             binding.btnMystore.visibility = View.GONE
         }
     }
 
     override fun onResume() {
         super.onResume()
-        getData()
+        getUserData()
     }
 
     override fun onDestroyView() {

@@ -38,8 +38,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_margin="@dimen/_16sdp"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -147,6 +147,20 @@
             android:layout_marginVertical="@dimen/_16sdp"
             android:text="Sign Out"
             android:layout_gravity="center"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/btn_be_seller"
+            android:drawableStart="@drawable/ic_store"
+            android:drawablePadding="@dimen/_8sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Subtitle2Medium"
+            android:text="Become a Seller"/>
 
     </LinearLayout>
 
