@@ -4,24 +4,26 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.artjuna.artjuna_app.core.data.source.local.entity.PostEntity
 import com.artjuna.artjuna_app.core.data.source.local.entity.ProductEntity
 
-@Database(entities = [ProductEntity::class], version = 1, exportSchema = false)
-abstract class ProductDatabase:RoomDatabase() {
+@Database(entities = [ProductEntity::class, PostEntity::class], version = 1, exportSchema = false)
+abstract class ArtjunaDatabase:RoomDatabase() {
 
     abstract fun productDao():ProductDao
+    abstract fun postDao():PostDao
 
     companion object{
-        private const val DATABASE_NAME = "product.db"
+        private const val DATABASE_NAME = "artjuna.db"
 
         @Volatile
-        private var INSTANCE: ProductDatabase? = null
+        private var INSTANCE: ArtjunaDatabase? = null
 
-        fun getInstance(context: Context): ProductDatabase =
+        fun getInstance(context: Context): ArtjunaDatabase =
             INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(
                     context.applicationContext,
-                    ProductDatabase::class.java,
+                    ArtjunaDatabase::class.java,
                     DATABASE_NAME
                 ).build().apply {
                     INSTANCE = this
