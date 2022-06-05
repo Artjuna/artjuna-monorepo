@@ -2,8 +2,7 @@ import os
 
 import mysql.connector
 from dotenv import load_dotenv
-from fastapi import FastAPI, Response, UploadFile, Form, File
-from pydantic import BaseModel
+from fastapi import FastAPI, File, Form, Response, UploadFile
 
 load_dotenv(os.path.join(".", ".env"))
 
