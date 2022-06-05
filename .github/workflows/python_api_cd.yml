@@ -39,6 +39,7 @@ jobs:
           script: |
             sudo su
             cd ~
+            ls -a
             cd artjuna-monorepo
             git pull origin main
             conda activate production
