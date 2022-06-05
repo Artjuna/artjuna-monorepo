@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_48sdp"
         android:padding="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_4sdp"
+        android:elevation="@dimen/_16sdp"
         android:gravity="center_vertical"
         android:background="?attr/colorOnPrimary">
         <ImageView
@@ -29,13 +29,6 @@
             android:layout_height="wrap_content"
             android:text="Store"/>
     </LinearLayout>
-    <!-- Header -->
-    <include
-        android:id="@+id/store"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_4sdp"
-        layout="@layout/layout_store_header"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -43,8 +36,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_4sdp"
             android:orientation="vertical">
 
+            <!-- Header -->
+            <include
+                android:id="@+id/store"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4sdp"
+                layout="@layout/layout_store_header"/>
+
+            <!-- Product and Post Tab -->
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
@@ -55,6 +58,7 @@
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"
+                android:layout_marginBottom="@dimen/_16sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
