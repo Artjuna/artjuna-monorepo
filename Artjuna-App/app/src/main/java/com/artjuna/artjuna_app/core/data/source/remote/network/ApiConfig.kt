@@ -10,6 +10,7 @@ object ApiConfig {
 
     private val BASE_URL = BuildConfig.BASE_URL
 
+
     fun getApiService():ApiService{
         val loggingInterceptor = HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY)

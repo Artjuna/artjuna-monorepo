@@ -5,6 +5,7 @@ const {unlink} = require('node:fs/promises')
 //create main model
 const Post = db.Post;
 const Like = db.Like;
+const Account = db.Accounts;
 
 const addPost = async (req, res) => {
     try{
@@ -49,6 +50,13 @@ const getPost = async (req, res) => {
             }})
             const sumLike = Object.keys(like).length;
             element.Like = sumLike;
+
+            const fullName = await Account.findOne({raw: true, where:{
+                UserID : element.UserID
+            },
+            attributes: 
+            ['FullName']})
+            element.FullName = fullName.FullName;
         }
         res.json(getAllPost);
     }

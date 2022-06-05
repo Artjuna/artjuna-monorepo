@@ -15,7 +15,6 @@ class PostAdapter:ListAdapter<Post, PostAdapter.PostViewHolder>(DIFF_CALLBACK) {
     class PostViewHolder(private val binding: ItemPostBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(post: Post){
             with(binding){
-                ivUserImage.loadImage(post.userImage)
                 tvUsername.text = post.userName
                 ivPostImage.loadImage(post.image)
                 tvProductName.text = post.productName

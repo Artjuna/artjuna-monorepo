@@ -1,9 +1,27 @@
-import pandas as pd
+import ast
+import os
 
-DATA_URL = "D:/ratings.csv"
-df = pd.read_csv(DATA_URL)
-ratings = tf.data.Dataset.from_tensor_slices(dict(df)).map(lambda x: {
-    "user_id": str(x["user_id"]),
-    "item_id": str(x["item_id"]),
-    "rating": float(x["rating"])
-})
+import mysql.connector
+import pandas as pd
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+def main():
+    full_data = get_data()
+    df = pd.DataFrame(full_data, columns=["UserID", "ProductID"])
+    df.to_parquet("dataset.parquet")
+
+
+def get_data():
+    config = ast.literal_eval(os.getenv("config"))
+    db = mysql.connector.connect(**config)
+    cursor = db.cursor()
+    cursor.execute("SELECT UserID,ProductID FROM Artjuna.productSeen;")
+    full_data = cursor.fetchall()
+    return full_data
+
+
+if __name__ == "__main__":
+    main()

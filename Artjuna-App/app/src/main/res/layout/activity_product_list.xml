@@ -30,7 +30,7 @@
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/load"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <include
@@ -39,7 +39,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_product"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"

@@ -1,6 +1,7 @@
 package com.artjuna.artjuna_app.ui.store.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +10,12 @@ import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentProductBinding
 import com.artjuna.artjuna_app.ui.adapter.ProductAdapter
 import com.artjuna.artjuna_app.ui.store.StoreViewModel
+import com.artjuna.artjuna_app.utils.AppUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProductFragment : Fragment() {
 
-    private val storeViewModel: StoreViewModel by viewModel()
+    private val viewModel: StoreViewModel by viewModel()
     private lateinit var binding:FragmentProductBinding
     private val productAdapter = ProductAdapter()
 
@@ -29,17 +31,48 @@ class ProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapter()
-        setData()
+        getStoreId()
     }
+
+    private fun getStoreId() {
+        val storeId = arguments?.getString(STORE_ID)
+        getProductByUserId(storeId!!)
+    }
+
+    private fun getProductByUserId(storeId: String) {
+        viewModel.getProductByUserId(storeId).observe(viewLifecycleOwner){
+            when(it){
+                is Result.Loading -> showLoading(true)
+                is Result.Success -> {
+                    productAdapter.submitList(it.data)
+                    showLoading(false)
+                }
+                is Result.Error -> {
+                    AppUtils.showToast(requireContext(), it.error)
+                    showLoading(false)
+                }
+            }
+        }
+    }
+
     private fun setupAdapter(){
         binding.rvProduct.adapter = productAdapter
     }
-    private fun setData(){
-//        storeViewModel.getProduct().observe(viewLifecycleOwner){
-//            when(it){
-//                is Result.Success -> productAdapter.submitList(it.data)
-//            }
-//        }
+
+    private fun showLoading(loading:Boolean){
+        with(binding){
+            if(loading){
+                load.visibility = View.VISIBLE
+                rvProduct.visibility = View.GONE
+            }else{
+                load.visibility = View.GONE
+                rvProduct.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    companion object{
+        const val STORE_ID = "STORE_ID"
     }
 
 }
