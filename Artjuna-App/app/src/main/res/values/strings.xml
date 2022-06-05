@@ -41,4 +41,5 @@
     <string name="temp_title_notif">Title</string>
     <string name="temp_desc_notif">Desc</string>
     <string name="change_address">Change Address</string>
+    <string name="add_your_own_design">Add Your Own Design</string>
 </resources>
