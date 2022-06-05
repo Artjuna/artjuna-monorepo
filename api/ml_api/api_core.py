@@ -56,8 +56,11 @@ async def style_transfer(ProductID: str = Form(), StyleImage: UploadFile = File(
     )
     content_image = style_transfer_model.get_image(StyleImage.file)
 
+    # Prepared file for style transfer
     prepared_style = style_transfer_model.image_preprocessing(style_image)
     prepared_content = style_transfer_model.image_preprocessing(content_image)
+    
+    # Perform style transfer
     reconstructed_image = style_transfer_model.style_transfer(
         prepared_style, prepared_content
     )
