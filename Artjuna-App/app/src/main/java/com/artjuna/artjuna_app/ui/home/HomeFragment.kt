@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentHomeBinding
+import com.artjuna.artjuna_app.ui.cart.CartActivity
 import com.artjuna.artjuna_app.ui.home.adapter.CatAdapter
 import com.artjuna.artjuna_app.ui.home.adapter.RecomAdapter
 import com.artjuna.artjuna_app.ui.productlist.ProductListActivity
@@ -48,7 +49,7 @@ class HomeFragment : Fragment() {
 
     private fun setButtonClick() {
         with(binding){
-            header
+            header.btnCart.setOnClickListener { startActivity(Intent(requireContext(), CartActivity::class.java)) }
             header.btnSearch.setOnClickListener { startActivity(Intent(requireContext(), SearchActivity::class.java)) }
             recom.btnSeeAll.setOnClickListener {
                 val intent = Intent(requireContext(), ProductListActivity::class.java)

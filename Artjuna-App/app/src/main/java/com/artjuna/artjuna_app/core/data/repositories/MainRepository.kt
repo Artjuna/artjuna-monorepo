@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
+import com.artjuna.artjuna_app.core.data.source.local.entity.toProduct
 import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
@@ -248,6 +249,16 @@ class MainRepository(
         appExecutors.diskIO().execute{
             local.deleteProductFromCartById(id)
         }
+    }
+
+    fun getAllProductInCart():LiveData<List<Product>>{
+        val listProduct = MutableLiveData<List<Product>>()
+        appExecutors.diskIO().execute {
+            val res = local.getAllProductInCart()
+            val productRes = res.map { it.toProduct() }
+            listProduct.postValue(productRes)
+        }
+        return listProduct
     }
 
 

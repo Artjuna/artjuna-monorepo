@@ -30,4 +30,6 @@ class LocalDataSource (
 
     fun deleteProductFromCartById(id:String) = dao.deleteProductInCartById(id)
 
+    fun getAllProductInCart() = dao.getAllProductInCart()
+
 }

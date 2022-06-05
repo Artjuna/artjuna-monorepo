@@ -7,7 +7,7 @@ import com.artjuna.artjuna_app.core.data.source.local.entity.ProductEntity
 interface ProductDao {
 
     @Query("SELECT * FROM productentities")
-    fun getListProductInCart():List<ProductEntity>
+    fun getAllProductInCart():List<ProductEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertProductToCart(productEntity: ProductEntity)
