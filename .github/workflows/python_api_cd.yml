@@ -19,7 +19,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    
+
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
 
@@ -44,6 +44,7 @@ jobs:
             git pull
             export PATH="$HOME/miniconda3/bin:$PATH"
             export PATH="$HOME/.poetry/bin:$PATH"
+            source ~/.bashrc
             conda activate production
             poetry install --no-dev
 
