@@ -10,5 +10,6 @@ class ProfileSettingsViewModel(
     fun signOut() = authRepository.signOut()
 
     fun updateAccount(user:User) = authRepository.updateAccount(user)
+    fun upgradeAccount(user:User) = authRepository.upgradeAccount(user)
 
 }

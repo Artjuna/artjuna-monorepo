@@ -126,7 +126,6 @@
     <!-- if user is store is gone -->
     <LinearLayout
         android:id="@+id/btn_storefollow"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -135,18 +134,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_16sdp"
-            android:src="@drawable/ic_store"/>
+            android:src="@drawable/ic_profile"/>
         <TextView
             style="@style/Body1Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Store Followed"/>
+            android:text="Account Followed"/>
     </LinearLayout>
 
-    <!-- if user not store is gone -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:background="@color/grey_200"/>
+
     <LinearLayout
         android:id="@+id/btn_mystore"
-        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -162,12 +165,5 @@
             android:layout_height="wrap_content"
             android:text="My Store"/>
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:layout_marginVertical="@dimen/_8sdp"
-        android:background="@color/grey_200"/>
-
 
 </LinearLayout>

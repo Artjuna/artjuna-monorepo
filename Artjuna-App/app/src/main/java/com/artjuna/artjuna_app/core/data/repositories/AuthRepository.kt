@@ -218,6 +218,27 @@ class AuthRepository(
         return result
     }
 
+    fun upgradeAccount(user:User):LiveData<Result<String>>{
+        val result = MutableLiveData<Result<String>>()
+        result.postValue(Result.Loading)
+        user.isStore = true
+        remote.updateAccount(user.toUpdateRequest()).enqueue(object : Callback<Void>{
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if(response.isSuccessful){
+                    result.postValue(Result.Success("Congrats, you've become a seller"))
+                    local.saveUser(user)
+                }else{
+                    result.postValue(Result.Error(response.errorBody().toString()))
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                result.postValue(Result.Error(t.message.toString()))
+            }
+        })
+        return result
+    }
+
 
     private fun showLoading(loading:Boolean){
         _isLoading.postValue(loading)
