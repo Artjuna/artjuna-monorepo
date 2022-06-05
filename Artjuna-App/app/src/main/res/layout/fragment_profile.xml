@@ -139,7 +139,7 @@
             style="@style/Body1Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Account Followed"/>
+            android:text="Store Followed"/>
     </LinearLayout>
 
     <View

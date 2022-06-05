@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".LikedPostsActivity"
+            android:name=".ui.storefollowed.StoreFollowedActivity"
             android:exported="false" />
         <activity
             android:name=".ui.likedpost.LikedPostActivity"
@@ -51,7 +51,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.customize.CustomizeWithYourDesignActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ui.order.OrderActivity"
             android:exported="false" />
