@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
+import com.artjuna.artjuna_app.core.data.source.local.entity.toPost
 import com.artjuna.artjuna_app.core.data.source.local.entity.toProduct
 import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
@@ -231,10 +232,6 @@ class MainRepository(
         val isInCart = MutableLiveData<Boolean>()
         appExecutors.diskIO().execute {
             val listProduct = local.getProductInCartById(id)
-            listProduct.map {
-                Log.d("GALIH", it.id)
-                Log.d("GALIH", it.name)
-            }
             isInCart.postValue(listProduct.isNotEmpty())
         }
         return isInCart
@@ -261,6 +258,47 @@ class MainRepository(
         }
         return listProduct
     }
+
+
+    fun checkIfPostLikedById(id: String):LiveData<Boolean>{
+        val isLiked = MutableLiveData<Boolean>()
+        appExecutors.diskIO().execute {
+            val listPost = local.getPostLikedById(id)
+            isLiked.postValue(listPost.isNotEmpty())
+        }
+        return isLiked
+    }
+
+    fun getAllPostLikedId():LiveData<List<String>>{
+        val listId = MutableLiveData<List<String>>()
+        appExecutors.diskIO().execute {
+            listId.postValue(local.getAllPostLikedId())
+        }
+        return listId
+    }
+
+    fun insertPostLiked(post: Post){
+        appExecutors.diskIO().execute{
+            local.insertPostLiked(post.toPostEntity())
+        }
+    }
+
+    fun deletePostFromLiked(id:String){
+        appExecutors.diskIO().execute{
+            local.deletePostLikedById(id)
+        }
+    }
+
+    fun getAllPostLiked():LiveData<List<Post>>{
+        val listPost = MutableLiveData<List<Post>>()
+        appExecutors.diskIO().execute {
+            val res = local.getAllPostLiked()
+            val postRes = res.map { it.toPost() }
+            listPost.postValue(postRes)
+        }
+        return listPost
+    }
+
 
 
 }
