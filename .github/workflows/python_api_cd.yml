@@ -40,7 +40,7 @@ jobs:
           script: |
             sudo su
             conda init bash
-            source ~/.bashrc
+            exec bash
             conda activate production
             export PATH="$HOME/.poetry/bin:$PATH"
             cd ~
