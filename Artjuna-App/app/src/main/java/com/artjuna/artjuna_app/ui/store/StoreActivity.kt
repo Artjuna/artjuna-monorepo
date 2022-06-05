@@ -2,6 +2,7 @@ package com.artjuna.artjuna_app.ui.store
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.databinding.ActivityStoreBinding
 import com.artjuna.artjuna_app.ui.store.adapter.StorePagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
@@ -11,7 +12,7 @@ class StoreActivity : AppCompatActivity() {
 
     private val storeViewModel:StoreViewModel by viewModel()
     private lateinit var binding:ActivityStoreBinding
-    private var storeId = ""
+    private var store = User()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStoreBinding.inflate(layoutInflater)
@@ -24,15 +25,14 @@ class StoreActivity : AppCompatActivity() {
 
     private fun getStoreData() {
         if(intent.extras != null){
-            storeId = intent.extras!!.getString(EXTRA_STORE_ID)!!
-            val storeCity = intent.extras!!.getString(EXTRA_STORE_CITY)
-            populateView(storeId,storeCity)
+            store = intent.extras!!.getParcelable<User>(EXTRA_STORE)!!
+            populateView()
         }
     }
 
-    private fun populateView(storeId: String?, storeCity: String?) {
-        binding.store.tvStoreName.text = storeId.toString()
-        binding.store.tvStoreCity.text = "Kota $storeCity"
+    private fun populateView() {
+        binding.store.tvStoreName.text = store.fullName
+        binding.store.tvStoreCity.text = "${store.city} ${store.province}"
     }
 
     private fun setButtonClick() {
@@ -43,7 +43,7 @@ class StoreActivity : AppCompatActivity() {
 
     private fun showTabLayout() {
         val storePagerAdapter = StorePagerAdapter(this)
-        storePagerAdapter.storeId = storeId
+        storePagerAdapter.storeId = store.id
         with(binding){
             viewPager.adapter = storePagerAdapter
             TabLayoutMediator(tabs, viewPager){tab, position ->
@@ -57,7 +57,6 @@ class StoreActivity : AppCompatActivity() {
             "Product",
             "Post"
         )
-        const val EXTRA_STORE_ID = "EXTRA_STORE_ID"
-        const val EXTRA_STORE_CITY = "EXTRA_STORE_CITY"
+        const val EXTRA_STORE = "EXTRA_STORE"
     }
 }

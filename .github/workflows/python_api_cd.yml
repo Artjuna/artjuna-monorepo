@@ -42,7 +42,8 @@ jobs:
           key: ${{ secrets.PRIVATE }}
           port: 22
           script: |
-            cd
+            sudo su
+            cd ~
             cd artjuna-monorepo
             git pull origin main
             conda activate production

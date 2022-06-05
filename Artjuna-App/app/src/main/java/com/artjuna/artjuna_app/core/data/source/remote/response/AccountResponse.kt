@@ -47,6 +47,7 @@ fun AccountResponse.toUser():User{
 		followers = followers,
 		numberWA = telephone.toString(),
 		city = originCity,
+		province = originProvince,
 		isStore = isStore
 	)
 }

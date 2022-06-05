@@ -16,6 +16,7 @@ class Preferences(private val context: Context){
         private const val FOLLOWERS = "FOLLOWERS"
         private const val NUMBERWA = "NUMBERWA"
         private const val CITY = "CITY"
+        private const val PROVINCE = "PROVINCE"
 
         private const val ADR_NAME="ADR_NAME"
         private const val ADR_NUMBER="ADR_NUMBER"
@@ -36,6 +37,7 @@ class Preferences(private val context: Context){
             putInt(FOLLOWERS,user.followers)
             putString(NUMBERWA,user.numberWA)
             putString(CITY,user.city)
+            putString(PROVINCE,user.province)
         }.apply()
     }
 
@@ -49,6 +51,7 @@ class Preferences(private val context: Context){
             followers = preferences.getInt(FOLLOWERS,0),
             numberWA = preferences.getString(NUMBERWA,"")!!,
             city = preferences.getString(CITY,"")!!,
+            province = preferences.getString(PROVINCE,"")!!
         )
     }
 

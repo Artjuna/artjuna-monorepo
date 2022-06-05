@@ -74,8 +74,11 @@ class ProfileSettingsActivity : AppCompatActivity() {
 
     private fun collectUserData() {
         user.fullName = binding.etFullName.text.toString()
-        user.city = binding.etCity.text.toString()
-        user.numberWA = binding.etPhoneNumber.text.toString()
+        if(user.isStore){
+            user.city = binding.etCity.text.toString()
+            user.province = binding.etProvince.text.toString()
+            user.numberWA = binding.etPhoneNumber.text?.trim().toString()
+        }
     }
 
     private fun populateView() {
@@ -87,6 +90,7 @@ class ProfileSettingsActivity : AppCompatActivity() {
             etEmail.setText(user.email)
             etPhoneNumber.setText(user.numberWA)
             etCity.setText(user.city)
+            etProvince.setText(user.province)
         }
     }
 

@@ -180,6 +180,7 @@ class MainRepository(
             val user = local.getUser()
             product.storeId = user.id
             product.storeCity = user.city
+            product.storeProvince = user.province
 
             val requestImageFile = image.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(

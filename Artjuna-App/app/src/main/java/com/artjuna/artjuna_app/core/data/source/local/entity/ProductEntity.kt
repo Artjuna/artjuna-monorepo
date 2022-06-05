@@ -37,6 +37,9 @@ data class ProductEntity(
     @ColumnInfo(name = "storeCity")
     var storeCity:String="",
 
+    @ColumnInfo(name = "storeProvince")
+    var storeProvince:String="",
+
     @ColumnInfo(name = "storeName")
     var storeName:String="",
 
@@ -54,6 +57,7 @@ fun ProductEntity.toProduct():Product{
         category=category,
         storeId=storeId,
         storeCity=storeCity,
+        storeProvince=storeProvince,
         storeName=storeName,
     )
 }

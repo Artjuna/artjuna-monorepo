@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentHomeBinding
+import com.artjuna.artjuna_app.ui.adapter.ProductAdapter
 import com.artjuna.artjuna_app.ui.cart.CartActivity
 import com.artjuna.artjuna_app.ui.home.adapter.CatAdapter
-import com.artjuna.artjuna_app.ui.home.adapter.RecomAdapter
 import com.artjuna.artjuna_app.ui.productlist.ProductListActivity
 import com.artjuna.artjuna_app.ui.search.SearchActivity
 import com.artjuna.artjuna_app.utils.AppUtils
@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private val homeViewModel:HomeViewModel by viewModel()
-    private val recomAdapter = RecomAdapter()
+    private val productAdapter = ProductAdapter()
     private val catAdapter = CatAdapter()
 
     private val categoriesList = ArrayList<String>()
@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        binding.recom.rvRecom.adapter = recomAdapter
+        binding.recom.rvRecom.adapter = productAdapter
         binding.cat.rvCategories.adapter = catAdapter
     }
 
@@ -87,7 +87,7 @@ class HomeFragment : Fragment() {
             when(it){
                 is Result.Success -> {
                     showLoadingRecom(false)
-                    recomAdapter.submitList(it.data)
+                    productAdapter.submitList(it.data)
                 }
                 is Result.Error -> {
                     showLoadingRecom(false)
