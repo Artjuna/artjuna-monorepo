@@ -47,6 +47,9 @@
             android:name=".ui.customize.CustomizeActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.customize.CustomizeWithYourDesignActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.order.OrderActivity"
             android:exported="false" />
         <activity
