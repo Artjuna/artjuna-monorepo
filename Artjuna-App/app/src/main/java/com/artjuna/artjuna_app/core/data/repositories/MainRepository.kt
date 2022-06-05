@@ -2,6 +2,7 @@ package com.artjuna.artjuna_app.core.data.repositories
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
 import com.artjuna.artjuna_app.core.data.source.model.*
@@ -11,6 +12,7 @@ import com.artjuna.artjuna_app.core.data.source.remote.request.AddHasSeenRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.toPost
 import com.artjuna.artjuna_app.core.data.source.remote.response.toProduct
+import com.artjuna.artjuna_app.utils.AppExecutors
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.parse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -19,7 +21,11 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
-class MainRepository(private val local:LocalDataSource, private val remote:RemoteDataSource) {
+class MainRepository(
+    private val local:LocalDataSource,
+    private val remote:RemoteDataSource,
+    private val appExecutors: AppExecutors
+) {
 
 
     fun setAddress(address: Address) = local.setAddress(address)
@@ -61,7 +67,6 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
         }
     }
 
-
     fun getProduct(size:Int):LiveData<Result<List<Product>>> = liveData {
         emit(Result.Loading)
         try {
@@ -79,6 +84,7 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
             emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
         }
     }
+
     fun getProduct():LiveData<Result<List<Product>>> = liveData {
         emit(Result.Loading)
         try {
@@ -149,6 +155,23 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
         }
     }
 
+    fun getPost():LiveData<Result<List<Post>>> = liveData {
+        emit(Result.Loading)
+        try {
+
+            remote.getPost().let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.toPost() }
+                    emit(Result.Success(res!!))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
 
     fun uploadProduct(product: Product, image: File):LiveData<Result<String>> = liveData {
         emit(Result.Loading)
@@ -202,21 +225,28 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
         }
     }
 
-    fun getPost():LiveData<Result<List<Post>>> = liveData {
-        emit(Result.Loading)
-        try {
-
-            remote.getPost().let {
-                if(it.isSuccessful){
-                    val body = it.body()
-                    val res = body?.map { it.toPost() }
-                    emit(Result.Success(res!!))
-                }else {
-                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
-                }
+    fun checkIfProductInCart(id: String):LiveData<Boolean>{
+        val isInCart = MutableLiveData<Boolean>()
+        appExecutors.diskIO().execute {
+            val listProduct = local.getProductInCartById(id)
+            listProduct.map {
+                Log.d("GALIH", it.id)
+                Log.d("GALIH", it.name)
             }
-        }catch (e: Exception) {
-            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+            isInCart.postValue(listProduct.isNotEmpty())
+        }
+        return isInCart
+    }
+
+    fun insertProductToCart(product: Product){
+        appExecutors.diskIO().execute{
+            local.insertProductToCart(product.toProductEntity())
+        }
+    }
+
+    fun deleteProductFromCartById(id:String){
+        appExecutors.diskIO().execute{
+            local.deleteProductFromCartById(id)
         }
     }
 

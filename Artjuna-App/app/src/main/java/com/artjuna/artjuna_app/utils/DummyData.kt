@@ -16,8 +16,6 @@ object DummyData {
                     image = "https://loremflickr.com/640/480/business",
                     price = 80000,
                     storeCity = "Kota Bandung",
-                    rating = 4.6,
-                    sold = 231
                 )
             )
         }
