@@ -207,14 +207,13 @@ class AuthRepository(
                     result.postValue(Result.Success("Success"))
                     local.saveUser(user)
                 }else{
-                    result.postValue(Result.Error("Error"))
+                    result.postValue(Result.Error(response.errorBody().toString()))
                 }
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                result.postValue(Result.Error("Error"))
+                result.postValue(Result.Error(t.message.toString()))
             }
-
         })
         return result
     }

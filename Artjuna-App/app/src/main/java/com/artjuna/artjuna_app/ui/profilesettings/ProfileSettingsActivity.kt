@@ -8,16 +8,22 @@ import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.ActivityProfileSettingsBinding
 import com.artjuna.artjuna_app.ui.auth.SignInActivity
+import com.artjuna.artjuna_app.ui.loading.LoadingDialog
+import com.artjuna.artjuna_app.utils.AppUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileSettingsActivity : AppCompatActivity() {
     private lateinit var binding:ActivityProfileSettingsBinding
+    private lateinit var loadingDialog: LoadingDialog
+
     private val viewModel:ProfileSettingsViewModel by viewModel()
     private var user = User()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileSettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupLoading()
         setButtonClick()
         getData()
     }
@@ -30,11 +36,15 @@ class ProfileSettingsActivity : AppCompatActivity() {
 
     private fun updateAccount() {
         collectUserData()
-        Log.d("okhttp",this.user.id)
-        Log.d("okhttp",this.user.fullName)
         viewModel.updateAccount(this.user).observe(this){
             when(it){
+                is Result.Loading -> loadingDialog.show()
+                is Result.Error -> {
+                    loadingDialog.dismiss()
+                    AppUtils.showToast(this, it.error)
+                }
                 is Result.Success -> {
+                    loadingDialog.dismiss()
                     finish()
                     onBackPressed()
                 }
@@ -73,6 +83,10 @@ class ProfileSettingsActivity : AppCompatActivity() {
     private fun moveToSignIn() {
         startActivity(Intent(this@ProfileSettingsActivity, SignInActivity::class.java))
         finishAffinity()
+    }
+
+    private fun setupLoading() {
+        loadingDialog = LoadingDialog(this,false)
     }
 
     companion object{
