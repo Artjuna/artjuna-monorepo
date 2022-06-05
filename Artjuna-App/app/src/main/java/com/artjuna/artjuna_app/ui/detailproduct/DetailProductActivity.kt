@@ -38,12 +38,7 @@ class DetailProductActivity : AppCompatActivity() {
         with(binding){
             store.btnVisitstore.setOnClickListener {
                 val intent = Intent(this@DetailProductActivity, StoreActivity::class.java)
-                val store = User()
-                store.id = product.storeId
-                store.fullName = product.storeId
-                store.city = product.storeCity
-                store.province = product.storeProvince
-                intent.putExtra(StoreActivity.EXTRA_STORE, store)
+                intent.putExtra(StoreActivity.EXTRA_STORE_ID, product.storeId)
                 startActivity(intent)
             }
 

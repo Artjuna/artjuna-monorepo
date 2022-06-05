@@ -8,4 +8,6 @@ class StoreViewModel(private val mainRepository: MainRepository) : ViewModel() {
     fun getPost() = mainRepository.getPost()
     fun getProductByUserId(id:String) = mainRepository.getProductByUserId(id)
 
+    fun getStoreDataById(id:String) = mainRepository.getStoreById(id)
+
 }

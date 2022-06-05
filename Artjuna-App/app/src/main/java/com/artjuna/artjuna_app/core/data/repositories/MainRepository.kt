@@ -12,8 +12,10 @@ import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddHasSeenRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
+import com.artjuna.artjuna_app.core.data.source.remote.response.AccountResponse
 import com.artjuna.artjuna_app.core.data.source.remote.response.toPost
 import com.artjuna.artjuna_app.core.data.source.remote.response.toProduct
+import com.artjuna.artjuna_app.core.data.source.remote.response.toUser
 import com.artjuna.artjuna_app.utils.AppExecutors
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.parse
@@ -21,6 +23,8 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Call
+import retrofit2.Response
 import java.io.File
 
 class MainRepository(
@@ -147,7 +151,6 @@ class MainRepository(
                     val body = it.body()
                     val res = body?.map { it.toProduct() }
                     emit(Result.Success(res!!.take(10)))
-                    Log.d("GALIH", "getProductByUserId $userId")
                 }else {
                     emit(Result.Error(it.errorBody().toString() ))
                 }
@@ -299,6 +302,27 @@ class MainRepository(
         return listPost
     }
 
+    fun getStoreById(id:String):LiveData<Result<User>>{
+        val result = MutableLiveData<Result<User>>()
+        result.postValue(Result.Loading)
+        remote.getStoreById(id).enqueue(object :retrofit2.Callback<List<AccountResponse>>{
+            override fun onResponse(
+                call: Call<List<AccountResponse>>,
+                response: Response<List<AccountResponse>>
+            ) {
+                if(response.isSuccessful){
+                    val res = response.body()!![0].toUser()
+                    result.postValue(Result.Success(res))
+                }else{
+                    result.postValue(Result.Error(response.errorBody()!!.string()))
+                }
+            }
 
+            override fun onFailure(call: Call<List<AccountResponse>>, t: Throwable) {
+                result.postValue(Result.Error(t.message.toString()))
+            }
+        })
+        return result
+    }
 
 }
