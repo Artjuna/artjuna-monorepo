@@ -16,6 +16,7 @@ import com.artjuna.artjuna_app.ui.profilesettings.ProfileSettingsViewModel
 import com.artjuna.artjuna_app.ui.search.SearchViewModel
 import com.artjuna.artjuna_app.ui.splash.SplashViewModel
 import com.artjuna.artjuna_app.ui.store.StoreViewModel
+import com.artjuna.artjuna_app.ui.storefollowed.StoreFollowedViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -36,4 +37,5 @@ val viewModelModule = module {
     viewModel { DetailViewModel(get()) }
     viewModel { CartlViewModel(get()) }
     viewModel { LikedPostViewModel(get()) }
+    viewModel { StoreFollowedViewModel(get()) }
 }
