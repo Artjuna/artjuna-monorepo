@@ -14,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProductFragment : Fragment() {
 
-    private val storeViewModel: StoreViewModel by viewModel()
+    private val viewModel: StoreViewModel by viewModel()
     private lateinit var binding:FragmentProductBinding
     private val productAdapter = ProductAdapter()
 
@@ -35,6 +35,17 @@ class ProductFragment : Fragment() {
 
     private fun getStoreId() {
         val storeId = arguments?.getString(STORE_ID)
+        getProductByUserId(storeId!!)
+    }
+
+    private fun getProductByUserId(storeId: String) {
+        viewModel.getProductByUserId(storeId).observe(viewLifecycleOwner){
+            when(it){
+                is Result.Success -> {
+                    productAdapter.submitList(it.data)
+                }
+            }
+        }
     }
 
     private fun setupAdapter(){

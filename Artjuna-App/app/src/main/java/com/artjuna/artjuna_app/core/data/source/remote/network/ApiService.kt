@@ -47,6 +47,11 @@ interface ApiService {
         @Query("ProductName") name:String
     ): Response<List<GetProductResponse>>
 
+    @GET("Product/getProductFilter")
+    suspend fun getProductByUserId(
+        @Query("UserID") userId:String
+    ): Response<List<GetProductResponse>>
+
 
     @GET("Product/getAllProduct")
     suspend fun getProduct():Response<List<GetProductResponse>>

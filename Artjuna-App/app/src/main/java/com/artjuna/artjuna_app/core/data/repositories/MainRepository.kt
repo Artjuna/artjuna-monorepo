@@ -130,6 +130,25 @@ class MainRepository(private val local:LocalDataSource, private val remote:Remot
         }
     }
 
+    fun getProductByUserId(userId:String):LiveData<Result<List<Product>>> = liveData {
+        emit(Result.Loading)
+        try {
+            //Temporary Take 10 of list
+            remote.getProductByUserId(userId).let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.toProduct() }
+                    emit(Result.Success(res!!.take(10)))
+                    Log.d("GALIH", "getProductByUserId $userId")
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
 
     fun uploadProduct(product: Product, image: File):LiveData<Result<String>> = liveData {
         emit(Result.Loading)
