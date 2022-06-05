@@ -14,8 +14,15 @@ class CartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setButtonClick()
         setupAdapter()
         getListProductInCart()
+    }
+
+    private fun setButtonClick() {
+        with(binding){
+            btnBack.setOnClickListener { onBackPressed() }
+        }
     }
 
     private fun getListProductInCart() {
