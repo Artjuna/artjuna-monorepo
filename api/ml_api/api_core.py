@@ -51,10 +51,10 @@ async def style_transfer(ProductID: str = Form(), StyleImage: UploadFile = File(
     file_url = cursor.fetchone()[0].strip("/")
 
     # Get file from local folder
-    style_image = style_transfer_model.get_image(
+    content_image = style_transfer_model.get_image(
         os.path.join("ProductImages", file_url)
     )
-    content_image = style_transfer_model.get_image(StyleImage.file)
+    style_image = style_transfer_model.get_image(StyleImage.file)
 
     # Prepared file for style transfer
     prepared_style = style_transfer_model.image_preprocessing(style_image)

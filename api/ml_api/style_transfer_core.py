@@ -60,4 +60,4 @@ class StyleTransferModel:
         return image
 
     def get_image(self, path):
-        return Image.open(path)
+        return Image.open(path).convert("RGB")
