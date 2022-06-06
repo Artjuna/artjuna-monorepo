@@ -99,34 +99,18 @@ class HomeFragment : Fragment() {
     }
 
     private fun showLoadingRecom(isLoading:Boolean){
-        if(isLoading){
-            with(binding){
-                recomLoad.visibility = View.VISIBLE
-                recom.root.visibility = View.GONE
-            }
-        } else{
-            with(binding){
-                recomLoad.visibility = View.GONE
-                recom.root.visibility = View.VISIBLE
-            }
+        with(binding){
+            recomLoad.visibility = if(isLoading) View.VISIBLE else View.GONE
+            recom.root.visibility = if(isLoading) View.GONE else View.VISIBLE
         }
     }
 
     private fun showLoadingCat(isLoading:Boolean){
-        if(isLoading){
-            with(binding){
-                catLoad.visibility = View.VISIBLE
-                cat.root.visibility = View.GONE
-            }
-        } else{
-            with(binding){
-                catLoad.visibility = View.GONE
-                cat.root.visibility = View.VISIBLE
-            }
+        with(binding){
+            catLoad.visibility = if(isLoading) View.VISIBLE else View.GONE
+            cat.root.visibility = if(isLoading) View.GONE else View.VISIBLE
         }
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

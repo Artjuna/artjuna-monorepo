@@ -88,13 +88,8 @@ class FeedsFragment : Fragment() {
 
     private fun showLoading(isLoading:Boolean){
         with(binding){
-            if(isLoading){
-                postLoading.visibility = View.VISIBLE
-                rvPost.visibility = View.GONE
-            }else{
-                postLoading.visibility = View.GONE
-                rvPost.visibility = View.VISIBLE
-            }
+            postLoading.visibility = if(isLoading) View.VISIBLE else View.GONE
+            rvPost.visibility = if(isLoading) View.GONE else View.VISIBLE
         }
     }
 
