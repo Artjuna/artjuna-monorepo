@@ -16,7 +16,6 @@ class MyStoreActivity : AppCompatActivity() {
         binding = ActivityMyStoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getUserData()
-        showTabLayout()
         setButtonClick()
     }
 
@@ -29,6 +28,7 @@ class MyStoreActivity : AppCompatActivity() {
     private fun getUserData() {
         val user = intent.extras?.getParcelable<User>(EXTRA_USER)
         populateView(user!!)
+        showTabLayout(user.id)
     }
 
     private fun populateView(user: User) {
@@ -38,8 +38,9 @@ class MyStoreActivity : AppCompatActivity() {
         }
     }
 
-    private fun showTabLayout() {
+    private fun showTabLayout(userId:String) {
         val myStorePagerAdapter = MyStorePagerAdapter(this)
+        myStorePagerAdapter.userId = userId
         with(binding){
             viewPager.adapter = myStorePagerAdapter
             TabLayoutMediator(tabs, viewPager){tab, position ->

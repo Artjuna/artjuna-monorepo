@@ -12,6 +12,7 @@ import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddAccountRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.AccountResponse
 import com.artjuna.artjuna_app.core.data.source.remote.response.toUser
+import com.artjuna.artjuna_app.utils.AppExecutors
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
@@ -23,7 +24,8 @@ class AuthRepository(
     private val local:LocalDataSource,
     private val remote:RemoteDataSource,
     private val auth:FirebaseAuth,
-    private val db:FirebaseFirestore
+    private val db:FirebaseFirestore,
+    private val appExecutors: AppExecutors
     ) {
 
     val isLoading: LiveData<Boolean>
@@ -183,8 +185,9 @@ class AuthRepository(
         if(auth.currentUser!= null){
             auth.signOut()
             _isLogged.postValue(false)
-            local.saveUser(User())
-            local.setAddress(Address())
+            appExecutors.diskIO().execute {
+                local.signOut()
+            }
         }
     }
 

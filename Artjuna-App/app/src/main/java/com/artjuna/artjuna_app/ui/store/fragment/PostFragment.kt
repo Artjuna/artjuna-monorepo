@@ -35,7 +35,7 @@ class PostFragment : Fragment() {
     }
 
     private fun getStoreId() {
-        val storeId = arguments?.getString(ProductFragment.STORE_ID)
+        val storeId = arguments?.getString(STORE_ID)
     }
     private fun setupAdapter(){
         binding.rvPost.adapter = postAdapter

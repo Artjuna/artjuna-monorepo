@@ -1,10 +1,11 @@
 package com.artjuna.artjuna_app.core.di
 
+import androidx.room.RoomDatabase
 import com.artjuna.artjuna_app.core.data.repositories.AuthRepository
 import com.artjuna.artjuna_app.core.data.repositories.MainRepository
 import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
 import com.artjuna.artjuna_app.core.data.source.local.preferences.Preferences
-import com.artjuna.artjuna_app.core.data.source.local.room.ProductDatabase
+import com.artjuna.artjuna_app.core.data.source.local.room.ArtjunaDatabase
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.ApiConfig
 import com.artjuna.artjuna_app.utils.AppExecutors
@@ -19,8 +20,10 @@ val preferencesModule = module{
 }
 
 val databaseModule = module{
-    factory { get<ProductDatabase>().productDao() }
-    single { ProductDatabase.getInstance(androidContext()) }
+    single { ArtjunaDatabase.getInstance(androidContext()) }
+    factory { get<ArtjunaDatabase>().productDao() }
+    factory { get<ArtjunaDatabase>().postDao() }
+    factory { get<ArtjunaDatabase>().storeDao() }
 }
 
 val networkModule = module{
@@ -36,9 +39,9 @@ val networkModule = module{
 }
 
 val repositoryModule = module {
-    single { LocalDataSource(get(), get()) }
+    single { LocalDataSource(get(), get(), get(), get()) }
     single { RemoteDataSource(get()) }
     single { AppExecutors() }
     single { MainRepository(get(),get(),get())}
-    single { AuthRepository(get(), get(), get(), get()) }
+    single { AuthRepository(get(), get(), get(), get(),get()) }
 }

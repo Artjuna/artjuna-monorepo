@@ -43,10 +43,8 @@ object DummyData {
                 Post(
                     id = "$i",
                     userName = "erenmikasa13",
-                    userImage = "https://static.wikia.nocookie.net/shingekinokyojin/images/a/a1/Eren_Jaeger_%28Anime%29_character_image.png/revision/latest?cb=20220123225500",
                     image = "https://cdn.shopify.com/s/files/1/0408/1097/1288/products/3_aa98c089-3883-4256-b04d-ad73580d8f29_1500x.jpg?v=1646050859",
                     productName = "Patung Eren Gak Pake Baju",
-                    productId = "${i+20}",
                     like = 843,
                     caption = "Special: [Deluxe Version] Additional standing version Eren, additional base and exchangeable lower body sculpture. Note: [Special Version - limited to 88 units] ONLY for customers who purchased the previous release figures from Typical Scene Studio"
                 )

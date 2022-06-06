@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.databinding.FragmentMyPostBinding
 import com.artjuna.artjuna_app.ui.addpost.AddPostActivity
+import com.artjuna.artjuna_app.ui.store.fragment.ProductFragment
 
 class MyPostFragment : Fragment() {
 
@@ -26,12 +27,21 @@ class MyPostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         populateView()
+        getUserId()
+    }
+
+    private fun getUserId() {
+        val userId = arguments?.getString(USER_ID)
     }
 
     private fun populateView() {
         binding.btnAddPost.setOnClickListener {
             startActivity(Intent(requireContext(), AddPostActivity::class.java))
         }
+    }
+
+    companion object{
+        const val USER_ID = "USER_ID"
     }
 
 }

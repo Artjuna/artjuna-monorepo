@@ -19,4 +19,7 @@ interface ProductDao {
     @Query("SELECT * FROM productentities WHERE id = :id")
     fun getProductInCartById(id:String):List<ProductEntity>
 
+    @Query("DELETE FROM productentities")
+    fun deleteAllData()
+
 }

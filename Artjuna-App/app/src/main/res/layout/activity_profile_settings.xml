@@ -166,21 +166,23 @@
                android:text="Sign Out"
                android:layout_gravity="center"/>
 
-           <View
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:layout_weight="1"/>
-
-           <TextView
-               android:id="@+id/btn_be_seller"
-               android:drawableStart="@drawable/ic_store"
-               android:drawablePadding="@dimen/_8sdp"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               style="@style/Subtitle2Medium"
-               android:text="Become a Seller"/>
-
        </LinearLayout>
    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/btn_be_seller"
+        android:drawableStart="@drawable/ic_store"
+        android:drawablePadding="@dimen/_8sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/_16sdp"
+        style="@style/Subtitle2Medium"
+        android:text="Become a Seller"/>
 
 </LinearLayout>

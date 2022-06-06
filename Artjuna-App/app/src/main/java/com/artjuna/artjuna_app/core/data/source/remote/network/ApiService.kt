@@ -63,7 +63,6 @@ interface ApiService {
     suspend fun getPost():Response<List<GetPostResponse>>
 
 
-
     @POST("Account/addAccount")
     fun addAccount(
         @Body body:AddAccountRequest

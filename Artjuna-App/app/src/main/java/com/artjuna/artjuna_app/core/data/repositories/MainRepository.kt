@@ -5,14 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
+import com.artjuna.artjuna_app.core.data.source.local.entity.toPost
 import com.artjuna.artjuna_app.core.data.source.local.entity.toProduct
+import com.artjuna.artjuna_app.core.data.source.local.entity.toUser
 import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddHasSeenRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
+import com.artjuna.artjuna_app.core.data.source.remote.response.AccountResponse
 import com.artjuna.artjuna_app.core.data.source.remote.response.toPost
 import com.artjuna.artjuna_app.core.data.source.remote.response.toProduct
+import com.artjuna.artjuna_app.core.data.source.remote.response.toUser
 import com.artjuna.artjuna_app.utils.AppExecutors
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.parse
@@ -20,6 +24,8 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Call
+import retrofit2.Response
 import java.io.File
 
 class MainRepository(
@@ -127,7 +133,8 @@ class MainRepository(
                 if(it.isSuccessful){
                     val body = it.body()
                     val res = body?.map { it.toProduct() }
-                    emit(Result.Success(res!!))
+                    val list = res!!.filter{ it.name.contains(name,true)}
+                    emit(Result.Success(list))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ))
                 }
@@ -145,8 +152,8 @@ class MainRepository(
                 if(it.isSuccessful){
                     val body = it.body()
                     val res = body?.map { it.toProduct() }
-                    emit(Result.Success(res!!.take(10)))
-                    Log.d("GALIH", "getProductByUserId $userId")
+                    val list = res!!.filter { it.storeId == userId }
+                    emit(Result.Success(list))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ))
                 }
@@ -231,10 +238,6 @@ class MainRepository(
         val isInCart = MutableLiveData<Boolean>()
         appExecutors.diskIO().execute {
             val listProduct = local.getProductInCartById(id)
-            listProduct.map {
-                Log.d("GALIH", it.id)
-                Log.d("GALIH", it.name)
-            }
             isInCart.postValue(listProduct.isNotEmpty())
         }
         return isInCart
@@ -262,5 +265,109 @@ class MainRepository(
         return listProduct
     }
 
+
+    fun checkIfPostLikedById(id: String):LiveData<Boolean>{
+        val isLiked = MutableLiveData<Boolean>()
+        appExecutors.diskIO().execute {
+            val listPost = local.getPostLikedById(id)
+            isLiked.postValue(listPost.isNotEmpty())
+        }
+        return isLiked
+    }
+
+    fun getAllPostLikedId():LiveData<List<String>>{
+        val listId = MutableLiveData<List<String>>()
+        appExecutors.diskIO().execute {
+            listId.postValue(local.getAllPostLikedId())
+        }
+        return listId
+    }
+
+    fun insertPostLiked(post: Post){
+        appExecutors.diskIO().execute{
+            local.insertPostLiked(post.toPostEntity())
+        }
+    }
+
+    fun deletePostFromLiked(id:String){
+        appExecutors.diskIO().execute{
+            local.deletePostLikedById(id)
+        }
+    }
+
+    fun getAllPostLiked():LiveData<List<Post>>{
+        val listPost = MutableLiveData<List<Post>>()
+        appExecutors.diskIO().execute {
+            val res = local.getAllPostLiked()
+            val postRes = res.map { it.toPost() }
+            listPost.postValue(postRes)
+        }
+        return listPost
+    }
+
+
+    fun checkIfStoreFollowedById(id: String):LiveData<Boolean>{
+        val isLiked = MutableLiveData<Boolean>()
+        appExecutors.diskIO().execute {
+            val listStore = local.getStoreFollowedById(id)
+            isLiked.postValue(listStore.isNotEmpty())
+        }
+        return isLiked
+    }
+
+    fun getAllStoreFollowedId():LiveData<List<String>>{
+        val listId = MutableLiveData<List<String>>()
+        appExecutors.diskIO().execute {
+            listId.postValue(local.getAllStoreFollowedId())
+        }
+        return listId
+    }
+
+    fun insertStoreFollowed(store:User){
+        appExecutors.diskIO().execute{
+            local.insertStoreFollowed(store.toStoreEntity())
+        }
+    }
+
+    fun deleteStoreFollowedById(id:String){
+        appExecutors.diskIO().execute{
+            local.deleteStoreFollowedById(id)
+        }
+    }
+
+    fun getAllStoreFollowed():LiveData<List<User>>{
+        val listUser = MutableLiveData<List<User>>()
+        appExecutors.diskIO().execute {
+            val res = local.getAllStoreFollowed()
+            val storeRes = res.map { it.toUser() }
+            listUser.postValue(storeRes)
+        }
+        return listUser
+    }
+
+
+
+    fun getStoreById(id:String):LiveData<Result<User>>{
+        val result = MutableLiveData<Result<User>>()
+        result.postValue(Result.Loading)
+        remote.getStoreById(id).enqueue(object :retrofit2.Callback<List<AccountResponse>>{
+            override fun onResponse(
+                call: Call<List<AccountResponse>>,
+                response: Response<List<AccountResponse>>
+            ) {
+                if(response.isSuccessful){
+                    val res = response.body()!![0].toUser()
+                    result.postValue(Result.Success(res))
+                }else{
+                    result.postValue(Result.Error(response.errorBody()!!.string()))
+                }
+            }
+
+            override fun onFailure(call: Call<List<AccountResponse>>, t: Throwable) {
+                result.postValue(Result.Error(t.message.toString()))
+            }
+        })
+        return result
+    }
 
 }

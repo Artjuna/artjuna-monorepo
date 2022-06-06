@@ -83,13 +83,8 @@ class ProductListActivity : AppCompatActivity() {
 
     private fun showLoading(loading:Boolean){
         with(binding){
-            if(loading){
-                load.visibility = View.VISIBLE
-                rvProduct.visibility = View.GONE
-            }else{
-                load.visibility = View.GONE
-                rvProduct.visibility = View.VISIBLE
-            }
+            load.visibility = if(loading) View.VISIBLE else View.GONE
+            rvProduct.visibility = if(loading) View.GONE else View.VISIBLE
         }
     }
     companion object{
