@@ -1,6 +1,7 @@
 package com.artjuna.artjuna_app.core.data.source.model
 
 import android.os.Parcelable
+import com.artjuna.artjuna_app.core.data.source.local.entity.StoreEntity
 import com.artjuna.artjuna_app.core.data.source.remote.request.UpdateAccountRequest
 import kotlinx.parcelize.Parcelize
 
@@ -28,5 +29,17 @@ fun User.toUpdateRequest():UpdateAccountRequest{
         OriginProvince = province,
         Telephone = numberWA,
         IsStore = isStore
+    )
+}
+
+fun User.toStoreEntity():StoreEntity{
+    return StoreEntity(
+        id=id,
+        fullName=fullName,
+        userName=userName,
+        followers=followers,
+        numberWA=numberWA,
+        city=city,
+        province=province,
     )
 }

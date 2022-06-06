@@ -7,6 +7,7 @@ import androidx.lifecycle.liveData
 import com.artjuna.artjuna_app.core.data.source.local.LocalDataSource
 import com.artjuna.artjuna_app.core.data.source.local.entity.toPost
 import com.artjuna.artjuna_app.core.data.source.local.entity.toProduct
+import com.artjuna.artjuna_app.core.data.source.local.entity.toUser
 import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
@@ -303,6 +304,48 @@ class MainRepository(
         }
         return listPost
     }
+
+
+    fun checkIfStoreFollowedById(id: String):LiveData<Boolean>{
+        val isLiked = MutableLiveData<Boolean>()
+        appExecutors.diskIO().execute {
+            val listStore = local.getStoreFollowedById(id)
+            isLiked.postValue(listStore.isNotEmpty())
+        }
+        return isLiked
+    }
+
+    fun getAllStoreFollowedId():LiveData<List<String>>{
+        val listId = MutableLiveData<List<String>>()
+        appExecutors.diskIO().execute {
+            listId.postValue(local.getAllStoreFollowedId())
+        }
+        return listId
+    }
+
+    fun insertStoreFollowed(store:User){
+        appExecutors.diskIO().execute{
+            local.insertStoreFollowed(store.toStoreEntity())
+        }
+    }
+
+    fun deleteStoreFollowedById(id:String){
+        appExecutors.diskIO().execute{
+            local.deleteStoreFollowedById(id)
+        }
+    }
+
+    fun getAllStoreFollowed():LiveData<List<User>>{
+        val listUser = MutableLiveData<List<User>>()
+        appExecutors.diskIO().execute {
+            val res = local.getAllStoreFollowed()
+            val storeRes = res.map { it.toUser() }
+            listUser.postValue(storeRes)
+        }
+        return listUser
+    }
+
+
 
     fun getStoreById(id:String):LiveData<Result<User>>{
         val result = MutableLiveData<Result<User>>()

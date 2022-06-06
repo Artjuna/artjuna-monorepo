@@ -23,6 +23,7 @@ val databaseModule = module{
     single { ArtjunaDatabase.getInstance(androidContext()) }
     factory { get<ArtjunaDatabase>().productDao() }
     factory { get<ArtjunaDatabase>().postDao() }
+    factory { get<ArtjunaDatabase>().storeDao() }
 }
 
 val networkModule = module{
@@ -38,7 +39,7 @@ val networkModule = module{
 }
 
 val repositoryModule = module {
-    single { LocalDataSource(get(), get(), get()) }
+    single { LocalDataSource(get(), get(), get(), get()) }
     single { RemoteDataSource(get()) }
     single { AppExecutors() }
     single { MainRepository(get(),get(),get())}

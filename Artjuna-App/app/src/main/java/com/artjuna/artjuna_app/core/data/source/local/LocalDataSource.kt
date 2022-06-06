@@ -2,16 +2,19 @@ package com.artjuna.artjuna_app.core.data.source.local
 
 import com.artjuna.artjuna_app.core.data.source.local.entity.PostEntity
 import com.artjuna.artjuna_app.core.data.source.local.entity.ProductEntity
+import com.artjuna.artjuna_app.core.data.source.local.entity.StoreEntity
 import com.artjuna.artjuna_app.core.data.source.local.preferences.Preferences
 import com.artjuna.artjuna_app.core.data.source.local.room.PostDao
 import com.artjuna.artjuna_app.core.data.source.local.room.ProductDao
+import com.artjuna.artjuna_app.core.data.source.local.room.StoreDao
 import com.artjuna.artjuna_app.core.data.source.model.Address
 import com.artjuna.artjuna_app.core.data.source.model.User
 
 class LocalDataSource (
     private val pref:Preferences,
     private val productDao:ProductDao,
-    private val postDao: PostDao
+    private val postDao: PostDao,
+    private val storeDao:StoreDao
 ) {
 
     fun setAddress(address: Address){
@@ -51,4 +54,17 @@ class LocalDataSource (
     fun getAllPostLiked() = postDao.getAllPostLiked()
 
     fun getAllPostLikedId() = postDao.getAllPostLikedId()
+
+
+    fun insertStoreFollowed(store:StoreEntity) = storeDao.insertStoreFollowed(store)
+
+    fun deleteStoreFollowedById(id:String) = storeDao.deleteStoreFollowedById(id)
+
+    fun getStoreFollowedById(id:String) = storeDao.getStoreFollowedById(id)
+
+    fun getAllStoreFollowed() = storeDao.getAllStoreFollowed()
+
+    fun getAllStoreFollowedId() = storeDao.getAllStoreFollowedId()
+
+
 }

@@ -6,12 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.artjuna.artjuna_app.core.data.source.local.entity.PostEntity
 import com.artjuna.artjuna_app.core.data.source.local.entity.ProductEntity
+import com.artjuna.artjuna_app.core.data.source.local.entity.StoreEntity
 
-@Database(entities = [ProductEntity::class, PostEntity::class], version = 1, exportSchema = false)
+@Database(entities = [ProductEntity::class, PostEntity::class, StoreEntity::class], version = 1, exportSchema = false)
 abstract class ArtjunaDatabase:RoomDatabase() {
 
     abstract fun productDao():ProductDao
     abstract fun postDao():PostDao
+    abstract fun storeDao():StoreDao
 
     companion object{
         private const val DATABASE_NAME = "artjuna.db"
