@@ -23,6 +23,9 @@ import java.util.*
 
 object AppUtils{
 
+    private const val IMG_WIDTH = 640
+    private const val IMG_HEIGHT = 480
+
     fun sendOrderToWA(context: Context, number: String, product: Product){
         val message = "Order Invoice\n" +
                 "Item Name: ${product.name} (${product.id})\n" +
@@ -125,5 +128,32 @@ object AppUtils{
 
         return myFile
     }
+
+    fun resizeBase64Image(base64Image: String): String{
+        val encodeByte: ByteArray = Base64.decode(base64Image.toByteArray(), Base64.DEFAULT)
+        val options = BitmapFactory.Options()
+        var image = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size, options)
+        //if (image.height &lt;= 400 &amp;&amp; image.width &lt;=400){
+          //  return base64Image
+       // }
+
+        image = Bitmap.createScaledBitmap(image, IMG_WIDTH, IMG_HEIGHT, false)
+        val baos = ByteArrayOutputStream()
+        image.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        val b = baos.toByteArray()
+        System.gc()
+        return Base64.encodeToString(b, Base64.NO_WRAP)
+    }
+
+    fun convertString64ToImage(base64String: String): Bitmap{
+        val decodeString = Base64.decode(base64String, Base64.DEFAULT)
+        return BitmapFactory.decodeByteArray(decodeString, 0, decodeString.size)
+    }
+
+    fun convertStringToBitmap(base64String: String): Bitmap{
+        return convertString64ToImage(resizeBase64Image(base64String))
+    }
+
+
 
 }
