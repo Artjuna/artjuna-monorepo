@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentHomeBinding
+import com.artjuna.artjuna_app.ui.adapter.ProductAdapter
+import com.artjuna.artjuna_app.ui.cart.CartActivity
 import com.artjuna.artjuna_app.ui.home.adapter.CatAdapter
-import com.artjuna.artjuna_app.ui.home.adapter.RecomAdapter
 import com.artjuna.artjuna_app.ui.productlist.ProductListActivity
 import com.artjuna.artjuna_app.ui.search.SearchActivity
 import com.artjuna.artjuna_app.utils.AppUtils
@@ -24,7 +25,7 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private val homeViewModel:HomeViewModel by viewModel()
-    private val recomAdapter = RecomAdapter()
+    private val productAdapter = ProductAdapter()
     private val catAdapter = CatAdapter()
 
     private val categoriesList = ArrayList<String>()
@@ -48,7 +49,7 @@ class HomeFragment : Fragment() {
 
     private fun setButtonClick() {
         with(binding){
-            header
+            header.btnCart.setOnClickListener { startActivity(Intent(requireContext(), CartActivity::class.java)) }
             header.btnSearch.setOnClickListener { startActivity(Intent(requireContext(), SearchActivity::class.java)) }
             recom.btnSeeAll.setOnClickListener {
                 val intent = Intent(requireContext(), ProductListActivity::class.java)
@@ -59,7 +60,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        binding.recom.rvRecom.adapter = recomAdapter
+        binding.recom.rvRecom.adapter = productAdapter
         binding.cat.rvCategories.adapter = catAdapter
     }
 
@@ -86,7 +87,7 @@ class HomeFragment : Fragment() {
             when(it){
                 is Result.Success -> {
                     showLoadingRecom(false)
-                    recomAdapter.submitList(it.data)
+                    productAdapter.submitList(it.data)
                 }
                 is Result.Error -> {
                     showLoadingRecom(false)
@@ -98,34 +99,18 @@ class HomeFragment : Fragment() {
     }
 
     private fun showLoadingRecom(isLoading:Boolean){
-        if(isLoading){
-            with(binding){
-                recomLoad.visibility = View.VISIBLE
-                recom.root.visibility = View.GONE
-            }
-        } else{
-            with(binding){
-                recomLoad.visibility = View.GONE
-                recom.root.visibility = View.VISIBLE
-            }
+        with(binding){
+            recomLoad.visibility = if(isLoading) View.VISIBLE else View.GONE
+            recom.root.visibility = if(isLoading) View.GONE else View.VISIBLE
         }
     }
 
     private fun showLoadingCat(isLoading:Boolean){
-        if(isLoading){
-            with(binding){
-                catLoad.visibility = View.VISIBLE
-                cat.root.visibility = View.GONE
-            }
-        } else{
-            with(binding){
-                catLoad.visibility = View.GONE
-                cat.root.visibility = View.VISIBLE
-            }
+        with(binding){
+            catLoad.visibility = if(isLoading) View.VISIBLE else View.GONE
+            cat.root.visibility = if(isLoading) View.GONE else View.VISIBLE
         }
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

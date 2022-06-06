@@ -49,6 +49,7 @@ fun GetProductResponse.toProduct(): Product {
 		detail = description,
 		category = category,
 		storeId = userID,
-		storeCity = city
+		storeCity = city,
+		storeProvince = province
 	)
 }

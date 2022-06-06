@@ -37,14 +37,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_4sdp"/>
 
-            <!-- Similar Product -->
-            <include
-                android:id="@+id/similar"
-                layout="@layout/layout_product_similar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_4sdp"/>
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
@@ -54,6 +46,8 @@
         layout="@layout/bottombar_detail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_56sdp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

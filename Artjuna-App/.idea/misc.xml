@@ -6,15 +6,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/bg_dd.xml" value="0.1785" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_cart.xml" value="0.1615" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_cart_outline.xml" value="0.1615" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_cart_white.xml" value="0.1615" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_cart_white_outline.xml" value="0.1615" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/ic_like_black.xml" value="0.1785" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_add_product.xml" value="0.25025641025641027" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_cart.xml" value="0.25025641025641027" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_customize.xml" value="0.11302083333333333" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_detail_product.xml" value="0.25416666666666665" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_liked_post.xml" value="0.25416666666666665" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_liked_posts.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_my_store.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_product_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_profile_settings.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_search.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_sign_in.xml" value="0.25025641025641027" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_store.xml" value="0.25416666666666665" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/activity_store_followed.xml" value="0.24010416666666667" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/bottombar_custom.xml" value="0.264" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/bottombar_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_home.xml" value="0.25025641025641027" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_my_product.xml" value="0.25416666666666665" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_product.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_category.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_category_item.xml" value="0.25416666666666665" />
@@ -22,6 +37,7 @@
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_category_pick.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_post.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_product_small.xml" value="0.25416666666666665" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/item_store.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_addproduct_category.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_category.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_home_category.xml" value="0.25416666666666665" />
@@ -31,6 +47,7 @@
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_mystore_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_list_load.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_overview.xml" value="0.25416666666666665" />
+        <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_product_store.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Bangkit Academy/Capstone/artjuna-monorepo/Artjuna-App/app/src/main/res/layout/layout_store_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/bg_bat.xml" value="0.1705" />
         <entry key="..\:/Galih/A. PROGRAMMING/Android Studio/Project/artjuna-monorepo/Artjuna-App/app/src/main/res/drawable/bg_btn_google.xml" value="0.176" />

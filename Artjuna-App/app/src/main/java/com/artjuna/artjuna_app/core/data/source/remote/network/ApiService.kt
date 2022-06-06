@@ -47,6 +47,11 @@ interface ApiService {
         @Query("ProductName") name:String
     ): Response<List<GetProductResponse>>
 
+    @GET("Product/getProductFilter")
+    suspend fun getProductByUserId(
+        @Query("UserID") userId:String
+    ): Response<List<GetProductResponse>>
+
 
     @GET("Product/getAllProduct")
     suspend fun getProduct():Response<List<GetProductResponse>>
@@ -56,7 +61,6 @@ interface ApiService {
 
     @GET("Post/getPost")
     suspend fun getPost():Response<List<GetPostResponse>>
-
 
 
     @POST("Account/addAccount")
@@ -73,7 +77,6 @@ interface ApiService {
     fun updateAccount(
         @Body body:UpdateAccountRequest
     ):Call<Void>
-
 
 
 }

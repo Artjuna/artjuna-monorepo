@@ -35,119 +35,154 @@
             android:text="Profile Settings" />
     </LinearLayout>
 
-    <LinearLayout
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginHorizontal="@dimen/_16sdp"
+           android:layout_marginVertical="@dimen/_8sdp"
+           android:gravity="center_horizontal"
+           android:orientation="vertical">
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="User Id">
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/et_user_id"
+                   android:enabled="false"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content" />
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="14dp"
+               android:hint="@string/full_name">
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/et_full_name"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content" />
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="14dp"
+               android:hint="@string/username">
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/et_username"
+                   android:enabled="false"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content" />
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="14dp"
+               android:hint="@string/email">
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/et_email"
+                   android:enabled="false"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content" />
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="@string/no_handphone"
+               android:layout_marginTop="14dp">
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/et_phone_number"
+                   android:inputType="phone"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content" />
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="City"
+               android:layout_marginTop="14dp">
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/et_city"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content" />
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="Province"
+               android:layout_marginTop="14dp">
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/et_province"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content" />
+
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <Button
+               android:id="@+id/btn_save"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="@dimen/_16sdp"
+               style="@style/ButtonPrimary"
+               android:text="Save"/>
+
+           <TextView
+               android:id="@+id/btn_sign_out"
+               style="@style/Body1Medium"
+               android:textColor="@android:color/holo_red_dark"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginVertical="@dimen/_16sdp"
+               android:text="Sign Out"
+               android:layout_gravity="center"/>
+
+       </LinearLayout>
+   </androidx.core.widget.NestedScrollView>
+
+    <View
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/btn_be_seller"
+        android:drawableStart="@drawable/ic_store"
+        android:drawablePadding="@dimen/_8sdp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:orientation="vertical">
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="User Id">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_user_id"
-                android:enabled="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:hint="@string/full_name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_full_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:hint="@string/username">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_username"
-                android:enabled="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:hint="@string/email">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email"
-                android:enabled="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/no_handphone"
-            android:layout_marginTop="14dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_phone_number"
-                android:inputType="phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="City"
-            android:layout_marginTop="14dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            style="@style/ButtonPrimary"
-            android:text="Save"/>
-
-        <TextView
-            android:id="@+id/btn_sign_out"
-            style="@style/Body1Medium"
-            android:textColor="@android:color/holo_red_dark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_16sdp"
-            android:text="Sign Out"
-            android:layout_gravity="center"/>
-
-    </LinearLayout>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/_16sdp"
+        style="@style/Subtitle2Medium"
+        android:text="Become a Seller"/>
 
 </LinearLayout>

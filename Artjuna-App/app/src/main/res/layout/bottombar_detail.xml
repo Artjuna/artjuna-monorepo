@@ -14,7 +14,7 @@
         style="@style/ButtonPrimary"
         android:layout_width="@dimen/_48sdp"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_cart"/>
+        android:src="@drawable/ic_cart_white"/>
 
     <View
         android:layout_width="@dimen/_8sdp"

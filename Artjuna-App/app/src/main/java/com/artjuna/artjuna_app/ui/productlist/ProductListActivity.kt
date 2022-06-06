@@ -48,13 +48,12 @@ class ProductListActivity : AppCompatActivity() {
         viewModel.getProductByCategory(category!!).observe(this){
             when(it){
                 is Result.Loading -> showLoading(true)
-                is Result.Success -> {
-                    productAdapter.currentList.clear()
-                    productAdapter.submitList(it.data)
-                    showLoading(false)
-                }
                 is Result.Error -> {
+                    showLoading(false)
                     AppUtils.showToast(this, it.error)
+                }
+                is Result.Success -> {
+                    productAdapter.submitList(it.data)
                     showLoading(false)
                 }
             }
@@ -67,7 +66,6 @@ class ProductListActivity : AppCompatActivity() {
             when(it){
                 is Result.Loading -> showLoading(true)
                 is Result.Success -> {
-                    productAdapter.currentList.clear()
                     productAdapter.submitList(it.data)
                     showLoading(false)
                 }
@@ -85,13 +83,8 @@ class ProductListActivity : AppCompatActivity() {
 
     private fun showLoading(loading:Boolean){
         with(binding){
-            if(loading){
-                load.visibility = View.VISIBLE
-                rvProduct.visibility = View.GONE
-            }else{
-                load.visibility = View.GONE
-                rvProduct.visibility = View.VISIBLE
-            }
+            load.visibility = if(loading) View.VISIBLE else View.GONE
+            rvProduct.visibility = if(loading) View.GONE else View.VISIBLE
         }
     }
     companion object{

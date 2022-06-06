@@ -4,16 +4,20 @@ import com.artjuna.artjuna_app.ui.addpost.AddPostViewModel
 import com.artjuna.artjuna_app.ui.addproduct.AddProductViewModel
 import com.artjuna.artjuna_app.ui.address.AddressViewModel
 import com.artjuna.artjuna_app.ui.auth.AuthViewModel
+import com.artjuna.artjuna_app.ui.cart.CartlViewModel
 import com.artjuna.artjuna_app.ui.checkout.CheckoutViewModel
 import com.artjuna.artjuna_app.ui.detailproduct.DetailViewModel
 import com.artjuna.artjuna_app.ui.feeds.FeedsViewModel
 import com.artjuna.artjuna_app.ui.home.HomeViewModel
+import com.artjuna.artjuna_app.ui.likedpost.LikedPostViewModel
+import com.artjuna.artjuna_app.ui.mystore.MyStoreViewModel
 import com.artjuna.artjuna_app.ui.productlist.ProductListViewModel
 import com.artjuna.artjuna_app.ui.profile.ProfileViewModel
 import com.artjuna.artjuna_app.ui.profilesettings.ProfileSettingsViewModel
 import com.artjuna.artjuna_app.ui.search.SearchViewModel
 import com.artjuna.artjuna_app.ui.splash.SplashViewModel
 import com.artjuna.artjuna_app.ui.store.StoreViewModel
+import com.artjuna.artjuna_app.ui.storefollowed.StoreFollowedViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -32,4 +36,8 @@ val viewModelModule = module {
     viewModel { AddProductViewModel(get()) }
     viewModel { ProductListViewModel(get()) }
     viewModel { DetailViewModel(get()) }
+    viewModel { CartlViewModel(get()) }
+    viewModel { LikedPostViewModel(get()) }
+    viewModel { StoreFollowedViewModel(get()) }
+    viewModel { MyStoreViewModel(get()) }
 }

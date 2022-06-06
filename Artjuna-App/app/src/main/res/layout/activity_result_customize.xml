@@ -62,7 +62,7 @@
 
     <include
         android:id="@+id/bottom_bar"
-        layout="@layout/bottombar_customresult"
+        layout="@layout/bottombar_pure_checkout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_56sdp"
         android:layout_alignParentBottom="true" />
