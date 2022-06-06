@@ -24,14 +24,14 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupAdapter()
-        populateView()
+        setButtonClick()
     }
 
     private fun setupAdapter() {
         binding.rvProduct.adapter = productAdapter
     }
 
-    private fun populateView() {
+    private fun setButtonClick() {
         with(binding){
             btnBack.setOnClickListener { onBackPressed() }
             etSearch.requestFocus()

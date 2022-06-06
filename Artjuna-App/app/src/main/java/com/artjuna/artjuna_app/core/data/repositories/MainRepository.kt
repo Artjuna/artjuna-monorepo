@@ -132,7 +132,8 @@ class MainRepository(
                 if(it.isSuccessful){
                     val body = it.body()
                     val res = body?.map { it.toProduct() }
-                    emit(Result.Success(res!!))
+                    val list = res!!.filter{ it.name.contains(name,true)}
+                    emit(Result.Success(list))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ))
                 }
