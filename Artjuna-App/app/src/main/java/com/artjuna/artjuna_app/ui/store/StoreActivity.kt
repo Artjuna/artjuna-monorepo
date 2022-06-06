@@ -1,7 +1,6 @@
 package com.artjuna.artjuna_app.ui.store
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
@@ -13,29 +12,45 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StoreActivity : AppCompatActivity() {
 
-    private val storeViewModel:StoreViewModel by viewModel()
+    private val viewModel:StoreViewModel by viewModel()
     private lateinit var binding:ActivityStoreBinding
+
+    private var storeId = ""
+    private var store = User()
+    private var isFollowed = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setButtonClick()
         getStoreId()
     }
 
     private fun getStoreId() {
         if(intent.extras != null){
-            val storeId = intent.extras!!.getString(EXTRA_STORE_ID,"")
-            getStoreData(storeId)
-            showTabLayout(storeId)
+            storeId = intent.extras!!.getString(EXTRA_STORE_ID,"")
+            getStoreData()
+            checkIfStoreFollowed()
+            showTabLayout()
         }
     }
 
-    private fun getStoreData(storeId: String) {
-        storeViewModel.getStoreDataById(storeId).observe(this){
+    private fun checkIfStoreFollowed() {
+        viewModel.checkIfStoreFollowedById(storeId).observe(this){
+            isFollowed = it
+            setButtonFollowIcon()
+        }
+    }
+
+    private fun setButtonFollowIcon() {
+        binding.store.btnFollow.text = if(isFollowed) "Unfollow" else "Follow"
+    }
+
+    private fun getStoreData() {
+        viewModel.getStoreDataById(storeId).observe(this){
             when(it){
                 is Result.Success -> {
+                    store = it.data
                     populateView(it.data)
                 }
                 is Result.Error -> {
@@ -53,10 +68,35 @@ class StoreActivity : AppCompatActivity() {
     private fun setButtonClick() {
         with(binding){
             btnBack.setOnClickListener { onBackPressed() }
+            store.btnFollow.setOnClickListener { onFollowClicked() }
         }
     }
 
-    private fun showTabLayout(storeId: String) {
+    private fun onFollowClicked() {
+        if (isFollowed){
+            isFollowed = false
+            unfollowStore()
+            setButtonFollowIcon()
+            AppUtils.showToast(this, "Store unfollowed")
+        }else{
+            isFollowed = true
+            followStore()
+            setButtonFollowIcon()
+            AppUtils.showToast(this, "Store followed")
+        }
+    }
+
+    private fun followStore() {
+        viewModel.insertStoreFollowed(store)
+    }
+
+    private fun unfollowStore() {
+        viewModel.deleteStoreFollowedById(storeId)
+    }
+
+
+
+    private fun showTabLayout() {
         val storePagerAdapter = StorePagerAdapter(this)
         storePagerAdapter.storeId = storeId
         with(binding){

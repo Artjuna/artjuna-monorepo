@@ -30,6 +30,7 @@ class LocalDataSource (
     fun signOut(){
         productDao.deleteAllData()
         postDao.deleteAllData()
+        storeDao.deleteAllData()
         saveUser(User())
         setAddress(Address())
     }
