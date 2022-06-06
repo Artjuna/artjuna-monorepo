@@ -119,13 +119,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/custom"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:text="Customizable"/>
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

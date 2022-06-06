@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
 
 
     private fun getRecommendedData() {
-        homeViewModel.getRecommended(10).observe(viewLifecycleOwner){
+        homeViewModel.getRecommended(15).observe(viewLifecycleOwner){
             when(it){
                 is Result.Success -> {
                     showLoadingRecom(false)

@@ -9,5 +9,6 @@ class AddProductViewModel(private val mainRepository: MainRepository) : ViewMode
 
     fun uploadProduct(product: Product, image: File) = mainRepository.uploadProduct(product,image)
     fun getCategories() = mainRepository.getCategory()
+    fun updateProduct(product: Product) = mainRepository.updateProduct(product)
 
 }

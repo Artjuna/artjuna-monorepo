@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentMyProductBinding
-import com.artjuna.artjuna_app.ui.adapter.ProductAdapter
 import com.artjuna.artjuna_app.ui.addproduct.AddProductActivity
 import com.artjuna.artjuna_app.ui.mystore.MyStoreViewModel
+import com.artjuna.artjuna_app.ui.mystore.adapter.MyProductAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyProductFragment : Fragment() {
@@ -18,7 +18,7 @@ class MyProductFragment : Fragment() {
     private lateinit var binding:FragmentMyProductBinding
 
     private val viewModel:MyStoreViewModel by viewModel()
-    private val productAdapter = ProductAdapter()
+    private val myProductAdapter = MyProductAdapter()
     private var userId = ""
 
     override fun onCreateView(
@@ -46,14 +46,14 @@ class MyProductFragment : Fragment() {
         viewModel.getProductByUserId(userId).observe(viewLifecycleOwner){
             when(it){
                 is Result.Success -> {
-                    productAdapter.submitList(it.data)
+                    myProductAdapter.submitList(it.data)
                 }
             }
         }
     }
 
     private fun setupAdapter(){
-        binding.rvProduct.adapter = productAdapter
+        binding.rvProduct.adapter = myProductAdapter
     }
 
     private fun populateView() {
