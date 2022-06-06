@@ -21,4 +21,12 @@
         tools:listitem="@layout/item_product_mystore"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/load"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            layout="@layout/layout_product_list_load"/>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 </LinearLayout>

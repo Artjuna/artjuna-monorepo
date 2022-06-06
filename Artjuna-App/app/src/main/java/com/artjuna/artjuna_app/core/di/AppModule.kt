@@ -1,7 +1,7 @@
 package com.artjuna.artjuna_app.core.di
 
-import com.artjuna.artjuna_app.ui.addpost.AddPostViewModel
-import com.artjuna.artjuna_app.ui.addproduct.AddProductViewModel
+import com.artjuna.artjuna_app.ui.mystore.activity.addpost.AddPostViewModel
+import com.artjuna.artjuna_app.ui.mystore.activity.addproduct.AddProductViewModel
 import com.artjuna.artjuna_app.ui.address.AddressViewModel
 import com.artjuna.artjuna_app.ui.auth.AuthViewModel
 import com.artjuna.artjuna_app.ui.cart.CartlViewModel

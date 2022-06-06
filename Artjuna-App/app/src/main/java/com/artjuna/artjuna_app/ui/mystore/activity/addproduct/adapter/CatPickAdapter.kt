@@ -1,15 +1,9 @@
-package com.artjuna.artjuna_app.ui.addproduct.adapter
+package com.artjuna.artjuna_app.ui.mystore.activity.addproduct.adapter
 
-import android.R
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.artjuna.artjuna_app.databinding.ItemCategoryBinding
 import com.artjuna.artjuna_app.databinding.ItemCategoryPickBinding
-import com.artjuna.artjuna_app.ui.home.adapter.CatAdapter
 
 
 class CatPickAdapter() :

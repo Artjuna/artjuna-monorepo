@@ -1,4 +1,4 @@
-package com.artjuna.artjuna_app.ui.addpost
+package com.artjuna.artjuna_app.ui.mystore.activity.addpost
 
 import androidx.lifecycle.ViewModel
 import com.artjuna.artjuna_app.core.data.repositories.MainRepository
