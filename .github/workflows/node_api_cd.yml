@@ -45,4 +45,5 @@ jobs:
             cd artjuna-monorepo
             git pull origin main
             pm2 delete app
+            cd api/
             pm2 start app.js --name node-api -i 0
