@@ -96,15 +96,10 @@ class ProfileSettingsActivity : AppCompatActivity() {
 
     private fun setViewStore() {
         with(binding){
-            if(user.isStore){
-                etPhoneNumber.visibility = View.VISIBLE
-                etCity.visibility = View.VISIBLE
-                btnBeSeller.visibility = View.GONE
-            }else{
-                etPhoneNumber.visibility = View.GONE
-                etCity.visibility = View.GONE
-                btnBeSeller.visibility = View.VISIBLE
-            }
+            etPhoneNumber.visibility = if (user.isStore) View.VISIBLE else View.GONE
+            etCity.visibility = if (user.isStore) View.VISIBLE else View.GONE
+            etProvince.visibility = if (user.isStore) View.VISIBLE else View.GONE
+            btnBeSeller.visibility = if (user.isStore) View.GONE else View.VISIBLE
         }
     }
 
