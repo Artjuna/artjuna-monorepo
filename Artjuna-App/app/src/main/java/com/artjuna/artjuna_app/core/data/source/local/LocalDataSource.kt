@@ -24,6 +24,13 @@ class LocalDataSource (
         pref.saveUser(user)
     }
 
+    fun signOut(){
+        productDao.deleteAllData()
+        postDao.deleteAllData()
+        saveUser(User())
+        setAddress(Address())
+    }
+
     fun getUser(): User = pref.getUser()
 
     fun insertProductToCart(productEntity: ProductEntity) = productDao.insertProductToCart(productEntity)

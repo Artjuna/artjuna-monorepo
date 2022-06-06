@@ -23,4 +23,7 @@ interface PostDao {
     @Query("SELECT * FROM posttentities WHERE id = :id")
     fun getPostLikedById(id:String):List<PostEntity>
 
+    @Query("DELETE FROM posttentities")
+    fun deleteAllData()
+
 }

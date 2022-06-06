@@ -42,5 +42,5 @@ val repositoryModule = module {
     single { RemoteDataSource(get()) }
     single { AppExecutors() }
     single { MainRepository(get(),get(),get())}
-    single { AuthRepository(get(), get(), get(), get()) }
+    single { AuthRepository(get(), get(), get(), get(),get()) }
 }
