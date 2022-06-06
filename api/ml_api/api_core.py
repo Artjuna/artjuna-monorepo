@@ -2,7 +2,7 @@ import os
 
 import mysql.connector
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, Form, Response, UploadFile
+from fastapi import FastAPI, File, Form, UploadFile
 
 load_dotenv(os.path.join(".", ".env"))
 
@@ -35,11 +35,7 @@ async def root():
     return {"root": "Success"}
 
 
-@app.post(
-    "/styletransfer",
-    responses={200: {"content": {"image/png": {}}}},
-    response_class=Response,
-)
+@app.post("/styletransfer")
 async def style_transfer(ProductID: str = Form(), StyleImage: UploadFile = File()):
     cursor = database.cursor()
 
@@ -59,10 +55,10 @@ async def style_transfer(ProductID: str = Form(), StyleImage: UploadFile = File(
     # Prepared file for style transfer
     prepared_style = style_transfer_model.image_preprocessing(style_image)
     prepared_content = style_transfer_model.image_preprocessing(content_image)
-    
+
     # Perform style transfer
     reconstructed_image = style_transfer_model.style_transfer(
         prepared_style, prepared_content
     )
 
-    return Response(content=reconstructed_image, media_type="image/png")
+    return {"StylizedImage": reconstructed_image}

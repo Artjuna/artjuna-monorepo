@@ -7,6 +7,7 @@ import base64
 import io
 import shutil
 import urllib.request
+import base64
 
 import numpy as np
 import tensorflow as tf
@@ -48,7 +49,9 @@ class StyleTransferModel:
             im.save(buf, format="PNG")
             im_bytes = buf.getvalue()
 
-        return im_bytes
+        base64_image = base64.b64encode(im_bytes).decode("utf-8")
+
+        return base64_image
 
     def image_preprocessing(self, image):
         image = np.asarray(image)
