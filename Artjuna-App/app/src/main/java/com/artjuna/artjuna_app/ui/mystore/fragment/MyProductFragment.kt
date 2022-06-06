@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentMyProductBinding
-import com.artjuna.artjuna_app.ui.addproduct.AddProductActivity
+import com.artjuna.artjuna_app.ui.mystore.activity.addproduct.AddProductActivity
 import com.artjuna.artjuna_app.ui.mystore.MyStoreViewModel
 import com.artjuna.artjuna_app.ui.mystore.adapter.MyProductAdapter
+import com.artjuna.artjuna_app.utils.AppUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyProductFragment : Fragment() {
@@ -45,10 +46,23 @@ class MyProductFragment : Fragment() {
     private fun getListProduct() {
         viewModel.getProductByUserId(userId).observe(viewLifecycleOwner){
             when(it){
+                is Result.Loading -> showLoading(true)
+                is Result.Error -> {
+                    showLoading(false)
+                    AppUtils.showToast(requireContext(), it.error)
+                }
                 is Result.Success -> {
+                    showLoading(false)
                     myProductAdapter.submitList(it.data)
                 }
             }
+        }
+    }
+
+    private fun showLoading(loading:Boolean){
+        with(binding){
+            load.visibility = if(loading) View.VISIBLE else View.GONE
+            rvProduct.visibility = if(loading) View.GONE else View.VISIBLE
         }
     }
 

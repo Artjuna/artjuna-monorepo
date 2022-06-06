@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.databinding.ItemProductMystoreBinding
-import com.artjuna.artjuna_app.ui.addproduct.AddProductActivity
+import com.artjuna.artjuna_app.ui.mystore.activity.addproduct.AddProductActivity
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 
 class MyProductAdapter:ListAdapter<Product, MyProductAdapter.ProductViewHolder>(DIFF_CALLBACK) {

@@ -13,6 +13,14 @@ data class GetProductResponse(
 	val results: List<ProductResponse>
 )
 
+data class Next(
+	@field:SerializedName("page")
+	val page: Int,
+
+	@field:SerializedName("limit")
+	val limit:Int
+)
+
 data class ProductResponse(
 	@field:SerializedName("createdAt")
 	val createdAt: String,
