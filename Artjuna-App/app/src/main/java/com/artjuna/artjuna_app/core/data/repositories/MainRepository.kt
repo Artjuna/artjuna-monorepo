@@ -1,5 +1,6 @@
 package com.artjuna.artjuna_app.core.data.repositories
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
@@ -29,6 +30,7 @@ class MainRepository(
     private val appExecutors: AppExecutors
 ) {
 
+    private val TAG = MainRepository::class.java.simpleName
 
     fun setAddress(address: Address) = local.setAddress(address)
     fun getAddress():Address = local.getAddress()
@@ -375,6 +377,24 @@ class MainRepository(
             }
         }catch (e: Exception) {
             emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+    fun addOrder(order: Order):LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        val userId = local.getUser().id
+        order.buyerId = userId
+        try {
+            remote.addOrder(order.toAddOrderRequest()).let {
+                if (it.isSuccessful){
+                    emit(Result.Success("Success"))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+            Log.d(TAG, e.message.toString())
         }
     }
 

@@ -4,9 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.model.Address
+import com.artjuna.artjuna_app.core.data.source.model.Order
 import com.artjuna.artjuna_app.core.data.source.model.Product
+import com.artjuna.artjuna_app.core.data.source.model.User
+import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.ActivityCheckoutBinding
 import com.artjuna.artjuna_app.ui.address.AddressActivity
+import com.artjuna.artjuna_app.ui.loading.LoadingDialog
 import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -15,16 +19,23 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CheckoutActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityCheckoutBinding
-    private val checkoutViewModel:CheckoutViewModel by viewModel()
+    private lateinit var loadingDialog: LoadingDialog
+
+    private val viewModel:CheckoutViewModel by viewModel()
     private var product = Product()
+    private var mAddress = Address()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setupLoading()
         setButtonClick()
         getProduct()
         getAddress()
+    }
+
+    private fun setupLoading() {
+        loadingDialog = LoadingDialog(this,false)
     }
 
     private fun setButtonClick() {
@@ -34,13 +45,49 @@ class CheckoutActivity : AppCompatActivity() {
                 startActivity(Intent(this@CheckoutActivity,AddressActivity::class.java))
             }
             bottomBar.btnOrder.setOnClickListener {
-                AppUtils.sendOrderToWA(this@CheckoutActivity, "6285210938775", this@CheckoutActivity.product)
+                if(mAddress.name.isEmpty() || mAddress.number.isEmpty() || mAddress.address.isEmpty()){
+                    AppUtils.showToast(this@CheckoutActivity, "You have to fill your address")
+                    address.btnChangeAddress.requestFocus()
+                }else{
+                    addOrder()
+//                    AppUtils.sendOrderToWA(this@CheckoutActivity, "6285210938775", this@CheckoutActivity.product)
+                }
             }
         }
     }
 
+    private fun addOrder() {
+        val order = collectOrderData()
+        viewModel.addOrder(order).observe(this){
+            when(it){
+                is Result.Loading -> loadingDialog.show()
+                is Result.Error -> {
+                    loadingDialog.dismiss()
+                    AppUtils.showToast(this, it.error)
+                }
+                is Result.Success -> {
+                    loadingDialog.dismiss()
+                    AppUtils.showToast(this, "Your order has been created")
+                    finish()
+                }
+            }
+        }
+    }
+
+    private fun collectOrderData(): Order {
+        val order = Order(
+            productId = product.id,
+            storeId = product.storeId,
+            price = product.price,
+            buyerNumber = mAddress.number,
+            buyerAddress = "${mAddress.address} ${mAddress.postalCode}"
+        )
+        return order
+    }
+
     private fun getAddress(){
-        populateViewAddress(checkoutViewModel.getAddress())
+        mAddress = viewModel.getAddress()
+        populateViewAddress(mAddress)
     }
 
     private fun populateViewAddress(address: Address) {

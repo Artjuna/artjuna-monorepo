@@ -20,6 +20,8 @@ class RemoteDataSource(private val api:ApiService) {
 
     suspend fun updateProduct(request: UpdateProductRequest) = api.updateProduct(request)
 
+    suspend fun addOrder(request: AddOrderRequest) = api.addOrder(request)
+
     suspend fun uploadProduct(product:Product, image:MultipartBody.Part) =
         api.uploadProduct(
             product.storeId.toRequestBody("text/plain".toMediaType()),
@@ -47,6 +49,7 @@ class RemoteDataSource(private val api:ApiService) {
 
 
     fun getStoreById(storeId:String):Call<List<AccountResponse>>  = api.getAccountById(storeId)
+
 
 
     fun addAccount(request:AddAccountRequest) = api.addAccount(request)

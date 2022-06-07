@@ -70,6 +70,10 @@ interface ApiService {
         @Body body: UpdateProductRequest
     ):Response<Void>
 
+    @POST("Order/addOrder")
+    suspend fun addOrder(
+        @Body body: AddOrderRequest
+    ):Response<Void>
 
     @POST("Account/addAccount")
     fun addAccount(
@@ -85,6 +89,8 @@ interface ApiService {
     fun updateAccount(
         @Body body:UpdateAccountRequest
     ):Call<Void>
+
+
 
 
 }
