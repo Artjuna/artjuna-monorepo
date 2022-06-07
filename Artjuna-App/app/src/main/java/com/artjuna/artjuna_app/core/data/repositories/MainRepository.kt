@@ -146,8 +146,7 @@ class MainRepository(
                 if(it.isSuccessful){
                     val body = it.body()
                     val res = body?.map { it.toProduct() }
-                    val list = res!!.filter { it.storeId == userId }
-                    emit(Result.Success(list))
+                    emit(Result.Success(res!!))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ))
                 }
