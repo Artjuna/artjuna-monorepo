@@ -53,7 +53,12 @@ data class ProductResponse(
 	val image: String,
 
 	@field:SerializedName("Province")
-	val province: String
+	val province: String,
+
+	@field:SerializedName("FullName")
+	val fullName: String,
+
+
 )
 
 fun ProductResponse.toProduct(): Product {
@@ -66,6 +71,7 @@ fun ProductResponse.toProduct(): Product {
 		category = category,
 		storeId = userID,
 		storeCity = city,
+		storeName = fullName,
 		storeProvince = province
 	)
 }
