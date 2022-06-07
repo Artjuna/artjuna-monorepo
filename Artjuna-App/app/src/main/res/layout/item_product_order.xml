@@ -29,11 +29,13 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/tv_store_name"
                     style="@style/Body2Medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Alexandr Wang"/>
                 <TextView
+                    android:id="@+id/tv_date"
                     style="@style/Body3Medium"
                     android:textColor="@color/grey_700"
                     android:layout_width="match_parent"
@@ -78,7 +80,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_name"
+                    android:id="@+id/tv_product_name"
                     style="@style/Subtitle2Regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

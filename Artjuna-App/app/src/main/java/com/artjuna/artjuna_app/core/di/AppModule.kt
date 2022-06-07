@@ -13,6 +13,7 @@ import com.artjuna.artjuna_app.ui.likedpost.LikedPostViewModel
 import com.artjuna.artjuna_app.ui.mystore.MyStoreViewModel
 import com.artjuna.artjuna_app.ui.productlist.ProductListViewModel
 import com.artjuna.artjuna_app.ui.profile.ProfileViewModel
+import com.artjuna.artjuna_app.ui.order.OrderViewModel
 import com.artjuna.artjuna_app.ui.profilesettings.ProfileSettingsViewModel
 import com.artjuna.artjuna_app.ui.search.SearchViewModel
 import com.artjuna.artjuna_app.ui.splash.SplashViewModel
@@ -40,4 +41,5 @@ val viewModelModule = module {
     viewModel { LikedPostViewModel(get()) }
     viewModel { StoreFollowedViewModel(get()) }
     viewModel { MyStoreViewModel(get()) }
+    viewModel { OrderViewModel(get()) }
 }

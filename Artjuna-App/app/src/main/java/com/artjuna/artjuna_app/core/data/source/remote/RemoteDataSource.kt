@@ -47,12 +47,11 @@ class RemoteDataSource(private val api:ApiService) {
             image
         )
 
+    suspend fun getOrderByBuyerId(id:String) = api.getOrderByBuyerId(id)
+
     suspend fun addHasSeen(request:AddHasSeenRequest) = api.addHasSeen(request)
 
-
     fun getStoreById(storeId:String):Call<List<AccountResponse>>  = api.getAccountById(storeId)
-
-
 
     fun addAccount(request:AddAccountRequest) = api.addAccount(request)
     fun getAccountById(userId:String): Call<List<AccountResponse>> = api.getAccountById(userId)

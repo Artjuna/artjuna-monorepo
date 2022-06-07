@@ -53,7 +53,7 @@
             android:name=".ui.customize.CustomizeWithYourDesignActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.order.OrderActivity"
+            android:name="com.artjuna.artjuna_app.ui.order.OrderActivity"
             android:exported="false" />
         <activity
             android:name=".ui.cart.CartActivity"

@@ -80,6 +80,11 @@ interface ApiService {
         @Body body: AddOrderRequest
     ):Response<Void>
 
+    @GET("Order/getOrderFilter")
+    suspend fun getOrderByBuyerId(
+        @Query("BuyerUserID") buyerId:String
+    ):Response<List<GetOrderResponse>>
+
     @POST("Account/addAccount")
     fun addAccount(
         @Body body:AddAccountRequest

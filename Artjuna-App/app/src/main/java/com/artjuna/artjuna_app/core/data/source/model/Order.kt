@@ -11,8 +11,10 @@ data class Order(
     var buyerNumber:String="",
     var buyerAddress:String="",
     var productId:String="",
+    var productName:String="",
     var price:Int=0,
     var date:String="",
+    var image:String=""
 )
 
 fun Order.toAddOrderRequest():AddOrderRequest{

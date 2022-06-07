@@ -12,10 +12,7 @@ import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddHasSeenRequest
-import com.artjuna.artjuna_app.core.data.source.remote.response.AccountResponse
-import com.artjuna.artjuna_app.core.data.source.remote.response.toPost
-import com.artjuna.artjuna_app.core.data.source.remote.response.toProduct
-import com.artjuna.artjuna_app.core.data.source.remote.response.toUser
+import com.artjuna.artjuna_app.core.data.source.remote.response.*
 import com.artjuna.artjuna_app.utils.AppExecutors
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -44,6 +41,24 @@ class MainRepository(
             remote.addHasSeen(AddHasSeenRequest(userId,productId)).let {
                 if(it.isSuccessful){
                     emit(Result.Success(""))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+    fun getOrderByBuyerId():LiveData<Result<List<Order>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val userId = getUser().id
+            remote.getOrderByBuyerId(userId).let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.toOrder() }
+                    emit(Result.Success(res!!))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
                 }
