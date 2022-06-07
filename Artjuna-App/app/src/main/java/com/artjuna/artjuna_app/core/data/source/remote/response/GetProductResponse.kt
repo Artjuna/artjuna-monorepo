@@ -56,7 +56,7 @@ data class ProductResponse(
 	val province: String,
 
 	@field:SerializedName("FullName")
-	val fullName: String,
+	val fullName: String?,
 
 
 )
@@ -71,7 +71,7 @@ fun ProductResponse.toProduct(): Product {
 		category = category,
 		storeId = userID,
 		storeCity = city,
-		storeName = fullName,
+		storeName = fullName ?: userID,
 		storeProvince = province
 	)
 }
