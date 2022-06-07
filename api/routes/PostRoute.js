@@ -35,6 +35,7 @@ router.use(express.urlencoded({ limit: '50mb', extended: true }));
 router.post('/addPost', upload.single('Image'), PostController.addPost);
 router.get('/getPost', PostController.getPost);
 router.put('/updatePost', upload.single('Image'), PostController.updatePost);
+router.get('/getPostFilter', PostController.getPostFilter);
 
 module.exports = router;
 
