@@ -65,6 +65,11 @@ interface ApiService {
     @GET("Post/getPost")
     suspend fun getPost():Response<List<GetPostResponse>>
 
+    @GET("Post/getPostFilter")
+    suspend fun getPostByUserId(
+        @Query("UserID") userId: String
+    ):Response<List<GetPostResponse>>
+
     @PUT("Product/updateProduct")
     suspend fun updateProduct(
         @Body body: UpdateProductRequest

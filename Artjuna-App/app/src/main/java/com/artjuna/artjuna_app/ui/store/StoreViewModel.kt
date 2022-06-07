@@ -17,4 +17,6 @@ class StoreViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     fun insertStoreFollowed(store: User) = mainRepository.insertStoreFollowed(store)
 
+    fun getPostByUserId(id: String) = mainRepository.getPostByUserId(id)
+
 }

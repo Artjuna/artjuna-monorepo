@@ -158,6 +158,23 @@ class MainRepository(
         }
     }
 
+    fun getPostByUserId(userId: String):LiveData<Result<List<Post>>> = liveData {
+        emit(Result.Loading)
+        try {
+            remote.getPostByUserId(userId).let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.toPost() }
+                    emit(Result.Success(res!!))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
     fun getPost():LiveData<Result<List<Post>>> = liveData {
         emit(Result.Loading)
         try {
