@@ -13,10 +13,12 @@ import retrofit2.Call
 class RemoteDataSource(private val api:ApiService) {
 
     //suspend fun getRegister() = api.getRegister()
-    suspend fun getProduct() = api.getProduct()
+    suspend fun getProduct(page:Int,limit:Int) = api.getProduct(page,limit)
     suspend fun getProductByCategory(category:String) = api.getProductByCategory(category)
     suspend fun getProductByName(name:String) = api.getProductByName(name)
-    suspend fun getProductByUserId(userId:String) = api.getProductByName(userId)
+    suspend fun getProductByUserId(userId:String) = api.getProductByUserId(userId)
+
+    suspend fun updateProduct(request: UpdateProductRequest) = api.updateProduct(request)
 
     suspend fun uploadProduct(product:Product, image:MultipartBody.Part) =
         api.uploadProduct(

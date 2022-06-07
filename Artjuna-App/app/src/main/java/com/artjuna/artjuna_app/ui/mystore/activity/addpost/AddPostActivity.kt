@@ -1,4 +1,4 @@
-package com.artjuna.artjuna_app.ui.addpost
+package com.artjuna.artjuna_app.ui.mystore.activity.addpost
 
 import android.content.Intent
 import android.net.Uri

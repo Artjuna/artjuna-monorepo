@@ -29,7 +29,7 @@
             android:name=".ui.address.AddressActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.addproduct.AddProductActivity"
+            android:name="com.artjuna.artjuna_app.ui.mystore.activity.addproduct.AddProductActivity"
             android:exported="false" />
         <activity
             android:name=".ui.search.SearchActivity"
@@ -38,7 +38,7 @@
             android:name=".ui.store.StoreActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.addpost.AddPostActivity"
+            android:name="com.artjuna.artjuna_app.ui.mystore.activity.addpost.AddPostActivity"
             android:exported="false" />
         <activity
             android:name=".ui.mystore.MyStoreActivity"

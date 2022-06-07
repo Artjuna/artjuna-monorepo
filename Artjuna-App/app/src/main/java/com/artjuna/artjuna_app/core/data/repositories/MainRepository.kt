@@ -1,6 +1,5 @@
 package com.artjuna.artjuna_app.core.data.repositories
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
@@ -12,17 +11,13 @@ import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddHasSeenRequest
-import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.AccountResponse
 import com.artjuna.artjuna_app.core.data.source.remote.response.toPost
 import com.artjuna.artjuna_app.core.data.source.remote.response.toProduct
 import com.artjuna.artjuna_app.core.data.source.remote.response.toUser
 import com.artjuna.artjuna_app.utils.AppExecutors
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.parse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Call
 import retrofit2.Response
@@ -77,11 +72,10 @@ class MainRepository(
     fun getProduct(size:Int):LiveData<Result<List<Product>>> = liveData {
         emit(Result.Loading)
         try {
-            remote.getProduct().let {
+            remote.getProduct(1,size).let {
                 if(it.isSuccessful){
-                    val body = it.body()
-                    val res = body?.map { it.toProduct() }
-                    val list = res!!.take(size)
+                    val res = it.body()?.results
+                    val list = res!!.map { it.toProduct() }
                     emit(Result.Success(list))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
@@ -95,11 +89,11 @@ class MainRepository(
     fun getProduct():LiveData<Result<List<Product>>> = liveData {
         emit(Result.Loading)
         try {
-            remote.getProduct().let {
+            remote.getProduct(1,100).let {
                 if(it.isSuccessful){
-                    val body = it.body()
-                    val res = body?.map { it.toProduct() }
-                    emit(Result.Success(res!!))
+                    val res = it.body()?.results
+                    val list = res!!.map { it.toProduct() }
+                    emit(Result.Success(list))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
                 }
@@ -368,6 +362,21 @@ class MainRepository(
             }
         })
         return result
+    }
+
+    fun updateProduct(product: Product):LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        try {
+            remote.updateProduct(product.toUpdateProductRequest()).let {
+                if (it.isSuccessful){
+                    emit(Result.Success("Success"))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
     }
 
 }

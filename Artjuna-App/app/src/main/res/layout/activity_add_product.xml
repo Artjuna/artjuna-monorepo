@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".ui.addpost.AddPostActivity">
+    tools:context=".ui.mystore.activity.addpost.AddPostActivity">
     <!-- header -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -118,13 +118,6 @@
                 layout="@layout/layout_addproduct_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/custom"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/_16sdp"
-                android:text="Customizable"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -40,27 +40,35 @@ interface ApiService {
     @GET("Product/getProductFilter")
     suspend fun getProductByCategory(
         @Query("Category") category:String
-    ): Response<List<GetProductResponse>>
+    ): Response<List<ProductResponse>>
 
     @GET("Product/getProductFilter")
     suspend fun getProductByName(
         @Query("ProductName") name:String
-    ): Response<List<GetProductResponse>>
+    ): Response<List<ProductResponse>>
 
     @GET("Product/getProductFilter")
     suspend fun getProductByUserId(
         @Query("UserID") userId:String
-    ): Response<List<GetProductResponse>>
+    ): Response<List<ProductResponse>>
 
 
     @GET("Product/getAllProduct")
-    suspend fun getProduct():Response<List<GetProductResponse>>
+    suspend fun getProduct(
+        @Query("page") page:Int,
+        @Query("limit") limit:Int,
+    ):Response<GetProductResponse>
 
     @GET("Product/getAllProductCategory")
     suspend fun getCategory():Response<List<GetCategoryResponse>>
 
     @GET("Post/getPost")
     suspend fun getPost():Response<List<GetPostResponse>>
+
+    @PUT("Product/updateProduct")
+    suspend fun updateProduct(
+        @Body body: UpdateProductRequest
+    ):Response<Void>
 
 
     @POST("Account/addAccount")

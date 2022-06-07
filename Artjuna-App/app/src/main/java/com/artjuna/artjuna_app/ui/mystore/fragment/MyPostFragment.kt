@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.databinding.FragmentMyPostBinding
-import com.artjuna.artjuna_app.ui.addpost.AddPostActivity
-import com.artjuna.artjuna_app.ui.store.fragment.ProductFragment
+import com.artjuna.artjuna_app.ui.mystore.activity.addpost.AddPostActivity
 
 class MyPostFragment : Fragment() {
 
