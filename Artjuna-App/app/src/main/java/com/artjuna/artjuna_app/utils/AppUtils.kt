@@ -27,7 +27,7 @@ object AppUtils{
         val message = "Order Invoice\n" +
                 "Item Name: ${product.name} (${product.id})\n" +
                 "Price: Rp ${product.price}\n" +
-                "Order ID: 232329"
+                ""
         val url = "https://wa.me/${number}?text=${URLEncoder.encode(message,"UTF-8")}"
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         context.startActivity(browserIntent)

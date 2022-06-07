@@ -56,6 +56,7 @@ class SignInActivity : AppCompatActivity() {
     private fun forgotPassword() {
         MaterialAlertDialogBuilder(this)
             .setTitle("Forgot Password?")
+            .setCancelable(false)
             .setMessage("Relax, try to remember your password!")
             .setPositiveButton("Thanks") { dialog, which ->
                 dialog.dismiss()

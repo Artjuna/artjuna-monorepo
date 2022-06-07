@@ -13,6 +13,8 @@ import com.artjuna.artjuna_app.ui.address.AddressActivity
 import com.artjuna.artjuna_app.ui.loading.LoadingDialog
 import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
+import com.artjuna.artjuna_app.utils.AppUtils.sendOrderToWA
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -24,6 +26,7 @@ class CheckoutActivity : AppCompatActivity() {
     private val viewModel:CheckoutViewModel by viewModel()
     private var product = Product()
     private var mAddress = Address()
+    private var store = User()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckoutBinding.inflate(layoutInflater)
@@ -56,6 +59,23 @@ class CheckoutActivity : AppCompatActivity() {
         }
     }
 
+    private fun showSuccessDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Your order has been created")
+            .setCancelable(false)
+            .setMessage("Contact seller for further information")
+            .setPositiveButton("Contact Seller") { dialog, which ->
+                contactSeller()
+                dialog.dismiss()
+                finish()
+            }
+            .show()
+    }
+
+    private fun contactSeller() {
+        AppUtils.sendOrderToWA(this@CheckoutActivity, store.numberWA, this@CheckoutActivity.product)
+    }
+
     private fun addOrder() {
         val order = collectOrderData()
         viewModel.addOrder(order).observe(this){
@@ -67,8 +87,7 @@ class CheckoutActivity : AppCompatActivity() {
                 }
                 is Result.Success -> {
                     loadingDialog.dismiss()
-                    AppUtils.showToast(this, "Your order has been created")
-                    finish()
+                    showSuccessDialog()
                 }
             }
         }
@@ -107,8 +126,17 @@ class CheckoutActivity : AppCompatActivity() {
         if(extras!=null){
             val product = extras.getParcelable<Product>(EXTRA_PRODUCT)
             this.product = product!!
+            getStoreData()
             populateViewProduct(product)
             populatePrice(product.price)
+        }
+    }
+
+    private fun getStoreData() {
+        viewModel.getStoreDataById(product.storeId).observe(this){
+            when(it){
+                is Result.Success -> store = it.data
+            }
         }
     }
 
