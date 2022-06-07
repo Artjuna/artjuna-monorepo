@@ -1,4 +1,5 @@
 const db = require('../model');
+const { Op } = require("sequelize");
 require('dotenv').config();
 //create main model
 const Product = db.products;
@@ -49,7 +50,7 @@ const getAllProduct = async (req, res) => {
     try{
         //let page = req.query.page;
         let getAllProduct = await Product.findAll({raw: true});
-        const page = parseInt(req.query.page)
+        const page = parseInt(req.query.page);
         const limit = parseInt(req.query.limit)
 
         const startIndex = (page - 1) * limit
@@ -207,7 +208,7 @@ const getProductFilter = async (req, res) => {
         var List = {
             ProductID: ProductID,
             UserID: UserID,
-            ProductName: ProductName,
+            ProductName: {[Op.like]: '%' + ProductName + '%'},
             Category: Category,
             Province: Province,
             City: City,
@@ -222,10 +223,25 @@ const getProductFilter = async (req, res) => {
             }
         }
         
-        const getProduct = await Product.findAll({raw: true,
-            where: List
-        });        
+            const getProduct = await Product.findAll({raw: true,
+                where: List
+            }); 
 
+        //const getProduct = {};
+
+        // if (ProductName == null || ProductName == undefined)
+        // {
+        //     getProduct = await Product.findAll({raw: true,
+        //         where: List
+        //     });        
+        // }
+        // else{
+
+        //     getProduct = await Product.findAll({raw: true,
+        //         where: {ProductName: {[Op.like]: '%' + ProductName + '%'}}
+        //     });
+            
+        // }
         res.json(getProduct);
     }
     catch (err)
