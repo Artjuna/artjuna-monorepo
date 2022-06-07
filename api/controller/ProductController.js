@@ -207,8 +207,7 @@ const getProductFilter = async (req, res) => {
         let Price = req.query.Price;
         var List = {
             ProductID: ProductID,
-            UserID: UserID,
-            ProductName: {[Op.like]: '%' + ProductName + '%'},
+            UserID: UserID,            
             Category: Category,
             Province: Province,
             City: City,
@@ -223,25 +222,25 @@ const getProductFilter = async (req, res) => {
             }
         }
         
-            const getProduct = await Product.findAll({raw: true,
+            // const getProduct = await Product.findAll({raw: true,
+            //     where: List
+            // }); 
+
+        const getProduct = {};
+
+        if (ProductName == null || ProductName == undefined)
+        {
+            getProduct = await Product.findAll({raw: true,
                 where: List
-            }); 
+            });        
+        }
+        else{
 
-        //const getProduct = {};
-
-        // if (ProductName == null || ProductName == undefined)
-        // {
-        //     getProduct = await Product.findAll({raw: true,
-        //         where: List
-        //     });        
-        // }
-        // else{
-
-        //     getProduct = await Product.findAll({raw: true,
-        //         where: {ProductName: {[Op.like]: '%' + ProductName + '%'}}
-        //     });
+            getProduct = await Product.findAll({raw: true,
+                where: {ProductName: {[Op.like]: '%' + ProductName + '%'}}
+            });
             
-        // }
+        }
         res.json(getProduct);
     }
     catch (err)
