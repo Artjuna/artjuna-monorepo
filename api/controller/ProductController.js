@@ -226,7 +226,7 @@ const getProductFilter = async (req, res) => {
             //     where: List
             // }); 
 
-        const getProduct = {};
+        let getProduct = {};
 
         if (ProductName == null || ProductName == undefined)
         {
