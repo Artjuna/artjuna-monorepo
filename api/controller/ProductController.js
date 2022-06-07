@@ -224,20 +224,7 @@ const getProductFilter = async (req, res) => {
         
         const getProduct = await Product.findAll({raw: true,
             where: List
-        });
-        // const getAllAccount = await Account.findAll({raw: true,
-        //     attributes: {
-        //         include: [
-        //             [
-        //                 sequelize.literal(`
-        //                 (
-        //                     SELECT * FROM account
-        //                 )
-        //                 `)
-        //             ]
-        //         ]
-        //     }
-        // });
+        });        
 
         res.json(getProduct);
     }
