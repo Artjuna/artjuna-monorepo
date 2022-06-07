@@ -198,6 +198,7 @@ const updateProduct = async (req, res) => {
 const getProductFilter = async (req, res) => {
     try{
         let ProductID = req.query.ProductID;
+        let UserID = req.query.UserID;
         let ProductName = req.query.ProductName;
         let Category = req.query.Category;
         let Province = req.query.Province;
@@ -205,6 +206,7 @@ const getProductFilter = async (req, res) => {
         let Price = req.query.Price;
         var List = {
             ProductID: ProductID,
+            UserID: UserID,
             ProductName: ProductName,
             Category: Category,
             Province: Province,
