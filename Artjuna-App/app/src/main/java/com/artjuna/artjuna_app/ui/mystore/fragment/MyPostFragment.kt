@@ -50,17 +50,27 @@ class MyPostFragment : Fragment() {
     private fun getListPost(userId: String) {
         viewModel.getPostByUserId(userId).observe(viewLifecycleOwner){
             when(it){
-                is Result.Loading -> showLoading(true)
+                is Result.Loading -> {
+                    showLoading(true)
+                    showEmpty(false)
+                }
                 is Result.Error -> {
-                    showLoading(false)
                     AppUtils.showToast(requireContext(), it.error)
+                    showLoading(false)
+                    showEmpty(false)
                 }
                 is Result.Success -> {
-                    showLoading(false)
                     postAdapter.submitList(it.data)
+                    showLoading(false)
+                    showEmpty(it.data.isEmpty(), "You haven't created any post yet")
                 }
             }
         }
+    }
+
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
     }
 
     private fun populateView() {

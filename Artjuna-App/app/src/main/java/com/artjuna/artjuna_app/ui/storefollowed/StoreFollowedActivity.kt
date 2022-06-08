@@ -2,6 +2,7 @@ package com.artjuna.artjuna_app.ui.storefollowed
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.databinding.ActivityStoreFollowedBinding
 import com.artjuna.artjuna_app.ui.storefollowed.adapter.StoreAdapter
@@ -25,8 +26,15 @@ class StoreFollowedActivity : AppCompatActivity() {
     private fun getListStore() {
         viewModel.getAllStoreFollowed().observe(this){
             storeAdapter.submitList(it)
+            showEmpty(it.isEmpty(), "You haven't followed any store yet")
         }
     }
+
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
+    }
+
 
     private fun setupAdapter() {
         binding.rvStore.adapter = storeAdapter

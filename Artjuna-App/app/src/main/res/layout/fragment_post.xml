@@ -27,4 +27,12 @@
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_post"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <include
+        android:id="@+id/empty"
+        layout="@layout/layout_empty"
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 </LinearLayout>

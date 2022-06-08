@@ -29,4 +29,12 @@
         <include
             layout="@layout/layout_product_list_load"/>
     </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <include
+        android:id="@+id/empty"
+        layout="@layout/layout_empty"
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 </LinearLayout>

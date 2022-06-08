@@ -43,14 +43,19 @@ class PostFragment : Fragment() {
     private fun getListPost(storeId: String) {
         viewModel.getPostByUserId(storeId).observe(viewLifecycleOwner){
             when(it){
-                is Result.Loading -> showLoading(true)
+                is Result.Loading -> {
+                    showLoading(true)
+                    showEmpty(false)
+                }
                 is Result.Error -> {
-                    showLoading(false)
                     AppUtils.showToast(requireContext(), it.error)
+                    showLoading(false)
+                    showEmpty(false)
                 }
                 is Result.Success -> {
-                    showLoading(false)
                     postAdapter.submitList(it.data)
+                    showLoading(false)
+                    showEmpty(it.data.isEmpty(), "This store haven't created any post yet")
                 }
             }
         }
@@ -61,6 +66,11 @@ class PostFragment : Fragment() {
             postLoading.visibility = if(isLoading) View.VISIBLE else View.GONE
             rvPost.visibility = if(isLoading) View.GONE else View.VISIBLE
         }
+    }
+
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
     }
 
 

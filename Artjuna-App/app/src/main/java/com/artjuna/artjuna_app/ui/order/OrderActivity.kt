@@ -1,6 +1,7 @@
 package com.artjuna.artjuna_app.ui.order
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.ActivityOrderBinding
@@ -27,11 +28,22 @@ class OrderActivity : AppCompatActivity() {
     private fun getListOrder() {
         viewModel.getOrderHistory().observe(this){
             when(it){
-                is Result.Loading -> ""
-                is Result.Error -> AppUtils.showToast(this, it.error)
-                is Result.Success -> orderAdapter.submitList(it.data)
+                is Result.Loading -> showEmpty(false)
+                is Result.Error -> {
+                    AppUtils.showToast(this, it.error)
+                    showEmpty(false)
+                }
+                is Result.Success -> {
+                    orderAdapter.submitList(it.data)
+                    showEmpty(it.data.isEmpty(), "You haven't placed an order yet")
+                }
             }
         }
+    }
+
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
     }
 
     private fun setupAdapter() {

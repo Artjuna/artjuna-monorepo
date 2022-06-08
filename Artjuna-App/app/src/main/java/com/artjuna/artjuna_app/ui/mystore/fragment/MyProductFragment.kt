@@ -46,14 +46,19 @@ class MyProductFragment : Fragment() {
     private fun getListProduct() {
         viewModel.getProductByUserId(userId).observe(viewLifecycleOwner){
             when(it){
-                is Result.Loading -> showLoading(true)
+                is Result.Loading -> {
+                    showLoading(true)
+                    showEmpty(false)
+                }
                 is Result.Error -> {
-                    showLoading(false)
                     AppUtils.showToast(requireContext(), it.error)
+                    showLoading(false)
+                    showEmpty(false)
                 }
                 is Result.Success -> {
-                    showLoading(false)
                     myProductAdapter.submitList(it.data)
+                    showLoading(false)
+                    showEmpty(it.data.isEmpty(), "You haven't created any product yet")
                 }
             }
         }
@@ -64,6 +69,11 @@ class MyProductFragment : Fragment() {
             load.visibility = if(loading) View.VISIBLE else View.GONE
             rvProduct.visibility = if(loading) View.GONE else View.VISIBLE
         }
+    }
+
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
     }
 
     private fun setupAdapter(){

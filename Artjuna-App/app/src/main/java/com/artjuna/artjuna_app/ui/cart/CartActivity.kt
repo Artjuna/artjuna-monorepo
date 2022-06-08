@@ -1,6 +1,7 @@
 package com.artjuna.artjuna_app.ui.cart
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.databinding.ActivityCartBinding
 import com.artjuna.artjuna_app.ui.adapter.ProductAdapter
@@ -28,8 +29,15 @@ class CartActivity : AppCompatActivity() {
     private fun getListProductInCart() {
         viewModel.getAllProductInCart().observe(this){
             productAdapter.submitList(it)
+            showEmpty(it.isEmpty(), "You have no product in cart")
         }
     }
+
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
+    }
+
 
     private fun setupAdapter() {
         binding.rvProductCart.adapter = productAdapter

@@ -50,24 +50,36 @@ class SearchActivity : AppCompatActivity() {
     private fun getProductByKeyword(keyword: String) {
         viewModel.getProductByName(keyword).observe(this){
             when(it){
-                is Result.Loading -> showLoading(true)
+                is Result.Loading -> {
+                    showLoading(true)
+                    showEmpty(false)
+                }
                 is Result.Error -> {
                     showLoading(false)
+                    showEmpty(false)
                     AppUtils.showToast(this, it.error)
                 }
                 is Result.Success -> {
                     showLoading(false)
-                    showTextResult(keyword)
+                    showEmpty(it.data.isEmpty(), "Product not found. Please try different keyword")
+                    showTextResult(it.data.isNotEmpty(),keyword)
                     productAdapter.submitList(it.data)
                 }
             }
         }
     }
 
-    private fun showTextResult(keyword: String) {
-        with(binding.tvResult){
-            visibility = View.VISIBLE
-            text = "Showing result for $keyword"
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
+    }
+
+    private fun showTextResult(isNotEmpty:Boolean,keyword: String) {
+        if(isNotEmpty){
+            with(binding.tvResult){
+                visibility = View.VISIBLE
+                text = "Showing result for $keyword"
+            }
         }
     }
 
