@@ -2,10 +2,10 @@ package com.artjuna.artjuna_app.ui.order
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.ActivityOrderBinding
 import com.artjuna.artjuna_app.ui.order.adapter.OrderAdapter
+import com.artjuna.artjuna_app.ui.order.adapter.OrderHistoryAdapter
 import com.artjuna.artjuna_app.utils.AppUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

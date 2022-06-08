@@ -1,9 +1,11 @@
 package com.artjuna.artjuna_app.ui.mystore
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.databinding.ActivityMyStoreBinding
+import com.artjuna.artjuna_app.ui.mystore.activity.orderhistory.OrderHistoryActivity
 import com.artjuna.artjuna_app.ui.mystore.adapter.MyStorePagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -22,6 +24,9 @@ class MyStoreActivity : AppCompatActivity() {
     private fun setButtonClick() {
         binding.header.btnBack.setOnClickListener {
             onBackPressed()
+        }
+        binding.btnOrderHistory.setOnClickListener {
+            startActivity(Intent(this, OrderHistoryActivity::class.java))
         }
     }
 

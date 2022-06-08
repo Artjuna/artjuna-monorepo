@@ -6,15 +6,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.artjuna.artjuna_app.core.data.source.model.Order
+import com.artjuna.artjuna_app.databinding.ItemMystoreOrderBinding
 import com.artjuna.artjuna_app.databinding.ItemProductOrderBinding
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 
-class OrderAdapter:ListAdapter<Order, OrderAdapter.ViewHolder>(DIFF_CALLBACK) {
+class OrderHistoryAdapter:ListAdapter<Order, OrderHistoryAdapter.ViewHolder>(DIFF_CALLBACK) {
 
-    inner class ViewHolder(private val binding: ItemProductOrderBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding: ItemMystoreOrderBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(order: Order){
             with(binding){
-                tvStoreName.text = order.storeName
+                tvBuyerName.text = order.buyerName
                 tvDate.text = order.date
                 ivImage.loadImage(order.image)
                 tvProductName.text = order.productName
@@ -26,7 +27,7 @@ class OrderAdapter:ListAdapter<Order, OrderAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemProductOrderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemMystoreOrderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

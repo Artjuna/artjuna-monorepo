@@ -85,6 +85,11 @@ interface ApiService {
         @Query("BuyerUserID") buyerId:String
     ):Response<List<GetOrderResponse>>
 
+    @GET("Order/getOrderFilter")
+    suspend fun getOrderBySellerId(
+        @Query("SellerUserID") id:String
+    ):Response<List<GetOrderResponse>>
+
     @POST("Account/addAccount")
     fun addAccount(
         @Body body:AddAccountRequest

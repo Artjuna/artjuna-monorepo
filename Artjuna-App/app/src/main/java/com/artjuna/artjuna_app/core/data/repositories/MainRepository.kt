@@ -68,6 +68,26 @@ class MainRepository(
         }
     }
 
+    fun getOrderBySellerId():LiveData<Result<List<Order>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val userId = getUser().id
+            remote.getOrderBySellerId(userId).let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.toOrder() }
+                    emit(Result.Success(res!!))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+
+
     fun getCategory():LiveData<Result<List<String>>> = liveData {
         emit(Result.Loading)
         try {

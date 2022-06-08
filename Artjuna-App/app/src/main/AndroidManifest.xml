@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.mystore.activity.orderhistory.OrderHistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.storefollowed.StoreFollowedActivity"
             android:exported="false" />
         <activity

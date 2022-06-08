@@ -48,6 +48,7 @@ class RemoteDataSource(private val api:ApiService) {
         )
 
     suspend fun getOrderByBuyerId(id:String) = api.getOrderByBuyerId(id)
+    suspend fun getOrderBySellerId(id:String) = api.getOrderBySellerId(id)
 
     suspend fun addHasSeen(request:AddHasSeenRequest) = api.addHasSeen(request)
 
