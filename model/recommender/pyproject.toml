@@ -14,6 +14,7 @@ Faker = "^13.12.0"
 tqdm = "^4.64.0"
 aiohttp = "^3.8.1"
 requests-toolbelt = "^0.9.1"
+fastparquet = "^0.8.1"
 
 [tool.poetry.dev-dependencies]
 mysql-connector-python = "^8.0.29"

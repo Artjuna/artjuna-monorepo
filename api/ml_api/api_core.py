@@ -10,24 +10,14 @@ from .style_transfer_core import StyleTransferModel
 
 app = FastAPI()
 style_transfer_model = None
-database = None
 
 
 @app.on_event("startup")
 async def startup_routine():
     global style_transfer_model
-    global database
 
     style_transfer_model = StyleTransferModel()
     style_transfer_model.load_model("adain_300")
-
-    config = {
-        "user": os.getenv("USERNAME"),
-        "password": os.getenv("PASSWORD"),
-        "host": os.getenv("HOST"),
-    }
-
-    database = mysql.connector.connect(**config)
 
 
 @app.get("/")
@@ -37,6 +27,13 @@ async def root():
 
 @app.post("/styletransfer")
 async def style_transfer(ProductID: str = Form(), StyleImage: UploadFile = File()):
+    config = {
+        "user": os.getenv("USERNAME"),
+        "password": os.getenv("PASSWORD"),
+        "host": os.getenv("HOST"),
+    }
+
+    database = mysql.connector.connect(**config)
     cursor = database.cursor()
 
     # Get file URL from ProductID

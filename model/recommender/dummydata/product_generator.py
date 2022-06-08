@@ -77,7 +77,7 @@ def main(dry_run=True, debug=True):
     category_list_proper = [category.title() for category in category_list]
     page_counter = {category:0 for category in category_list_proper}
 
-    for i in trange(2000):
+    for i in trange(8):
         # Random UserID with IsStore=1
         random_userid = random.choice(full_data)[0]
 
@@ -136,7 +136,7 @@ def scrape_bing_image(seen, headers, random_category,page_counter):
                 + "&adlt="
                 + str(False)
                 # + "&qft=+filterui:license-L2_L3_L4_L5_L6_L7"
-                # + "&qft=+filterui:license-L2_L3_L4"
+                + "&qft=+filterui:license-L2_L3_L4"
 
             )
             request = urllib.request.Request(request_url, None, headers=headers)
