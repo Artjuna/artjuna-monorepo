@@ -20,7 +20,12 @@ class StoreFollowedActivity : AppCompatActivity() {
         binding = ActivityStoreFollowedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupAdapter()
+        setButtonClick()
         getListStore()
+    }
+
+    private fun setButtonClick() {
+        binding.btnBack.setOnClickListener { onBackPressed() }
     }
 
     private fun getListStore() {

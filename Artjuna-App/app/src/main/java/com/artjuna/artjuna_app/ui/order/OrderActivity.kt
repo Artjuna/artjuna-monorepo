@@ -22,7 +22,14 @@ class OrderActivity : AppCompatActivity() {
         binding = ActivityOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupAdapter()
+        setButtonClick()
         getListOrder()
+    }
+
+    private fun setButtonClick() {
+        with(binding){
+            btnBack.setOnClickListener { onBackPressed() }
+        }
     }
 
     private fun getListOrder() {
