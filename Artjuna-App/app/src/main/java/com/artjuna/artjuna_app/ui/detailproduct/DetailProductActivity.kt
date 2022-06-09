@@ -112,6 +112,7 @@ class DetailProductActivity : AppCompatActivity() {
             overview.tvProductName.text = product.name
             overview.tvProductPrice.text = "Rp ${product.price}"
             overview.tvProductDetail.text = product.detail
+            overview.tvProductCatgeory.text = product.category
 
             store.tvStoreName.text = product.storeName
             store.tvStoreCity.text = "${product.storeCity}, ${product.storeProvince}"
