@@ -57,6 +57,7 @@ class FeedsFragment : Fragment() {
 
     private fun addPostLiked(post: Post) {
         feedsViewModel.insertPostLiked(post)
+        feedsViewModel.likePostById(post.id)
     }
 
     private fun setupAdapter() {

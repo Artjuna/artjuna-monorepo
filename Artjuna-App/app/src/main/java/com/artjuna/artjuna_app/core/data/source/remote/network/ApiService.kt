@@ -42,6 +42,11 @@ interface ApiService {
         @Body body:FollowRequest
     ):Response<Void>
 
+    @POST("Like/Liked")
+    suspend fun likePost(
+        @Body body:LikePostRequest
+    ):Response<Void>
+
     @GET("Product/getProductFilter")
     suspend fun getProductByCategory(
         @Query("Category") category:String
