@@ -12,6 +12,7 @@ import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddHasSeenRequest
+import com.artjuna.artjuna_app.core.data.source.remote.request.FollowRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.*
 import com.artjuna.artjuna_app.utils.AppExecutors
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -49,6 +50,23 @@ class MainRepository(
             emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
         }
     }
+
+    fun followStore(storeId:String):LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        try {
+            val userId = local.getUser().id
+            remote.followStore(FollowRequest(userId,storeId)).let {
+                if(it.isSuccessful){
+                    emit(Result.Success(""))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
 
     fun getOrderByBuyerId():LiveData<Result<List<Order>>> = liveData {
         emit(Result.Loading)

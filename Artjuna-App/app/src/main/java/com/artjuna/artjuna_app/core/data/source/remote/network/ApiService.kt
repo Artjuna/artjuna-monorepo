@@ -37,6 +37,11 @@ interface ApiService {
         @Body body: AddHasSeenRequest
     ):Response<Void>
 
+    @POST("Follow/follow")
+    suspend fun followStore(
+        @Body body:FollowRequest
+    ):Response<Void>
+
     @GET("Product/getProductFilter")
     suspend fun getProductByCategory(
         @Query("Category") category:String

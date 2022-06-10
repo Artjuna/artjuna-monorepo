@@ -52,6 +52,8 @@ class RemoteDataSource(private val api:ApiService) {
 
     suspend fun addHasSeen(request:AddHasSeenRequest) = api.addHasSeen(request)
 
+    suspend fun followStore(request: FollowRequest) = api.followStore(request)
+
     fun getStoreById(storeId:String):Call<List<AccountResponse>>  = api.getAccountById(storeId)
 
     fun addAccount(request:AddAccountRequest) = api.addAccount(request)

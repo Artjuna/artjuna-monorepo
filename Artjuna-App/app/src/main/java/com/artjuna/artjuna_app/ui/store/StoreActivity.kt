@@ -76,22 +76,23 @@ class StoreActivity : AppCompatActivity() {
         if (isFollowed){
             isFollowed = false
             unfollowStore()
-            setButtonFollowIcon()
-            AppUtils.showToast(this, "Store unfollowed")
         }else{
             isFollowed = true
             followStore()
-            setButtonFollowIcon()
-            AppUtils.showToast(this, "Store followed")
         }
     }
 
     private fun followStore() {
         viewModel.insertStoreFollowed(store)
+        viewModel.followStoreById(store.id)
+        setButtonFollowIcon()
+        AppUtils.showToast(this, "Store followed")
     }
 
     private fun unfollowStore() {
         viewModel.deleteStoreFollowedById(storeId)
+        setButtonFollowIcon()
+        AppUtils.showToast(this, "Store unfollowed")
     }
 
 

@@ -13,10 +13,12 @@ class StoreViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     fun checkIfStoreFollowedById(id:String) = mainRepository.checkIfStoreFollowedById(id)
 
-    fun deleteStoreFollowedById(id:String) = mainRepository.deletePostFromLiked(id)
+    fun deleteStoreFollowedById(id:String) = mainRepository.deleteStoreFollowedById(id)
 
     fun insertStoreFollowed(store: User) = mainRepository.insertStoreFollowed(store)
 
     fun getPostByUserId(id: String) = mainRepository.getPostByUserId(id)
+
+    fun followStoreById(id:String) = mainRepository.followStore(id)
 
 }
