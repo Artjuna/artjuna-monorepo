@@ -125,6 +125,12 @@ object AppUtils{
         return Base64.decode(base64, Base64.DEFAULT)
     }
 
+    fun convertBase64toBitmap(base64Image: String):Bitmap{
+        val imageByteArray = Base64.decode(base64Image,Base64.DEFAULT)
+        val bitmapImage = BitmapFactory.decodeByteArray(imageByteArray,0, imageByteArray.size)
+        return bitmapImage
+    }
+
     //Get Image from Gallery
     private const val FILENAME_FORMAT = "dd-MMM-yyyy"
 
