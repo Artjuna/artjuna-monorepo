@@ -1,19 +1,32 @@
 package com.artjuna.artjuna_app.ui.detailproduct
 
+import android.content.ContentValues
 import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.model.Product
-import com.artjuna.artjuna_app.core.data.source.model.User
 import com.artjuna.artjuna_app.databinding.ActivityDetailProductBinding
 import com.artjuna.artjuna_app.ui.checkout.CheckoutActivity
 import com.artjuna.artjuna_app.ui.customize.CustomizeActivity
 import com.artjuna.artjuna_app.ui.store.StoreActivity
 import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
+import com.artjuna.artjuna_app.utils.AppUtils.saveImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class DetailProductActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDetailProductBinding
@@ -27,6 +40,15 @@ class DetailProductActivity : AppCompatActivity() {
         getProductData()
         setButtonClick()
     }
+
+    private fun download(image:String) {
+        viewModel.downloadImage(image).observe(this){
+            AppUtils.saveImage(this, it,product.name)
+            AppUtils.showToast(this, "Image Saved")
+        }
+    }
+
+
 
     private fun addHasSen() {
         viewModel.addHasSeen(product.id).observe(this){
@@ -108,12 +130,13 @@ class DetailProductActivity : AppCompatActivity() {
     private fun populateView() {
         with(binding){
             overview.btnBack.setOnClickListener { onBackPressed() }
-            overview.ivImage.loadImage(product.image)
+            overview.ivImage.loadImage(AppUtils.getProductImageURL(product.image))
             overview.tvProductName.text = product.name
             overview.tvProductPrice.text = "Rp ${product.price}"
             overview.tvProductDetail.text = product.detail
+            overview.tvProductCatgeory.text = product.category
 
-            store.tvStoreName.text = product.storeId
+            store.tvStoreName.text = product.storeName
             store.tvStoreCity.text = "${product.storeCity}, ${product.storeProvince}"
         }
     }

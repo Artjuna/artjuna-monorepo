@@ -5,9 +5,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
     <application
         android:name=".MyApplication"
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,6 +19,9 @@
         android:theme="@style/Theme.ArtjunaApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity
+            android:name=".ui.mystore.activity.orderhistory.OrderHistoryActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.storefollowed.StoreFollowedActivity"
             android:exported="false" />
@@ -29,7 +35,7 @@
             android:name=".ui.address.AddressActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.addproduct.AddProductActivity"
+            android:name="com.artjuna.artjuna_app.ui.mystore.activity.addproduct.AddProductActivity"
             android:exported="false" />
         <activity
             android:name=".ui.search.SearchActivity"
@@ -38,7 +44,7 @@
             android:name=".ui.store.StoreActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.addpost.AddPostActivity"
+            android:name="com.artjuna.artjuna_app.ui.mystore.activity.addpost.AddPostActivity"
             android:exported="false" />
         <activity
             android:name=".ui.mystore.MyStoreActivity"
@@ -53,7 +59,7 @@
             android:name=".ui.customize.CustomizeWithYourDesignActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.order.OrderActivity"
+            android:name="com.artjuna.artjuna_app.ui.order.OrderActivity"
             android:exported="false" />
         <activity
             android:name=".ui.cart.CartActivity"

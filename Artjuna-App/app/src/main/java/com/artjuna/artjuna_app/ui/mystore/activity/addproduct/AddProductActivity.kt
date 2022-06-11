@@ -1,8 +1,9 @@
-package com.artjuna.artjuna_app.ui.addproduct
+package com.artjuna.artjuna_app.ui.mystore.activity.addproduct
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.model.Product
@@ -15,7 +16,6 @@ import com.artjuna.artjuna_app.utils.AppUtils.uriToFile
 import com.google.android.material.chip.Chip
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
-import java.util.ArrayList
 
 class AddProductActivity : AppCompatActivity() {
 
@@ -24,15 +24,50 @@ class AddProductActivity : AppCompatActivity() {
     private lateinit var loadingDialog: LoadingDialog
     private var photoFile: File? = null
     private var category:String? = null
+    private var isUpdate = false
+    private var oldProduct = Product()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getPageType()
         setupLoading()
         setButtonClick()
         getCategoryList()
         setCategoryListener()
     }
+
+    private fun getPageType() {
+        val type = intent.extras?.getString(TYPE)
+        if(type == UPDATE){
+            isUpdate = true
+            getProductData()
+            setEditMode()
+        }
+    }
+
+    private fun setEditMode() {
+        with(binding){
+            btnAddPhoto.visibility = View.GONE
+            bottombar.btnUpload.text = "Update"
+        }
+    }
+
+    private fun getProductData() {
+        oldProduct = intent.extras!!.getParcelable<Product>(PRODUCT)!!
+        populateViewProduct(oldProduct)
+    }
+
+    private fun populateViewProduct(product: Product) {
+        with(binding){
+            ivImage.loadImage(product.image)
+            etProductName.setText(product.name)
+            etDetail.setText(product.detail)
+            etProductPrice.setText(product.price.toString())
+            category = product.category
+        }
+    }
+
 
     private fun getCategoryList() {
         viewModel.getCategories().observe(this){
@@ -40,7 +75,6 @@ class AddProductActivity : AppCompatActivity() {
                 is Result.Success -> addCategoryFromList(it.data)
             }
         }
-
     }
 
     private fun addCategoryFromList(list: List<String>) {
@@ -49,6 +83,7 @@ class AddProductActivity : AppCompatActivity() {
             chipCat.text = it
             chipCat.isClickable = true
             chipCat.isCheckable = true
+            chipCat.isChecked = category==it
             binding.categories.catGroup.addView(chipCat)
         }
         setCategoryListener()
@@ -65,8 +100,33 @@ class AddProductActivity : AppCompatActivity() {
         with(binding){
             btnAddPhoto.setOnClickListener { openGallery() }
             bottombar.btnUpload.setOnClickListener {
-                if(formNotEmpty()){
-                    uploadProduct()
+                if(isUpdate){
+                    updateProduct()
+                }else{
+                    if(formNotEmpty()){
+                        uploadProduct()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun updateProduct() {
+        oldProduct.name = binding.etProductName.text.toString()
+        oldProduct.price = binding.etProductPrice.text.toString().toInt()
+        oldProduct.detail = binding.etDetail.text.toString()
+        oldProduct.category = category.toString()
+        viewModel.updateProduct(oldProduct).observe(this){
+            when(it){
+                is Result.Loading -> loadingDialog.show()
+                is Result.Error -> {
+                    loadingDialog.dismiss()
+                    AppUtils.showToast(this, it.error)
+                }
+                is Result.Success -> {
+                    loadingDialog.dismiss()
+                    AppUtils.showToast(this, "Product Updated")
+                    finish()
                 }
             }
         }
@@ -96,7 +156,6 @@ class AddProductActivity : AppCompatActivity() {
         product.price = binding.etProductPrice.text.toString().toInt()
         product.detail = binding.etDetail.text.toString()
         product.category = category!!
-        product.isCustomizable = binding.custom.isActivated
         return product
     }
 
@@ -155,6 +214,14 @@ class AddProductActivity : AppCompatActivity() {
                 binding.ivImage.loadImage(selectedImg)
             }
         }
+    }
+
+
+    companion object{
+        const val TYPE = "TYPE"
+        const val PRODUCT = "PRODUCT"
+        const val ADD = "ADD"
+        const val UPDATE = "UPDATE"
     }
 
 }

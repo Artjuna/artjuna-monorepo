@@ -9,6 +9,7 @@ import com.artjuna.artjuna_app.core.data.source.model.Post
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentFeedsBinding
 import com.artjuna.artjuna_app.ui.adapter.PostAdapter
+import com.artjuna.artjuna_app.utils.AppUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FeedsFragment : Fragment() {
@@ -56,6 +57,7 @@ class FeedsFragment : Fragment() {
 
     private fun addPostLiked(post: Post) {
         feedsViewModel.insertPostLiked(post)
+        feedsViewModel.likePostById(post.id)
     }
 
     private fun setupAdapter() {
@@ -65,11 +67,20 @@ class FeedsFragment : Fragment() {
     private fun getListPost(){
         feedsViewModel.getPost().observe(viewLifecycleOwner){
             when(it){
-                is Result.Success -> {
-                    showLoading(false)
-                    checkPostLiked(it.data)
+                is Result.Loading -> {
+                    showLoading(true)
+                    showEmpty(false)
                 }
-                is Result.Loading -> showLoading(true)
+                is Result.Error -> {
+                    AppUtils.showToast(requireContext(), it.error)
+                    showLoading(true)
+                    showEmpty(false)
+                }
+                is Result.Success -> {
+                    checkPostLiked(it.data)
+                    showLoading(false)
+                    showEmpty(it.data.isEmpty(), "There are no post yet")
+                }
             }
         }
     }
@@ -92,6 +103,12 @@ class FeedsFragment : Fragment() {
             rvPost.visibility = if(isLoading) View.GONE else View.VISIBLE
         }
     }
+
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

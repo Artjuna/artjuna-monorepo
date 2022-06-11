@@ -31,4 +31,7 @@ app.use('/Post', PostRoute);
 const FollowRoute = require('./routes/FollowRoute');
 app.use('/Follow', FollowRoute);
 
+const OrderRoute = require('./routes/OrderRoute');
+app.use('/Order', OrderRoute);
+
 app.listen(process.env.PORT, () => console.log("port berjalan di " + process.env.PORT));

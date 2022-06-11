@@ -47,31 +47,46 @@ class ProductListActivity : AppCompatActivity() {
         binding.tvTitle.text = category
         viewModel.getProductByCategory(category!!).observe(this){
             when(it){
-                is Result.Loading -> showLoading(true)
+                is Result.Loading -> {
+                    showLoading(true)
+                    showEmpty(false)
+                }
                 is Result.Error -> {
                     showLoading(false)
+                    showEmpty(false)
                     AppUtils.showToast(this, it.error)
                 }
                 is Result.Success -> {
                     productAdapter.submitList(it.data)
+                    showEmpty(it.data.isEmpty(), "There are currently no products in this category")
                     showLoading(false)
                 }
             }
         }
     }
 
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
+    }
+
     private fun getRecommendation() {
         binding.tvTitle.text = Constant.Recommendation
         viewModel.getRecommended().observe(this){
             when(it){
-                is Result.Loading -> showLoading(true)
-                is Result.Success -> {
-                    productAdapter.submitList(it.data)
-                    showLoading(false)
+                is Result.Loading -> {
+                    showLoading(true)
+                    showEmpty(false)
                 }
                 is Result.Error -> {
                     AppUtils.showToast(this, it.error)
                     showLoading(false)
+                    showEmpty(false)
+                }
+                is Result.Success -> {
+                    productAdapter.submitList(it.data)
+                    showLoading(false)
+                    showEmpty(it.data.isEmpty(), "There are currently no products recommended for you")
                 }
             }
         }

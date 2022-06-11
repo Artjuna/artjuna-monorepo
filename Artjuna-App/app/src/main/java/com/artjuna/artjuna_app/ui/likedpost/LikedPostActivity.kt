@@ -1,6 +1,7 @@
 package com.artjuna.artjuna_app.ui.likedpost
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.model.Post
 import com.artjuna.artjuna_app.databinding.ActivityLikedPostBinding
@@ -24,7 +25,13 @@ class LikedPostActivity : AppCompatActivity() {
     private fun getListPost() {
         viewModel.getAllPostLiked().observe(this){
             postAdapter.submitList(it)
+            showEmpty(it.isEmpty(), "You haven't liked any post yet")
         }
+    }
+
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
     }
 
     private fun setButtonLikeClicked() {

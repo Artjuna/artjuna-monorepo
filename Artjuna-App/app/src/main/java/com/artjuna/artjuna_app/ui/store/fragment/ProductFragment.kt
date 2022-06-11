@@ -42,14 +42,19 @@ class ProductFragment : Fragment() {
     private fun getProductByUserId(storeId: String) {
         viewModel.getProductByUserId(storeId).observe(viewLifecycleOwner){
             when(it){
-                is Result.Loading -> showLoading(true)
-                is Result.Success -> {
-                    productAdapter.submitList(it.data)
-                    showLoading(false)
+                is Result.Loading -> {
+                    showLoading(true)
+                    showEmpty(false)
                 }
                 is Result.Error -> {
                     AppUtils.showToast(requireContext(), it.error)
                     showLoading(false)
+                    showEmpty(false)
+                }
+                is Result.Success -> {
+                    productAdapter.submitList(it.data)
+                    showLoading(false)
+                    showEmpty(it.data.isEmpty(), "This store haven't created any product yet")
                 }
             }
         }
@@ -66,6 +71,10 @@ class ProductFragment : Fragment() {
         }
     }
 
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
+    }
     companion object{
         const val STORE_ID = "STORE_ID"
     }

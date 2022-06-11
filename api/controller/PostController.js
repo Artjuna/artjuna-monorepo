@@ -114,42 +114,35 @@ const updatePost = async (req, res) => {
     
 }
 
-// const updatePost = async (req, res) => {
-//     try{
-//         let { PostID, UserID, PostName, Category, Caption, Image} = req.body;
-//         var List = {
-//             PostID: PostID,
-//             UserID: UserID,
-//             PostName: PostName,
-//             Category: Category,
-//             Caption: Caption,
-//             Image: Image
-//         }
-
-//         for (var key of Object.keys(List))
-//         {
-//             if (List[key] == undefined)
-//             {
-//                 delete List[key]; 
-//             }
-//         }
-
-//         await Product.update(List, {where:{
-//           ProductID: ProductID
-//         }})
-
-//         res.status(200).send("Update data success");
-//     }
-//     catch (err)
-//     {
-//         console.error(err.message);
-//         res.status(500).send(err.message);
-//     }
+const getPostFilter = async (req, res) => {
+    let PostID = req.query.PostID;
+    let UserID = req.query.UserID;
+    let PostName = req.query.PostName;
     
-// }
+    var List = {
+        PostID: PostID,
+        UserID: UserID,
+        PostName: PostName        
+    }
+
+    for (var key of Object.keys(List))
+    {
+        if (List[key] == undefined)
+        {
+            delete List[key]; 
+        }
+    }
+    
+    const getPost = await Post.findAll({raw: true,
+        where: List
+    });
+
+    res.json(getPost);
+}
 
 module.exports = {
     addPost,
     getPost,
-    updatePost
+    updatePost,
+    getPostFilter
 }

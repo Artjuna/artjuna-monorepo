@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.databinding.ItemProductBinding
 import com.artjuna.artjuna_app.ui.detailproduct.DetailProductActivity
+import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 
 class ProductAdapter:ListAdapter<Product, ProductAdapter.ProductViewHolder>(DIFF_CALLBACK) {
@@ -16,7 +17,7 @@ class ProductAdapter:ListAdapter<Product, ProductAdapter.ProductViewHolder>(DIFF
     class ProductViewHolder(private val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(product: Product){
             with(binding){
-                ivImage.loadImage(product.image)
+                ivImage.loadImage(AppUtils.getProductImageURL(product.image))
                 tvName.text = product.name
                 tvPrice.text = "Rp ${product.price}"
                 tvCity.text = "${product.storeCity}, ${product.storeProvince}"

@@ -31,17 +31,17 @@ data class GetPostResponse(
 	val caption: String,
 
 	@field:SerializedName("FullName")
-	val fullName: String
+	val fullName: String?
 )
 
 fun GetPostResponse.toPost(): Post {
 	return Post(
 		id = postID,
 		userId = userID,
-		image = AppUtils.getPostImageURL(image),
+		image = image,
 		productName = postName,
 		like = like,
 		caption = caption,
-		userName = fullName
+		userName = fullName ?: userID
 	)
 }

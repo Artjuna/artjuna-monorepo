@@ -12,11 +12,16 @@ import retrofit2.Call
 
 class RemoteDataSource(private val api:ApiService) {
 
-    //suspend fun getRegister() = api.getRegister()
-    suspend fun getProduct() = api.getProduct()
+    fun downloadImage(image:String) = api.downloadImage(image)
+
+    suspend fun getProduct(page:Int,limit:Int) = api.getProduct(page,limit)
     suspend fun getProductByCategory(category:String) = api.getProductByCategory(category)
     suspend fun getProductByName(name:String) = api.getProductByName(name)
-    suspend fun getProductByUserId(userId:String) = api.getProductByName(userId)
+    suspend fun getProductByUserId(userId:String) = api.getProductByUserId(userId)
+
+    suspend fun updateProduct(request: UpdateProductRequest) = api.updateProduct(request)
+
+    suspend fun addOrder(request: AddOrderRequest) = api.addOrder(request)
 
     suspend fun uploadProduct(product:Product, image:MultipartBody.Part) =
         api.uploadProduct(
@@ -29,9 +34,12 @@ class RemoteDataSource(private val api:ApiService) {
             product.price,
             image
         )
+
     suspend fun getCategory() = api.getCategory()
 
     suspend fun getPost() = api.getPost()
+
+    suspend fun getPostByUserId(userId: String) = api.getPostByUserId(userId)
 
     suspend fun uploadPost(post: Post,image: MultipartBody.Part) =
         api.uploadPost(
@@ -41,11 +49,16 @@ class RemoteDataSource(private val api:ApiService) {
             image
         )
 
+    suspend fun getOrderByBuyerId(id:String) = api.getOrderByBuyerId(id)
+    suspend fun getOrderBySellerId(id:String) = api.getOrderBySellerId(id)
+
     suspend fun addHasSeen(request:AddHasSeenRequest) = api.addHasSeen(request)
 
+    suspend fun followStore(request: FollowRequest) = api.followStore(request)
+
+    suspend fun likePost(request: LikePostRequest) = api.likePost(request)
 
     fun getStoreById(storeId:String):Call<List<AccountResponse>>  = api.getAccountById(storeId)
-
 
     fun addAccount(request:AddAccountRequest) = api.addAccount(request)
     fun getAccountById(userId:String): Call<List<AccountResponse>> = api.getAccountById(userId)

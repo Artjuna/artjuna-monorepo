@@ -1,5 +1,6 @@
 package com.artjuna.artjuna_app.ui.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.model.Post
 import com.artjuna.artjuna_app.databinding.ItemPostBinding
+import com.artjuna.artjuna_app.ui.store.StoreActivity
 import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 
@@ -20,14 +22,20 @@ class PostAdapter:ListAdapter<Post, PostAdapter.PostViewHolder>(DIFF_CALLBACK) {
         fun bind(post: Post){
             with(binding){
                 tvUsername.text = post.userName
-                ivPostImage.loadImage(post.image)
+                ivPostImage.loadImage(AppUtils.getPostImageURL(post.image))
                 tvProductName.text = post.productName
                 tvLiked.text = AppUtils.getLikedBy(post.like)
                 tvNameCaption.text = AppUtils.getUserandCaption(post.userName, post.caption)
 
                 setButtonLike(post.isLiked)
 
-                binding.btnLike.setOnClickListener {
+                btnStore.setOnClickListener {
+                    val intent = Intent(itemView.context, StoreActivity::class.java)
+                    intent.putExtra(StoreActivity.EXTRA_STORE_ID, post.userId)
+                    itemView.context.startActivity(intent)
+                }
+
+                btnLike.setOnClickListener {
                     post.isLiked = !post.isLiked
                     setButtonLike(post.isLiked)
                     onLikeClick?.invoke(post)

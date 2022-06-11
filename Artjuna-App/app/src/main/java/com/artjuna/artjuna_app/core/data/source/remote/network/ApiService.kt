@@ -4,11 +4,17 @@ import com.artjuna.artjuna_app.core.data.source.remote.request.*
 import com.artjuna.artjuna_app.core.data.source.remote.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
+
+    @GET("ProductImages/{image}")
+    fun downloadImage(
+        @Path("image") image:String
+    ):Call<ResponseBody>
 
     @Multipart
     @POST("Product/addProduct")
@@ -37,24 +43,37 @@ interface ApiService {
         @Body body: AddHasSeenRequest
     ):Response<Void>
 
+    @POST("Follow/follow")
+    suspend fun followStore(
+        @Body body:FollowRequest
+    ):Response<Void>
+
+    @POST("Like/Liked")
+    suspend fun likePost(
+        @Body body:LikePostRequest
+    ):Response<Void>
+
     @GET("Product/getProductFilter")
     suspend fun getProductByCategory(
         @Query("Category") category:String
-    ): Response<List<GetProductResponse>>
+    ): Response<List<ProductResponse>>
 
     @GET("Product/getProductFilter")
     suspend fun getProductByName(
         @Query("ProductName") name:String
-    ): Response<List<GetProductResponse>>
+    ): Response<List<ProductResponse>>
 
     @GET("Product/getProductFilter")
     suspend fun getProductByUserId(
         @Query("UserID") userId:String
-    ): Response<List<GetProductResponse>>
+    ): Response<List<ProductResponse>>
 
 
     @GET("Product/getAllProduct")
-    suspend fun getProduct():Response<List<GetProductResponse>>
+    suspend fun getProduct(
+        @Query("page") page:Int,
+        @Query("limit") limit:Int,
+    ):Response<GetProductResponse>
 
     @GET("Product/getAllProductCategory")
     suspend fun getCategory():Response<List<GetCategoryResponse>>
@@ -62,6 +81,30 @@ interface ApiService {
     @GET("Post/getPost")
     suspend fun getPost():Response<List<GetPostResponse>>
 
+    @GET("Post/getPostFilter")
+    suspend fun getPostByUserId(
+        @Query("UserID") userId: String
+    ):Response<List<GetPostResponse>>
+
+    @PUT("Product/updateProduct")
+    suspend fun updateProduct(
+        @Body body: UpdateProductRequest
+    ):Response<Void>
+
+    @POST("Order/addOrder")
+    suspend fun addOrder(
+        @Body body: AddOrderRequest
+    ):Response<Void>
+
+    @GET("Order/getOrderFilter")
+    suspend fun getOrderByBuyerId(
+        @Query("BuyerUserID") buyerId:String
+    ):Response<List<GetOrderResponse>>
+
+    @GET("Order/getOrderFilter")
+    suspend fun getOrderBySellerId(
+        @Query("SellerUserID") id:String
+    ):Response<List<GetOrderResponse>>
 
     @POST("Account/addAccount")
     fun addAccount(
@@ -77,6 +120,8 @@ interface ApiService {
     fun updateAccount(
         @Body body:UpdateAccountRequest
     ):Call<Void>
+
+
 
 
 }

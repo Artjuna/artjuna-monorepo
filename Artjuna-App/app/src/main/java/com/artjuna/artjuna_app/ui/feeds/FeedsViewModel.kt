@@ -13,4 +13,6 @@ class FeedsViewModel(private val mainRepository: MainRepository) : ViewModel() {
     fun insertPostLiked(post:Post) = mainRepository.insertPostLiked(post)
 
     fun deletePostLikedById(id:String) = mainRepository.deletePostFromLiked(id)
+
+    fun likePostById(id:String) = mainRepository.likePost(id)
 }

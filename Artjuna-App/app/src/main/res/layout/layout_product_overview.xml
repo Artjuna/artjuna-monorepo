@@ -52,8 +52,19 @@
                 style="@style/Subtitle1Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
                 android:text="Rp 2.800.000"/>
+
+            <TextView
+                android:id="@+id/tv_product_catgeory"
+                style="@style/Subtitle2Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey_700"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:text="Lukisan"/>
+
+
             <TextView
                 style="@style/Body1Medium"
                 android:layout_width="match_parent"

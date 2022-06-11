@@ -14,4 +14,6 @@ class DetailViewModel(private val mainRepository: MainRepository) : ViewModel() 
 
     fun deleteProductFromCartById(id: String) = mainRepository.deleteProductFromCartById(id)
 
+    fun downloadImage(image:String) = mainRepository.downloadImage(image)
+
 }

@@ -1,6 +1,9 @@
 package com.artjuna.artjuna_app.core.data.repositories
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
+import androidx.core.graphics.BitmapCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
@@ -12,27 +15,47 @@ import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddHasSeenRequest
-import com.artjuna.artjuna_app.core.data.source.remote.request.UploadPostRequest
-import com.artjuna.artjuna_app.core.data.source.remote.response.AccountResponse
-import com.artjuna.artjuna_app.core.data.source.remote.response.toPost
-import com.artjuna.artjuna_app.core.data.source.remote.response.toProduct
-import com.artjuna.artjuna_app.core.data.source.remote.response.toUser
+import com.artjuna.artjuna_app.core.data.source.remote.request.FollowRequest
+import com.artjuna.artjuna_app.core.data.source.remote.request.LikePostRequest
+import com.artjuna.artjuna_app.core.data.source.remote.response.*
 import com.artjuna.artjuna_app.utils.AppExecutors
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.parse
+import com.artjuna.artjuna_app.utils.AppUtils
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
+import java.io.*
 
 class MainRepository(
     private val local:LocalDataSource,
     private val remote:RemoteDataSource,
     private val appExecutors: AppExecutors
 ) {
+
+    private val TAG = MainRepository::class.java.simpleName
+
+    fun downloadImage(image:String):LiveData<Bitmap>{
+        val img = MutableLiveData<Bitmap>()
+        remote.downloadImage(image).enqueue(object :Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if(response.isSuccessful){
+                    val res = response.body()?.byteStream()
+                    val imgRes = BitmapFactory.decodeStream(res)
+                    img.postValue(imgRes)
+                    Log.d("GALIH", BitmapCompat.getAllocationByteCount(imgRes).toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.d("MAINREPOSITORY", t.message.toString())
+            }
+
+        })
+        return img
+    }
 
 
     fun setAddress(address: Address) = local.setAddress(address)
@@ -56,6 +79,80 @@ class MainRepository(
         }
     }
 
+    fun followStore(storeId:String):LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        try {
+            val userId = local.getUser().id
+            remote.followStore(FollowRequest(userId,storeId)).let {
+                if(it.isSuccessful){
+                    emit(Result.Success(""))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+    fun likePost(postId:String):LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        try {
+            val userId = local.getUser().id
+            remote.likePost(LikePostRequest(userId,postId)).let {
+                if(it.isSuccessful){
+                    emit(Result.Success(""))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+            Log.d("okhttp",e.message.toString() )
+        }
+    }
+
+
+
+
+    fun getOrderByBuyerId():LiveData<Result<List<Order>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val userId = getUser().id
+            remote.getOrderByBuyerId(userId).let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.toOrder() }
+                    emit(Result.Success(res!!))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+    fun getOrderBySellerId():LiveData<Result<List<Order>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val userId = getUser().id
+            remote.getOrderBySellerId(userId).let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.toOrder() }
+                    emit(Result.Success(res!!))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+
+
     fun getCategory():LiveData<Result<List<String>>> = liveData {
         emit(Result.Loading)
         try {
@@ -77,11 +174,10 @@ class MainRepository(
     fun getProduct(size:Int):LiveData<Result<List<Product>>> = liveData {
         emit(Result.Loading)
         try {
-            remote.getProduct().let {
+            remote.getProduct(1,size).let {
                 if(it.isSuccessful){
-                    val body = it.body()
-                    val res = body?.map { it.toProduct() }
-                    val list = res!!.take(size)
+                    val res = it.body()?.results
+                    val list = res!!.map { it.toProduct() }
                     emit(Result.Success(list))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
@@ -95,11 +191,11 @@ class MainRepository(
     fun getProduct():LiveData<Result<List<Product>>> = liveData {
         emit(Result.Loading)
         try {
-            remote.getProduct().let {
+            remote.getProduct(1,100).let {
                 if(it.isSuccessful){
-                    val body = it.body()
-                    val res = body?.map { it.toProduct() }
-                    emit(Result.Success(res!!))
+                    val res = it.body()?.results
+                    val list = res!!.map { it.toProduct() }
+                    emit(Result.Success(list))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
                 }
@@ -152,8 +248,24 @@ class MainRepository(
                 if(it.isSuccessful){
                     val body = it.body()
                     val res = body?.map { it.toProduct() }
-                    val list = res!!.filter { it.storeId == userId }
-                    emit(Result.Success(list))
+                    emit(Result.Success(res!!))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+    fun getPostByUserId(userId: String):LiveData<Result<List<Post>>> = liveData {
+        emit(Result.Loading)
+        try {
+            remote.getPostByUserId(userId).let {
+                if(it.isSuccessful){
+                    val body = it.body()
+                    val res = body?.map { it.toPost() }
+                    emit(Result.Success(res!!))
                 }else {
                     emit(Result.Error(it.errorBody().toString() ))
                 }
@@ -368,6 +480,39 @@ class MainRepository(
             }
         })
         return result
+    }
+
+    fun updateProduct(product: Product):LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        try {
+            remote.updateProduct(product.toUpdateProductRequest()).let {
+                if (it.isSuccessful){
+                    emit(Result.Success("Success"))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+    fun addOrder(order: Order):LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        val userId = local.getUser().id
+        order.buyerId = userId
+        try {
+            remote.addOrder(order.toAddOrderRequest()).let {
+                if (it.isSuccessful){
+                    emit(Result.Success("Success"))
+                }else {
+                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+            Log.d(TAG, e.message.toString())
+        }
     }
 
 }

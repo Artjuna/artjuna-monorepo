@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.FragmentMyProductBinding
-import com.artjuna.artjuna_app.ui.adapter.ProductAdapter
-import com.artjuna.artjuna_app.ui.addproduct.AddProductActivity
+import com.artjuna.artjuna_app.ui.mystore.activity.addproduct.AddProductActivity
 import com.artjuna.artjuna_app.ui.mystore.MyStoreViewModel
+import com.artjuna.artjuna_app.ui.mystore.adapter.MyProductAdapter
+import com.artjuna.artjuna_app.utils.AppUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyProductFragment : Fragment() {
@@ -18,7 +19,7 @@ class MyProductFragment : Fragment() {
     private lateinit var binding:FragmentMyProductBinding
 
     private val viewModel:MyStoreViewModel by viewModel()
-    private val productAdapter = ProductAdapter()
+    private val myProductAdapter = MyProductAdapter()
     private var userId = ""
 
     override fun onCreateView(
@@ -45,15 +46,38 @@ class MyProductFragment : Fragment() {
     private fun getListProduct() {
         viewModel.getProductByUserId(userId).observe(viewLifecycleOwner){
             when(it){
+                is Result.Loading -> {
+                    showLoading(true)
+                    showEmpty(false)
+                }
+                is Result.Error -> {
+                    AppUtils.showToast(requireContext(), it.error)
+                    showLoading(false)
+                    showEmpty(false)
+                }
                 is Result.Success -> {
-                    productAdapter.submitList(it.data)
+                    myProductAdapter.submitList(it.data)
+                    showLoading(false)
+                    showEmpty(it.data.isEmpty(), "You haven't created any product yet")
                 }
             }
         }
     }
 
+    private fun showLoading(loading:Boolean){
+        with(binding){
+            load.visibility = if(loading) View.VISIBLE else View.GONE
+            rvProduct.visibility = if(loading) View.GONE else View.VISIBLE
+        }
+    }
+
+    private fun showEmpty(empty: Boolean, message:String="") {
+        binding.empty.root.visibility = if(empty) View.VISIBLE else View.GONE
+        binding.empty.tvMessage.text = message
+    }
+
     private fun setupAdapter(){
-        binding.rvProduct.adapter = productAdapter
+        binding.rvProduct.adapter = myProductAdapter
     }
 
     private fun populateView() {

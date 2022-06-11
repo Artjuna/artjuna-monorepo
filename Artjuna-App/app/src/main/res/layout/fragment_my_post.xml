@@ -14,9 +14,32 @@
         android:layout_height="wrap_content"
         android:text="Add Post"/>
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/post_loading"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/item_post_load"/>
+            <include layout="@layout/item_post_load"/>
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:listitem="@layout/item_post"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <include
+        android:id="@+id/empty"
+        layout="@layout/layout_empty"
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 </LinearLayout>

@@ -1,7 +1,7 @@
 package com.artjuna.artjuna_app.core.di
 
-import com.artjuna.artjuna_app.ui.addpost.AddPostViewModel
-import com.artjuna.artjuna_app.ui.addproduct.AddProductViewModel
+import com.artjuna.artjuna_app.ui.mystore.activity.addpost.AddPostViewModel
+import com.artjuna.artjuna_app.ui.mystore.activity.addproduct.AddProductViewModel
 import com.artjuna.artjuna_app.ui.address.AddressViewModel
 import com.artjuna.artjuna_app.ui.auth.AuthViewModel
 import com.artjuna.artjuna_app.ui.cart.CartlViewModel
@@ -11,8 +11,10 @@ import com.artjuna.artjuna_app.ui.feeds.FeedsViewModel
 import com.artjuna.artjuna_app.ui.home.HomeViewModel
 import com.artjuna.artjuna_app.ui.likedpost.LikedPostViewModel
 import com.artjuna.artjuna_app.ui.mystore.MyStoreViewModel
+import com.artjuna.artjuna_app.ui.mystore.activity.orderhistory.OrderHistoryViewModel
 import com.artjuna.artjuna_app.ui.productlist.ProductListViewModel
 import com.artjuna.artjuna_app.ui.profile.ProfileViewModel
+import com.artjuna.artjuna_app.ui.order.OrderViewModel
 import com.artjuna.artjuna_app.ui.profilesettings.ProfileSettingsViewModel
 import com.artjuna.artjuna_app.ui.search.SearchViewModel
 import com.artjuna.artjuna_app.ui.splash.SplashViewModel
@@ -40,4 +42,6 @@ val viewModelModule = module {
     viewModel { LikedPostViewModel(get()) }
     viewModel { StoreFollowedViewModel(get()) }
     viewModel { MyStoreViewModel(get()) }
+    viewModel { OrderViewModel(get()) }
+    viewModel { OrderHistoryViewModel(get()) }
 }

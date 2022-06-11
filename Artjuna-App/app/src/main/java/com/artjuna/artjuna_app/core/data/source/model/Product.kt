@@ -2,7 +2,7 @@ package com.artjuna.artjuna_app.core.data.source.model
 
 import android.os.Parcelable
 import com.artjuna.artjuna_app.core.data.source.local.entity.ProductEntity
-import com.artjuna.artjuna_app.core.data.source.remote.request.UploadProductRequest
+import com.artjuna.artjuna_app.core.data.source.remote.request.UpdateProductRequest
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -20,14 +20,15 @@ data class Product(
     var storeName:String="",
 ):Parcelable
 
-fun Product.toProductRequest():UploadProductRequest{
-    return UploadProductRequest(
+fun Product.toUpdateProductRequest():UpdateProductRequest{
+    return UpdateProductRequest(
+        ProductID = id,
+        UserID = storeId,
         ProductName = name,
-        Image = image,
         Category = category,
         City = storeCity,
         Province = storeProvince,
-        Caption = detail,
+        Description = detail,
         Price = price
     )
 }
