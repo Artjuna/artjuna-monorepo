@@ -1,27 +1,54 @@
 package com.artjuna.artjuna_app.utils
 
 import android.content.ContentResolver
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
+import android.provider.MediaStore
 import android.text.Html
 import android.text.Spanned
 import android.util.Base64
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import com.artjuna.artjuna_app.BuildConfig
 import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.bumptech.glide.Glide
+import com.squareup.okhttp.ResponseBody
 import java.io.*
 import java.net.URLEncoder
 import java.text.SimpleDateFormat
 import java.util.*
 
 object AppUtils{
+
+    fun saveImage(context: Context,bitmap: Bitmap, fileName:String):Boolean{
+        val fos:OutputStream
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+                val resolver = context.contentResolver
+                val contentValues = ContentValues()
+                contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "$fileName.jpg")
+                contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
+                contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES+File.separator+"Artjuna")
+                val imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+                fos = resolver.openOutputStream(Objects.requireNonNull(imageUri)!!) as FileOutputStream
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+                Objects.requireNonNull(fos)
+                return true
+            }
+        }catch (e:Exception){
+            Log.d("GALIH", e.message.toString())
+            return false
+        }
+        return false
+    }
 
     fun sendOrderToWA(context: Context, number: String, product: Product){
         val message = "Order Invoice\n" +
