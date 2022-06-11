@@ -12,6 +12,8 @@ import retrofit2.Call
 
 class RemoteDataSource(private val api:ApiService) {
 
+    fun downloadImage(image:String) = api.downloadImage(image)
+
     suspend fun getProduct(page:Int,limit:Int) = api.getProduct(page,limit)
     suspend fun getProductByCategory(category:String) = api.getProductByCategory(category)
     suspend fun getProductByName(name:String) = api.getProductByName(name)

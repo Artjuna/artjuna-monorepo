@@ -4,11 +4,17 @@ import com.artjuna.artjuna_app.core.data.source.remote.request.*
 import com.artjuna.artjuna_app.core.data.source.remote.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
+
+    @GET("ProductImages/{image}")
+    fun downloadImage(
+        @Path("image") image:String
+    ):Call<ResponseBody>
 
     @Multipart
     @POST("Product/addProduct")

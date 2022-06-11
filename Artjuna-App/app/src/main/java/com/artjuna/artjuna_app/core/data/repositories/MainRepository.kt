@@ -1,6 +1,9 @@
 package com.artjuna.artjuna_app.core.data.repositories
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
+import androidx.core.graphics.BitmapCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
@@ -16,12 +19,15 @@ import com.artjuna.artjuna_app.core.data.source.remote.request.FollowRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.LikePostRequest
 import com.artjuna.artjuna_app.core.data.source.remote.response.*
 import com.artjuna.artjuna_app.utils.AppExecutors
+import com.artjuna.artjuna_app.utils.AppUtils
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
+import java.io.*
 
 class MainRepository(
     private val local:LocalDataSource,
@@ -30,6 +36,27 @@ class MainRepository(
 ) {
 
     private val TAG = MainRepository::class.java.simpleName
+
+    fun downloadImage(image:String):LiveData<Bitmap>{
+        val img = MutableLiveData<Bitmap>()
+        remote.downloadImage(image).enqueue(object :Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if(response.isSuccessful){
+                    val res = response.body()?.byteStream()
+                    val imgRes = BitmapFactory.decodeStream(res)
+                    img.postValue(imgRes)
+                    Log.d("GALIH", BitmapCompat.getAllocationByteCount(imgRes).toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.d("MAINREPOSITORY", t.message.toString())
+            }
+
+        })
+        return img
+    }
+
 
     fun setAddress(address: Address) = local.setAddress(address)
     fun getAddress():Address = local.getAddress()
