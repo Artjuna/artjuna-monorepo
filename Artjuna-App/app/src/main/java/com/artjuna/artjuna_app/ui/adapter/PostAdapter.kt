@@ -22,7 +22,7 @@ class PostAdapter:ListAdapter<Post, PostAdapter.PostViewHolder>(DIFF_CALLBACK) {
         fun bind(post: Post){
             with(binding){
                 tvUsername.text = post.userName
-                ivPostImage.loadImage(post.image)
+                ivPostImage.loadImage(AppUtils.getPostImageURL(post.image))
                 tvProductName.text = post.productName
                 tvLiked.text = AppUtils.getLikedBy(post.like)
                 tvNameCaption.text = AppUtils.getUserandCaption(post.userName, post.caption)

@@ -150,7 +150,7 @@ class CheckoutActivity : AppCompatActivity() {
         with(binding.product){
             tvStoreName.text = product.storeName
             tvStoreCity.text = product.storeCity
-            ivImage.loadImage(product.image)
+            ivImage.loadImage(AppUtils.getProductImageURL(product.image))
             tvName.text = product.name
             tvPrice.text = "Rp ${product.price}"
         }

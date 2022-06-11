@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.artjuna.artjuna_app.core.data.source.model.Order
 import com.artjuna.artjuna_app.databinding.ItemProductOrderBinding
+import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 
 class OrderAdapter:ListAdapter<Order, OrderAdapter.ViewHolder>(DIFF_CALLBACK) {
@@ -16,7 +17,7 @@ class OrderAdapter:ListAdapter<Order, OrderAdapter.ViewHolder>(DIFF_CALLBACK) {
             with(binding){
                 tvStoreName.text = order.storeName
                 tvDate.text = order.date
-                ivImage.loadImage(order.image)
+                ivImage.loadImage(AppUtils.getProductImageURL(order.image))
                 tvProductName.text = order.productName
                 tvPrice.text = "Rp ${order.price}"
             }
