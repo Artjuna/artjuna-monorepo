@@ -56,6 +56,6 @@ fun GetOrderResponse.toOrder():Order{
 		productName = productName,
 		price = totalPrice,
 		date = createdAt,
-		image = AppUtils.getProductImageURL(image)
+		image = image
 	)
 }

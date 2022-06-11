@@ -65,7 +65,7 @@ fun ProductResponse.toProduct(): Product {
 	return Product(
 		id = productID,
 		name=productName,
-		image = AppUtils.getProductImageURL(image),
+		image = image,
 		price =price,
 		detail = description,
 		category = category,

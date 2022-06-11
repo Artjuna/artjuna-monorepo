@@ -38,7 +38,7 @@ fun GetPostResponse.toPost(): Post {
 	return Post(
 		id = postID,
 		userId = userID,
-		image = AppUtils.getPostImageURL(image),
+		image = image,
 		productName = postName,
 		like = like,
 		caption = caption,
