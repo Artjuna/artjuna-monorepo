@@ -8,6 +8,7 @@ import com.artjuna.artjuna_app.databinding.ActivityResultCustomizeBinding
 import com.artjuna.artjuna_app.ui.checkout.CheckoutCustomActivity
 import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
+import com.artjuna.artjuna_app.utils.AppUtils.saveImage
 
 class ResultCustomizeActivity : AppCompatActivity() {
     private lateinit var binding:ActivityResultCustomizeBinding
@@ -61,11 +62,19 @@ class ResultCustomizeActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
+
+                saveCustomImage(imgB64!!)
             }
 
 
 
         }
+    }
+
+    private fun saveCustomImage(imgB64: String) {
+        val imgBitmap = AppUtils.convertBase64toBitmap(imgB64)
+        AppUtils.saveImage(this@ResultCustomizeActivity, imgBitmap, "${product.name} Custom with AI")
+        AppUtils.showToast(this@ResultCustomizeActivity, "Your customized product has been saved to this device")
     }
 
 }
