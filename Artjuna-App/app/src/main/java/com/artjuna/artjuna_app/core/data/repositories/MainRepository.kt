@@ -358,7 +358,7 @@ class MainRepository(
             )
 
             remote.uploadStyleTransfer(productId, imageMultipart).let {
-                val img = it.stylizedImage
+                val img = it.body()!!.stylizedImage
                 Result.Success(img)
             }
 

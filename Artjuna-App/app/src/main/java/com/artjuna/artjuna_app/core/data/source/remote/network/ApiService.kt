@@ -58,7 +58,7 @@ interface ApiService {
     suspend fun styleTransfer(
         @Part("ProductID") productId : RequestBody,
         @Part StyleImage : MultipartBody.Part
-    ):StyleTransferResponse
+    ):Response<StyleTransferResponse>
 
     @GET("Product/getProductFilter")
     suspend fun getProductByCategory(

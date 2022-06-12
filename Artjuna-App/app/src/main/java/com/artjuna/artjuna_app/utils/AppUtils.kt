@@ -20,7 +20,6 @@ import com.artjuna.artjuna_app.BuildConfig
 import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.bumptech.glide.Glide
-import com.squareup.okhttp.ResponseBody
 import java.io.*
 import java.net.URLEncoder
 import java.text.SimpleDateFormat
@@ -158,5 +157,19 @@ object AppUtils{
 
         return myFile
     }
+
+    fun stringToBitMap(encodedString: String?): Bitmap? {
+        return try {
+            val encodeByte =
+                Base64.decode(encodedString, Base64.DEFAULT)
+            BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size)
+        } catch (e: java.lang.Exception) {
+            e.message
+            null
+        }
+    }
+
+
+
 
 }

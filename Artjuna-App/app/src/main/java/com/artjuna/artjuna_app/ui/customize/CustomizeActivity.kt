@@ -3,23 +3,19 @@ package com.artjuna.artjuna_app.ui.customize
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Base64
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.ActivityCustomizeBinding
 import com.artjuna.artjuna_app.ui.loading.LoadingDialog
-import com.artjuna.artjuna_app.ui.resultcustomize.ResultCustomizeActivity
 import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 import com.artjuna.artjuna_app.utils.AppUtils.uriToFile
 import com.google.android.material.snackbar.Snackbar
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -122,39 +118,32 @@ class CustomizeActivity : AppCompatActivity() {
             viewModel.uploadStyleTransfer(id!!, photoFile!!).observe(this) {
                 when (it) {
                     is Result.Loading -> {
-                        loadingDialog.show()
-                        binding.resulCustom.visibility = View.INVISIBLE
 
                     }
                     is Result.Success -> {
-                        loadingDialog.dismiss()
+                        val img = it.data.stylizedImage
+                        val iBitmap = AppUtils.convertBase64toBitmap(img!!)
+                        //binding.ivStyleTransfer.setImageBitmap(iBitmap)
 
-                        val body = it.data.stylizedImage
-                        val iBitmap = AppUtils.convertBase64toBitmap(body!!)
-                        val saveImage = AppUtils.saveImage(baseContext, iBitmap, "ResultCustomWithAI")
-                        binding.resulCustom.visibility = View.VISIBLE
-                        binding.btnDownloadResultCustomWithAi.setOnClickListener { saveImage }
+                        val imageByteArray: ByteArray = Base64.decode(img, Base64.DEFAULT)
+                        binding.ivStyleTransfer.loadImage(imageByteArray)
 
-                       /** Intent(
+                        //val saveImage = AppUtils.saveImage( baseContext, iBitmap, "ResultCustomWithAI")
+                        //binding.resulCustom.visibility = View.VISIBLE
+                       // binding.btnDownloadResultCustomWithAi.setOnClickListener { saveImage }
+
+                      /** Intent(
                             this@CustomizeActivity,
                             ResultCustomizeActivity::class.java
                         ).also { intent ->
-                            intent.putExtra(ResultCustomizeActivity.EXTRA_IMG, iBitmap)
-                            startActivity(intent)
-                        }
-
-                        Intent(
-                            this@CustomizeActivity,
-                            ResultCustomizeActivity::class.java
-                        ).also { intent ->
-                            intent.putExtra(ResultCustomizeActivity.EXTRA_PRODUCT, dataProduct)
-                            startActivity(intent)
-                        } **/
-
+                           intent.putExtra(ResultCustomizeActivity.EXTRA_IMG, iBitmap.toString())
+                           intent.putExtra(ResultCustomizeActivity.EXTRA_PRODUCT, dataProduct)
+                           startActivity(intent)
+                        }**/
 
                     }
                     is Result.Error -> {
-                        loadingDialog.dismiss()
+                       loadingDialog.dismiss()
                         AppUtils.showToast(this, it.error)
                         binding.resulCustom.visibility = View.INVISIBLE
 

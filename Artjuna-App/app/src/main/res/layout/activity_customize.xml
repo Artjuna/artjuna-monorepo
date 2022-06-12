@@ -102,12 +102,17 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/resul_custom"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
 
-                <Button
+                <ImageView
+                    android:id="@+id/iv_style_transfer"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:background="@color/grey_200"/>
+
+               <!-- <Button
                     android:id="@+id/btn_download_result_custom_with_ai"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -116,7 +121,7 @@
                     android:layout_marginStart="@dimen/_8sdp"
                     android:text="Download The Result Custom With AI"
                     android:textSize="12sp"
-                    android:layout_marginEnd="@dimen/_8sdp"/>
+                    android:layout_marginEnd="@dimen/_8sdp"/> -->
 
             </androidx.cardview.widget.CardView>
 

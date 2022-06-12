@@ -51,8 +51,10 @@ class ResultCustomizeActivity : AppCompatActivity() {
     private fun image(){
         val extras = intent.extras
         if (extras != null){
-            val img = extras.getString(EXTRA_IMG)
-            binding.ivResultCustom.loadImage(img)
+            val imgstr = extras.getString(EXTRA_IMG)
+            val img = AppUtils.stringToBitMap(imgstr)
+
+            binding.ivResultCustom.setImageBitmap(img)
 
 
         }
