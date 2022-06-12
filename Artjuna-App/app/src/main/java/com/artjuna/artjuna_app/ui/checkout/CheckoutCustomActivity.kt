@@ -2,9 +2,15 @@ package com.artjuna.artjuna_app.ui.checkout
 
 import android.R
 import android.content.Intent
-import android.graphics.BitmapFactory
+import android.content.Intent.EXTRA_STREAM
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.model.Address
 import com.artjuna.artjuna_app.core.data.source.model.Product
@@ -72,23 +78,17 @@ class CheckoutCustomActivity: AppCompatActivity() {
     }
 
     private fun getProduct(){
-
-        if (intent.hasExtra(EXTRA_IMG)) {
-            val bitM = BitmapFactory.decodeByteArray(
-                intent.getByteArrayExtra(EXTRA_IMG),
-                0,
-                intent.getByteArrayExtra(EXTRA_IMG)!!.size
-            )
-            binding.product.ivImage.setImageBitmap(bitM)
-        }
-
         val extras = intent.extras
         if (extras != null){
+
+            val img = extras.get(EXTRA_IMG)
+            val picUri = img as Uri?
+            binding.product.ivImage.setImageURI(picUri)
+            Log.INFO
+
+
+
             val dataProduct = extras.getParcelable<Product>(EXTRA_PRODUCT)
-
-
-
-
             this.product = dataProduct!!
             populateViewProduct(dataProduct)
             populatePrice(dataProduct.price)
