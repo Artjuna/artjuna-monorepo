@@ -288,15 +288,15 @@ Description
 Price
 Image
 ```
-Username: Mandatory
-UserID as STRING: Mandatory
-ProductName as STRING: Mandatory
-Category as STRING: Mandatory
-Province as STRING: Mandatory
-City as STRING: Mandatory
-Description as STRING: Mandatory
-Price as INTEGER: Mandatory
-Iamge as FILE: Mandatory
+Username: Mandatory  
+UserID as STRING: Mandatory  
+ProductName as STRING: Mandatory  
+Category as STRING: Mandatory  
+Province as STRING: Mandatory  
+City as STRING: Mandatory  
+Description as STRING: Mandatory  
+Price as INTEGER: Mandatory  
+Iamge as FILE: Mandatory  
 
 -	Response:
 ```
@@ -329,12 +329,12 @@ seen added
     "ProductName": "Baju hijau"
 }
 ```
-ProductID as STRING: Mandatory
-ProductName as STRING: Not Mandatory
-Description as STRING Not Mandatory
-Province as STRING: Not Mandatory
-City as STRING: Not Mandatory
-Price as INTEGER: Not Mandatory
+ProductID as STRING: Mandatory  
+ProductName as STRING: Not Mandatory  
+Description as STRING Not Mandatory  
+Province as STRING: Not Mandatory  
+City as STRING: Not Mandatory  
+Price as INTEGER: Not Mandatory  
 
 -	Response
 ```
