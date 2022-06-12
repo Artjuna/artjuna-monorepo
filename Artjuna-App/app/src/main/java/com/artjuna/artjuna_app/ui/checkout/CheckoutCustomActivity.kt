@@ -1,32 +1,30 @@
 package com.artjuna.artjuna_app.ui.checkout
 
-import android.R
 import android.content.Intent
-import android.content.Intent.EXTRA_STREAM
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
 import com.artjuna.artjuna_app.core.data.source.model.Address
+import com.artjuna.artjuna_app.core.data.source.model.Order
 import com.artjuna.artjuna_app.core.data.source.model.Product
+import com.artjuna.artjuna_app.core.data.source.model.User
+import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.ActivityCheckoutBinding
 import com.artjuna.artjuna_app.ui.address.AddressActivity
+import com.artjuna.artjuna_app.ui.loading.LoadingDialog
 import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.File
 
 
 class CheckoutCustomActivity: AppCompatActivity() {
     private lateinit var binding: ActivityCheckoutBinding
-    private val checkoutViewModel:CheckoutViewModel by viewModel()
+    private val viewModel:CheckoutViewModel by viewModel()
     private var product = Product()
+    private var mAddress = Address()
+    private var store = User()
+    private lateinit var loadingDialog: LoadingDialog
+
 
 
     companion object {
@@ -40,13 +38,17 @@ class CheckoutCustomActivity: AppCompatActivity() {
         binding = ActivityCheckoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupLoading()
         setButtonCLick()
         getProduct()
-        getImage()
         getAddress()
+        getImage()
 
 
+    }
 
+    private fun setupLoading() {
+        loadingDialog = LoadingDialog(this,false)
     }
 
     private fun setButtonCLick(){
@@ -56,14 +58,66 @@ class CheckoutCustomActivity: AppCompatActivity() {
                 startActivity(Intent(this@CheckoutCustomActivity, AddressActivity::class.java))
             }
             bottomBar.btnOrder.setOnClickListener {
-                AppUtils.sendOrderToWA(this@CheckoutCustomActivity, "6285210938775", this@CheckoutCustomActivity.product )
+                if(mAddress.name.isEmpty() || mAddress.number.isEmpty() || mAddress.address.isEmpty()){
+                    AppUtils.showToast(this@CheckoutCustomActivity, "You have to fill your address")
+                    address.btnChangeAddress.requestFocus()
+                }else{
+                    addOrder()
+                }
             }
         }
 
     }
 
+    private fun showSuccessDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Your order has been created")
+            .setCancelable(false)
+            .setMessage("Contact seller for further information")
+            .setPositiveButton("Contact Seller") { dialog, which ->
+                contactSeller()
+                dialog.dismiss()
+                finish()
+            }
+            .show()
+    }
+
+    private fun contactSeller() {
+        AppUtils.sendOrderToWA(this@CheckoutCustomActivity, store.numberWA, this@CheckoutCustomActivity.product)
+    }
+
+    private fun addOrder() {
+        val order = collectOrderData()
+        viewModel.addOrder(order).observe(this){
+            when(it){
+                is Result.Loading -> loadingDialog.show()
+                is Result.Error -> {
+                    loadingDialog.dismiss()
+                    AppUtils.showToast(this, it.error)
+                }
+                is Result.Success -> {
+                    loadingDialog.dismiss()
+                    showSuccessDialog()
+                }
+            }
+        }
+    }
+
+    private fun collectOrderData(): Order {
+        val order = Order(
+            productId = product.id,
+            storeId = product.storeId,
+            price = product.price,
+            buyerNumber = mAddress.number,
+            buyerAddress = "${mAddress.address} ${mAddress.postalCode}"
+        )
+        return order
+    }
+
+
     private fun getAddress(){
-        populateViewAddress(checkoutViewModel.getAddress())
+        mAddress =viewModel.getAddress()
+        populateViewAddress(viewModel.getAddress())
     }
 
     private fun populateViewAddress(address: Address){
@@ -74,6 +128,14 @@ class CheckoutCustomActivity: AppCompatActivity() {
             } else {
                 tvNameNumber.text = "${address.name} (${address.number})"
                 tvAddress.text = "${address.address} (${address.postalCode})"
+            }
+        }
+    }
+
+    private fun getStoreData() {
+        viewModel.getStoreDataById(product.storeId).observe(this){
+            when(it){
+                is Result.Success -> store = it.data
             }
         }
     }
@@ -92,6 +154,7 @@ class CheckoutCustomActivity: AppCompatActivity() {
 
             val dataProduct = extras.getParcelable<Product>(EXTRA_PRODUCT)
             this.product = dataProduct!!
+            getStoreData()
             populateViewProduct(dataProduct)
             populatePrice(dataProduct.price)
 
