@@ -10,7 +10,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="650dp">
+        android:layout_height="660dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -19,9 +19,30 @@
             <ImageView
                 android:id="@+id/iv_add_photo"
                 android:layout_width="match_parent"
-                android:layout_height="550dp"
+                android:layout_height="520dp"
                 android:src="@drawable/bg_photo2"
-                android:layout_margin="16dp"/>
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="11dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="11dp"
+
+                />
+            <TextView
+                android:id="@+id/tv_product_name"
+                style="@style/Subtitle1Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Cellero Caberro Painting" />
+
+            <TextView
+                android:id="@+id/tv_product_price"
+                style="@style/Body2Regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="11dp"
+                android:layout_marginStart="16dp"
+                android:text="Rp 80.000" />
 
             <Button
                 android:id="@+id/btn_add_photo"

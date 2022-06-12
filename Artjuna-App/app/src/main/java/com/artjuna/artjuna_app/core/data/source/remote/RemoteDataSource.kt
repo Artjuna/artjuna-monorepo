@@ -5,10 +5,12 @@ import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.core.data.source.remote.network.ApiService
 import com.artjuna.artjuna_app.core.data.source.remote.request.*
 import com.artjuna.artjuna_app.core.data.source.remote.response.AccountResponse
+import com.artjuna.artjuna_app.core.data.source.remote.response.StyleTransferResponse
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
+import retrofit2.Response
 
 class RemoteDataSource(private val api:ApiService) {
 
@@ -64,5 +66,15 @@ class RemoteDataSource(private val api:ApiService) {
     fun getAccountById(userId:String): Call<List<AccountResponse>> = api.getAccountById(userId)
     fun updateAccount(request: UpdateAccountRequest):Call<Void> = api.updateAccount(request)
     fun upgradeAccount(request: UpdateAccountRequest):Call<Void> = api.updateAccount(request)
+
+    suspend fun uploadStyleTransfer(productId: String, StyleImage: MultipartBody.Part) =
+        api.styleTransfer(
+            productId.toRequestBody("text/plain".toMediaType()),
+            StyleImage
+        )
+
+
+
+
 
 }

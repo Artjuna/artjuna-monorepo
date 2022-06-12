@@ -6,6 +6,7 @@ import com.artjuna.artjuna_app.ui.address.AddressViewModel
 import com.artjuna.artjuna_app.ui.auth.AuthViewModel
 import com.artjuna.artjuna_app.ui.cart.CartlViewModel
 import com.artjuna.artjuna_app.ui.checkout.CheckoutViewModel
+import com.artjuna.artjuna_app.ui.customize.CustomizeViewModel
 import com.artjuna.artjuna_app.ui.detailproduct.DetailViewModel
 import com.artjuna.artjuna_app.ui.feeds.FeedsViewModel
 import com.artjuna.artjuna_app.ui.home.HomeViewModel
@@ -44,4 +45,5 @@ val viewModelModule = module {
     viewModel { MyStoreViewModel(get()) }
     viewModel { OrderViewModel(get()) }
     viewModel { OrderHistoryViewModel(get()) }
+    viewModel { CustomizeViewModel(get())}
 }

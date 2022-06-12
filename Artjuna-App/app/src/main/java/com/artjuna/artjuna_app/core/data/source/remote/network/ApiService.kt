@@ -53,6 +53,13 @@ interface ApiService {
         @Body body:LikePostRequest
     ):Response<Void>
 
+    @Multipart
+    @POST("Model/styletransfer")
+    suspend fun styleTransfer(
+        @Part("ProductID") productId : RequestBody,
+        @Part StyleImage : MultipartBody.Part
+    ):StyleTransferResponse
+
     @GET("Product/getProductFilter")
     suspend fun getProductByCategory(
         @Query("Category") category:String

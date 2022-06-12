@@ -13,6 +13,7 @@ import com.artjuna.artjuna_app.core.data.source.local.entity.toProduct
 import com.artjuna.artjuna_app.core.data.source.local.entity.toUser
 import com.artjuna.artjuna_app.core.data.source.model.*
 import com.artjuna.artjuna_app.core.data.source.remote.RemoteDataSource
+import com.artjuna.artjuna_app.core.data.source.remote.network.ApiService
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.core.data.source.remote.request.AddHasSeenRequest
 import com.artjuna.artjuna_app.core.data.source.remote.request.FollowRequest
@@ -343,6 +344,27 @@ class MainRepository(
             }
         }catch (e: Exception) {
             emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+    fun uploadImageStyleTransfer(productId: String, StyleImage: File): LiveData<Result<StyleTransferResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val requestImageFile = StyleImage.asRequestBody("StyleImage/jpg".toMediaTypeOrNull())
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "StyleImage",
+                StyleImage.name,
+                requestImageFile
+            )
+
+            remote.uploadStyleTransfer(productId, imageMultipart).let {
+                val img = it.stylizedImage
+                Result.Success(img)
+            }
+
+        } catch (e: Exception){
+            e.printStackTrace()
+            emit(Result.Error(e.message ?: "something wrong"))
         }
     }
 
