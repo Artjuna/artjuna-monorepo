@@ -1,7 +1,7 @@
 # C22-PS339 [Artjuna] - API Documentation
 
 Artjuna API Documentation  
-EndPoint: http://34.101.203.109:8080  
+URL: http://34.101.203.109:8080  
 Available endpoints:  
 
 ## 1.	/Account
