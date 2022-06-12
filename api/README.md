@@ -211,7 +211,7 @@ limit as INTEGER: Mandatory
 -	Method : GET
 -	Request Body:
 (leave it blank)
-- Request Query:
+- Request Parameter
 ```
 UserID
 ProductID
@@ -287,8 +287,7 @@ City
 Description
 Price
 Image
-```
-Username: Mandatory  
+``` 
 UserID as STRING: Mandatory  
 ProductName as STRING: Mandatory  
 Category as STRING: Mandatory  
@@ -339,4 +338,211 @@ Price as INTEGER: Not Mandatory
 -	Response
 ```
 update data success
+```
+
+## 3.	/Post
+### a.	/Post/getPost
+-	Method : GET
+-	Request Body: (Leave it blank)
+-	Response: 
+```json
+[
+    {
+        "PostID": "2022PST0",
+        "UserID": "2022U0",
+        "PostName": "Hihihiih",
+        "Caption": "HAHAHAHA",
+        "Image": "/1654248642083-Image-1654197966309 (1).jpg",
+        "Like": 1,
+        "createdAt": "2022-06-03T08:29:00.000Z",
+        "FullName": "Update Lagi"
+    },
+    {
+        "PostID": "2022PST1",
+        "UserID": "2022U0",
+        "PostName": "Hihihiih",
+        "Caption": "Gabuiutt",
+        "Image": "/1654345414281-IMG_20200208_180401.jpg",
+        "Like": 0,
+        "createdAt": "2022-06-04T12:23:34.000Z",
+        "FullName": "Update Lagi"
+    }
+]
+```
+
+### b.	/Post/getPostFilter
+-	Method : GET
+-	Request Body:
+(leave it blank)
+- Request Parameter
+```
+UserID
+PostID
+PostName
+```
+UserID as STRING: Not Mndatory  
+PostID as STRING: Not Mandatory  
+PostName as STRING: Not Mandatory  
+-	Response: 
+```json
+[
+    {
+        "PostID": "2022PST2",
+        "UserID": "2022U5682",
+        "PostName": "lukisan",
+        "Caption": "tes",
+        "Image": "/1654345899243-04-Jun-20227697674174023148859.jpg",
+        "Like": 0,
+        "createdAt": "2022-06-04T12:31:39.000Z"
+    },
+    {
+        "PostID": "2022PST3",
+        "UserID": "2022U5682",
+        "PostName": "buzz",
+        "Caption": "buzzzzzzz",
+        "Image": "/1654346216957-04-Jun-2022639100548748158128.jpg",
+        "Like": 0,
+        "createdAt": "2022-06-04T12:36:56.000Z"
+    }
+]
+```
+
+### c.	/Post/addPost
+-	Method: POST
+-	Request Body:
+```form-data
+UserID
+PostName
+Caption
+Image
+```
+UserID as STRING: Mandatory  
+PostName as STRING: Mandatory  
+Caption as STRING: Mandatory  
+Iamge as FILE: Mandatory  
+
+-	Response:
+```json
+{
+    "PostID": "2022PST9",
+    "UserID": "2022U100",
+    "PostName": "Hihihiih",
+    "Caption": "Gabuiutt",
+    "Image": "/1655042961123-Image-1654197966309 (1).jpg",
+    "Like": 0,
+    "createdAt": "2022-06-12T14:09:21.169Z"
+}
+```
+
+### d.	/Post/updatePost
+-	Method: PUT
+-	Request Body:
+```form-data
+PostID
+Caption
+Image
+```
+PostID as STRING: Mandatory  
+Caption as STRING: Not Mandatory  
+Iamge as FILE: Not Mandatory  
+
+-	Response:
+```
+update data success
+```
+
+### e. /Liked/liked
+-	Method: PUT
+-	Request Body:
+```json
+{
+    "UserID": "2022U1",
+    "PostID": "2022PST0"
+}
+```
+PostID as STRING: Mandatory
+UserID as String: Mandatory
+
+-	Response:
+```json
+{
+    "PostID": "2022PST0",
+    "UserID": "2022U100",
+    "createdAt": "2022-06-12T14:14:42.389Z"
+}
+```
+
+## 4. /Order
+### a.	/Order/getOrderFilter?ProductID=2022P0
+-	Method : GET
+-	Request Body: (Leave it blank)
+-	Request Parameter:
+```
+ProductID
+SellerUserID
+BuyerUserID
+OrderID
+```
+ProdutID as STRING: Not Mandatory  
+SellerUserID as STRING: Not Mandatory  
+BuyerUserID as STRING: Not Mandatory  
+OrderID as STRING: Not Mandatory  
+
+-	Response: 
+```json
+[
+    {
+        "OrderID": "2022O0",
+        "SellerUserID": "2022U2",
+        "BuyerUserID": "2022U1",
+        "ProductID": "2022P0",
+        "SellerFullName": "Usman Simbolon",
+        "BuyerFullName": "Jasmani Pangestu",
+        "BuyerPhoneNumber": "019230912",
+        "ProductName": "Ukiran Kayu Saragih",
+        "TotalPrice": 20000,
+        "ShippingAddress": "Wakanda",
+        "Image": "/1654275664335-random_image.png",
+        "createdAt": "2022-06-06T15:03:48.000Z"
+    },
+    {
+        "OrderID": "2022O1",
+        "SellerUserID": "2022U2",
+        "BuyerUserID": "2022U1",
+        "ProductID": "2022P0",
+        "SellerFullName": "Usman Simbolon",
+        "BuyerFullName": "Jasmani Pangestu",
+        "BuyerPhoneNumber": "019230912",
+        "ProductName": "Ukiran Kayu Saragih",
+        "TotalPrice": 20000,
+        "ShippingAddress": "Wakanda",
+        "Image": "/1654275664335-random_image.png",
+        "createdAt": "2022-06-07T01:48:39.000Z"
+    }
+ ]
+```
+
+### b. /Order/addOrder
+-	Method : POST
+-	Request Body:
+```json
+{
+    "ProductID" : "2022P0",
+    "BuyerUserID" : "2022U1",
+    "SellerUserID" : "2022U2",
+    "BuyerPhoneNumber" : "019230912",
+    "TotalPrice" : 20000,
+    "ShippingAddress" : "Wakanda"     
+}
+```
+ProdutID as STRING: Mandatory  
+SellerUserID as STRING: Mandatory  
+BuyerUserID as STRING: Mandatory  
+BuyerPhoneNumber as STRING: Mandatory  
+TotalPrice as INTEGER: Mandatory  
+ShippingAddress as STRING: Mandatory  
+
+-	Response: 
+```
+insert data success
 ```
