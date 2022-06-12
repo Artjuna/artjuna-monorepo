@@ -43,13 +43,13 @@
                     android:text="24 Juni 2022"/>
 
             </LinearLayout>
-            <TextView
-                android:id="@+id/badge_status"
-                style="@style/BadgeDiskusi"
-                android:paddingHorizontal="@dimen/_8sdp"
-                android:paddingVertical="@dimen/_4sdp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+<!--            <TextView-->
+<!--                android:id="@+id/badge_status"-->
+<!--                style="@style/BadgeDiskusi"-->
+<!--                android:paddingHorizontal="@dimen/_8sdp"-->
+<!--                android:paddingVertical="@dimen/_4sdp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
 
         </LinearLayout>
 
