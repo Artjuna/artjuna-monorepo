@@ -369,27 +369,6 @@ class MainRepository(
         }
     }
 
-    fun uploadImageStyleTransfer(productId: String, StyleImage: File): LiveData<Result<String>> = liveData {
-        emit(Result.Loading)
-        try {
-            val requestImageFile = StyleImage.asRequestBody("StyleImage/jpg".toMediaTypeOrNull())
-            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "StyleImage",
-                StyleImage.name,
-                requestImageFile
-            )
-
-            remote.uploadStyleTransfer(productId, imageMultipart).let {
-                val img = it.body()!!.stylizedImage
-                emit(Result.Success(img!!))
-            }
-
-        } catch (e: Exception){
-            e.printStackTrace()
-            emit(Result.Error(e.message ?: "something wrong"))
-        }
-    }
-
     fun checkIfProductInCart(id: String):LiveData<Boolean>{
         val isInCart = MutableLiveData<Boolean>()
         appExecutors.diskIO().execute {

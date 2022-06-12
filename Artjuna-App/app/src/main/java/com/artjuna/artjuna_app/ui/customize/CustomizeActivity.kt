@@ -120,19 +120,4 @@ class CustomizeActivity : AppCompatActivity() {
         }
     }
 
-    private fun customImageStyleTransfer(){
-        if (photoFile!=null){
-            viewModel.uploadStyleTransfer(product.id, photoFile!!).observe(this){
-                when(it){
-                    is Result.Success -> {
-                        val img = it.data
-
-                    }
-                }
-            }
-        }else{
-            Snackbar.make(binding.root, "Please select an image", Snackbar.LENGTH_SHORT).show()
-        }
-    }
-
 }
