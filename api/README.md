@@ -114,12 +114,12 @@ Email as STRING: Not mandatory
         "Telephone": "abc"
 }
 ```
-Email as STRING: Mandatory
-UserName as STRING: Mandatory
-FullName as STRING: Mandatory
-OriginProvince as STRING: Mandatory
-OriginCity as STRING: Mandatory
-Telephone as STRING: Mandatory
+Email as STRING: Mandatory  
+UserName as STRING: Mandatory  
+FullName as STRING: Mandatory  
+OriginProvince as STRING: Mandatory  
+OriginCity as STRING: Mandatory  
+Telephone as STRING: Mandatory  
 IsStore as BOOLEAN: Not Mandatory, defaultValue: false
 
 -	Response: 
@@ -146,8 +146,8 @@ IsStore as BOOLEAN: Not Mandatory, defaultValue: false
     "UserIDFollowed": "2022U0" 
 }
 ```
-UserIDFollowing as STRING: Mandatory
-UserIDFollowed as STRING: Mandatory
+UserIDFollowing as STRING: Mandatory  
+UserIDFollowed as STRING: Mandatory  
 
 -	Response: 
 ```
@@ -164,8 +164,8 @@ page
 limit
 ```
 
-page as INTEGER: Mandatory
-limit as INTEGER: Mandatory
+page as INTEGER: Mandatory  
+limit as INTEGER: Mandatory  
 
 -	Response: 
 ```json
@@ -221,13 +221,13 @@ Province
 City
 Price
 ```
-UserID as STRING: Not Mndatory
-ProductID as STRING: Not Mandatory
-ProductName as STRING: Not Mandatory
-Category as STRING: Not Mandatory
-Province as STRING: Not Mandatory
-City as STRING: Not Mandatory
-Price as INTEGER: Not Mandatory
+UserID as STRING: Not Mndatory  
+ProductID as STRING: Not Mandatory  
+ProductName as STRING: Not Mandatory  
+Category as STRING: Not Mandatory  
+Province as STRING: Not Mandatory  
+City as STRING: Not Mandatory  
+Price as INTEGER: Not Mandatory  
 
 -	Response:
 ```json
