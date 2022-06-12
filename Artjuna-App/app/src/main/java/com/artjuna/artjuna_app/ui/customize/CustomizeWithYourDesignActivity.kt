@@ -22,8 +22,6 @@ class CustomizeWithYourDesignActivity: AppCompatActivity() {
     private var photoFile: File? = null
     companion object{
         const val EXTRA_PRODUCT = "EXTRA_PRODUCT"
-        private const val TAG = "CustomizeWithYouDesignActivity"
-
     }
 
 
@@ -78,15 +76,10 @@ class CustomizeWithYourDesignActivity: AppCompatActivity() {
                     Intent(this@CustomizeWithYourDesignActivity, CheckoutCustomActivity::class.java).also { intent ->
                         val path: File = photoFile!!
                         val uri = Uri.fromFile(path)
-                        intent.putExtra(CheckoutCustomActivity.EXTRA_IMG, uri)
+                        intent.putExtra(CheckoutCustomActivity.EXTRA_IMG, uri.toString())
+                        intent.putExtra(CheckoutCustomActivity.EXTRA_PRODUCT, dataProduct)
                         startActivity(intent)
                     }
-                }
-
-
-                Intent(this@CustomizeWithYourDesignActivity, CheckoutCustomActivity::class.java).also { intent ->
-                    intent.putExtra(CheckoutCustomActivity.EXTRA_PRODUCT, dataProduct)
-                    startActivity(intent)
                 }
 
             }

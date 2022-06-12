@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import com.artjuna.artjuna_app.core.data.source.model.Address
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.databinding.ActivityCheckoutBinding
@@ -81,11 +82,9 @@ class CheckoutCustomActivity: AppCompatActivity() {
         val extras = intent.extras
         if (extras != null){
 
-            val img = extras.get(EXTRA_IMG)
-            val picUri = img as Uri?
+            val img = extras.getString(EXTRA_IMG)
+            val picUri = img?.toUri()
             binding.product.ivImage.setImageURI(picUri)
-            Log.INFO
-
 
 
             val dataProduct = extras.getParcelable<Product>(EXTRA_PRODUCT)

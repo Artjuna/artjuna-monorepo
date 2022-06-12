@@ -3,6 +3,7 @@ package com.artjuna.artjuna_app.ui.customize
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.artjuna.artjuna_app.core.data.source.model.Product
@@ -120,14 +121,21 @@ class CustomizeActivity : AppCompatActivity() {
 
             viewModel.uploadStyleTransfer(id!!, photoFile!!).observe(this) {
                 when (it) {
-                    is Result.Loading -> loadingDialog.show()
+                    is Result.Loading -> {
+                        loadingDialog.show()
+                        binding.resulCustom.visibility = View.INVISIBLE
+
+                    }
                     is Result.Success -> {
                         loadingDialog.dismiss()
 
                         val body = it.data.stylizedImage
                         val iBitmap = AppUtils.convertBase64toBitmap(body!!)
+                        val saveImage = AppUtils.saveImage(baseContext, iBitmap, "ResultCustomWithAI")
+                        binding.resulCustom.visibility = View.VISIBLE
+                        binding.btnDownloadResultCustomWithAi.setOnClickListener { saveImage }
 
-                        Intent(
+                       /** Intent(
                             this@CustomizeActivity,
                             ResultCustomizeActivity::class.java
                         ).also { intent ->
@@ -141,13 +149,15 @@ class CustomizeActivity : AppCompatActivity() {
                         ).also { intent ->
                             intent.putExtra(ResultCustomizeActivity.EXTRA_PRODUCT, dataProduct)
                             startActivity(intent)
-                        }
+                        } **/
 
 
                     }
                     is Result.Error -> {
                         loadingDialog.dismiss()
                         AppUtils.showToast(this, it.error)
+                        binding.resulCustom.visibility = View.INVISIBLE
+
                     }
                 }
             }

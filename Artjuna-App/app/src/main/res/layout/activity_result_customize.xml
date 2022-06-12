@@ -18,8 +18,7 @@
                 android:id="@+id/iv_result_custom"
                 android:layout_width="match_parent"
                 android:layout_height="570dp"
-                android:background="@color/grey_200"
-                 />
+                android:background="@color/grey_200" />
 
             <ImageView
                 android:id="@+id/btn_back"
