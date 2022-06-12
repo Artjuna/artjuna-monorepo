@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Artjuna-App</string>
+    <string name="app_name">Artjuna</string>
     <string name="email">Email</string>
     <string name="sign_in">Sign In</string>
     <string name="password">Password</string>
