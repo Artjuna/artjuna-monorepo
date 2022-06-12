@@ -125,17 +125,17 @@ const getProductByProductID = async (req, res) => {
 const hasSeen = async (req, res) => {
     try{
         const { UserID, ProductID} = req.body;
-        const validation = await productSeen.findOne({
-            where: {
-                UserID: UserID,
-                ProductID: ProductID
-            },
-            raw: true
-        })
-        if (validation != null || validation != undefined)
-        {
-            res.status(200).send("already seened")
-        }
+        // const validation = await productSeen.findOne({
+        //     where: {
+        //         UserID: UserID,
+        //         ProductID: ProductID
+        //     },
+        //     raw: true
+        // })
+        // if (validation != null || validation != undefined)
+        // {
+        //     res.status(200).send("already seened")
+        // }
         const createdAt = Date.now();
         const ProductSeen = new productSeen({
             ProductID,
