@@ -69,7 +69,7 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
                                                  save_freq= int(SAVE_PERIOD * STEPS_PER_EPOCH))
 
 # Compiling model
-optimizer = tf.keras.optimizers.Adam(learning_rate=1e-5)
+optimizer = tf.keras.optimizers.Adam(learning_rate=1e-4)
 loss_fn = tf.keras.losses.MeanSquaredError()
 
 encoder = create_encoder()
