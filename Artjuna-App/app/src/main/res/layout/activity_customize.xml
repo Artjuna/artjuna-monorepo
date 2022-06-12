@@ -40,6 +40,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.044"
                         app:layout_constraintStart_toStartOf="parent"
+                        android:visibility="invisible"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -62,6 +63,7 @@
                         android:text="Rp 80.000"
                         style="@style/Body2Regular"
                         android:paddingStart="@dimen/_8sdp"
+                        android:paddingBottom="@dimen/_8sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_product_name" />
@@ -85,13 +87,13 @@
                         android:layout_marginStart="@dimen/_14sdp"
                         android:layout_marginTop="@dimen/_14sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         app:srcCompat="@drawable/bg_box_add_photo" />
 
                     <Button
                         android:id="@+id/btn_add_photo"
-                        android:layout_width="105dp"
+                        android:layout_width="155dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="@dimen/_14sdp"
                         android:text="Add Photo"
@@ -100,98 +102,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/resul_custom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                <ImageView
-                    android:id="@+id/iv_style_transfer"
-                    android:layout_width="@dimen/_200sdp"
-                    android:layout_height="@dimen/_150sdp"
-                    android:background="@color/grey_200"/>
-
-               <!-- <Button
-                    android:id="@+id/btn_download_result_custom_with_ai"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_8sdp"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:text="Download The Result Custom With AI"
-                    android:textSize="12sp"
-                    android:layout_marginEnd="@dimen/_8sdp"/> -->
-
-            </androidx.cardview.widget.CardView>
-
-
-
-            <!--<androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
-
-
-                <RelativeLayout
-                    android:id="@+id/header_best"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:layout_marginStart="@dimen/_14sdp"
-                    android:layout_marginEnd="@dimen/_14sdp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iv_take">
-
-                    <TextView
-                        style="@style/Subtitle2Medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:text="@string/recommendation"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        style="@style/Subtitle2Medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="@string/see_all"
-                        android:textAlignment="textEnd"
-                        android:textColor="?colorPrimary" />
-
-                </RelativeLayout>
-
-                <HorizontalScrollView
-                    android:layout_marginTop="@dimen/_30sdp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="none">
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_8sdp">
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_recom"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/_8sdp"
-                            android:orientation="horizontal"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            app:spanCount="4"
-                            tools:itemCount="9"
-                            tools:listitem="@layout/item_product_small" />
-
-                    </RelativeLayout>
-
-                </HorizontalScrollView>
-
-            </androidx.cardview.widget.CardView> -->
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

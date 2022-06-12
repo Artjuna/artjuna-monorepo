@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="650dp">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -16,25 +16,20 @@
 
             <ImageView
                 android:id="@+id/iv_result_custom"
-                android:layout_width="match_parent"
-                android:layout_height="570dp"
-                android:background="@color/grey_200" />
-
-            <ImageView
-                android:id="@+id/btn_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:elevation="@dimen/_48sdp"
-                android:src="@drawable/ic_back_square" />
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/img_cust"
+                android:layout_centerHorizontal="true"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/iv_result_custom"
+                android:layout_marginTop="9dp"
                 android:layout_marginBottom="9dp"
                 android:orientation="vertical">
 
@@ -43,8 +38,6 @@
                     style="@style/Subtitle1Bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/iv_result_custom"
-                    android:layout_alignParentBottom="true"
                     android:layout_marginTop="7dp"
                     android:paddingStart="@dimen/_8sdp"
                     android:paddingTop="@dimen/_8sdp"

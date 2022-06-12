@@ -11,6 +11,7 @@ import androidx.core.net.toUri
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.databinding.ActivityCustomizeWithYouDesignBinding
 import com.artjuna.artjuna_app.ui.checkout.CheckoutCustomActivity
+import com.artjuna.artjuna_app.ui.checkout.CheckoutYourCustomActivity
 import com.artjuna.artjuna_app.utils.AppUtils
 import com.google.android.material.snackbar.Snackbar
 import java.io.File
@@ -73,11 +74,11 @@ class CustomizeWithYourDesignActivity: AppCompatActivity() {
                     Snackbar.make(binding.root, "Please select an image", Snackbar.LENGTH_SHORT).show()
                 } else{
 
-                    Intent(this@CustomizeWithYourDesignActivity, CheckoutCustomActivity::class.java).also { intent ->
+                    Intent(this@CustomizeWithYourDesignActivity, CheckoutYourCustomActivity::class.java).also { intent ->
                         val path: File = photoFile!!
                         val uri = Uri.fromFile(path)
-                        intent.putExtra(CheckoutCustomActivity.EXTRA_IMG, uri.toString())
-                        intent.putExtra(CheckoutCustomActivity.EXTRA_PRODUCT, dataProduct)
+                        intent.putExtra(CheckoutYourCustomActivity.EXTRA_IMAGE, uri.toString())
+                        intent.putExtra(CheckoutYourCustomActivity.EXTRA_PRODUCT, dataProduct)
                         startActivity(intent)
                     }
                 }

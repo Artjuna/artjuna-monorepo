@@ -71,6 +71,9 @@
             android:name=".ui.checkout.CheckoutCustomActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.checkout.CheckoutYourCustomActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.productlist.ProductListActivity"
             android:exported="false" />
         <activity

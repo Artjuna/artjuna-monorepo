@@ -1,16 +1,7 @@
 package com.artjuna.artjuna_app.ui.checkout
 
-import android.R
 import android.content.Intent
-import android.content.Intent.EXTRA_STREAM
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import com.artjuna.artjuna_app.core.data.source.model.Address
@@ -22,16 +13,14 @@ import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
-
-class CheckoutCustomActivity: AppCompatActivity() {
+class CheckoutYourCustomActivity: AppCompatActivity() {
     private lateinit var binding: ActivityCheckoutBinding
     private val checkoutViewModel:CheckoutViewModel by viewModel()
     private var product = Product()
 
-
     companion object {
         const val EXTRA_PRODUCT = "EXTRA_PRODUCT"
-        const val EXTRA_IMG = "EXTRA_IMG"
+        const val EXTRA_IMAGE = "EXTRA_IMAGE"
 
     }
 
@@ -42,7 +31,6 @@ class CheckoutCustomActivity: AppCompatActivity() {
 
         setButtonCLick()
         getProduct()
-        getImage()
         getAddress()
 
 
@@ -53,10 +41,10 @@ class CheckoutCustomActivity: AppCompatActivity() {
         with(binding){
             btnBack.setOnClickListener { onBackPressed() }
             address.btnChangeAddress.setOnClickListener {
-                startActivity(Intent(this@CheckoutCustomActivity, AddressActivity::class.java))
+                startActivity(Intent(this@CheckoutYourCustomActivity, AddressActivity::class.java))
             }
             bottomBar.btnOrder.setOnClickListener {
-                AppUtils.sendOrderToWA(this@CheckoutCustomActivity, "6285210938775", this@CheckoutCustomActivity.product )
+                AppUtils.sendOrderToWA(this@CheckoutYourCustomActivity, "6285210938775", this@CheckoutYourCustomActivity.product )
             }
         }
 
@@ -80,15 +68,13 @@ class CheckoutCustomActivity: AppCompatActivity() {
 
 
 
-    private fun getImage(){
-        val imgB64 = intent.extras?.getString(EXTRA_IMG)
-        val imgBitmap = AppUtils.convertBase64toBitmap(imgB64!!)
-        binding.product.ivImage.loadImage(imgBitmap)
-    }
-
     private fun getProduct(){
         val extras = intent.extras
         if (extras != null){
+
+            val img = extras.getString(EXTRA_IMAGE)
+            val picUri = img?.toUri()
+            binding.product.ivImage.setImageURI(picUri)
 
             val dataProduct = extras.getParcelable<Product>(EXTRA_PRODUCT)
             this.product = dataProduct!!
@@ -118,6 +104,7 @@ class CheckoutCustomActivity: AppCompatActivity() {
         super.onResume()
         getAddress()
     }
+
 
 
 

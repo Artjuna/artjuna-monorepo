@@ -12,6 +12,7 @@ import com.artjuna.artjuna_app.R
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.ActivityCustomizeBinding
+import com.artjuna.artjuna_app.ui.checkout.CheckoutCustomActivity
 import com.artjuna.artjuna_app.ui.loading.LoadingDialog
 import com.artjuna.artjuna_app.ui.resultcustomize.ResultCustomizeActivity
 import com.artjuna.artjuna_app.utils.AppUtils
