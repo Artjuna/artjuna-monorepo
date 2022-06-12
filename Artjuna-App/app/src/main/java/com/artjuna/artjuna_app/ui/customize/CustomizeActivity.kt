@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Base64
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,7 @@ class CustomizeActivity : AppCompatActivity() {
     private lateinit var binding:ActivityCustomizeBinding
     private val viewModel: CustomizeViewModel by viewModel()
     private var photoFile: File? = null
+    private var product = Product()
     private lateinit var loadingDialog: LoadingDialog
 
     companion object{
@@ -36,43 +38,59 @@ class CustomizeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCustomizeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setupLoading()
-
-        val dataProduct = intent.getParcelableExtra<Product>(EXTRA_PRODUCT)
-        populateViewProduct(dataProduct)
-
+        getProductData()
         setButton()
 
     }
 
-    private fun populateViewProduct(product: Product?) {
-        if (product != null){
-            with(binding){
-                ivProduct.loadImage(AppUtils.getProductImageURL(product.image))
-                tvProductName.text = product.name
-                tvProductPrice.text = "Rp ${product.price}"
-            }
+    private fun getProductData() {
+        product = intent.getParcelableExtra<Product>(EXTRA_PRODUCT)!!
+        populateViewProduct()
+    }
+
+    private fun populateViewProduct() {
+        with(binding){
+            ivProduct.loadImage(AppUtils.getProductImageURL(product.image))
+            tvProductName.text = product.name
+            tvProductPrice.text = "Rp ${product.price}"
         }
     }
 
 
 
     private fun setButton(){
-
-        val dataProduct = intent.getParcelableExtra<Product>(EXTRA_PRODUCT)
-
         with(binding){
             btnAddPhoto.setOnClickListener { openGallery() }
             btnBack.setOnClickListener { onBackPressed() }
-            bottomBar.btnCustomWithAI.setOnClickListener {customImageStyleTransfer()}
+            bottomBar.btnCustomWithAI.setOnClickListener { sendCustomImage() }
             bottomBar.btnCustomWithYourDesign.setOnClickListener {
                 Intent(this@CustomizeActivity, CustomizeWithYourDesignActivity::class.java).also { intent ->
-                    intent.putExtra(CustomizeWithYourDesignActivity.EXTRA_PRODUCT, dataProduct)
+                    intent.putExtra(CustomizeWithYourDesignActivity.EXTRA_PRODUCT, product)
                     startActivity(intent)
                 }
             }
 
+        }
+    }
+
+    private fun sendCustomImage() {
+        if(photoFile!=null){
+            viewModel.uploadImageForStyleTransfer(product.id, photoFile!!).observe(this){
+                when(it){
+                    is Result.Loading -> loadingDialog.show()
+                    is Result.Error -> {
+                        loadingDialog.dismiss()
+                        AppUtils.showToast(this, it.error)
+                    }
+                    is Result.Success -> {
+                        loadingDialog.dismiss()
+                        Log.d("okhttp", it.data)
+                        val img = AppUtils.convertBase64toByteArray(it.data)
+                        binding.ivStyleTransfer.loadImage(img)
+                    }
+                }
+            }
         }
     }
 
@@ -98,58 +116,22 @@ class CustomizeActivity : AppCompatActivity() {
 
             photoFile = myFile
 
-
             binding.ivAddPhoto.setImageURI(selectedImg)
         }
     }
 
     private fun customImageStyleTransfer(){
-        val dataProduct = intent.getParcelableExtra<Product>(EXTRA_PRODUCT)
-        val id = dataProduct?.id
-        var isValid = true
-
-        if (photoFile == null){
-            Snackbar.make(binding.root, "Please select an image", Snackbar.LENGTH_SHORT).show()
-            isValid = false
-        }
-
-        if (isValid) {
-
-            viewModel.uploadStyleTransfer(id!!, photoFile!!).observe(this) {
-                when (it) {
-                    is Result.Loading -> {
-
-                    }
+        if (photoFile!=null){
+            viewModel.uploadStyleTransfer(product.id, photoFile!!).observe(this){
+                when(it){
                     is Result.Success -> {
-                        val img = it.data.stylizedImage
-                        val iBitmap = AppUtils.convertBase64toBitmap(img!!)
-                        //binding.ivStyleTransfer.setImageBitmap(iBitmap)
-
-                        val imageByteArray: ByteArray = Base64.decode(img, Base64.DEFAULT)
-                        binding.ivStyleTransfer.loadImage(imageByteArray)
-
-                        //val saveImage = AppUtils.saveImage( baseContext, iBitmap, "ResultCustomWithAI")
-                        //binding.resulCustom.visibility = View.VISIBLE
-                       // binding.btnDownloadResultCustomWithAi.setOnClickListener { saveImage }
-
-                      /** Intent(
-                            this@CustomizeActivity,
-                            ResultCustomizeActivity::class.java
-                        ).also { intent ->
-                           intent.putExtra(ResultCustomizeActivity.EXTRA_IMG, iBitmap.toString())
-                           intent.putExtra(ResultCustomizeActivity.EXTRA_PRODUCT, dataProduct)
-                           startActivity(intent)
-                        }**/
-
-                    }
-                    is Result.Error -> {
-                       loadingDialog.dismiss()
-                        AppUtils.showToast(this, it.error)
-                        binding.resulCustom.visibility = View.INVISIBLE
+                        val img = it.data
 
                     }
                 }
             }
+        }else{
+            Snackbar.make(binding.root, "Please select an image", Snackbar.LENGTH_SHORT).show()
         }
     }
 

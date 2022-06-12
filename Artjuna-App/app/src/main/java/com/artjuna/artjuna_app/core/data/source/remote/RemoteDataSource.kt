@@ -67,7 +67,7 @@ class RemoteDataSource(private val api:ApiService) {
     fun updateAccount(request: UpdateAccountRequest):Call<Void> = api.updateAccount(request)
     fun upgradeAccount(request: UpdateAccountRequest):Call<Void> = api.updateAccount(request)
 
-    suspend fun uploadStyleTransfer(productId: String, StyleImage: MultipartBody.Part) : Response<StyleTransferResponse> =
+    suspend fun uploadStyleTransfer(productId: String, StyleImage: MultipartBody.Part) =
         api.styleTransfer(
             productId.toRequestBody("text/plain".toMediaType()),
             StyleImage

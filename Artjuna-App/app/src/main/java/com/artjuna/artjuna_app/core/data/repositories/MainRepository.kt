@@ -347,7 +347,29 @@ class MainRepository(
         }
     }
 
-    fun uploadImageStyleTransfer(productId: String, StyleImage: File): LiveData<Result<StyleTransferResponse>> = liveData {
+    fun uploadImageForStyleTransfer(productId: String, image: File):LiveData<Result<String>> = liveData {
+        emit(Result.Loading)
+        try {
+            val requestImageFile = image.asRequestBody("StyleImage/jpg".toMediaTypeOrNull())
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "StyleImage",
+                image.name,
+                requestImageFile
+            )
+            remote.uploadStyleTransfer(productId,imageMultipart).let {
+                if(it.isSuccessful){
+                    val res = it.body()?.stylizedImage
+                    emit(Result.Success(res!!))
+                }else {
+                    emit(Result.Error(it.errorBody().toString()))
+                }
+            }
+        }catch (e: Exception) {
+            emit(Result.Error(e.message ?: "Terjadi Kesalahan"))
+        }
+    }
+
+    fun uploadImageStyleTransfer(productId: String, StyleImage: File): LiveData<Result<String>> = liveData {
         emit(Result.Loading)
         try {
             val requestImageFile = StyleImage.asRequestBody("StyleImage/jpg".toMediaTypeOrNull())
@@ -359,7 +381,7 @@ class MainRepository(
 
             remote.uploadStyleTransfer(productId, imageMultipart).let {
                 val img = it.body()!!.stylizedImage
-                Result.Success(img)
+                emit(Result.Success(img!!))
             }
 
         } catch (e: Exception){
@@ -486,7 +508,7 @@ class MainRepository(
         result.postValue(Result.Loading)
         remote.getStoreById(id).enqueue(object :retrofit2.Callback<List<AccountResponse>>{
             override fun onResponse(
-                call: Call<List<AccountResponse>>,
+                call: retrofit2.Call<List<AccountResponse>>,
                 response: Response<List<AccountResponse>>
             ) {
                 if(response.isSuccessful){
@@ -497,7 +519,7 @@ class MainRepository(
                 }
             }
 
-            override fun onFailure(call: Call<List<AccountResponse>>, t: Throwable) {
+            override fun onFailure(call:Call<List<AccountResponse>>, t: Throwable) {
                 result.postValue(Result.Error(t.message.toString()))
             }
         })
@@ -528,7 +550,7 @@ class MainRepository(
                 if (it.isSuccessful){
                     emit(Result.Success("Success"))
                 }else {
-                    emit(Result.Error(it.errorBody().toString() ?: "Default error dongs"))
+                    emit(Result.Error(it.errorBody().toString()))
                 }
             }
         }catch (e: Exception) {

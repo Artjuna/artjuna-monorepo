@@ -9,4 +9,6 @@ import java.io.File
 class CustomizeViewModel(private val mainRepository: MainRepository): ViewModel() {
 
     fun uploadStyleTransfer(productId: String, image: File) = mainRepository.uploadImageStyleTransfer(productId, image)
+
+    fun uploadImageForStyleTransfer(productId: String,image: File) = mainRepository.uploadImageForStyleTransfer(productId,image)
 }
