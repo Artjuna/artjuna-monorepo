@@ -18,6 +18,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.artjuna.artjuna_app.BuildConfig
 import com.artjuna.artjuna_app.R
+import com.artjuna.artjuna_app.core.data.source.model.Address
 import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.bumptech.glide.Glide
 import java.io.*
@@ -49,11 +50,13 @@ object AppUtils{
         return false
     }
 
-    fun sendOrderToWA(context: Context, number: String, product: Product){
+    fun sendOrderToWA(context: Context, number: String, product: Product, address: Address){
         val message = "Order Invoice\n" +
                 "Item Name: ${product.name} (${product.id})\n" +
                 "Price: Rp ${product.price}\n" +
-                ""
+                "Shipping Address :\n" +
+                "${address.name} (${address.number})\n"+
+                "${address.address} ${address.postalCode}"
         val url = "https://wa.me/${number}?text=${URLEncoder.encode(message,"UTF-8")}"
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         context.startActivity(browserIntent)

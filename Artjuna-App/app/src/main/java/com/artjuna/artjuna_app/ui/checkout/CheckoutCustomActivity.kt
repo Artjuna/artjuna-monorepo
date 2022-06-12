@@ -83,7 +83,7 @@ class CheckoutCustomActivity: AppCompatActivity() {
     }
 
     private fun contactSeller() {
-        AppUtils.sendOrderToWA(this@CheckoutCustomActivity, store.numberWA, this@CheckoutCustomActivity.product)
+        AppUtils.sendOrderToWA(this@CheckoutCustomActivity, store.numberWA, this@CheckoutCustomActivity.product, mAddress)
     }
 
     private fun addOrder() {
