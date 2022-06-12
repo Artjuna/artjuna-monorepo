@@ -13,6 +13,7 @@ import com.artjuna.artjuna_app.core.data.source.model.Product
 import com.artjuna.artjuna_app.core.data.source.remote.network.Result
 import com.artjuna.artjuna_app.databinding.ActivityCustomizeBinding
 import com.artjuna.artjuna_app.ui.loading.LoadingDialog
+import com.artjuna.artjuna_app.ui.resultcustomize.ResultCustomizeActivity
 import com.artjuna.artjuna_app.utils.AppUtils
 import com.artjuna.artjuna_app.utils.AppUtils.loadImage
 import com.artjuna.artjuna_app.utils.AppUtils.uriToFile
@@ -85,13 +86,19 @@ class CustomizeActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         loadingDialog.dismiss()
-                        Log.d("okhttp", it.data)
-                        val img = AppUtils.convertBase64toByteArray(it.data)
-                        binding.ivStyleTransfer.loadImage(img)
+                        moveToResultCustom(it.data)
                     }
                 }
             }
         }
+    }
+
+    private fun moveToResultCustom(img: String) {
+        val intent = Intent(this, ResultCustomizeActivity::class.java)
+        intent.putExtra(ResultCustomizeActivity.EXTRA_IMG, img)
+        intent.putExtra(ResultCustomizeActivity.EXTRA_PRODUCT, product)
+        startActivity(intent)
+        finish()
     }
 
     private fun setupLoading() {
