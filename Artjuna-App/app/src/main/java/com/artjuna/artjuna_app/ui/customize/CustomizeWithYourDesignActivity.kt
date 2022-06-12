@@ -34,7 +34,6 @@ class CustomizeWithYourDesignActivity: AppCompatActivity() {
         val dataProduct = intent.getParcelableExtra<Product>(CustomizeActivity.EXTRA_PRODUCT)
         populateViewProduct(dataProduct)
 
-
         setButton()
 
     }

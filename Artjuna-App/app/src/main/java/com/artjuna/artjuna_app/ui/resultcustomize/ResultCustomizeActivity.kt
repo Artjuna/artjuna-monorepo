@@ -25,11 +25,8 @@ class ResultCustomizeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         getDataProduct()
-
         getCustomizedImage()
-
         setButton()
-
 
 
     }
