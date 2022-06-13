@@ -59,3 +59,7 @@ async def style_transfer(ProductID: str = Form(), StyleImage: UploadFile = File(
     )
 
     return {"StylizedImage": reconstructed_image}
+
+@app.post("/recommender")
+async def recommender(UserID):
+    return {"recommender": "-"}

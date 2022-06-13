@@ -30,7 +30,7 @@ async def main(dry_run=True, debug=True):
 
     async with aiohttp.ClientSession() as session:
 
-        for i in trange(100000):
+        for i in trange(1000000):
             random_user = random.choice(data_user)
             random_product = random.choice(data_product)
             payload = {
