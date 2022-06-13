@@ -1,8 +1,10 @@
 # C22-PS339 [Artjuna]
 
-<p align="center">
-  <img src="https://storage.cloud.google.com/artjuna-b8bbc.appspot.com/Group%2013.png", width="227" height="328">
-</p>
+![alt text]([http://url/to/img.png](https://storage.cloud.google.com/artjuna-b8bbc.appspot.com/Group%2013.png))
+
+ //<p align="center">
+  //<img src="https://storage.cloud.google.com/artjuna-b8bbc.appspot.com/Group%2013.png", width="227" height="328">
+//</p>
 
 
 ## About The Project
