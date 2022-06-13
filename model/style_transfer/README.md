@@ -5,9 +5,10 @@
 ## This link containing trained model using configurations:
 <li> batch_size = 6
 <li> image_size = (224,224)
+<li> style weight factor = 0.6
 <li> steps_per_epochs = 50
 <li> validation_steps = 50
-<li> epochs = 300
+<li> epochs = 500
 <li> content dataset : (VOC Pascal(main) + COCO Validation Set)
 <li> style dataset : (Best Artworks of All Time (main) + 5000 Wikiart images)
  
