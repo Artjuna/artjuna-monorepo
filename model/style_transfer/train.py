@@ -77,7 +77,7 @@ decoder = create_decoder()
 loss_model = create_loss_model()
 
 model = NeuralStyleTransfer(encoder=encoder, decoder=decoder,
-                            loss_net=loss_model, style_weight=4.0)
+                            loss_net=loss_model, style_weight=0.6)
 
 model.compile(optimizer=optimizer, loss_fn=loss_fn)
 
