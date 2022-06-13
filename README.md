@@ -1,7 +1,7 @@
 # C22-PS339 [Artjuna]
 
 <p align="center">
-  <img src="https://drive.google.com/file/d/12Gne0bchQE2s9bnyDnQW8SgYYqpXsz9U/view?usp=sharing", width="227" height="328">
+  <img src="https://storage.cloud.google.com/artjuna-b8bbc.appspot.com/Group%2013.png", width="227" height="328">
 </p>
 
 
@@ -17,7 +17,7 @@ Artjuna is a social e-commerce platform where customers can create and buy perso
 | Name                           | Bangkit ID  | Learning Path      | University                          | Contact                                                                                                                                                                                           |
 | ------------------------------ | ---------- | ------------------ |  ---------------------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Aditya Wardianto          | M7004F0217 | Machine Learning   | Insititut Teknologi Sepuluh Nopember             | <a href="https://www.linkedin.com/in/adityawardianto"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>                            |
-| Fauzia Hafida Rahmah                 | M2010F1100  | Machine Learning   | Universitas Indonesia             | <a href=""><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>                            |
+| Fauzia Hafida Rahmah                 | M2010F1100  | Machine Learning   | Universitas Indonesia             | <a href="https://www.linkedin.com/in/fauzia-rahmah-528738175/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>                            |
 | Adi Kelvianto | M2002G0057  | Machine Learning | Institut Teknologi Bandung | <a href="https://www.linkedin.com/in/adi-kelvianto"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a> |
 | Dheni Yulia Dinda Pratiwi        | A2008F0874  | Mobile Development | Universitas Gadjah Mada | <a href="https://www.linkedin.com/in/dheni-yulia-dinda-pratiwi-482b591bb/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>                            |
 | Galih Indra Firmansyah                   | A2008F0893  | Mobile Development    | Universitas Gadjah Mada             | <a href="https://www.linkedin.com/in/galihif/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>                            |
