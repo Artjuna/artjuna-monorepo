@@ -44,7 +44,7 @@ This is a monorepo for Artjuna, a project created for Bangkit 2022 Capstone Proj
 ## Download
 Go to the [Here](https://drive.google.com/drive/folders/1bfRFf1mPk6usY0vRu4PMLqQVvebLyESV?usp=sharing) to download the latest APK.
 
-<img src="/previews/demo.gif" align="right" width="320"/>
+<img src="/preview/demo.gif" align="right" width="320"/>
 
 ## Tech stack & Open-source libraries
 - Minimum SDK level 21
