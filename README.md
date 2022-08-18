@@ -26,3 +26,55 @@ if you are interested in discussing this project issues with us, please contact 
 [![CD Python API](https://github.com/Artjuna/artjuna-monorepo/actions/workflows/python_api_cd.yml/badge.svg)](https://github.com/Artjuna/artjuna-monorepo/actions/workflows/python_api_cd.yml)
 
 This is a monorepo for Artjuna, a project created for Bangkit 2022 Capstone Project
+
+
+<h1 align="center">Artjuna App</h1>
+
+
+
+<p align="center">  
+🗡️ Artjuna demonstrates modern Android development with Koin, Coroutines, Flow, Jetpack (Room, ViewModel), and Material Design based on MVVM architecture.
+</p>
+</br>
+
+<p align="center">
+<img src="/previews/screenshot.png"/>
+</p>
+
+## Download
+Go to the [Here](https://drive.google.com/drive/folders/1bfRFf1mPk6usY0vRu4PMLqQVvebLyESV?usp=sharing) to download the latest APK.
+
+<img src="/previews/preview.gif" align="right" width="320"/>
+
+## Tech stack & Open-source libraries
+- Minimum SDK level 21
+- [Kotlin](https://kotlinlang.org/) based, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
+- [Koin](https://insert-koin.io/) for dependency injection.
+- Jetpack
+  - Lifecycle - Observe Android lifecycles and handle UI states upon the lifecycle changes.
+  - ViewModel & LiveData - Manages UI-related data holder and lifecycle aware. Allows data to survive configuration changes such as screen rotations.
+  - ViewBinding - Generate binding class to make it easier for interacts with the views from the kotlin class.
+  - Room Persistence - Constructs Database by providing an abstraction layer over SQLite to allow fluent database access.
+  - Navigation - Make interactions that allow users to navigate across, into, and back out from the different pieces of content within the app
+- Architecture
+  - MVVM Architecture 
+  - Repository Pattern
+- [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - Construct the REST APIs.
+- [Glide](https://github.com/bumptech/glide) - Loading images from network.
+- [Material-Components](https://github.com/material-components/material-components-android) - Material design components for building ripple animation, and CardView.
+- [Firebase Auth](https://firebase.google.com/docs/auth) - Handle user authentication with many different credential
+- [SDP Scalable Size Unit](https://github.com/intuit/sdp) - Make a scalable views that supports multiple screens and devices
+- [CircleImageView](https://github.com/hdodenhof/CircleImageView) - Create circle image
+- [Shimmer](https://github.com/facebook/shimmer-android) - Improve user experience by show skeleton items when the content is loading
+- [Lottie](https://lottiefiles.com/) - Create animation of an empty state
+
+
+## MAD Score
+![summary]<img src="/preview/summary.png"/>
+
+![kotlin]<img src="/preview/kotlin.png"/>
+
+## Architecture
+Artjuna is based on the MVVM architecture and the Repository pattern.
+
+![architecture]<img src="/preview/architecture.png"/>
