@@ -38,7 +38,7 @@ This is a monorepo for Artjuna, a project created for Bangkit 2022 Capstone Proj
 </br>
 
 <p align="center">
-<img src="/previews/screenshot.png"/>
+<img src="/preview/banner.png"/>
 </p>
 
 ## Download
