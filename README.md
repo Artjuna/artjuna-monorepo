@@ -70,11 +70,13 @@ Go to the [Here](https://drive.google.com/drive/folders/1bfRFf1mPk6usY0vRu4PMLqQ
 
 
 ## MAD Score
-![summary]<img src="/preview/summary.png"/>
+<img src="/preview/summary.png"/>
 
-![kotlin]<img src="/preview/kotlin.png"/>
+<img src="/preview/kotlin.png"/>
+
+<img src="/preview/jetpack.png"/>
 
 ## Architecture
 Artjuna is based on the MVVM architecture and the Repository pattern.
 
-![architecture]<img src="/preview/architecture.png"/>
+<img src="/preview/architecture.png"/>
